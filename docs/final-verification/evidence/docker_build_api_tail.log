@@ -1,0 +1,30 @@
+#9 51.73   Downloading uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+#9 53.55      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 2.4 MB/s eta 0:00:00
+#9 53.73 Collecting watchfiles==1.2.0 (from -r requirements.lock (line 1099))
+#9 54.15   Downloading watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+#9 54.25      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 456.4/456.4 kB 5.0 MB/s eta 0:00:00
+#9 54.47 Collecting websockets==17.1 (from -r requirements.lock (line 1207))
+#9 55.09   Downloading websockets-17.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+#9 55.15      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.6/224.6 kB 4.0 MB/s eta 0:00:00
+#9 55.46 Installing collected packages: pytz, websockets, watchfiles, uvloop, uvicorn, urllib3, typing-inspection, typing-extensions, starlette, sqlalchemy, six, s3transfer, rq, reportlab, redis, pyyaml, python-multipart, python-dotenv, python-dateutil, pydantic-settings, pydantic-core, pydantic, pycparser, psycopg-binary, psycopg, pillow, phonenumbers, neo4j, markupsafe, mako, jmespath, idna, httpx, httptools, httpcore, h11, greenlet, fastapi, email-validator, dnspython, croniter, click, charset-normalizer, cffi, certifi, botocore, boto3, argon2-cffi-bindings, argon2-cffi, anyio, annotated-types, annotated-doc, alembic
+#9 70.16 Successfully installed alembic-1.19.2 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 boto3-1.43.92 botocore-1.43.92 certifi-2026.7.22 cffi-2.1.1 charset-normalizer-3.5.1 click-8.5.0 croniter-6.2.4 dnspython-2.8.0 email-validator-2.3.0 fastapi-0.141.1 greenlet-3.5.5 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.28.1 idna-3.19 jmespath-1.1.0 mako-1.4.1 markupsafe-3.0.3 neo4j-6.3.0 phonenumbers-9.0.39 pillow-12.3.0 psycopg-3.3.5 psycopg-binary-3.3.5 pycparser-3.0 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 python-dateutil-2.9.0.post0 python-dotenv-1.2.3 python-multipart-0.0.32 pytz-2026.3.post1 pyyaml-6.0.3 redis-8.1.0 reportlab-5.0.1 rq-2.12.0 s3transfer-0.19.2 six-1.17.0 sqlalchemy-2.0.52 starlette-1.6.0 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 uvicorn-0.52.4 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+#9 DONE 72.0s
+
+#10 [6/7] COPY . .
+#10 DONE 0.2s
+
+#11 [7/7] RUN useradd --create-home --uid 1000 --shell /usr/sbin/nologin appuser     && chown -R appuser:appuser /app
+#11 DONE 0.6s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 32.5s done
+#12 exporting manifest sha256:7e1b3a3ad8997d308365c615f53704b2c1166fa4cc7c9aba653238dec1bfcb7f
+#12 exporting manifest sha256:7e1b3a3ad8997d308365c615f53704b2c1166fa4cc7c9aba653238dec1bfcb7f done
+#12 exporting config sha256:6bc57c30809e01050435fd73768b6044b8e9393906fd0eb2790f60b5759539fe done
+#12 exporting attestation manifest sha256:529dfdc0e71c748bc221a8ff79cd22d20d5a7394f845f66af4c440ce0cad3228 done
+#12 exporting manifest list sha256:ab400526c6a2a9bcd8078ba534df311bca8e1479aa27c280af9b2c2e5f7a3259 done
+#12 naming to docker.io/library/lifelink-api:local done
+#12 unpacking to docker.io/library/lifelink-api:local
+#12 unpacking to docker.io/library/lifelink-api:local 9.6s done
+#12 DONE 42.2s

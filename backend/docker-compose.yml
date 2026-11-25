@@ -1,0 +1,329 @@
+# Phase 28: this file is DEV/E2E-ONLY -- do not deploy it as-is. Concretely,
+# it is unsafe for production in ways that are appropriate for local dev but
+# would be real findings in a production deployment:
+#   * db/redis/minio/neo4j all use fixed, publicly-visible-in-this-file
+#     passwords (lifelink/lifelink, lifelink-secret, lifelink-dev-password)
+#   * the `api` service runs `uvicorn --reload` (autoreloads on file
+#     change -- a debug/dev feature, never wanted in production) and runs
+#     `alembic upgrade head` automatically on every container start, which
+#     is convenient for a disposable dev DB but is exactly the "migrations
+#     run silently as a side effect of boot, with no separate approval
+#     step" pattern the Phase 28 deployment checklist deliberately avoids
+#     for production (see docs/LIFELINK_PHASE_28_PRODUCTION_AUDIT.md's
+#     migration-safety section for the recommended separate-step procedure)
+#   * db/redis/minio ports are published to the host (0.0.0.0) with no
+#     network isolation, fine for a laptop, not for a shared environment
+#   * every service here is a single container with no HA/backup/TLS
+#
+# A real deployment should run this app's own image (this directory's
+# Dockerfile, whose default CMD already points at the Phase 27/28
+# production entrypoint app.asgi:application -- see that file's own
+# comments) against externally-managed PostgreSQL/Redis/object-storage
+# services, with every credential injected via the deployment platform's
+# own secret store (never a committed file) and TLS terminated by a real
+# reverse proxy/load balancer in front of it -- see
+# scripts/run_production.sh and .env.example for the full production
+# configuration surface. This repo deliberately does not invent a specific
+# cloud provider or orchestrator for that -- see app/asgi.py's own
+# docstring for why.
+#
+# Migration integrity: the project name is pinned. Without it Compose uses
+# the directory name ("backend"), so EVERY project whose compose file lives
+# in a folder called backend/ shares the volume `backend_pgdata`. A
+# database created by another project or an older checkout was then
+# reused here, and `alembic upgrade head` failed with
+# "Can't locate revision identified by '0007_phase7b'" (a revision that has
+# never existed in this repository). Volumes are now `lifelink_pgdata`, etc.
+# An existing `backend_pgdata` volume is NOT deleted or touched. See
+# docs/final-verification/INFRASTRUCTURE_TEST.md ("Migration integrity")
+# for how to inspect it, recover it or deliberately reset it.
+name: lifelink
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: lifelink
+      POSTGRES_PASSWORD: lifelink
+      POSTGRES_DB: lifelink
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lifelink"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Mailpit is an OPTIONAL development mail catcher (profile "mailpit").
+  # .env.example enables it via COMPOSE_PROFILES=mailpit; remove that line
+  # and set the Gmail MAIL_* variables to send real email instead.
+  mailpit:
+    image: axllent/mailpit:v1.21.8
+    profiles: ["mailpit"]
+    ports:
+      - "8025:8025"   # web UI
+      - "1025:1025"   # SMTP
+    # Phase I: gate api/worker on Mailpit actually accepting SMTP, not just
+    # on its container having started (`readyz` is Mailpit's own probe).
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: lifelink
+      MINIO_ROOT_PASSWORD: lifelink-secret
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - miniodata:/data
+    # Phase I: the Phase 34 "10 Playwright failures" were every
+    # storage-touching request hitting EndpointConnectionError because
+    # nothing waited for object storage. `mc ready local` (bundled in the
+    # MinIO image) succeeds only once the server answers.
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # One-shot bucket init; api waits for it to EXIT SUCCESSFULLY, so the
+  # bucket exists (and is private) before the first upload. The app's own
+  # startup also calls storage.ensure_bucket() (idempotent) as a second line.
+  createbuckets:
+    image: minio/mc:RELEASE.2025-04-16T18-13-26Z
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      set -e;
+      until (/usr/bin/mc alias set local http://minio:9000 lifelink lifelink-secret) do echo waiting for minio; sleep 2; done;
+      /usr/bin/mc mb -p local/lifelink-dev;
+      /usr/bin/mc anonymous set none local/lifelink-dev;
+      "
+
+  # Hardening: ClamAV daemon for malware scanning of uploaded documents
+  # (app/services/document_scanner.py). The official image downloads its
+  # signature databases on first start (freshclam), which can take a few
+  # minutes; `clamdcheck.sh` is the image's own readiness probe.
+  clamav:
+    image: clamav/clamav:1.4
+    volumes:
+      - clamavdb:/var/lib/clamav
+    healthcheck:
+      test: ["CMD", "clamdcheck.sh"]
+      interval: 15s
+      timeout: 10s
+      retries: 40
+      start_period: 60s
+
+  # Optional local Neo4j for the graph/resource-pathway engine
+  # (app/core/graph.py, app/services/graph_service.py). Not required to run
+  # the app -- every graph-backed endpoint degrades gracefully to a
+  # haversine-distance fallback when Neo4j is unset or unreachable (see
+  # NEO4J_* in .env.example). Point NEO4J_URI at this container
+  # (bolt://neo4j:7687) for local dev, or at a real Neo4j Aura instance
+  # instead -- either way this service is untouched by that choice.
+  neo4j:
+    image: neo4j:5.24
+    profiles: ["graph"]
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_DEV_PASSWORD:-lifelink-dev-password}
+    ports:
+      - "7474:7474"   # browser UI
+      - "7687:7687"   # bolt
+    volumes:
+      - neo4jdata:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@db:5432/lifelink
+      REDIS_URL: redis://redis:6379/0
+      # Hardening: NOT hard-coded any more. Whatever MAIL_HOST/.env says
+      # (e.g. smtp.gmail.com) wins; only an unset MAIL_HOST falls back to
+      # the Mailpit container. API and worker read the same variables.
+      MAIL_HOST: ${MAIL_HOST:-mailpit}
+      S3_ENDPOINT_URL: http://minio:9000
+      DOCUMENT_SCANNER: clamd
+      CLAMD_HOST: clamav
+      CLAMD_PORT: "3310"
+      # Neo4j is optional: empty NEO4J_URI = relational path engine (the
+      # authoritative fallback). With `--profile graph`, set
+      # NEO4J_URI=bolt://neo4j:7687 in .env.
+      NEO4J_URI: ${NEO4J_URI:-}
+      # Audit E4 (2026-10-31): signed audit checkpoints are REQUIRED in this
+      # stack. The key comes from the environment / .env (never committed);
+      # `docker compose up` refuses to start without it, and the API refuses
+      # to start if it is unusable (AUDIT_CHECKPOINT_REQUIRED). The log lives
+      # on its own volume, which the database container never mounts.
+      # See docs/AUDIT_CHECKPOINTS.md for setup, rotation and limits.
+      AUDIT_CHECKPOINT_KEY: ${AUDIT_CHECKPOINT_KEY:?set AUDIT_CHECKPOINT_KEY (>=32 chars; see docs/AUDIT_CHECKPOINTS.md)}
+      AUDIT_CHECKPOINT_KEY_ID: ${AUDIT_CHECKPOINT_KEY_ID:-k1}
+      AUDIT_CHECKPOINT_RETIRED_KEYS: ${AUDIT_CHECKPOINT_RETIRED_KEYS:-}
+      AUDIT_CHECKPOINT_PATH: /var/lib/lifelink-audit/checkpoints.log
+      AUDIT_CHECKPOINT_REQUIRED: "true"
+    volumes:
+      - auditcheckpoints:/var/lib/lifelink-audit
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_healthy
+        required: false   # only when the "mailpit" profile is enabled
+      minio:
+        condition: service_healthy
+      createbuckets:
+        condition: service_completed_successfully
+      clamav:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    # Startup order: the read-only migration doctor first (it exits non-zero,
+    # with a diagnosis and recovery steps, on an unknown/foreign revision
+    # instead of letting `alembic upgrade head` fail cryptically), then the
+    # migrations, then the server.
+    # Phase I: readiness (DB + Redis), not just "process started".
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8000/health/ready', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 15s
+    command: >
+      /bin/sh -c "python -m scripts.migration_doctor &&
+      alembic upgrade head &&
+      uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  worker:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@db:5432/lifelink
+      REDIS_URL: redis://redis:6379/0
+      # Hardening: NOT hard-coded any more. Whatever MAIL_HOST/.env says
+      # (e.g. smtp.gmail.com) wins; only an unset MAIL_HOST falls back to
+      # the Mailpit container. API and worker read the same variables.
+      MAIL_HOST: ${MAIL_HOST:-mailpit}
+      S3_ENDPOINT_URL: http://minio:9000
+      DOCUMENT_SCANNER: clamd
+      CLAMD_HOST: clamav
+      CLAMD_PORT: "3310"
+      # Audit E4 (2026-10-31): the worker writes no audit checkpoints, so it
+      # does not get the key (least privilege). Without these two empty
+      # values it inherited AUDIT_CHECKPOINT_KEY from .env with no path, and
+      # its settings refused to load -- found by the container clean start.
+      AUDIT_CHECKPOINT_KEY: ""
+      AUDIT_CHECKPOINT_PATH: ""
+      AUDIT_CHECKPOINT_RETIRED_KEYS: ""
+    depends_on:
+      # Phase I: the worker's jobs touch the DB (via app imports/settings)
+      # and send mail -- wait for all three, and for migrations (api
+      # healthy implies `alembic upgrade head` finished).
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_healthy
+        required: false   # only when the "mailpit" profile is enabled
+      api:
+        condition: service_healthy
+    command: python -m app.workers.worker
+    # The image's default HEALTHCHECK probes the API's HTTP port, which a
+    # worker does not serve, so the worker always showed "unhealthy" (found by
+    # the final external validation). Healthy = an RQ worker registered in
+    # Redis from this container.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket,sys,redis; from rq import Worker; from app.core.config import settings; r=redis.Redis.from_url(settings.redis_url); sys.exit(0 if any(w.hostname == socket.gethostname() for w in Worker.all(connection=r)) else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # Gap elimination: scheduled deadline warnings/escalation and the
+  # effective-expiry sweep (app/workers/deadline_monitor.py). Safe to scale:
+  # rows are claimed with FOR UPDATE SKIP LOCKED.
+  deadline-monitor:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@db:5432/lifelink
+      REDIS_URL: redis://redis:6379/0
+      MAIL_HOST: ${MAIL_HOST:-mailpit}
+      # Writes a signed checkpoint every AUDIT_CHECKPOINT_INTERVAL_MINUTES.
+      # Audit E4 (2026-10-31): signed audit checkpoints are REQUIRED in this
+      # stack. The key comes from the environment / .env (never committed);
+      # `docker compose up` refuses to start without it, and the API refuses
+      # to start if it is unusable (AUDIT_CHECKPOINT_REQUIRED). The log lives
+      # on its own volume, which the database container never mounts.
+      # See docs/AUDIT_CHECKPOINTS.md for setup, rotation and limits.
+      AUDIT_CHECKPOINT_KEY: ${AUDIT_CHECKPOINT_KEY:?set AUDIT_CHECKPOINT_KEY (>=32 chars; see docs/AUDIT_CHECKPOINTS.md)}
+      AUDIT_CHECKPOINT_KEY_ID: ${AUDIT_CHECKPOINT_KEY_ID:-k1}
+      AUDIT_CHECKPOINT_RETIRED_KEYS: ${AUDIT_CHECKPOINT_RETIRED_KEYS:-}
+      AUDIT_CHECKPOINT_PATH: /var/lib/lifelink-audit/checkpoints.log
+      AUDIT_CHECKPOINT_REQUIRED: "true"
+    volumes:
+      - auditcheckpoints:/var/lib/lifelink-audit
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    command: python -m app.workers.deadline_monitor
+    # Healthy = a successful pass within the last 5 minutes (heartbeat file
+    # touched after each pass; the default interval is 60 s).
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os,sys,time; p='/tmp/lifelink-deadline-monitor.heartbeat'; sys.exit(0 if os.path.exists(p) and time.time() - os.path.getmtime(p) < 300 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # The built SPA served by nginx (frontend/Dockerfile). VITE_API_URL is
+  # baked at build time.
+  frontend:
+    build:
+      context: ../frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    ports:
+      - "5173:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  auditcheckpoints:
+  miniodata:
+  neo4jdata:
+  clamavdb:

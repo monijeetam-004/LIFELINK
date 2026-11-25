@@ -1,0 +1,83 @@
+# Volume
+blood_requests: 81312
+audit_logs: 30215
+realtime_events: 274581
+notifications: 273312
+blood_units: 126795
+users: 1565
+
+## admin: GET /admin/blood-requests (newest 50)
+status=200 median=39.2ms max=153.6ms statements=2 db_ms=25.6
+  slowest 25.00 ms: SELECT blood_requests.id, blood_requests.requester_user_id, blood_requests.patient_user_id, blood_requests.blood_type, blood_requests.units_needed, blood_reques
+    PLAN: Limit  (cost=4636.23..4641.98 rows=50 width=1128) (actual time=28.580..30.991 rows=50 loops=1)
+    PLAN:   Buffers: shared hit=1606
+    PLAN:   ->  Gather Merge  (cost=4636.23..10136.79 rows=47831 width=1128) (actual time=28.578..30.985 rows=50 loops=1)
+    PLAN:         Workers Planned: 1
+    PLAN:         Workers Launched: 1
+    PLAN:         Buffers: shared hit=1606
+    PLAN:         ->  Sort  (cost=3636.22..3755.79 rows=47831 width=1128) (actual time=25.979..25.985 rows=50 loops=2)
+    PLAN:               Sort Key: created_at DESC
+    PLAN:               Sort Method: top-N heapsort  Memory: 32kB
+    PLAN:               Buffers: shared hit=1606
+    PLAN:               Worker 0:  Sort Method: top-N heapsort  Memory: 48kB
+    PLAN:               ->  Parallel Seq Scan on blood_requests  (cost=0.00..2047.31 rows=47831 width=1128) (actual time=0.018..9.673 rows=40656 loops=2)
+    PLAN:                     Buffers: shared hit=1569
+    PLAN: Planning Time: 0.191 ms
+    PLAN: Planning Time: 0.191 ms
+    PLAN: Execution Time: 31.104 ms
+
+## admin: GET /admin/blood-requests?status=FULFILLED
+status=200 median=31.5ms max=46.0ms statements=2 db_ms=20.4
+  slowest 19.82 ms: SELECT blood_requests.id, blood_requests.requester_user_id, blood_requests.patient_user_id, blood_requests.blood_type, blood_requests.units_needed, blood_reques
+    PLAN: Limit  (cost=4243.26..4249.01 rows=50 width=1128) (actual time=20.960..23.372 rows=50 loops=1)
+    PLAN:   Buffers: shared hit=1606
+    PLAN:   ->  Gather Merge  (cost=4243.26..7969.49 rows=32402 width=1128) (actual time=20.958..23.366 rows=50 loops=1)
+    PLAN:         Workers Planned: 1
+    PLAN:         Workers Launched: 1
+    PLAN:         Buffers: shared hit=1606
+    PLAN:         ->  Sort  (cost=3243.25..3324.26 rows=32402 width=1128) (actual time=19.000..19.004 rows=38 loops=2)
+    PLAN:               Sort Key: created_at DESC
+    PLAN:               Sort Method: top-N heapsort  Memory: 37kB
+    PLAN:               Buffers: shared hit=1606
+    PLAN:               Worker 0:  Sort Method: top-N heapsort  Memory: 37kB
+    PLAN:               ->  Parallel Seq Scan on blood_requests  (cost=0.00..2166.88 rows=32402 width=1128) (actual time=0.008..8.417 rows=27669 loops=2)
+    PLAN:                     Filter: (status = 'FULFILLED'::blood_request_status)
+    PLAN:                     Rows Removed by Filter: 12987
+    PLAN: Planning Time: 0.106 ms
+    PLAN: Execution Time: 23.401 ms
+
+## admin: GET /admin/analytics/overview (14 days)
+status=200 median=43.8ms max=50.9ms statements=8 db_ms=25.6
+  slowest 10.67 ms: SELECT CAST(blood_requests.created_at AS DATE) AS day, count(*) AS count_1 FROM blood_requests WHERE blood_requests.created_at >= %(created_at_1)s::TIMESTAMP WI
+    PLAN: Sort  (cost=4010.22..4049.77 rows=15819 width=12) (actual time=15.304..15.307 rows=15 loops=1)
+    PLAN:   Sort Key: ((created_at)::date)
+    PLAN:   Sort Method: quicksort  Memory: 25kB
+    PLAN:   Buffers: shared hit=1569
+    PLAN:   ->  HashAggregate  (cost=2709.16..2906.90 rows=15819 width=12) (actual time=15.179..15.291 rows=15 loops=1)
+    PLAN:         Group Key: (created_at)::date
+    PLAN:         Batches: 1  Memory Usage: 793kB
+    PLAN:         Buffers: shared hit=1569
+    PLAN:         ->  Seq Scan on blood_requests  (cost=0.00..2626.65 rows=16501 width=4) (actual time=0.008..13.074 rows=16394 loops=1)
+    PLAN:               Filter: (created_at >= '2026-09-22 15:15:26.294148+00'::timestamp with time zone)
+    PLAN:               Rows Removed by Filter: 64918
+    PLAN:               Buffers: shared hit=1569
+    PLAN: Planning Time: 0.111 ms
+    PLAN: Execution Time: 15.414 ms
+
+## admin: GET /admin/analytics/overview (90 days)
+status=200 median=43.5ms max=138.1ms statements=8 db_ms=29.5
+  slowest 15.01 ms: SELECT CAST(blood_requests.created_at AS DATE) AS day, count(*) AS count_1 FROM blood_requests WHERE blood_requests.created_at >= %(created_at_1)s::TIMESTAMP WI
+    PLAN: Sort  (cost=6384.80..6482.41 rows=39045 width=12) (actual time=17.085..17.118 rows=91 loops=1)
+    PLAN:   Sort Key: ((created_at)::date)
+    PLAN:   Sort Method: quicksort  Memory: 28kB
+    PLAN:   Buffers: shared hit=1569
+    PLAN:   ->  HashAggregate  (cost=2919.00..3407.06 rows=39045 width=12) (actual time=16.859..17.067 rows=91 loops=1)
+    PLAN:         Group Key: (created_at)::date
+    PLAN:         Batches: 1  Memory Usage: 1561kB
+    PLAN:         Buffers: shared hit=1569
+    PLAN:         ->  Seq Scan on blood_requests  (cost=0.00..2696.60 rows=44480 width=4) (actual time=0.008..12.033 rows=44375 loops=1)
+    PLAN:               Filter: (created_at >= '2026-07-08 15:15:26.712527+00'::timestamp with time zone)
+    PLAN:               Rows Removed by Filter: 36937
+    PLAN:               Buffers: shared hit=1569
+    PLAN: Planning Time: 0.124 ms
+    PLAN: Execution Time: 17.263 ms

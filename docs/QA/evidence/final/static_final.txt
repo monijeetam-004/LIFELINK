@@ -1,0 +1,13 @@
+$ ruff check . (2026-10-20T14:47:29Z)
+All checks passed!
+$ ruff format --check (files changed in this round)
+
+2 files would be reformatted, 3 files already formatted
+$ alembic heads
+e1f2a3b4c5d6 (head)
+$ alembic check (fresh migrated db)
+No new upgrade operations detected.
+tsc exit=0
+eslint exit=0
+✓ built in 8.49s
+build exit=0

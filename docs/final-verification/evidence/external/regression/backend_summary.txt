@@ -1,0 +1,4 @@
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_gap_neo4j.py:147: NEO4J_TEST_URI not set: no Neo4j server available (registries and dist.neo4j.org blocked in the verification sandbox)
+1397 passed, 1 skipped, 2 warnings in 1915.25s (0:31:55)

@@ -1,0 +1,6 @@
+# Graceful shutdown with an open SSE stream (scripts/run_production.sh, 1 worker) -- 2026-10-06T20:52:17Z
+# Before the fix uvicorn had no bound: a SIGTERM'd worker logged 'Waiting for connections to close' and kept
+# serving open event streams (observed 20-21 s in full_api.log; with a 60 s bound it waits the full 60 s).
+login 200; stream open (60 bytes received) before SIGTERM
+GRACEFUL_SHUTDOWN_SECONDS=5 (new default) -> server exited after 5.256 s
+GRACEFUL_SHUTDOWN_SECONDS=60               -> server exited after 60.28 s (the stream alone holds shutdown)

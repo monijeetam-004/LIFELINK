@@ -1,0 +1,99 @@
+
+> lifelink-frontend@0.1.0 build
+> tsc -b && vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 2199 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /home/claude/lifelink/LIFELINK/frontend/src/pages/errors/AccessDenied.tsx is dynamically imported by /home/claude/lifelink/LIFELINK/frontend/src/App.tsx but also statically imported by /home/claude/lifelink/LIFELINK/frontend/src/components/RequireAuth.tsx, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                                                            0.74 kB │ gzip:   0.44 kB
+dist/assets/plus-jakarta-sans-cyrillic-ext-wght-normal-lLTsRRxN.woff2      1.72 kB
+dist/assets/plus-jakarta-sans-vietnamese-wght-normal-qRpaaN48.woff2        8.35 kB
+dist/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2                   10.25 kB
+dist/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2                    11.23 kB
+dist/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2                     18.75 kB
+dist/assets/inter-greek-wght-normal-CkhJZR-_.woff2                        19.00 kB
+dist/assets/plus-jakarta-sans-latin-ext-wght-normal-DmpS2jIq.woff2        21.73 kB
+dist/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2                 25.96 kB
+dist/assets/plus-jakarta-sans-latin-wght-normal-eXO_dkmS.woff2            27.35 kB
+dist/assets/inter-latin-wght-normal-Dx4kXJAl.woff2                        48.26 kB
+dist/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2                    85.07 kB
+dist/assets/material-symbols-outlined-DJ9Z1fAF.woff2                   4,003.09 kB
+dist/assets/index-Cjqk1an7.css                                            93.09 kB │ gzip:  21.18 kB
+dist/assets/DonorDashboardMobile-CuiqxUfJ.js                               0.12 kB │ gzip:   0.13 kB
+dist/assets/arrow-left-BnXLXb7F.js                                         0.33 kB │ gzip:   0.27 kB
+dist/assets/lock--9YrSEs6.js                                               0.38 kB │ gzip:   0.29 kB
+dist/assets/inventoryStatus-Di7YmFNo.js                                    0.41 kB │ gzip:   0.25 kB
+dist/assets/DonationReviews-zJ4uC7cR.js                                    0.46 kB │ gzip:   0.33 kB
+dist/assets/NotFound-C7RIheZJ.js                                           0.77 kB │ gzip:   0.42 kB
+dist/assets/AvailabilitySelector-CU8F_UTV.js                               0.85 kB │ gzip:   0.49 kB
+dist/assets/EmergencyPicker-CILycPoi.js                                    0.90 kB │ gzip:   0.59 kB
+dist/assets/GraphDecisionEngine-yCWfN7S7.js                                0.90 kB │ gzip:   0.59 kB
+dist/assets/eye-BJI4Zhwf.js                                                0.97 kB │ gzip:   0.45 kB
+dist/assets/OfflinePage-D6Y8ug2N.js                                        1.17 kB │ gzip:   0.62 kB
+dist/assets/SessionExpired-D7uQmqw7.js                                     1.22 kB │ gzip:   0.71 kB
+dist/assets/HospitalSubNav-BEqzxhIp.js                                     1.69 kB │ gzip:   0.66 kB
+dist/assets/ServerError-Ryfjv6w1.js                                        1.71 kB │ gzip:   0.82 kB
+dist/assets/DonorSectionHeader-g55D3378.js                                 1.77 kB │ gzip:   0.68 kB
+dist/assets/BloodCompatibilityChart-CiJKUttC.js                            2.17 kB │ gzip:   0.96 kB
+dist/assets/LivePageShell-CImjDcWj.js                                      2.32 kB │ gzip:   1.01 kB
+dist/assets/SimulationMode-iY3D545E.js                                     2.41 kB │ gzip:   1.17 kB
+dist/assets/ForgotPassword-DkFd-Vpo.js                                     2.56 kB │ gzip:   1.27 kB
+dist/assets/ResearchMode-93blW3sZ.js                                       2.61 kB │ gzip:   1.09 kB
+dist/assets/AuthShell-CmKmQ4KP.js                                          2.64 kB │ gzip:   1.02 kB
+dist/assets/ScenarioForm-BcTv68ew.js                                       2.86 kB │ gzip:   1.18 kB
+dist/assets/DonorRecommendation-CCryiFT8.js                                2.89 kB │ gzip:   1.25 kB
+dist/assets/ResetPassword-CKsdxsp5.js                                      3.20 kB │ gzip:   1.33 kB
+dist/assets/ShaderBackground-Dku0Na8N.js                                   3.22 kB │ gzip:   1.64 kB
+dist/assets/VerifyEmail-okW-D7_y.js                                        3.35 kB │ gzip:   1.37 kB
+dist/assets/DonationReviewQueue-BSgHPz7C.js                                3.94 kB │ gzip:   1.52 kB
+dist/assets/UnitLifecycle-Rp7xAZ3I.js                                      4.43 kB │ gzip:   1.61 kB
+dist/assets/MathematicalModel-2A2jdtjX.js                                  4.45 kB │ gzip:   2.13 kB
+dist/assets/VerifyCertificate-5uG9nXCC.js                                  4.60 kB │ gzip:   1.26 kB
+dist/assets/NotificationsCenter-DehJh9XN.js                                5.07 kB │ gzip:   1.89 kB
+dist/assets/DecisionTransparency-CVTyzhn2.js                               5.87 kB │ gzip:   2.27 kB
+dist/assets/Analytics-DjME0qwt.js                                          5.89 kB │ gzip:   2.41 kB
+dist/assets/PlanView-BtSIfLjT.js                                           6.02 kB │ gzip:   1.95 kB
+dist/assets/StrategyLab-BBGzUukH.js                                        6.19 kB │ gzip:   2.18 kB
+dist/assets/FamilyLinkedPatients-CnOV1FW-.js                               6.78 kB │ gzip:   2.32 kB
+dist/assets/FamilyPatientDetail-CFKhBR8L.js                                7.69 kB │ gzip:   2.31 kB
+dist/assets/HelpAndLegal-kW--iNIB.js                                       7.89 kB │ gzip:   2.57 kB
+dist/assets/FacilityVerification-CJK3kvet.js                               9.24 kB │ gzip:   3.02 kB
+dist/assets/IdentityVerification-CiD3_9_U.js                               9.69 kB │ gzip:   3.05 kB
+dist/assets/DonorDirectoryAndLogistics-v0WiiUHF.js                         9.97 kB │ gzip:   3.01 kB
+dist/assets/DonationCertificate-DaQRvzeF.js                               10.65 kB │ gzip:   2.96 kB
+dist/assets/ResourcePathways-DDWTFpa_.js                                  11.35 kB │ gzip:   2.95 kB
+dist/assets/AnalyticsMobile-BWB9AGns.js                                   11.76 kB │ gzip:   3.23 kB
+dist/assets/Profile-BwEThOZx.js                                           12.17 kB │ gzip:   2.83 kB
+dist/assets/FindDonor-Dqs6psgm.js                                         12.64 kB │ gzip:   3.40 kB
+dist/assets/EligibilityCenter-BJMVOrG6.js                                 12.84 kB │ gzip:   3.66 kB
+dist/assets/RequestManagementDetail-CVyYXiav.js                           12.94 kB │ gzip:   3.59 kB
+dist/assets/AdminDonors-HC1q11uI.js                                       13.98 kB │ gzip:   3.14 kB
+dist/assets/EmergencySosTracking-NoylaUla.js                              14.36 kB │ gzip:   3.91 kB
+dist/assets/AuthPage-B2jtYaSN.js                                          14.37 kB │ gzip:   4.25 kB
+dist/assets/Settings-CKRunA9A.js                                          15.06 kB │ gzip:   4.22 kB
+dist/assets/ReadyConsole-DMV5B97Z.js                                      15.09 kB │ gzip:   3.86 kB
+dist/assets/AdminShipments-B2_R68gS.js                                    15.99 kB │ gzip:   3.69 kB
+dist/assets/AdminAuditFeed-c6yPL__X.js                                    16.59 kB │ gzip:   3.99 kB
+dist/assets/MilestonesHistory-DVH35v6S.js                                 17.01 kB │ gzip:   4.38 kB
+dist/assets/AdminFacilities-D1DzVk2_.js                                   18.13 kB │ gzip:   3.92 kB
+dist/assets/UserManagement-CyMVlktl.js                                    18.16 kB │ gzip:   3.94 kB
+dist/assets/InventoryConsole-CFMTUdvV.js                                  18.23 kB │ gzip:   4.73 kB
+dist/assets/NewRequestGuidedFlow-CxUsXpgV.js                              18.84 kB │ gzip:   4.14 kB
+dist/assets/RequestHistory-ltN4pAwg.js                                    18.98 kB │ gzip:   4.55 kB
+dist/assets/TransportRoutes-BDF0hMwh.js                                   19.05 kB │ gzip:   4.33 kB
+dist/assets/VerificationsQueue-B8opNNHs.js                                19.90 kB │ gzip:   4.53 kB
+dist/assets/AdminAnalytics-DWTv871i.js                                    21.61 kB │ gzip:   4.81 kB
+dist/assets/Shipments-C0oapqba.js                                         25.42 kB │ gzip:   6.71 kB
+dist/assets/index-C8Fu69bv.js                                            824.17 kB │ gzip: 240.16 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 7.25s
+build exit 0

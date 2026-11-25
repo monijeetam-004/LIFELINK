@@ -1,0 +1,34 @@
+== fresh -> head
+30
+d0e1f2a3b4c5 (head)
+== downgrade -4
+INFO  [alembic.runtime.migration] Running downgrade d0e1f2a3b4c5 -> c9d0e1f2a3b4, Hardening: index blood_reque
+INFO  [alembic.runtime.migration] Running downgrade c9d0e1f2a3b4 -> a6b7c8d9e0f1, Hardening: append-only guard
+INFO  [alembic.runtime.migration] Running downgrade a6b7c8d9e0f1 -> f5a6b7c8d9e0, Hardening: every stored veri
+INFO  [alembic.runtime.migration] Running downgrade f5a6b7c8d9e0 -> e4f5a6b7c8d9, Phase K: realtime publisher 
+e4f5a6b7c8d9
+== re-upgrade
+INFO  [alembic.runtime.migration] Running upgrade e4f5a6b7c8d9 -> f5a6b7c8d9e0, Phase K: realtime publisher in
+INFO  [alembic.runtime.migration] Running upgrade f5a6b7c8d9e0 -> a6b7c8d9e0f1, Hardening: every stored verifi
+INFO  [alembic.runtime.migration] Running upgrade a6b7c8d9e0f1 -> c9d0e1f2a3b4, Hardening: append-only guard t
+INFO  [alembic.runtime.migration] Running upgrade c9d0e1f2a3b4 -> d0e1f2a3b4c5, Hardening: index blood_request
+== downgrade base
+30
+1
+== upgrade head again
+30
+d0e1f2a3b4c5 (head)
+== drift (alembic check)
+ERROR [alembic.util.messaging] New upgrade operations detected: [('remove_index', Index('ix_notifications_user_created', Column('user_id', UUID(), table=<notifications>, nullable=False), <sqlalchemy.s
+FAILED: New upgrade operations detected: [('remove_index', Index('ix_notifications_user_created', Column('user_id', UUID(), table=<notifications>, nullable=False), <sqlalchemy.sql.elements.UnaryExpres
+== triggers
+audit_logs_append_only
+audit_logs_no_truncate
+
+== semantic comparison: migrated DB (lifelink_migcheck) vs ORM create_all (lifelink_ormcheck)
+indexes (definitions, name-normalised): identical
+constraints (definitions): identical (except alembic_version PK)
+triggers: identical (audit_logs_append_only, audit_logs_no_truncate)
+columns: identical except 5 server defaults present only in migrations (pre-existing; ORM supplies Python-side defaults):
+  emergency_pathways.status, sms_notifications.channel/provider/retry_count/status
+alembic check: reports the two Phase 24 DESC notification indexes as changed -- a reflection false positive: pg_indexes shows (user_id, created_at DESC) in both, matching the model's postgresql_ops.

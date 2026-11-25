@@ -1,0 +1,8133 @@
+{
+ "generated_at": "2026-10-31T16:36:06.539243+00:00",
+ "dataset": "SYNTHETIC (seed 1337 network + seed 20261031 shortlist donors)",
+ "eligibility_policy": "IN_DCR_2020",
+ "scoring_model": "UNIFIED_PRIORITY/1.0.0#4162e0b53417",
+ "units_per_request": 2,
+ "requests": 80,
+ "eligible_candidates_per_request": {
+  "median": 29.5,
+  "min": 12,
+  "max": 55
+ },
+ "eligibility_violations": {
+  "UNIFIED_PRIORITY": 0,
+  "NEAREST": 0,
+  "TIME_AWARE": 0,
+  "TIME_RESILIENCE": 0,
+  "EVENT_DRIVEN": 0
+ },
+ "unified_evidence_coverage": {
+  "candidates": 2435,
+  "median": 0.4,
+  "below_min_coverage_unscored": 0
+ },
+ "sensitivity_history_weights_zero_same_first_batch": {
+  "same_top_k": 48,
+  "requests": 80
+ },
+ "evaluate_ms_median": {
+  "UNIFIED_PRIORITY": 116.1,
+  "NEAREST": 123.3,
+  "TIME_AWARE": 118.5,
+  "TIME_RESILIENCE": 115.8,
+  "EVENT_DRIVEN": 126.0
+ },
+ "persona_outcomes": {
+  "UNIFIED_PRIORITY": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 4.0,
+   "mean_contacts_when_met": 7.09,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.195
+  },
+  "NEAREST": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 14.29,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.117
+  },
+  "TIME_AWARE": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.91,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.12
+  },
+  "TIME_RESILIENCE": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.29,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.124
+  },
+  "EVENT_DRIVEN": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.91,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.12
+  }
+ },
+ "independent_outcomes": {
+  "UNIFIED_PRIORITY": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "NEAREST": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "TIME_AWARE": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "TIME_RESILIENCE": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "EVENT_DRIVEN": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  }
+ },
+ "caveat": "Synthetic. Persona outcomes and the seeded response history come from the same personas, so history-based ranking is favoured by construction. Not evidence of real-world performance.",
+ "rows": [
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 26,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 22,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 20,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 22,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 26,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 28,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 22,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 28,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 36,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 32,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 28,
+   "rounds_to_first": 7,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 32,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Ahmedabad|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 19,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 19,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 24,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 24,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 26,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 24,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 50,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 50,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 50,
+   "contacts": 22,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 50,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 50,
+   "contacts": 22,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 50,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 50,
+   "contacts": 18,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 50,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 50,
+   "contacts": 22,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bengaluru|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 50,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 18,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 53,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 53,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 53,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 53,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 53,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 53,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 53,
+   "contacts": 20,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 53,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 53,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Bhopal|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 53,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 18,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 18,
+   "rounds_to_first": 5,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 18,
+   "rounds_to_first": 4,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 18,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 18,
+   "rounds_to_first": 4,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Chandigarh|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 30,
+   "rounds_to_first": 8,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 20,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 20,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 30,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 26,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 26,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 45,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 45,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 45,
+   "contacts": 38,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 45,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 45,
+   "contacts": 28,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 45,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 45,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 45,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 45,
+   "contacts": 28,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chandigarh|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 45,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 18,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 18,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 12,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 12,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 12,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 16,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 16,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 16,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 20,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 20,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 20,
+   "rounds_to_first": 5,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Chennai|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 18,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 31,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 14,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 18,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Coimbatore|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 18,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 25,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 25,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 25,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 25,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 25,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 25,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 25,
+   "contacts": 16,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 25,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 25,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 25,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 6,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Delhi|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 26,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 18,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 18,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 18,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 18,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 18,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Guwahati|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 15,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 15,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 15,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 15,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 15,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Hyderabad|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 22,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 22,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 24,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 24,
+   "contacts": 22,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 24,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 36,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 32,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 32,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 36,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 32,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Hyderabad|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 22,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 37,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 37,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 46,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 46,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 46,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 46,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 46,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 46,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 46,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 46,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 46,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Indore|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 46,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 15,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 15,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 35,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 35,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 35,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 35,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 35,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 35,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 35,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 35,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 35,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 35,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Jaipur|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 21,
+   "contacts": 21,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 21,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 21,
+   "contacts": 21,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 21,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 21,
+   "contacts": 21,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 21,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 21,
+   "contacts": 21,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 21,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 21,
+   "contacts": 21,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kochi|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 21,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 4,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 5,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 5,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 7,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 5,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 1,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 4,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 4,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 7,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 34,
+   "contacts": 34,
+   "rounds_to_first": 4,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Kochi|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 34,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 26,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 30,
+   "rounds_to_first": 6,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 30,
+   "rounds_to_first": 7,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 40,
+   "rounds_to_first": 10,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 51,
+   "contacts": 30,
+   "rounds_to_first": 7,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kochi|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 51,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Kolkata|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 16,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 18,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 12,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 22,
+   "contacts": 18,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 22,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 17,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 17,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 17,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 17,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 17,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 17,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 17,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 17,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 17,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 17,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Kolkata|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 13,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 13,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 13,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 13,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 13,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 13,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 13,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 13,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 13,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 13,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 33,
+   "contacts": 4,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 33,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 33,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 33,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 33,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 33,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 33,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 33,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 33,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 33,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 28,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 28,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 32,
+   "contacts": 28,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 32,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 55,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 55,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 55,
+   "contacts": 14,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 55,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 55,
+   "contacts": 14,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 55,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 55,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 55,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 55,
+   "contacts": 14,
+   "rounds_to_first": 4,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Lucknow|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 55,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 16,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 16,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 16,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 16,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 16,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 20,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 24,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 28,
+   "rounds_to_first": null,
+   "met": false,
+   "accepted": 0
+  },
+  {
+   "request": "Mumbai|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 38,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 40,
+   "rounds_to_first": 6,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 44,
+   "rounds_to_first": 6,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 46,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 44,
+   "rounds_to_first": 6,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Mumbai|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 12,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 12,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 23,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 23,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 23,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 23,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 23,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 23,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 23,
+   "contacts": 6,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 23,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 23,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 23,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 27,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 27,
+   "rounds_to_first": 3,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 27,
+   "rounds_to_first": 3,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 27,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 27,
+   "rounds_to_first": 3,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Nagpur|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Nagpur|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 14,
+   "contacts": 14,
+   "rounds_to_first": 3,
+   "met": false,
+   "accepted": 1
+  },
+  {
+   "request": "Patna|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 14,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 16,
+   "rounds_to_first": 3,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 22,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 18,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 27,
+   "contacts": 18,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 27,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 41,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Patna|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 41,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 10,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 16,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 36,
+   "contacts": 14,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 36,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 8,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Pune|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 47,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 20,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 29,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 29,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 38,
+   "contacts": 10,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 38,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 48,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 48,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 48,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 48,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 48,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 48,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 48,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 48,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 48,
+   "contacts": 12,
+   "rounds_to_first": 2,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Surat|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 48,
+   "contacts": 6,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|O_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 16,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 30,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|A_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 30,
+   "contacts": 8,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 28,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|B_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 28,
+   "contacts": 12,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "persona",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "UNIFIED_PRIORITY",
+   "model": "independent",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "NEAREST",
+   "model": "persona",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "NEAREST",
+   "model": "independent",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "persona",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "TIME_AWARE",
+   "model": "independent",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "persona",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "TIME_RESILIENCE",
+   "model": "independent",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "persona",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  },
+  {
+   "request": "Visakhapatnam|AB_POS",
+   "mode": "EVENT_DRIVEN",
+   "model": "independent",
+   "eligible": 44,
+   "contacts": 4,
+   "rounds_to_first": 1,
+   "met": true,
+   "accepted": 2
+  }
+ ]
+}

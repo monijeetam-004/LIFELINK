@@ -1,0 +1,19 @@
+$ node --version; npm --version
+v22.22.0
+10.9.4
+$ npm run typecheck (2026-10-20T12:11:30Z)
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+exit=0
+$ npm run lint
+> lifelink-frontend@0.1.0 lint
+> eslint .
+
+$ npm run build
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 10.93s
+exit codes: typecheck=0 lint=0 build=0 (built in 10.93s; chunk-size warning only)

@@ -1,0 +1,7 @@
+# Gmail attempt -- 2026-10-13T08:09:03Z
+$ MAIL_HOST=smtp.gmail.com MAIL_PORT=587 MAIL_STARTTLS=true python -m scripts.send_test_email <recipient>   (no credentials present in this environment)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+  Value error, Gmail SMTP needs MAIL_USERNAME (the Gmail address) and MAIL_PASSWORD (a Google App Password) [type=value_error]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+[exit 0]

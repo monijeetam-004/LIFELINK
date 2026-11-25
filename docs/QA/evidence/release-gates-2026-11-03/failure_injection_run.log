@@ -1,0 +1,56 @@
+start 2026-11-03T06:13:32Z HEAD 2cfe39a + uncommitted
+Seeded 5 E2E users.
+Demo accounts (password: <documented demo password>): {'patient': 'demo.patient@lifelink-demo.example.com', 'family': 'd
+Graph resync: ok=False detail=Neo4j is not configured
+✓ built in 6.91s
+ready: {"status":"ready","audit_checkpoints":{"enabled":false,"required":false,"warning":"Audit checkpoints are DISABLED: a database owner who recomputes the whole hash chain, or truncates its newest rows, w
+# QA failure injection -- 2026-11-03T06:15:32+00:00
+# API http://127.0.0.1:8400; real PostgreSQL, Redis, MinIO, clamd, Mailpit; RQ worker managed here
+[PASS] stack ready before injection: 
+
+## Redis unavailable
+[PASS] readiness reports Redis down (503, redis=false): {"status": "not_ready", "audit_checkpoints": {"enabled": false, "required": false, "warning": "Audit checkpoints are DISABLED: a database owner who recomputes the whole hash chain, or truncates its newest rows, would not be detected. Set AUDIT_CHECKPOINT_KEY a
+[PASS] login is a 503 with a safe message, not a 500: {"detail":"A required service is temporarily unavailable. Please try again shortly.","code":"DEPENDENCY_UNAVAILABLE"}
+[PASS] authenticated read is 503 (sessions live in Redis): {"detail":"A required service is temporarily unavailable. Please try again shortly.","code":"DEPENDENCY_UNAVAILABLE"}
+[PASS] readiness 200 again after Redis returns: 
+[PASS] old session is gone (Redis restarted without persistence) -> 401, not 500: 401
+[PASS] sign-in works after recovery: 
+
+## PostgreSQL unavailable
+[PASS] readiness reports DB down (503, db=false): {"status": "not_ready", "audit_checkpoints": {"enabled": false, "required": false, "warning": "Audit checkpoints are DISABLED: a database owner who recomputes the whole hash chain, or truncates its newest rows, would not be detected. Set AUDIT_CHECKPOINT_KEY a
+[PASS] read is a 503 without internals: {"detail":"The database is temporarily unavailable. Please try again shortly.","code":"DATABASE_UNAVAILABLE"}
+[PASS] readiness 200 again after PostgreSQL returns: 
+[PASS] read works after recovery (pool re-established): 200
+
+## Object storage (MinIO) unavailable
+[PASS] upload with storage down is a clean 503: {"detail":"Document storage is temporarily unavailable. Please try again."}
+[PASS] nothing half-written (no verification row added): {"before": 0, "after": 0}
+[PASS] upload succeeds after MinIO returns: 201
+[PASS] admin downloads the stored document byte-identical: 200
+[PASS] the owner cannot use the admin download route: 
+
+## Malware scanner (clamd) unavailable
+[PASS] scanner down: accepted into quarantine as SCAN_FAILED, never CLEAN: {"code": 201, "scan": "SCAN_FAILED"}
+[PASS] quarantined document is not downloadable (409): {"detail":"This document has not passed malware scanning (status: SCAN_FAILED)"}
+[PASS] a request with an unscanned document cannot be approved (409): {"detail":"Every document must pass malware scanning before approval"}
+[PASS] rescan after clamd returns releases it as CLEAN: {"code": 200, "scan": "CLEAN"}
+
+## Email worker unavailable, then SMTP (Mailpit) unavailable
+[PASS] worker down: registration still 201; e-mail job waits in the queue: {"register": 201, "queue": [0, 1]}
+[PASS] no e-mail was sent while the worker was down: 
+[PASS] worker restarted: the queued e-mail is delivered once: ["Verify your LifeLink email"]
+[PASS] SMTP down: registration 201; the job fails into the failed registry (no false success): {"register": 201, "failed": [0, 1]}
+[PASS] SMTP back: resend delivers a fresh verification link: {"resend": 202, "mails": 1}
+
+## Graceful shutdown with an open SSE stream
+[PASS] SSE stream open before shutdown: 
+[PASS] API (production entrypoint) exits on SIGTERM within the bounded grace period despite the open stream (< 10 s, Docker's default stop timeout): 5.21 s
+
+SUMMARY: 27/27 checks passed
+failure injection exit 0
+postgres:  accepting connections
+redis: PONG
+clamd: PONG
+minio: 200
+mailpit: 200
+end 2026-11-03T06:16:32Z

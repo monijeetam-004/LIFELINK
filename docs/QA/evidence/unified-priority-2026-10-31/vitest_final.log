@@ -1,0 +1,15 @@
+# 2026-10-31T17:22:57Z commit 2c80172
+
+ RUN  v5.0.1 /home/claude/lifelink/LIFELINK/frontend
+
+
+ Test Files  23 passed (23)
+      Tests  181 passed (181)
+   Start at  17:22:58
+   Duration  42.26s (environment 46%, tests 29%, import 11%, setup 7%, transform 7%)
+
+Environment  jsdom was created 23 times · 18.07s total, 46% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+exit 0

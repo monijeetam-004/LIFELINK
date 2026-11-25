@@ -1,0 +1,17 @@
+# MSG91 attempt -- 2026-10-13T08:09:11Z
+https://control.msg91.com/api/v5/flow/        HTTP 000
+https://api.msg91.com/api/v5/flow/            HTTP 000
+MSG91_ENABLED          backend/.env: not set | process env: not set
+MSG91_AUTH_KEY         backend/.env: not set | process env: not set
+MSG91_FLOW_ID          backend/.env: not set | process env: not set
+MSG91_SENDER_ID        backend/.env: not set | process env: not set
+MSG91_DLT_TEMPLATE_ID  backend/.env: not set | process env: not set
+SMS_PROVIDER           backend/.env: not set | process env: not set
+settings.msg91_enabled = False | sms_provider = msg91 | sms_provider_configured = False
+=> no MSG91 account/credentials and no network route to MSG91: no SMS sent, none claimed.
+$ python -m scripts.send_test_sms +919876543210   (no MSG91 configuration in this environment)
+refusing: No SMS provider is configured (SMS_PROVIDER=msg91 needs MSG91_ENABLED / MSG91_AUTH_KEY / MSG91_SENDER_ID; SMS_PROVIDER=console is development-only)
+[exit 2]
+$ SMS_PROVIDER=console python -m scripts.send_test_sms +919876543210   (console provider must be refused)
+refusing: SMS_PROVIDER='console'; a real test needs SMS_PROVIDER=msg91
+[exit 2]

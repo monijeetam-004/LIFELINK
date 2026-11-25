@@ -1,0 +1,4 @@
+api-1  | migration state : EMPTY
+api-1  | INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+api-1  | 2026-10-13 08:41:50,491 INFO     [-] lifelink.email: mail transport: mailpit mailpit:1025 plain no-auth
+api-1  | 2026-10-13 08:41:50,491 INFO     [-] uvicorn.error: Application startup complete.

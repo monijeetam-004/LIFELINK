@@ -1,0 +1,5 @@
+neo4j/graph {'passed': 33, 'skipped': 1}
+email (Gmail config + Mailpit SMTP) {'passed': 51}
+sms (MSG91 adapter) {'passed': 35}
+audit chain {'passed': 39}
+geocoder (stand-in/fallback tests): 2 ['test_unknown_place_without_geocoder_gets_no_invented_coordinates', 'test_external_geocoder_success_failure_and_garbage']

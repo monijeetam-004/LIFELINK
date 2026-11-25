@@ -1,0 +1,23 @@
+# 2026-11-03T05:17:33Z commit 2cfe39a scratch DB lifelink_migtest
+== heads
+a7b8c9d0e1f2 (head)
+== branches
+== upgrade to f9a0b1c2d3e4 (previous head)
+hand-off, failover recovery state, donor location/availability timestamps.
+== upgrade head
+was ranked.
+a7b8c9d0e1f2 (head)
+ranking_strategy|YES|character varying
+score_snapshot|YES|json
+scoring_model|YES|character varying
+== alembic check
+No new upgrade operations detected.
+== downgrade -1
+was ranked.
+f9a0b1c2d3e4
+(no rows above = columns removed)
+== upgrade head again
+was ranked.
+No new upgrade operations detected.
+== data operations in the migration (none expected)
+none

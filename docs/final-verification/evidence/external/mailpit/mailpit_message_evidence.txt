@@ -1,0 +1,17 @@
+# Mailpit (official v1.21.8 binary) -- message received from the LifeLink RQ worker
+# captured 2026-10-13T08:07:34.960471+00:00
+mailpit version: v1.21.8 | messages: 54 | SMTP accepted: 54 | rejected: 0
+ID: cgdvWdJxhxH6nusZDQ4JA6
+Created: 2026-10-13T08:06:53.837Z
+From: {'Name': '', 'Address': 'no-reply@lifelink.local'}
+To: [{'Name': '', 'Address': 'clean-start-b2ac9da6@example.com'}]
+Subject: Verify your LifeLink email
+verification link present: True | link prefix: http://127.0.0.1:4400/verify-email?token= (token redacted)
+body (token redacted):
+This message requires an HTML-capable email client.
+
+headers: {'Content-Type': ['multipart/alternative; boundary="===============4143316427303224346=="'], 'From': ['no-reply@lifelink.local'], 'Message-Id': ['<ZkZzewXbJqWcz8DpPXxdab@mailpit>'], 'Mime-Version': ['1.0'], 'Subject': ['Verify your LifeLink email'], 'To': ['clean-start-b2ac9da6@example.com']}
+secret/credential strings in the raw message: none
+
+HTML body rendered as text (token redacted):
+Hi Clean Start Donor, Welcome to LifeLink. Please confirm your email address: [link: http://127.0.0.1:4400/verify-email?token= ] Verify my email This link expires in 24 hours. If you did not create an account, you can ignore this message.

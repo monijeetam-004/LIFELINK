@@ -1,0 +1,16 @@
+# Migration round trip on a fresh database -- 2026-10-12T19:14:05Z
+> alembic heads
+e1f2a3b4c5d6 (head)
+> alembic current
+e1f2a3b4c5d6 (head)
+> alembic downgrade -1
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running downgrade e1f2a3b4c5d6 -> d0e1f2a3b4c5, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+> alembic upgrade head
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+> alembic downgrade base
+INFO  [alembic.runtime.migration] Running downgrade 0001_initial -> , initial auth schema
+> alembic upgrade head (all 31 revisions)
+31
+> alembic check
+No new upgrade operations detected.

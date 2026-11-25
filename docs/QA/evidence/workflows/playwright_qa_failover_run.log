@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 [chromium] › e2e/qa_failover_ui.spec.ts:66:1 › QA failover: admin disrupts the planned route in the UI; a new plan that avoids it takes over (17.3s)
+
+  1 passed (18.8s)

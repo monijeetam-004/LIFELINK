@@ -1,0 +1,7 @@
+/admin/blood-requests: status 200, SQL statements 2, 14.9 ms, body 531 B
+/map/data: status 200, SQL statements 3, 23.1 ms, body 32653 B
+/donors/me/requests: status 200, SQL statements 6, 18.5 ms, body 903 B
+/hospitals/me/requests: status 200, SQL statements 6, 15.4 ms, body 767 B
+/admin/analytics/overview: status 200, SQL statements 8, 13.9 ms, body 289 B
+/hospitals/me/inventory/components: status 200, SQL statements 28, 54.7 ms, body 803 B
+/hospitals/me/units: status 200, SQL statements 28, 56.9 ms, body 74321 B

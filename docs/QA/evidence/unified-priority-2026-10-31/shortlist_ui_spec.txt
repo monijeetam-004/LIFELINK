@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/remediation_shortlist_demo.spec.ts:50:3 › scenario A: the shortlist panel states what really happened (21.1s)
+  ✓  2 [chromium] › e2e/remediation_shortlist_demo.spec.ts:50:3 › scenario B: the shortlist panel states what really happened (21.8s)
+  ✓  3 [chromium] › e2e/remediation_shortlist_demo.spec.ts:50:3 › scenario C: the shortlist panel states what really happened (19.1s)
+  ✓  4 [chromium] › e2e/remediation_shortlist_demo.spec.ts:50:3 › scenario D: the shortlist panel states what really happened (18.9s)
+  ✓  5 [chromium] › e2e/remediation_shortlist_demo.spec.ts:101:1 › unified priority breakdown reconciles and is accessible before anyone is contacted (17.5s)
+
+  5 passed (1.7m)

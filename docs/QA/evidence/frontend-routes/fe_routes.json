@@ -1,0 +1,391 @@
+[
+ {
+  "path": "/",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/login",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/register",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/verify-email",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/verify/:code",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/forgot-password",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/reset-password",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/dev-index",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/403",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/session-expired",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/500",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/offline",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/recommendation",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/decision-transparency",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/mathematical-model",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/graph-engine",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/simulation",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/research-mode",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/help",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/legal",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/legal/:section",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/patient",
+  "auth": true,
+  "roles": [
+   "PATIENT"
+  ]
+ },
+ {
+  "path": "/patient/find-donor",
+  "auth": true,
+  "roles": [
+   "PATIENT"
+  ]
+ },
+ {
+  "path": "/patient/sos-tracking",
+  "auth": true,
+  "roles": [
+   "PATIENT"
+  ]
+ },
+ {
+  "path": "/patient/new-request",
+  "auth": true,
+  "roles": [
+   "PATIENT"
+  ]
+ },
+ {
+  "path": "/patient/history",
+  "auth": true,
+  "roles": [
+   "PATIENT"
+  ]
+ },
+ {
+  "path": "/family",
+  "auth": true,
+  "roles": [
+   "FAMILY"
+  ]
+ },
+ {
+  "path": "/family/patients",
+  "auth": true,
+  "roles": [
+   "FAMILY"
+  ]
+ },
+ {
+  "path": "/family/patients/:patientId",
+  "auth": true,
+  "roles": [
+   "FAMILY"
+  ]
+ },
+ {
+  "path": "/donor",
+  "auth": true,
+  "roles": [
+   "DONOR"
+  ]
+ },
+ {
+  "path": "/donor/mobile",
+  "auth": true,
+  "roles": [
+   "DONOR"
+  ]
+ },
+ {
+  "path": "/donor/eligibility",
+  "auth": true,
+  "roles": [
+   "DONOR"
+  ]
+ },
+ {
+  "path": "/donor/ready-console",
+  "auth": true,
+  "roles": [
+   "DONOR"
+  ]
+ },
+ {
+  "path": "/donor/milestones",
+  "auth": true,
+  "roles": [
+   "DONOR"
+  ]
+ },
+ {
+  "path": "/donor/identity-verification",
+  "auth": true,
+  "roles": [
+   "DONOR"
+  ]
+ },
+ {
+  "path": "/hospital",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/inventory",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/donors",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/requests/:requestId",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/analytics-mobile",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/units",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/resource-pathways",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/shipments",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/verification",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/hospital/donation-reviews",
+  "auth": true,
+  "roles": [
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/admin",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/verifications",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/users",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/analytics",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/transport-routes",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/shipments",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/facilities",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/donors",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/audit-feed",
+  "auth": true,
+  "roles": [
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/admin/verification",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/analytics",
+  "auth": true,
+  "roles": [
+   "ADMIN",
+   "HOSPITAL"
+  ]
+ },
+ {
+  "path": "/certificate",
+  "auth": true,
+  "roles": []
+ },
+ {
+  "path": "/certificate/:id",
+  "auth": true,
+  "roles": []
+ },
+ {
+  "path": "/matching/strategy-lab",
+  "auth": true,
+  "roles": [
+   "PATIENT",
+   "FAMILY",
+   "HOSPITAL",
+   "ADMIN"
+  ]
+ },
+ {
+  "path": "/profile",
+  "auth": true,
+  "roles": []
+ },
+ {
+  "path": "/settings",
+  "auth": true,
+  "roles": []
+ },
+ {
+  "path": "/notifications",
+  "auth": true,
+  "roles": []
+ },
+ {
+  "path": "*",
+  "auth": false,
+  "roles": []
+ }
+]

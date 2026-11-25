@@ -1,0 +1,99 @@
+2026-11-03 05:24:11,807 INFO     [-] lifelink.email: mail transport: mailpit 127.0.0.1:1025 plain no-auth
+2026-11-03 05:24:11,812 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: started with PID 2016, version 2.12.0
+2026-11-03 05:24:11,812 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: subscribing to channel rq:pubsub:4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:24:11,814 INFO     [-] rq.worker: *** Listening on emails, sms...
+2026-11-03 05:24:11,817 INFO     [-] rq.scheduler: Acquired scheduler lock for emails
+2026-11-03 05:24:11,817 INFO     [-] rq.scheduler: Acquired scheduler lock for sms
+2026-11-03 05:24:11,823 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: cleaning registries for queue: emails
+2026-11-03 05:24:11,824 INFO     [-] rq.scheduler: Scheduler for emails, sms started with PID 2021
+2026-11-03 05:24:11,825 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: cleaning registries for queue: sms
+2026-11-03 05:26:24,390 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 6ba5a602-a383-47f0-8e5a-a0afa35f33a3
+2026-11-03 05:26:24,813 INFO     [cc4bf7e0-ac73-482e-ae1b-027444ce278f] lifelink.email: email job 6ba5a602-a383-47f0-8e5a-a0afa35f33a3 sent for f***@lifelink-demo.example.com
+2026-11-03 05:26:24,815 INFO     [-] rq.worker: Successfully completed job 6ba5a602-a383-47f0-8e5a-a0afa35f33a3 in 0:00:00.413931s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:24,815 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (6ba5a602-a383-47f0-8e5a-a0afa35f33a3)
+2026-11-03 05:26:24,815 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 6ba5a602-a383-47f0-8e5a-a0afa35f33a3 result is kept for 3600 seconds
+2026-11-03 05:26:24,820 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 240887ba-acb9-421f-8c47-981cc22463b0
+2026-11-03 05:26:25,163 INFO     [cc4bf7e0-ac73-482e-ae1b-027444ce278f] lifelink.email: email job 240887ba-acb9-421f-8c47-981cc22463b0 sent for f***@lifelink-demo.example.com
+2026-11-03 05:26:25,165 INFO     [-] rq.worker: Successfully completed job 240887ba-acb9-421f-8c47-981cc22463b0 in 0:00:00.331930s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:25,165 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (240887ba-acb9-421f-8c47-981cc22463b0)
+2026-11-03 05:26:25,165 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 240887ba-acb9-421f-8c47-981cc22463b0 result is kept for 3600 seconds
+2026-11-03 05:26:25,172 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: c367ae90-8ce8-464b-bb20-1495e405f25a
+2026-11-03 05:26:25,544 INFO     [cc4bf7e0-ac73-482e-ae1b-027444ce278f] lifelink.email: email job c367ae90-8ce8-464b-bb20-1495e405f25a sent for f***@lifelink-demo.example.com
+2026-11-03 05:26:25,546 INFO     [-] rq.worker: Successfully completed job c367ae90-8ce8-464b-bb20-1495e405f25a in 0:00:00.364888s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:25,546 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (c367ae90-8ce8-464b-bb20-1495e405f25a)
+2026-11-03 05:26:25,546 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job c367ae90-8ce8-464b-bb20-1495e405f25a result is kept for 3600 seconds
+2026-11-03 05:26:25,550 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 75d475ca-8559-4076-ab50-9f7f961fcdc1
+2026-11-03 05:26:25,890 INFO     [cc4bf7e0-ac73-482e-ae1b-027444ce278f] lifelink.email: email job 75d475ca-8559-4076-ab50-9f7f961fcdc1 sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:25,892 INFO     [-] rq.worker: Successfully completed job 75d475ca-8559-4076-ab50-9f7f961fcdc1 in 0:00:00.332685s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:25,892 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (75d475ca-8559-4076-ab50-9f7f961fcdc1)
+2026-11-03 05:26:25,892 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 75d475ca-8559-4076-ab50-9f7f961fcdc1 result is kept for 3600 seconds
+2026-11-03 05:26:25,896 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 36b879dd-a20f-40f3-baee-2bea4995332d
+2026-11-03 05:26:26,235 INFO     [f9c47fc5-dd12-438b-8da1-00d133134aa0] lifelink.email: email job 36b879dd-a20f-40f3-baee-2bea4995332d sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:26,237 INFO     [-] rq.worker: Successfully completed job 36b879dd-a20f-40f3-baee-2bea4995332d in 0:00:00.330101s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:26,237 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (36b879dd-a20f-40f3-baee-2bea4995332d)
+2026-11-03 05:26:26,237 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 36b879dd-a20f-40f3-baee-2bea4995332d result is kept for 3600 seconds
+2026-11-03 05:26:26,241 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: f63c4f17-a464-4278-a2bd-6b9f3a34acbf
+2026-11-03 05:26:26,611 INFO     [f9c47fc5-dd12-438b-8da1-00d133134aa0] lifelink.email: email job f63c4f17-a464-4278-a2bd-6b9f3a34acbf sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:26,613 INFO     [-] rq.worker: Successfully completed job f63c4f17-a464-4278-a2bd-6b9f3a34acbf in 0:00:00.362295s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:26,614 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (f63c4f17-a464-4278-a2bd-6b9f3a34acbf)
+2026-11-03 05:26:26,614 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job f63c4f17-a464-4278-a2bd-6b9f3a34acbf result is kept for 3600 seconds
+2026-11-03 05:26:26,619 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 80f0ef2b-0c32-44ac-880b-3c17ed070960
+2026-11-03 05:26:27,001 INFO     [1d56fcaa-21b5-4445-b5d8-400033634297] lifelink.email: email job 80f0ef2b-0c32-44ac-880b-3c17ed070960 sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:27,003 INFO     [-] rq.worker: Successfully completed job 80f0ef2b-0c32-44ac-880b-3c17ed070960 in 0:00:00.375799s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:27,004 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (80f0ef2b-0c32-44ac-880b-3c17ed070960)
+2026-11-03 05:26:27,004 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 80f0ef2b-0c32-44ac-880b-3c17ed070960 result is kept for 3600 seconds
+2026-11-03 05:26:27,022 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: bc28e8cc-bd98-4bc4-9a71-5d501007fa11
+2026-11-03 05:26:27,355 INFO     [1d56fcaa-21b5-4445-b5d8-400033634297] lifelink.email: email job bc28e8cc-bd98-4bc4-9a71-5d501007fa11 sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:27,356 INFO     [-] rq.worker: Successfully completed job bc28e8cc-bd98-4bc4-9a71-5d501007fa11 in 0:00:00.324558s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:27,356 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (bc28e8cc-bd98-4bc4-9a71-5d501007fa11)
+2026-11-03 05:26:27,356 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job bc28e8cc-bd98-4bc4-9a71-5d501007fa11 result is kept for 3600 seconds
+2026-11-03 05:26:27,361 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: f477241e-6b29-4006-82d8-67afc519a773
+2026-11-03 05:26:27,738 INFO     [1d56fcaa-21b5-4445-b5d8-400033634297] lifelink.email: email job f477241e-6b29-4006-82d8-67afc519a773 sent for f***@lifelink-demo.example.com
+2026-11-03 05:26:27,740 INFO     [-] rq.worker: Successfully completed job f477241e-6b29-4006-82d8-67afc519a773 in 0:00:00.370150s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:27,740 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (f477241e-6b29-4006-82d8-67afc519a773)
+2026-11-03 05:26:27,740 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job f477241e-6b29-4006-82d8-67afc519a773 result is kept for 3600 seconds
+2026-11-03 05:26:27,755 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 2c3cd5a8-fd13-4d2d-ac63-956d7df5a69e
+2026-11-03 05:26:28,175 INFO     [1d56fcaa-21b5-4445-b5d8-400033634297] lifelink.email: email job 2c3cd5a8-fd13-4d2d-ac63-956d7df5a69e sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:28,177 INFO     [-] rq.worker: Successfully completed job 2c3cd5a8-fd13-4d2d-ac63-956d7df5a69e in 0:00:00.408672s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:28,177 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (2c3cd5a8-fd13-4d2d-ac63-956d7df5a69e)
+2026-11-03 05:26:28,177 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 2c3cd5a8-fd13-4d2d-ac63-956d7df5a69e result is kept for 3600 seconds
+2026-11-03 05:26:28,185 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: abec6dff-ec77-499d-a96c-5da7e7ddb92e
+2026-11-03 05:26:28,562 INFO     [f04d29f0-4df9-4fd8-9451-1194904a6a3c] lifelink.email: email job abec6dff-ec77-499d-a96c-5da7e7ddb92e sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:28,579 INFO     [-] rq.worker: Successfully completed job abec6dff-ec77-499d-a96c-5da7e7ddb92e in 0:00:00.369530s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:28,579 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (abec6dff-ec77-499d-a96c-5da7e7ddb92e)
+2026-11-03 05:26:28,580 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job abec6dff-ec77-499d-a96c-5da7e7ddb92e result is kept for 3600 seconds
+2026-11-03 05:26:36,504 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 455cba93-633b-4cd5-843b-b1718477898e
+2026-11-03 05:26:36,870 INFO     [33a57201-74ba-4c2a-87c6-b2115d3f5f92] lifelink.email: email job 455cba93-633b-4cd5-843b-b1718477898e sent for c***@example.com
+2026-11-03 05:26:36,872 INFO     [-] rq.worker: Successfully completed job 455cba93-633b-4cd5-843b-b1718477898e in 0:00:00.355833s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:36,872 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (455cba93-633b-4cd5-843b-b1718477898e)
+2026-11-03 05:26:36,872 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 455cba93-633b-4cd5-843b-b1718477898e result is kept for 3600 seconds
+2026-11-03 05:26:39,097 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 12d4fe68-49c2-4ada-bc3b-42aa0ee8f2b0
+2026-11-03 05:26:39,475 INFO     [95ae55e3-08c0-413a-bb8a-f4b20ec08aa9] lifelink.email: email job 12d4fe68-49c2-4ada-bc3b-42aa0ee8f2b0 sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:39,477 INFO     [-] rq.worker: Successfully completed job 12d4fe68-49c2-4ada-bc3b-42aa0ee8f2b0 in 0:00:00.366046s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:39,477 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (12d4fe68-49c2-4ada-bc3b-42aa0ee8f2b0)
+2026-11-03 05:26:39,477 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 12d4fe68-49c2-4ada-bc3b-42aa0ee8f2b0 result is kept for 3600 seconds
+2026-11-03 05:26:39,931 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 3b518266-17f6-4a9d-a9f8-1def1aac7d0a
+2026-11-03 05:26:40,309 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job 3b518266-17f6-4a9d-a9f8-1def1aac7d0a sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:40,310 INFO     [-] rq.worker: Successfully completed job 3b518266-17f6-4a9d-a9f8-1def1aac7d0a in 0:00:00.364038s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:40,310 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (3b518266-17f6-4a9d-a9f8-1def1aac7d0a)
+2026-11-03 05:26:40,310 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 3b518266-17f6-4a9d-a9f8-1def1aac7d0a result is kept for 3600 seconds
+2026-11-03 05:26:40,320 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 6345aee0-a392-4d12-bbd7-3611da71d87c
+2026-11-03 05:26:40,736 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job 6345aee0-a392-4d12-bbd7-3611da71d87c sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:40,738 INFO     [-] rq.worker: Successfully completed job 6345aee0-a392-4d12-bbd7-3611da71d87c in 0:00:00.407308s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:40,738 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (6345aee0-a392-4d12-bbd7-3611da71d87c)
+2026-11-03 05:26:40,738 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 6345aee0-a392-4d12-bbd7-3611da71d87c result is kept for 3600 seconds
+2026-11-03 05:26:40,749 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: d8fe62da-cb87-4b89-8dec-dce0871cdc55
+2026-11-03 05:26:41,163 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job d8fe62da-cb87-4b89-8dec-dce0871cdc55 sent for f***@lifelink-demo.example.com
+2026-11-03 05:26:41,165 INFO     [-] rq.worker: Successfully completed job d8fe62da-cb87-4b89-8dec-dce0871cdc55 in 0:00:00.403949s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:41,165 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (d8fe62da-cb87-4b89-8dec-dce0871cdc55)
+2026-11-03 05:26:41,165 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job d8fe62da-cb87-4b89-8dec-dce0871cdc55 result is kept for 3600 seconds
+2026-11-03 05:26:41,170 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: 292fd308-88b7-4465-bf4e-c1f6472cfa97
+2026-11-03 05:26:41,462 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44 [PID 2016]: warm shut down requested
+2026-11-03 05:26:41,517 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job 292fd308-88b7-4465-bf4e-c1f6472cfa97 sent for d***@lifelink-demo.example.com
+2026-11-03 05:26:41,519 INFO     [-] rq.worker: Successfully completed job 292fd308-88b7-4465-bf4e-c1f6472cfa97 in 0:00:00.337714s on worker 4718d6bef3134826ab47c972b5ac4b44
+2026-11-03 05:26:41,519 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: emails: Job OK (292fd308-88b7-4465-bf4e-c1f6472cfa97)
+2026-11-03 05:26:41,519 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: job 292fd308-88b7-4465-bf4e-c1f6472cfa97 result is kept for 3600 seconds
+2026-11-03 05:26:42,223 INFO     [-] rq.scheduler: Scheduler stopping, releasing locks for emails, sms...
+2026-11-03 05:26:42,226 INFO     [-] rq.scheduler: Scheduler with PID 2021 has stopped
+2026-11-03 05:26:42,229 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: stopping on request
+2026-11-03 05:26:42,230 INFO     [-] rq.worker: Worker 4718d6bef3134826ab47c972b5ac4b44: unsubscribing from channel rq:pubsub:4718d6bef3134826ab47c972b5ac4b44

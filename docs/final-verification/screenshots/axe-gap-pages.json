@@ -1,0 +1,167 @@
+[
+ {
+  "route": "/graph-engine",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/graph-engine",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/graph-engine",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/simulation",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/simulation",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/simulation",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/research-mode",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/research-mode",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/research-mode",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/mathematical-model",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/mathematical-model",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/mathematical-model",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/decision-transparency",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/decision-transparency",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/decision-transparency",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/recommendation",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/recommendation",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/recommendation",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/analytics",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/analytics",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/analytics",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/hospital/units",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/hospital/units",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/hospital/units",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/hospital/resource-pathways",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/hospital/resource-pathways",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/hospital/resource-pathways",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/hospital/shipments",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/hospital/shipments",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/hospital/shipments",
+  "width": 1280,
+  "violations": []
+ },
+ {
+  "route": "/admin/facilities",
+  "width": 375,
+  "violations": []
+ },
+ {
+  "route": "/admin/facilities",
+  "width": 768,
+  "violations": []
+ },
+ {
+  "route": "/admin/facilities",
+  "width": 1280,
+  "violations": []
+ }
+]

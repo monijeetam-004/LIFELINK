@@ -1,0 +1,22 @@
+[
+ {
+  "path": "/mathematical-model",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/graph-engine",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/simulation",
+  "auth": false,
+  "roles": []
+ },
+ {
+  "path": "/research-mode",
+  "auth": false,
+  "roles": []
+ }
+]

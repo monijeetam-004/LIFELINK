@@ -1,0 +1,7 @@
+# Migration check -- 2026-10-07T04:02:40Z
+fresh -> head: 30 revisions applied; current: d0e1f2a3b4c5 (head)
+downgrade -4: 4 steps; current: e4f5a6b7c8d9
+re-upgrade: 4 steps
+downgrade base: 30 steps; public tables left: 1 (alembic_version)
+upgrade head again: 30 steps; current: d0e1f2a3b4c5 (head)
+audit_logs triggers: audit_logs_append_only, audit_logs_no_truncate

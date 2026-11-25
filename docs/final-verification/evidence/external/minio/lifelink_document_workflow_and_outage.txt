@@ -1,0 +1,9 @@
+# LifeLink document workflow on REAL MinIO -- 2026-10-13T08:08:13.768159+00:00
+1. stop MinIO (simulated outage)
+   upload during outage -> 503 Document storage is temporarily unavailable. Please try again.
+   verification requests stored during outage: 0
+2. restart MinIO
+   new MinIO pid 25451
+   upload after recovery -> 201
+   document scan status: ['CLEAN']
+3. admin downloads the stored document through LifeLink (read back from MinIO) -> 200 | bytes identical: True | content-type: application/pdf

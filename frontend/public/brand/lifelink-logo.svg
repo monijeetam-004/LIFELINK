@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LifeLink">
+  <title>LifeLink</title>
+  <!-- Mark redrawn from the project's own logo (public/reference/lifelink-logo.png):
+       outlined medical cross, infinity link, pulse line. Self-hosted. -->
+  <g fill="none" stroke="#e03a32" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M25 18V6.5A2.5 2.5 0 0 1 27.5 4h9A2.5 2.5 0 0 1 39 6.5V18M25 46v11.5A2.5 2.5 0 0 0 27.5 60h9a2.5 2.5 0 0 0 2.5-2.5V46" stroke-width="4"/>
+    <path d="M32 32c-5-6-9-9-14-9a9 9 0 0 0 0 18c5 0 9-3 14-9s9-9 14-9a9 9 0 0 1 0 18" stroke-width="4.5"/>
+    <path d="M36 33h4l2-5 3 9 2-4h7" stroke-width="2.4"/>
+  </g>
+</svg>

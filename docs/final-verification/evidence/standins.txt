@@ -1,0 +1,1 @@
+S3 stand-in: moto_server 5.1.4 on 127.0.0.1:9100; SMTP stand-in: maildev 2.2.1 smtp 1026/web 1081

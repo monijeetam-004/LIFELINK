@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+# Phase 28: database backup files (scripts/db_backup.sh output) -- never
+# committed, may contain real user data.
+backups/
+*.dump
+
+# Phase 29: local-disk storage fallback (app/core/storage.py's default when
+# S3_ENDPOINT_URL is unset -- what CI's e2e job and any S3-less dev run
+# use) writes real uploaded-file bytes here. Never source, never committed
+# -- may contain E2E-test-uploaded document content.
+.local-storage/

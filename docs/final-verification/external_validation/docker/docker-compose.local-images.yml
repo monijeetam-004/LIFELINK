@@ -1,0 +1,65 @@
+# Verification-only override for backend/docker-compose.yml.
+#
+#   docker compose -f backend/docker-compose.yml \
+#     -f docs/final-verification/external_validation/docker/docker-compose.local-images.yml up -d --build
+#
+# Why it exists: this sandbox cannot pull from any registry (Docker Hub,
+# ECR Public, quay.io, ghcr.io, gcr.io all answer 403). Each official image is
+# replaced by a locally built image that runs the real software (see
+# local-images/README.md). Mailpit and MinIO are the official release
+# binaries; nothing here is moto or MailDev. The services, environment,
+# health checks, depends_on ordering, volumes, the createbuckets job and the
+# api command (migration doctor -> alembic upgrade head -> uvicorn) all come
+# from the unchanged backend/docker-compose.yml.
+#
+# Host ports are remapped because this machine already runs PostgreSQL and
+# Redis on 5432 and 6379 for the test suites; inside the compose network
+# every service keeps its normal address (db:5432, redis:6379, minio:9000, ...).
+services:
+  db:
+    image: ll-local/postgres:16
+    ports: !override
+      - "15432:5432"
+  redis:
+    image: ll-local/redis:7
+    ports: !override
+      - "16379:6379"
+  mailpit:
+    image: ll-local/mailpit:v1.21.8
+    ports: !override
+      - "18025:8025"
+      - "11025:1025"
+  minio:
+    image: ll-local/minio:RELEASE.2025-04-22T22-12-26Z
+    ports: !override
+      - "19000:9000"
+      - "19001:9001"
+  createbuckets:
+    image: ll-local/mc:RELEASE.2025-04-16T18-13-26Z
+  clamav:
+    image: ll-local/clamav:1.4
+  api:
+    build:
+      context: .
+      network: host
+      args:
+        BASE_IMAGE: lifelink-base:noble-local-ca
+  worker:
+    build:
+      context: .
+      network: host
+      args:
+        BASE_IMAGE: lifelink-base:noble-local-ca
+  deadline-monitor:
+    build:
+      context: .
+      network: host
+      args:
+        BASE_IMAGE: lifelink-base:noble-local-ca
+  frontend:
+    build:
+      context: ../frontend
+      network: host
+      args:
+        NODE_IMAGE: ll-local/node:20.18
+        NGINX_IMAGE: ll-local/nginx:1.24

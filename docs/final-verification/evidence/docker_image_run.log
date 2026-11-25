@@ -1,0 +1,5 @@
+INFO  [alembic.runtime.migration] Running upgrade c9d0e1f2a3b4 -> d0e1f2a3b4c5, Hardening: index blood_requests.created_at.
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+{"status":"ready","required":{"db":true,"redis":true},"optional":{"neo4j":{"configured":false},"storage":{"backend":"local"},"email":{"authenticated":false,"provider":"mailpit"}},"dependency_states":{"db":"AVAILABLE","redis":"AVAILABLE","neo4j":"NOT_CONFIGURED","storage":"AVAILABLE","email":"NOT_CONFIGURED"}}starting user=appuser
+2026-10-12 17:58:04,185 INFO     [-] lifelink.deadline_monitor: deadline monitor started (interval=60s, warning=30min)
+2026-10-12 17:58:04,263 INFO     [-] lifelink.deadline_monitor: pass: warned=0 exceeded=0 escalated=0 swept=0

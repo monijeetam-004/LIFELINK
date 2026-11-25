@@ -1,0 +1,18 @@
+start 2026-10-31T11:39:57Z
+commit 70ef821e1b326c0cdf6b3310906a061d7444c98d + uncommitted test-setup fixes (see git diff)
+ M scripts/demo_walkthrough.py
+ M tests/test_donor_appointments.py
+ M tests/test_emergencies_and_notifications.py
+ M tests/test_emergency_network.py
+ M tests/test_phase18_notifications.py
+ M tests/test_phase_f_realtime.py
+ M tests/test_qa_concurrency.py
+ M tests/test_sms.py
+ M ../docs/final-verification/external_validation/scripts/docker_clean_start.sh
+ M ../docs/paper/LifeLink_Paper_Overleaf/main.tex
+ M ../docs/paper/LifeLink_Paper_Overleaf/references.bib
+?? ../docs/QA/evidence/remediation-2026-10-31/
+?? ../docs/QA/tools/e2e_ci_harness.sh
+?? ../docs/remediation/
+commit-at-run 960e74947c81668b09668fc040bee175c76eb59b (committed seconds after the run started; same files)
+end 2026-10-31T12:24:37Z

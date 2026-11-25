@@ -1,0 +1,9 @@
+sessions: {'ADMIN': 1, 'DONOR': 40, 'HOSPITAL': 40, 'PATIENT': 40}
+SSE streams open: 200/200 in 14.2s; server Redis pub/sub connections: 2; server RSS 344 MB
+| C | requests | throughput (req/s) | p50 ms | p95 ms | p99 ms | non-2xx | server CPU % (of 1 core) | server RSS MB |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 30 | 1.5 | 40.6 | 6175.2 | 6540.3 | 0  | 149 | 358 |
+| 8 | 169 | 7.7 | 594.6 | 2961.9 | 9949.6 | 0  | 164 | 402 |
+| 32 | 313 | 7.7 | 1383.7 | 5987.3 | 30004.0 | 5 {0: 5, 200: 308} | 162 | 434 |
+| 64 | 245 | 6.5 | 2358.9 | 30010.4 | 30036.6 | 64 {0: 64, 200: 181} | 36 | 451 |
+after run: server Redis pub/sub connections: 2

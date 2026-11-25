@@ -1,0 +1,13 @@
+# docker compose config -- mail provider wiring (2026-10-07T04:02:59Z); config only, images cannot be pulled here
+## Mode A: .env.example as shipped (COMPOSE_PROFILES=mailpit, MAIL_HOST unset)
+services: api clamav createbuckets db mailpit minio neo4j redis worker 
+      2       MAIL_HOST: mailpit
+      2       MAIL_PORT: "1025"
+      2       MAIL_STARTTLS: "false"
+## Mode B: Gmail values in .env, no Mailpit profile
+services: api clamav createbuckets db minio neo4j redis worker 
+      2       MAIL_HOST: smtp.gmail.com
+      2       MAIL_PORT: "587"
+      2       MAIL_STARTTLS: "true"
+      2       MAIL_USERNAME: someone@gmail.com
+(each line x2 = api and worker get the same values; mailpit is absent in Mode B)

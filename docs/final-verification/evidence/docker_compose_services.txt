@@ -1,0 +1,12 @@
+minio
+createbuckets
+db
+mailpit
+redis
+clamav
+api
+worker
+frontend
+neo4j
+deadline-monitor
+docker compose config: OK

@@ -1,0 +1,13 @@
+$ ruff check . (2026-10-20T12:11:19Z)
+All checks passed!
+$ ruff format --check . (informational; not a CI gate)
+179 files would be reformatted, 121 files already formatted
+$ alembic heads
+e1f2a3b4c5d6 (head)
+$ alembic branches (empty = linear)
+$ alembic history | wc -l
+37
+$ DATABASE_URL=<fresh migrated db> alembic check
+No new upgrade operations detected.
+$ mypy (informational, per pyproject)
+mypy 2.3.1 (compiled: yes)

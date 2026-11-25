@@ -1,0 +1,59 @@
+# Volume
+blood_requests: 81312
+audit_logs: 30217
+realtime_events: 274581
+notifications: 273312
+blood_units: 126795
+users: 1565
+
+## admin: GET /admin/blood-requests (newest 50)
+status=200 median=11.9ms max=129.8ms statements=2 db_ms=1.0
+  slowest 0.54 ms: SELECT blood_requests.id, blood_requests.requester_user_id, blood_requests.patient_user_id, blood_requests.blood_type, blood_requests.units_needed, blood_reques
+    PLAN: Limit  (cost=0.29..5.40 rows=50 width=1128) (actual time=0.019..0.039 rows=50 loops=1)
+    PLAN:   Buffers: shared hit=10
+    PLAN:   ->  Index Scan Backward using ix_blood_requests_created_at on blood_requests  (cost=0.29..8305.05 rows=81312 width=1128) (actual time=0.019..0.035 rows=50 loops=1)
+    PLAN:         Buffers: shared hit=10
+    PLAN: Planning Time: 0.079 ms
+    PLAN: Execution Time: 0.054 ms
+
+## admin: GET /admin/blood-requests?status=FULFILLED
+status=200 median=10.3ms max=11.8ms statements=2 db_ms=1.2
+  slowest 0.67 ms: SELECT blood_requests.id, blood_requests.requester_user_id, blood_requests.patient_user_id, blood_requests.blood_type, blood_requests.units_needed, blood_reques
+    PLAN: Limit  (cost=0.29..7.95 rows=50 width=1128) (actual time=0.027..0.056 rows=50 loops=1)
+    PLAN:   Buffers: shared hit=71
+    PLAN:   ->  Index Scan Backward using ix_blood_requests_created_at on blood_requests  (cost=0.29..8508.33 rows=55555 width=1128) (actual time=0.026..0.052 rows=50 loops=1)
+    PLAN:         Filter: (status = 'FULFILLED'::blood_request_status)
+    PLAN:         Rows Removed by Filter: 78
+    PLAN:         Buffers: shared hit=71
+    PLAN: Planning Time: 0.073 ms
+    PLAN: Execution Time: 0.067 ms
+
+## admin: GET /admin/analytics/overview (14 days)
+status=200 median=29.9ms max=39.1ms statements=8 db_ms=18.3
+  slowest 5.82 ms: SELECT blood_requests.status, count(*) AS count_1 FROM blood_requests GROUP BY blood_requests.status
+    PLAN: GroupAggregate  (cost=0.29..1902.59 rows=6 width=12) (actual time=0.243..9.839 rows=6 loops=1)
+    PLAN:   Group Key: status
+    PLAN:   Buffers: shared hit=69
+    PLAN:   ->  Index Only Scan using ix_blood_requests_status on blood_requests  (cost=0.29..1495.97 rows=81312 width=4) (actual time=0.009..4.616 rows=81312 loops=1)
+    PLAN:         Heap Fetches: 0
+    PLAN:         Buffers: shared hit=69
+    PLAN: Planning Time: 0.060 ms
+    PLAN: Execution Time: 9.852 ms
+
+## admin: GET /admin/analytics/overview (90 days)
+status=200 median=44.9ms max=130.3ms statements=8 db_ms=28.5
+  slowest 10.28 ms: SELECT CAST(blood_requests.created_at AS DATE) AS day, count(*) AS count_1 FROM blood_requests WHERE blood_requests.created_at >= %(created_at_1)s::TIMESTAMP WI
+    PLAN: Sort  (cost=5032.72..5130.50 rows=39113 width=12) (actual time=20.298..20.309 rows=91 loops=1)
+    PLAN:   Sort Key: ((created_at)::date)
+    PLAN:   Sort Method: quicksort  Memory: 28kB
+    PLAN:   Buffers: shared hit=106
+    PLAN:   ->  HashAggregate  (cost=1560.39..2049.30 rows=39113 width=12) (actual time=19.906..20.267 rows=91 loops=1)
+    PLAN:         Group Key: (created_at)::date
+    PLAN:         Batches: 1  Memory Usage: 1561kB
+    PLAN:         Buffers: shared hit=106
+    PLAN:         ->  Index Only Scan using ix_blood_requests_created_at on blood_requests  (cost=0.29..1338.77 rows=44324 width=4) (actual time=0.033..11.739 rows=44374 loops=1)
+    PLAN:               Index Cond: (created_at >= '2026-07-08 15:16:07.372706+00'::timestamp with time zone)
+    PLAN:               Heap Fetches: 0
+    PLAN:               Buffers: shared hit=106
+    PLAN: Planning Time: 0.136 ms
+    PLAN: Execution Time: 20.553 ms

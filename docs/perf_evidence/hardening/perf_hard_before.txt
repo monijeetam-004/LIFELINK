@@ -1,0 +1,87 @@
+# Volume
+blood_requests: 10001
+audit_logs: 30149
+realtime_events: 251281
+notifications: 250062
+blood_units: 126795
+users: 1565
+
+## admin: GET /admin/blood-requests (newest 50)
+status=200 median=18.4ms max=145.4ms statements=2 db_ms=5.8
+  slowest 5.27 ms: SELECT blood_requests.id, blood_requests.requester_user_id, blood_requests.patient_user_id, blood_requests.blood_type, blood_requests.units_needed, blood_reques
+    PLAN: Limit  (cost=619.24..619.36 rows=50 width=260) (actual time=5.084..5.089 rows=50 loops=1)
+    PLAN:   Buffers: shared hit=187
+    PLAN:   ->  Sort  (cost=619.24..644.24 rows=10001 width=260) (actual time=5.083..5.085 rows=50 loops=1)
+    PLAN:         Sort Key: created_at DESC
+    PLAN:         Sort Method: top-N heapsort  Memory: 36kB
+    PLAN:         Buffers: shared hit=187
+    PLAN:         ->  Seq Scan on blood_requests  (cost=0.00..287.01 rows=10001 width=260) (actual time=0.006..1.823 rows=10001 loops=1)
+    PLAN:               Buffers: shared hit=187
+    PLAN: Planning Time: 0.065 ms
+    PLAN: Execution Time: 5.106 ms
+
+## admin: GET /admin/blood-requests?status=FULFILLED
+status=200 median=14.6ms max=16.3ms statements=2 db_ms=4.5
+  slowest 3.91 ms: SELECT blood_requests.id, blood_requests.requester_user_id, blood_requests.patient_user_id, blood_requests.blood_type, blood_requests.units_needed, blood_reques
+    PLAN: Limit  (cost=478.71..478.83 rows=50 width=260) (actual time=3.076..3.081 rows=50 loops=1)
+    PLAN:   Buffers: shared hit=187
+    PLAN:   ->  Sort  (cost=478.71..491.25 rows=5018 width=260) (actual time=3.075..3.077 rows=50 loops=1)
+    PLAN:         Sort Key: created_at DESC
+    PLAN:         Sort Method: top-N heapsort  Memory: 36kB
+    PLAN:         Buffers: shared hit=187
+    PLAN:         ->  Seq Scan on blood_requests  (cost=0.00..312.01 rows=5018 width=260) (actual time=0.006..1.393 rows=5018 loops=1)
+    PLAN:               Filter: (status = 'FULFILLED'::blood_request_status)
+    PLAN:               Rows Removed by Filter: 4983
+    PLAN:               Buffers: shared hit=187
+    PLAN: Planning Time: 0.075 ms
+    PLAN: Execution Time: 3.098 ms
+
+## admin: GET /admin/analytics/overview (14 days)
+status=200 median=21.4ms max=39.1ms statements=8 db_ms=9.9
+  slowest 2.97 ms: SELECT CAST(blood_requests.created_at AS DATE) AS day, count(*) AS count_1 FROM blood_requests WHERE blood_requests.created_at >= %(created_at_1)s::TIMESTAMP WI
+    PLAN: Sort  (cost=387.17..387.19 rows=6 width=12) (actual time=3.226..3.227 rows=1 loops=1)
+    PLAN:   Sort Key: ((created_at)::date)
+    PLAN:   Sort Method: quicksort  Memory: 25kB
+    PLAN:   Buffers: shared hit=187
+    PLAN:   ->  HashAggregate  (cost=387.02..387.09 rows=6 width=12) (actual time=3.218..3.219 rows=1 loops=1)
+    PLAN:         Group Key: (created_at)::date
+    PLAN:         Batches: 1  Memory Usage: 24kB
+    PLAN:         Buffers: shared hit=187
+    PLAN:         ->  Seq Scan on blood_requests  (cost=0.00..337.01 rows=10001 width=4) (actual time=0.012..2.111 rows=10001 loops=1)
+    PLAN:               Filter: (created_at >= '2026-09-22 15:14:01.618962+00'::timestamp with time zone)
+    PLAN:               Buffers: shared hit=187
+    PLAN: Planning Time: 0.105 ms
+    PLAN: Execution Time: 3.261 ms
+
+## admin: GET /admin/analytics/overview (90 days)
+status=200 median=28.2ms max=111.5ms statements=8 db_ms=9.3
+  slowest 2.72 ms: SELECT CAST(blood_requests.created_at AS DATE) AS day, count(*) AS count_1 FROM blood_requests WHERE blood_requests.created_at >= %(created_at_1)s::TIMESTAMP WI
+    PLAN: Sort  (cost=387.17..387.19 rows=6 width=12) (actual time=3.009..3.010 rows=1 loops=1)
+    PLAN:   Sort Key: ((created_at)::date)
+    PLAN:   Sort Method: quicksort  Memory: 25kB
+    PLAN:   Buffers: shared hit=187
+    PLAN:   ->  HashAggregate  (cost=387.02..387.09 rows=6 width=12) (actual time=3.003..3.004 rows=1 loops=1)
+    PLAN:         Group Key: (created_at)::date
+    PLAN:         Batches: 1  Memory Usage: 24kB
+    PLAN:         Buffers: shared hit=187
+    PLAN:         ->  Seq Scan on blood_requests  (cost=0.00..337.01 rows=10001 width=4) (actual time=0.008..1.894 rows=10001 loops=1)
+    PLAN:               Filter: (created_at >= '2026-07-08 15:14:01.895894+00'::timestamp with time zone)
+    PLAN:               Buffers: shared hit=187
+    PLAN: Planning Time: 0.076 ms
+    PLAN: Execution Time: 3.032 ms
+checkpoint: 200 {'enabled': True, 'ok': True, 'checked': 1, 'latest_seq': 30151, 'reason': None}
+
+## audit: POST /admin/audit-log/verify (full, with checkpoints)
+status=200 median=1161.7ms max=1181.8ms statements=29 db_ms=115.0
+
+## audit: POST /admin/audit-log/verify?mode=incremental
+status=200 median=20.7ms max=26.3ms statements=14 db_ms=5.1
+incremental result: ok=True checked=11 checkpoints={'enabled': True, 'ok': True, 'checked': 1, 'latest_seq': 30151, 'reason': None}
+
+## realtime [inline]: POST /blood-requests (request thread)
+status=201 median=636.8ms max=4103.7ms statements=29 db_ms=112.0
+  flush after the burst: 4.4 ms
+
+## realtime [background]: POST /blood-requests (request thread)
+status=429 median=10.1ms max=732.1ms statements=1 db_ms=0.6
+  flush after the burst: 5.7 ms

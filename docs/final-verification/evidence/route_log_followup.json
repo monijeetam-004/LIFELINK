@@ -1,0 +1,380 @@
+[
+{
+"method": "GET",
+"path": "/admin/transport-routes",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/auth/me",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/donors/me/responses",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-candidates",
+"status": 200,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/forecasts",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/forecasts/{run_id}",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/forecasts/{run_id}",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me",
+"status": 200,
+"count": 54
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/hospitals/me/resource-pathways",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/hospitals/me/units",
+"status": 200,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/notifications",
+"status": 200,
+"count": 13
+},
+{
+"method": "GET",
+"path": "/pathways/config",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/facilities/{facility_id}/revoke-verification",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/facilities/{facility_id}/revoke-verification",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes",
+"status": 201,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/auth/login",
+"status": 200,
+"count": 110
+},
+{
+"method": "POST",
+"path": "/auth/logout",
+"status": 204,
+"count": 23
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 201,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 201,
+"count": 18
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 422,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/acknowledge",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/cancel",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides",
+"status": 201,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides/{override_id}/revoke",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/forecasts",
+"status": 201,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/forecasts",
+"status": 403,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/discard",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/discard",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/quarantine",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/quarantine",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/release-quarantine",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/thaw",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/thaw",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 201,
+"count": 13
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/arrive",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/dispatch",
+"status": 200,
+"count": 12
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/fail",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/in-transit",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/receive",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/receive",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 422,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 200,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 422,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry/simulate",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry/simulate",
+"status": 403,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/donors/me",
+"status": 200,
+"count": 8
+},
+{
+"method": "PUT",
+"path": "/hospitals/me",
+"status": 200,
+"count": 54
+},
+{
+"method": "PUT",
+"path": "/notifications/preferences",
+"status": 200,
+"count": 1
+}
+]

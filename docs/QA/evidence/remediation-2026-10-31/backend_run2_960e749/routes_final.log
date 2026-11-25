@@ -1,0 +1,3794 @@
+[
+{
+"method": "DELETE",
+"path": "/admin/verifications/{request_id}",
+"status": 405,
+"count": 1
+},
+{
+"method": "DELETE",
+"path": "/certificates/{certificate_id}",
+"status": 405,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/_test/admin-area",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/_test/admin-area",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/_test/admin-area",
+"status": 403,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/_test/any-authed",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/_test/any-authed",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/analytics/overview",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/admin/analytics/overview",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/analytics/overview",
+"status": 403,
+"count": 24
+},
+{
+"method": "GET",
+"path": "/admin/analytics/overview",
+"status": 422,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/audit-log",
+"status": 200,
+"count": 29
+},
+{
+"method": "GET",
+"path": "/admin/audit-log",
+"status": 400,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/audit-log",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/audit-log",
+"status": 403,
+"count": 32
+},
+{
+"method": "GET",
+"path": "/admin/audit-log/head",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/audit-log/head",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/audit-log/head",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/blood-requests",
+"status": 200,
+"count": 15
+},
+{
+"method": "GET",
+"path": "/admin/blood-requests",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/blood-requests",
+"status": 403,
+"count": 21
+},
+{
+"method": "GET",
+"path": "/admin/blood-requests",
+"status": 422,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/admin/certificates",
+"status": 200,
+"count": 10
+},
+{
+"method": "GET",
+"path": "/admin/certificates",
+"status": 401,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/admin/certificates",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/donors",
+"status": 200,
+"count": 10
+},
+{
+"method": "GET",
+"path": "/admin/donors",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/donors",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/emergencies",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/admin/emergencies",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/emergencies",
+"status": 403,
+"count": 21
+},
+{
+"method": "GET",
+"path": "/admin/emergencies",
+"status": 422,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/facilities",
+"status": 200,
+"count": 12
+},
+{
+"method": "GET",
+"path": "/admin/facilities",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/facilities",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/facilities",
+"status": 422,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/facilities/{facility_id}",
+"status": 200,
+"count": 15
+},
+{
+"method": "GET",
+"path": "/admin/facilities/{facility_id}",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/facilities/{facility_id}",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/facilities/{facility_id}",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/graph/pathway-log",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/graph/pathway-log",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/graph/pathway-log",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/system/health",
+"status": 200,
+"count": 7
+},
+{
+"method": "GET",
+"path": "/admin/system/health",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/system/health",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/system/metrics",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/system/metrics",
+"status": 401,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/admin/system/metrics",
+"status": 403,
+"count": 17
+},
+{
+"method": "GET",
+"path": "/admin/transport-routes",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/transport-routes",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/transport-routes",
+"status": 403,
+"count": 21
+},
+{
+"method": "GET",
+"path": "/admin/users",
+"status": 200,
+"count": 25
+},
+{
+"method": "GET",
+"path": "/admin/users",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/users",
+"status": 403,
+"count": 28
+},
+{
+"method": "GET",
+"path": "/admin/users",
+"status": 422,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/admin/users/stats",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/users/stats",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/users/stats",
+"status": 403,
+"count": 20
+},
+{
+"method": "GET",
+"path": "/admin/verifications",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/admin/verifications",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/verifications",
+"status": 403,
+"count": 13
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}",
+"status": 403,
+"count": 10
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}",
+"status": 404,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}",
+"status": 422,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 200,
+"count": 11
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 403,
+"count": 14
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 404,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 409,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 422,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/admin/verifications/{request_id}/documents/{index}",
+"status": 503,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/auth/me",
+"status": 200,
+"count": 67
+},
+{
+"method": "GET",
+"path": "/auth/me",
+"status": 401,
+"count": 25
+},
+{
+"method": "GET",
+"path": "/auth/session",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/blood-requests",
+"status": 200,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/blood-requests",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}",
+"status": 200,
+"count": 45
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}",
+"status": 404,
+"count": 12
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}",
+"status": 422,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-candidates",
+"status": 200,
+"count": 7
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-candidates",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-candidates",
+"status": 403,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-candidates",
+"status": 404,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-candidates",
+"status": 422,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-strategies",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-strategies",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/match-strategies",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/shortlist",
+"status": 200,
+"count": 10
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/shortlist",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/blood-requests/{request_id}/shortlist",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/certificates",
+"status": 200,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/certificates",
+"status": 401,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/certificates",
+"status": 403,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/certificates/verify/{code}",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/certificates/verify/{code}",
+"status": 404,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}",
+"status": 401,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}",
+"status": 404,
+"count": 12
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}",
+"status": 422,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}/download",
+"status": 200,
+"count": 9
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}/download",
+"status": 401,
+"count": 24
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}/download",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}/download",
+"status": 422,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/certificates/{certificate_id}/download",
+"status": 503,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/donations",
+"status": 200,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/donations",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/donations",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/donations/{donation_id}",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/donations/{donation_id}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/donations/{donation_id}",
+"status": 403,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/donors/me",
+"status": 200,
+"count": 13
+},
+{
+"method": "GET",
+"path": "/donors/me",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/donors/me",
+"status": 403,
+"count": 7
+},
+{
+"method": "GET",
+"path": "/donors/me/appointments",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/donors/me/appointments",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/donors/me/appointments",
+"status": 403,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/donors/me/donations",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/donors/me/donations",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/donors/me/donations",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/donors/me/requests",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/donors/me/requests",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/donors/me/requests",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/donors/me/responses",
+"status": 200,
+"count": 9
+},
+{
+"method": "GET",
+"path": "/donors/me/responses",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/donors/me/responses",
+"status": 403,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/emergencies",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/emergencies",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/active",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/emergencies/active",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/emergencies/active",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}",
+"status": 200,
+"count": 37
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}",
+"status": 404,
+"count": 13
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-candidates",
+"status": 200,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-candidates",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-candidates",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-strategies",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-strategies",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/match-strategies",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/pathways",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/pathways",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/resource-pathways",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/resource-pathways",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/resource-pathways",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/resource-pathways",
+"status": 404,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/resource-pathways",
+"status": 422,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/shortlist",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/emergencies/{emergency_id}/shortlist",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/events/stream",
+"status": 200,
+"count": 16
+},
+{
+"method": "GET",
+"path": "/events/stream",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/family/links",
+"status": 200,
+"count": 10
+},
+{
+"method": "GET",
+"path": "/family/links",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/forecasts",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/forecasts",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/forecasts",
+"status": 403,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/forecasts/{run_id}",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/forecasts/{run_id}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/forecasts/{run_id}",
+"status": 403,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/forecasts/{run_id}",
+"status": 404,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/health",
+"status": 200,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/health/live",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/health/ready",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/health/ready",
+"status": 503,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/hospitals/directory",
+"status": 200,
+"count": 13
+},
+{
+"method": "GET",
+"path": "/hospitals/directory",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/hospitals/me",
+"status": 200,
+"count": 120
+},
+{
+"method": "GET",
+"path": "/hospitals/me",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me",
+"status": 403,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/hospitals/me/activity",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/activity",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/activity",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/emergencies",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/emergencies",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/emergencies",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory",
+"status": 200,
+"count": 53
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory/components",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory/components",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory/components",
+"status": 403,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory/log",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory/log",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/inventory/log",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests/{request_id}/events",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests/{request_id}/events",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests/{request_id}/events",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/requests/{request_id}/events",
+"status": 404,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/hospitals/me/resource-pathways",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/hospitals/me/resource-pathways",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/resource-pathways",
+"status": 403,
+"count": 8
+},
+{
+"method": "GET",
+"path": "/hospitals/me/resource-pathways",
+"status": 422,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/hospitals/me/routes",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/hospitals/me/routes",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/routes",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/units",
+"status": 200,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/hospitals/me/units",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/hospitals/me/units",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/map/data",
+"status": 200,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/map/data",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/map/data",
+"status": 403,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/matching/blood-compatibility",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/matching/blood-compatibility",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/notifications",
+"status": 200,
+"count": 141
+},
+{
+"method": "GET",
+"path": "/notifications",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/notifications",
+"status": 403,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/notifications",
+"status": 422,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/notifications/preferences",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/notifications/preferences",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/notifications/unread-count",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/notifications/unread-count",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/pathways/config",
+"status": 200,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/pathways/config",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/patients/managed",
+"status": 200,
+"count": 12
+},
+{
+"method": "GET",
+"path": "/patients/managed",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/patients/managed",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/patients/me",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/patients/me",
+"status": 401,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/patients/me",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/patients/me",
+"status": 503,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/shipments",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/shipments",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments",
+"status": 403,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/shipments/by-code/{shipment_code}",
+"status": 200,
+"count": 3
+},
+{
+"method": "GET",
+"path": "/shipments/by-code/{shipment_code}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments/by-code/{shipment_code}",
+"status": 403,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/shipments/units/{unit_code}",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/shipments/units/{unit_code}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments/units/{unit_code}",
+"status": 403,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}",
+"status": 200,
+"count": 6
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}",
+"status": 403,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 200,
+"count": 2
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 403,
+"count": 4
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/timeline",
+"status": 200,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/timeline",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/shipments/{shipment_id}/timeline",
+"status": 403,
+"count": 5
+},
+{
+"method": "GET",
+"path": "/shortlist/policy",
+"status": 401,
+"count": 1
+},
+{
+"method": "GET",
+"path": "/verifications/me",
+"status": 200,
+"count": 13
+},
+{
+"method": "GET",
+"path": "/verifications/me",
+"status": 401,
+"count": 2
+},
+{
+"method": "GET",
+"path": "<unmatched>",
+"status": 307,
+"count": 1
+},
+{
+"method": "GET",
+"path": "<unmatched>",
+"status": 404,
+"count": 3
+},
+{
+"method": "OPTIONS",
+"path": "<unmatched>",
+"status": 200,
+"count": 2
+},
+{
+"method": "OPTIONS",
+"path": "<unmatched>",
+"status": 400,
+"count": 2
+},
+{
+"method": "PATCH",
+"path": "/admin/users/{user_id}/role",
+"status": 200,
+"count": 2
+},
+{
+"method": "PATCH",
+"path": "/admin/users/{user_id}/role",
+"status": 400,
+"count": 1
+},
+{
+"method": "PATCH",
+"path": "/admin/users/{user_id}/role",
+"status": 401,
+"count": 4
+},
+{
+"method": "PATCH",
+"path": "/admin/users/{user_id}/role",
+"status": 403,
+"count": 24
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/checkpoint",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/checkpoint",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/checkpoint",
+"status": 403,
+"count": 23
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/checkpoint",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/verify",
+"status": 200,
+"count": 15
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/verify",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/verify",
+"status": 403,
+"count": 28
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/verify",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/audit-log/verify",
+"status": 422,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/blood-requests/{request_id}/transition",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/admin/blood-requests/{request_id}/transition",
+"status": 400,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/blood-requests/{request_id}/transition",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/blood-requests/{request_id}/transition",
+"status": 403,
+"count": 21
+},
+{
+"method": "POST",
+"path": "/admin/blood-requests/{request_id}/transition",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/certificates/{certificate_id}/revoke",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/certificates/{certificate_id}/revoke",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/certificates/{certificate_id}/revoke",
+"status": 403,
+"count": 21
+},
+{
+"method": "POST",
+"path": "/admin/certificates/{certificate_id}/revoke",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/certificates/{certificate_id}/revoke",
+"status": 422,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/facilities/{facility_id}/revoke-verification",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/facilities/{facility_id}/revoke-verification",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/facilities/{facility_id}/revoke-verification",
+"status": 403,
+"count": 20
+},
+{
+"method": "POST",
+"path": "/admin/facilities/{facility_id}/revoke-verification",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/graph/resync",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/graph/resync",
+"status": 403,
+"count": 24
+},
+{
+"method": "POST",
+"path": "/admin/graph/resync",
+"status": 503,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes",
+"status": 201,
+"count": 24
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes",
+"status": 400,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes",
+"status": 403,
+"count": 24
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/disrupt",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/disrupt",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/disrupt",
+"status": 403,
+"count": 20
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/disrupt",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/recover",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/recover",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/recover",
+"status": 403,
+"count": 20
+},
+{
+"method": "POST",
+"path": "/admin/transport-routes/{route_id}/recover",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/reactivate",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/reactivate",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/reactivate",
+"status": 403,
+"count": 24
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/suspend",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/suspend",
+"status": 400,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/suspend",
+"status": 401,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/suspend",
+"status": 403,
+"count": 24
+},
+{
+"method": "POST",
+"path": "/admin/users/{user_id}/suspend",
+"status": 422,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/approve",
+"status": 200,
+"count": 10
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/approve",
+"status": 401,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/approve",
+"status": 403,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/approve",
+"status": 409,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/documents/{index}/rescan",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/documents/{index}/rescan",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/documents/{index}/rescan",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/reject",
+"status": 200,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/reject",
+"status": 401,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/reject",
+"status": 403,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/reject",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/admin/verifications/{request_id}/reject",
+"status": 422,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/auth/change-password",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/auth/change-password",
+"status": 401,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/auth/change-password",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/change-password",
+"status": 429,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/forgot-password",
+"status": 202,
+"count": 13
+},
+{
+"method": "POST",
+"path": "/auth/forgot-password",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/login",
+"status": 200,
+"count": 1902
+},
+{
+"method": "POST",
+"path": "/auth/login",
+"status": 401,
+"count": 15
+},
+{
+"method": "POST",
+"path": "/auth/login",
+"status": 403,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/auth/login",
+"status": 429,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/auth/logout",
+"status": 204,
+"count": 39
+},
+{
+"method": "POST",
+"path": "/auth/logout",
+"status": 403,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/auth/register",
+"status": 201,
+"count": 61
+},
+{
+"method": "POST",
+"path": "/auth/register",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/register",
+"status": 409,
+"count": 15
+},
+{
+"method": "POST",
+"path": "/auth/register",
+"status": 422,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/auth/register",
+"status": 429,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/auth/register",
+"status": 503,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/reset-password",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/auth/reset-password",
+"status": 400,
+"count": 13
+},
+{
+"method": "POST",
+"path": "/auth/reset-password",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/reset-password",
+"status": 429,
+"count": 17
+},
+{
+"method": "POST",
+"path": "/auth/verify-email",
+"status": 200,
+"count": 17
+},
+{
+"method": "POST",
+"path": "/auth/verify-email",
+"status": 400,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/auth/verify-email",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/verify-email",
+"status": 422,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/auth/verify-email/resend",
+"status": 202,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/auth/verify-email/resend",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 201,
+"count": 291
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 401,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 403,
+"count": 10
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 422,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/blood-requests",
+"status": 429,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/cancel",
+"status": 200,
+"count": 13
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/cancel",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/cancel",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/cancel",
+"status": 404,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/cancel",
+"status": 409,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/cancel",
+"status": 422,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/fulfill",
+"status": 200,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/fulfill",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/fulfill",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/fulfill",
+"status": 404,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/fulfill",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 200,
+"count": 54
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 400,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 403,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/respond",
+"status": 409,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contact-next",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contact-next",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contact-next",
+"status": 403,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 200,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/blood-requests/{request_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/certificates",
+"status": 201,
+"count": 57
+},
+{
+"method": "POST",
+"path": "/certificates",
+"status": 401,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/certificates",
+"status": 403,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/certificates",
+"status": 404,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/certificates",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/certificates",
+"status": 503,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/demo/shortlist/{subject}/{subject_id}/simulate",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/demo/shortlist/{subject}/{subject_id}/simulate",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/demo/shortlist/{subject}/{subject_id}/simulate",
+"status": 403,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/demo/shortlist/{subject}/{subject_id}/simulate",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/reject",
+"status": 200,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/reject",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/reject",
+"status": 403,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/reject",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/verify",
+"status": 200,
+"count": 62
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/verify",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/verify",
+"status": 403,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/verify",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donations/{donation_id}/verify",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments",
+"status": 201,
+"count": 20
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments",
+"status": 400,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments/{appointment_id}/cancel",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments/{appointment_id}/cancel",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments/{appointment_id}/cancel",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments/{appointment_id}/cancel",
+"status": 404,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/donors/me/appointments/{appointment_id}/cancel",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 200,
+"count": 37
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 201,
+"count": 96
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 400,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 401,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 403,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/donors/me/donations",
+"status": 422,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 200,
+"count": 21
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 201,
+"count": 158
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 400,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 403,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 422,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/emergencies",
+"status": 429,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/acknowledge",
+"status": 200,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/acknowledge",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/acknowledge",
+"status": 403,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/acknowledge",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/assistance-found",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/assistance-found",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/assistance-found",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/assistance-found",
+"status": 404,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/cancel",
+"status": 200,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/cancel",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/cancel",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/cancel",
+"status": 404,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/cancel",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides",
+"status": 201,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides/{override_id}/revoke",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides/{override_id}/revoke",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/overrides/{override_id}/revoke",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway",
+"status": 200,
+"count": 17
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway",
+"status": 403,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/handoff",
+"status": 200,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/handoff",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/handoff",
+"status": 403,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/handoff",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/release",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/release",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/release",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/reserve",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/reserve",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/pathway/reserve",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/resolve",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/resolve",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/resolve",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/resolve",
+"status": 404,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/resolve",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 200,
+"count": 29
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 400,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/respond",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/shortlist/contact-next",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/shortlist/contact-next",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/emergencies/{emergency_id}/shortlist/contacts/{contact_id}/confirm",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links",
+"status": 201,
+"count": 61
+},
+{
+"method": "POST",
+"path": "/family/links",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links",
+"status": 403,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/family/links",
+"status": 404,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/family/links",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/accept",
+"status": 200,
+"count": 27
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/accept",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/accept",
+"status": 403,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/accept",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/accept",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/reject",
+"status": 200,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/reject",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/reject",
+"status": 403,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/reject",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/reject",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/revoke",
+"status": 200,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/revoke",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/revoke",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/revoke",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/family/links/{link_id}/revoke",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/forecasts",
+"status": 201,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/forecasts",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/forecasts",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/add",
+"status": 200,
+"count": 165
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/add",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/add",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/add",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/add",
+"status": 422,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/allocate",
+"status": 200,
+"count": 16
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/allocate",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/allocate",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/allocate",
+"status": 409,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/expire",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/expire",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/expire",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/expire",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reconcile",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reconcile",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reconcile",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reconcile",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/release",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/release",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/release",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/release",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reserve",
+"status": 200,
+"count": 28
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reserve",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reserve",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/inventory/reserve",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 200,
+"count": 31
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 400,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 404,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 409,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/allocate",
+"status": 422,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/fulfill",
+"status": 200,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/fulfill",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/fulfill",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/fulfill",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/fulfill",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/respond",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/respond",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/respond",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/respond",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/requests/{request_id}/respond",
+"status": 422,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/discard",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/discard",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/discard",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/discard",
+"status": 409,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/quarantine",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/quarantine",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/quarantine",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/quarantine",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/release-quarantine",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/release-quarantine",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/release-quarantine",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/thaw",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/thaw",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/thaw",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/hospitals/me/units/{unit_id}/thaw",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/notifications/read-all",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/notifications/read-all",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/notifications/read-all",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/notifications/{notification_id}/read",
+"status": 200,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/notifications/{notification_id}/read",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/notifications/{notification_id}/read",
+"status": 403,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/notifications/{notification_id}/read",
+"status": 404,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 200,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/pathways/simulate",
+"status": 404,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 201,
+"count": 76
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 400,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/shipments",
+"status": 409,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/arrive",
+"status": 200,
+"count": 15
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/arrive",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/arrive",
+"status": 403,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/cancel",
+"status": 200,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/cancel",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/cancel",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/cancel",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/delay",
+"status": 200,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/delay",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/delay",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/delay",
+"status": 409,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/dispatch",
+"status": 200,
+"count": 50
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/dispatch",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/dispatch",
+"status": 403,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/dispatch",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/fail",
+"status": 200,
+"count": 21
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/fail",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/fail",
+"status": 403,
+"count": 5
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/fail",
+"status": 409,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/in-transit",
+"status": 200,
+"count": 15
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/in-transit",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/in-transit",
+"status": 403,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/receive",
+"status": 200,
+"count": 13
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/receive",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/receive",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/receive",
+"status": 409,
+"count": 7
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 200,
+"count": 11
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 403,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 409,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/reconcile",
+"status": 422,
+"count": 9
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 200,
+"count": 12
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 403,
+"count": 4
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry",
+"status": 422,
+"count": 2
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry/simulate",
+"status": 200,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry/simulate",
+"status": 401,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/shipments/{shipment_id}/telemetry/simulate",
+"status": 403,
+"count": 6
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 201,
+"count": 90
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 401,
+"count": 3
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 403,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 409,
+"count": 8
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 422,
+"count": 19
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 429,
+"count": 1
+},
+{
+"method": "POST",
+"path": "/verifications",
+"status": 503,
+"count": 2
+},
+{
+"method": "POST",
+"path": "<unmatched>",
+"status": 404,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/donors/me",
+"status": 200,
+"count": 292
+},
+{
+"method": "PUT",
+"path": "/donors/me",
+"status": 401,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/donors/me",
+"status": 403,
+"count": 5
+},
+{
+"method": "PUT",
+"path": "/donors/me/availability",
+"status": 200,
+"count": 7
+},
+{
+"method": "PUT",
+"path": "/donors/me/availability",
+"status": 401,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/donors/me/availability",
+"status": 403,
+"count": 5
+},
+{
+"method": "PUT",
+"path": "/hospitals/me",
+"status": 200,
+"count": 445
+},
+{
+"method": "PUT",
+"path": "/hospitals/me",
+"status": 401,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/hospitals/me",
+"status": 403,
+"count": 5
+},
+{
+"method": "PUT",
+"path": "/hospitals/me/inventory",
+"status": 200,
+"count": 9
+},
+{
+"method": "PUT",
+"path": "/hospitals/me/inventory",
+"status": 401,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/hospitals/me/inventory",
+"status": 403,
+"count": 5
+},
+{
+"method": "PUT",
+"path": "/hospitals/me/inventory",
+"status": 422,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/notifications/preferences",
+"status": 200,
+"count": 8
+},
+{
+"method": "PUT",
+"path": "/notifications/preferences",
+"status": 401,
+"count": 2
+},
+{
+"method": "PUT",
+"path": "/notifications/preferences",
+"status": 403,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/notifications/preferences",
+"status": 422,
+"count": 3
+},
+{
+"method": "PUT",
+"path": "/patients/me",
+"status": 200,
+"count": 2
+},
+{
+"method": "PUT",
+"path": "/patients/me",
+"status": 401,
+"count": 1
+},
+{
+"method": "PUT",
+"path": "/patients/me",
+"status": 403,
+"count": 4
+},
+{
+"method": "PUT",
+"path": "/patients/me",
+"status": 422,
+"count": 1
+}
+]

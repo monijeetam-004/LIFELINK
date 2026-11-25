@@ -1,0 +1,217 @@
+
+=== [2026-10-20T13:39:24Z] 0. clean work dir /srv/cleanstart_qa (host: Linux 6.18.44-fc-v139 x86_64; python3.12 3.12.3; node v22.22.0)
+
+=== [2026-10-20T13:39:24Z] 1. fresh copy of the source tree (no .venv, node_modules, .env, build output, caches, .git)
+. .. .dockerignore .env.example .gitignore Dockerfile README.md alembic alembic.ini app clamav docker-compose.yml pyproject.toml requirements-dev.lock requirements-dev.txt requirements.lock requirements.txt scripts tests 
+
+=== [2026-10-20T13:39:24Z] 2. backend venv exactly as README 'Run locally' documents
+$ python3.12 -m venv .venv
+[exit 0]
+$ pip install -q --require-hashes --no-deps -r requirements-dev.lock
+[exit 0]
+$ pip install -q --no-deps -e .
+[exit 0]
+
+=== [2026-10-20T13:40:13Z] 3. brand-new PostgreSQL 16 cluster (initdb) on :55432
+$ su postgres -c /usr/lib/postgresql/16/bin/initdb -D /srv/cleanstart_qa/pg/data -A scram-sha-256 --pwfile=/srv/cleanstart_qa/pg/pw -U postgres >/dev/null
+[exit 0]
+databases: postgres,lifelink,template1,template0
+
+=== [2026-10-20T13:40:14Z] 4. fresh Redis on :6390 (no persistence file)
+PONG
+
+=== [2026-10-20T13:40:14Z] 5. ClamAV: signature DB built from the repository, new clamd on :3320
+$ python clamav/build_local_signatures.py /srv/cleanstart_qa/clamdb /usr/share/clamav-testfiles
+wrote 6 body signatures and 17 hash signatures to /srv/cleanstart_qa/clamdb
+[exit 0]
+clamd: PONG
+
+=== [2026-10-20T13:40:14Z] 6. object storage (MinIO STAND-IN: moto_server) on :9300 and mail catcher (Mailpit STAND-IN: MailDev) smtp :1036 web :1091
+s3 200
+mail api 200
+
+=== [2026-10-20T13:40:20Z] 7. Neo4j: no server obtainable here (registries and dist.neo4j.org blocked) -> NEO4J_URI left empty
+
+=== [2026-10-20T13:40:20Z] 8. backend .env from .env.example (documented overrides only; secrets generated, masked)
+ENVIRONMENT=development
+SECRET_KEY=***generated***
+DATABASE_URL=postgresql+psycopg://lifelink:***@127.0.0.1:55432/lifelink
+TEST_DATABASE_URL=postgresql+psycopg://lifelink:***@127.0.0.1:55432/lifelink_test
+REDIS_URL=redis://127.0.0.1:6390/0
+RQ_SYNC=false
+SESSION_COOKIE_NAME=lifelink_session
+SESSION_COOKIE_SECURE=false          # set true in production (HTTPS)
+SESSION_COOKIE_SAMESITE=lax
+SESSION_COOKIE_DOMAIN=
+SESSION_TTL_SECONDS=1209600          # 14 days
+CORS_ORIGINS=http://127.0.0.1:4300
+FRONTEND_BASE_URL=http://127.0.0.1:4300
+COMPOSE_PROFILES=mailpit
+MAIL_PORT=1036
+MAIL_STARTTLS=false
+MAIL_USE_SSL=false
+MAIL_FROM=no-reply@lifelink.local
+MAIL_USERNAME=
+MAIL_PASSWORD=
+EMAIL_VERIFICATION_TTL_SECONDS=86400
+PASSWORD_RESET_OTP_TTL_SECONDS=600
+PASSWORD_RESET_MAX_ATTEMPTS=5
+MAX_ACCOUNTS=100
+S3_ENDPOINT_URL=http://127.0.0.1:9300
+S3_REGION=us-east-1
+S3_ACCESS_KEY=lifelink
+S3_SECRET_KEY=lifelink-secret
+S3_BUCKET=lifelink-dev
+S3_PRESIGN_EXPIRY_SECONDS=900
+DOCUMENT_SCANNER=clamd
+CLAMD_HOST=127.0.0.1
+CLAMD_PORT=3320
+CLAMD_TIMEOUT_SECONDS=15
+DOCUMENT_RESCAN_DELAY_SECONDS=300
+AUDIT_CHECKPOINT_KEY=
+AUDIT_CHECKPOINT_KEY_ID=k1
+AUDIT_CHECKPOINT_RETIRED_KEYS=
+AUDIT_CHECKPOINT_PATH=
+CERTIFICATE_DOWNLOAD_TTL_SECONDS=600
+VERIFICATION_MAX_FILE_BYTES=10485760
+VERIFICATION_MAX_FILES=5
+VERIFICATION_ALLOWED_CONTENT_TYPES=application/pdf,image/jpeg,image/png
+NEO4J_URI=
+NEO4J_USERNAME=
+NEO4J_PASSWORD=
+NEO4J_DATABASE=neo4j
+NEO4J_CONNECTION_TIMEOUT_SECONDS=5
+AURA_INSTANCEID=
+AURA_INSTANCENAME=
+MSG91_ENABLED=false
+MSG91_AUTH_KEY=
+MSG91_FLOW_ID=
+MSG91_SENDER_ID=
+MSG91_DLT_TEMPLATE_ID=
+MSG91_TIMEOUT_SECONDS=10
+MSG91_TEMPLATE_FLOW_MAP=
+SMS_DEFAULT_REGION=IN
+SMS_PROVIDER=msg91
+PATHWAY_HANDLING_MINUTES=30
+PATHWAY_DEADLINE_RISK_MINUTES=15
+PATHWAY_MAX_HOPS=6
+PATHWAY_MAX_BACKUPS=3
+MAX_DONOR_DISTANCE_KM=50
+HOSPITAL_ALERT_RADIUS_KM=50
+DEADLINE_WARNING_MINUTES=30
+DEADLINE_MONITOR_INTERVAL_SECONDS=60
+TELEMETRY_MAX_GAP_MINUTES=30
+GEOCODER_URL=
+GEOCODER_TIMEOUT_SECONDS=3
+DATA_IS_SYNTHETIC=true
+MAIL_HOST=127.0.0.1
+
+=== [2026-10-20T13:40:20Z] 9. migrations: doctor (read-only) -> upgrade head -> current -> check
+$ python -m scripts.migration_doctor
+migration state : EMPTY
+database        : postgresql+psycopg://lifelink:***@127.0.0.1:55432/lifelink
+db revision(s)  : -
+repository head : e1f2a3b4c5d6
+pending         : 31
+tables          : 0 (LifeLink schema: no)
+explanation     : Fresh database.
+  alembic upgrade head
+[exit 0]
+$ alembic heads
+e1f2a3b4c5d6 (head)
+[exit 0]
+INFO  [alembic.runtime.migration] Running upgrade c9d0e1f2a3b4 -> d0e1f2a3b4c5, Hardening: index blood_requests.created_at.
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+[exit 0]
+$ alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+e1f2a3b4c5d6 (head)
+[exit 0]
+$ alembic check
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+No new upgrade operations detected.
+[exit 0]
+$ python -m scripts.migration_doctor
+migration state : AT_HEAD
+database        : postgresql+psycopg://lifelink:***@127.0.0.1:55432/lifelink
+db revision(s)  : ['e1f2a3b4c5d6']
+repository head : e1f2a3b4c5d6
+pending         : 0
+tables          : 39 (LifeLink schema: yes)
+schema vs models: {"matches_current_models": true, "tables_missing": [], "tables_extra": [], "column_differences": {}}
+explanation     : Database is at the repository head.
+[exit 0]
+
+=== [2026-10-20T13:40:26Z] 10. start API (:8200), RQ worker, deadline monitor
+$ curl /health/live
+{"status":"alive"}
+$ curl /health/ready
+{"status":"ready","required":{"db":true,"redis":true},"optional":{"neo4j":{"configured":false},"storage":{"backend":"s3"},"email":{"authenticated":false,"provider":"mailpit"}},"dependency_states":{"db":"AVAILABLE","redis":"AVAILABLE","neo4j":"NOT_CONFIGURED","storage":"CONFIGURED_NOT_PROBED","email":"NOT_CONFIGURED"}}
+worker log:
+2026-10-20 13:40:27,448 INFO     [-] rq.scheduler: Scheduler for sms, emails started with PID 12289
+2026-10-20 13:40:27,452 INFO     [-] rq.worker: Worker 78e6d94f6b414d929d723028f430f011: cleaning registries for queue: emails
+2026-10-20 13:40:27,454 INFO     [-] rq.worker: Worker 78e6d94f6b414d929d723028f430f011: cleaning registries for queue: sms
+monitor log:
+2026-10-20 13:40:28,058 INFO     [-] lifelink.deadline_monitor: deadline monitor started (interval=60s, warning=30min)
+2026-10-20 13:40:28,129 INFO     [-] lifelink.deadline_monitor: pass: warned=0 exceeded=0 escalated=0 swept=0
+
+=== [2026-10-20T13:40:33Z] 11. seed the documented synthetic dataset
+2026-10-20 13:43:11,277 INFO     [5e6546c8-016e-4e7e-b656-867edde9ac6e] lifelink.email: email job 1eecb5cf-926b-4810-beae-5e3e779a3f99 enqueued for d***@lifelink-demo.example.com
+2026-10-20 13:43:11,278 INFO     [5e6546c8-016e-4e7e-b656-867edde9ac6e] lifelink.email: email job 68d13d67-6e82-4a4e-894d-6775e58a8474 enqueued for d***@lifelink-demo.example.com
+2026-10-20 13:43:11,293 INFO     [5e6546c8-016e-4e7e-b656-867edde9ac6e] lifelink.email: email job 034954bd-cbf9-4173-b107-5e17cd7dca02 enqueued for f***@lifelink-demo.example.com
+2026-10-20 13:43:11,298 INFO     [5e6546c8-016e-4e7e-b656-867edde9ac6e] lifelink.email: email job 74e4ee31-a679-4db2-be94-621c4f0d4bea enqueued for d***@lifelink-demo.example.com
+2026-10-20 13:43:11,350 INFO     [8fe9157f-541a-44bf-8e69-652182820940] lifelink.email: email job d3cc1712-d954-4533-b917-4cb22934e1f6 enqueued for d***@lifelink-demo.example.com
+Demo activity: {'blood_request': '1a0106dd-f7b3-4faf-aac1-065061f0e105', 'emergency': 'f2b3481a-87fe-4a2f-87ee-480329c55f10'}
+Graph resync: ok=False detail=Neo4j is not configured
+[exit 0]
+
+=== [2026-10-20T13:43:11Z] 12. frontend: .env, npm ci, build, preview (:4300)
+VITE_API_URL=http://127.0.0.1:8200
+
+$ npm ci --no-audit --no-fund --loglevel=error
+
+added 450 packages in 10s
+[exit 0]
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 9.34s
+[exit 0]
+
+=== [2026-10-20T13:43:48Z] 13. functional verification (scripts/clean_start_check.py)
+$ python -m scripts.clean_start_check --api http://127.0.0.1:8200 --frontend http://127.0.0.1:4300 --mail-api http://127.0.0.1:1091/email --out /srv/cleanstart_qa/clean_start_result.json
+[PASS   ] api_ready: HTTP 200 status=ready
+[PASS   ] database: PostgreSQL 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu
+[PASS   ] alembic_head: state=AT_HEAD db=['e1f2a3b4c5d6'] repo_head=e1f2a3b4c5d6 schema_matches_models=True
+[PASS   ] redis: PING=True redis_version=7.0.15
+[BLOCKED] neo4j: NEO4J_URI not configured: no Neo4j server obtainable in this environment; the planner runs on the relational engine (RELATIONAL_ROUTES). External validation required.
+[BLOCKED] object_storage: bucket 'lifelink-dev' exists; 1024 B written, read back identical=True, deleted=True; server='Werkzeug/3.1.9 Python/3.13.16' -- an S3 STAND-IN, not MinIO: the S3 code path works, MinIO itself still needs external validation
+[PASS   ] clamav: PING=PONG; ClamAV 1.5.4; clean payload -> CLEAN; EICAR -> INFECTED (LifeLink.Test.EICAR.UNOFFICIAL)
+[PASS   ] worker_and_mail: 1 RQ worker(s); verification e-mail for clean-start-7cc09922@example.com delivered by the worker in 2.1 s (subject 'Verify your LifeLink email'); token from that e-mail verified the account: True
+[PASS   ] document_upload: clean PDF -> 201, stored in object storage=True, scan=['CLEAN']; EICAR PDF (sent first) -> 422 File failed a security scan and cannot be accepted; verification requests on the account: 1
+[PASS   ] seed_data: 1066 users; {'users_by_role': [['PATIENT', '1'], ['FAMILY', '1'], ['DONOR', '1002'], ['HOSPITAL', '61'], ['ADMIN', '1']], 'facilities': [['BLOOD_BANK', '20', '15'], ['HOSPITAL', '41', '26']], 'transport_routes': [['DISRUPTED', '7'], ['OPERATIONAL', '78']], 'blood_units_by_state': [['AVAILABLE', '9675']], 'donations': [['614']]}
+[PASS   ] frontend: GET http://127.0.0.1:4300 -> 200; SPA root present=True; bundle points at http://127.0.0.1:8200: True (browser login check: frontend/e2e/clean_start.spec.ts)
+[PASS   ] critical_workflow: receiving hospital holds 20 O_NEG; request 23 units | admin added routes to Mumbai Blood Bank & Transfusion Centre (4.9 km), Pune Community Hospital (150.8 km) | patient SOS b7c23dd0-3c50-44af-934b-1138751392ce (geocode_source=USER_INPUT) | plan: VIABLE, 23/23 units, 1 legs, ETA 38 min, 1 backup(s), engine RELATIONAL_ROUTES | reserved 23 units | route 2c4a8ee7-69bd-4fd1-88ae-2455e937753a disrupted -> BACKUP_PROMOTED, reachable=True | delivery now from Pune Blood Bank & Transfusion Centre over 2 route(s) | shipment SHP-ACFA4C67E5: 23 units, cold chain WITHIN_RANGE, received; O_NEG stock 20 -> 43 | resolved; 8 timeline events; audit chain ok=True
+
+VERDICT: PASS WITH EXTERNAL VALIDATION REQUIRED
+[exit 0]
+
+=== [2026-10-20T13:43:55Z] 14. browser: fresh SPA -> fresh API (Playwright, e2e/clean_start.spec.ts)
+$ npx playwright test e2e/clean_start.spec.ts --reporter=list
+
+Running 1 test using 1 worker
+
+CLEAN_START_BROWSER units_returned=183 api_calls=[{"url":"/auth/session","status":200},{"url":"/auth/login","status":200},{"url":"/auth/session","status":200},{"url":"/events/stream","status":200},{"url":"/notifications/unread-count","status":200},{"url":"/hospitals/me/units","status":200}]
+  ✓  1 [chromium] › e2e/clean_start.spec.ts:17:1 › fresh SPA signs in against the fresh API and loads live hospital data (5.2s)
+
+  1 passed (6.6s)
+[exit 0]
+
+=== [2026-10-20T13:44:04Z] 15. done at 2026-10-20T13:44:04Z; API log errors: 0

@@ -1,0 +1,319 @@
+# Migration integrity evidence -- 2026-10-12T19:37:46Z
+# All commands run in backend/ with the repository's alembic.ini; passwords masked.
+
+## A. Repository graph
+
+$ alembic heads
+e1f2a3b4c5d6 (head)
+[exit 0]
+
+$ alembic branches
+[exit 0]
+(empty output above = no branch points)
+
+$ alembic history
+d0e1f2a3b4c5 -> e1f2a3b4c5d6 (head), Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+c9d0e1f2a3b4 -> d0e1f2a3b4c5, Hardening: index blood_requests.created_at.
+a6b7c8d9e0f1 -> c9d0e1f2a3b4, Hardening: append-only guard triggers on audit_logs.
+f5a6b7c8d9e0 -> a6b7c8d9e0f1, Hardening: every stored verification document carries a scan_status.
+e4f5a6b7c8d9 -> f5a6b7c8d9e0, Phase K: realtime publisher indexes (pending-publish read, retention delete).
+d3e4f5a6b7c8 -> e4f5a6b7c8d9, phase F: real-time event outbox (realtime_events)
+c2d3e4f5a6b7 -> d3e4f5a6b7c8, phase E: domain integrity -- fulfilment quantities, donation verification,
+verification-document versioning, audit hash chain, shipment reconciliation,
+expiry rule provenance.
+b1c2d3e4f5a6 -> c2d3e4f5a6b7, phase D: shipment / chain-of-custody lifecycle
+a9b0c1d2e3f4 -> b1c2d3e4f5a6, phase 35: blood component column, unit identity code, and donation
+traceability link on blood_units
+f7a8b9c0d1e2 -> a9b0c1d2e3f4, phase 34: real per-unit blood_units table + state machine, backfilled
+from existing hospital_inventory aggregate counts
+e6f7a8b9c0d1 -> f7a8b9c0d1e2, phase31: certificate revocation (revoked_at/by/reason)
+d5e6f7a8b9c0 -> e6f7a8b9c0d1, phase31: at most one PENDING verification request per (user, kind)
+b8c9d0e1f2a3 -> d5e6f7a8b9c0, phase31: emergency deadline_exceeded_at (deadline gets a real consequence)
+c3d4e5f6a7b8 -> b8c9d0e1f2a3, phase26: donation idempotency key + payload hash
+a3b4c5d6e7f8 -> c3d4e5f6a7b8, phase24: notifications composite indexes for list/unread queries
+f4a5b6c7d8e9 -> a3b4c5d6e7f8, phase19: blood request idempotency key + payload hash
+d4e5f6a7b8c9 -> f4a5b6c7d8e9, phase13: family link reason + responded_at
+ca362e8cb9cc -> d4e5f6a7b8c9, phase12: emergency/SOS engine -- deadline, quantity, idempotency,
+target facility, and versioned resource pathways
+b7c8d9e0f1a2 -> ca362e8cb9cc, phase11: independent per-role self-registration counters
+a1b2c3d4e5f6 -> b7c8d9e0f1a2, phase10: blood request lifecycle -- cancelled_at / expired_at timestamps
+f3a4b5c6d7e8 -> a1b2c3d4e5f6, Phase 5 hospital portal: inventory reservations/audit log + hospital
+request ALLOCATED/FULFILLED handling states.
+e2f3a4b5c6d7 -> f3a4b5c6d7e8, SMS provider integration: sms_notifications audit table
+d1e2f3a4b5c6 -> e2f3a4b5c6d7, phase4: donor portal - NOT_NOW response, availability_state, alert prefs
+4a9d4f2ed50b -> d1e2f3a4b5c6, phase9: family link REJECTED/EXPIRED statuses + expires_at
+c6cfa33e7862 -> 4a9d4f2ed50b, phase8 graph engine schema transport routes pathway log facility type
+0005_phase6 -> c6cfa33e7862, phase7 admin verification prefs appointments
+0004_phase5 -> 0005_phase6, phase 6: donation certificates
+0003_phase3 -> 0004_phase5, phase 5: emergency lifecycle states + responder table
+0002_phase2 -> 0003_phase3, phase 3: hospital profile/inventory/responses, donor + request geo
+0001_initial -> 0002_phase2, phase 2 domain: profiles, family links, blood requests, emergencies, notifications, donations
+<base> -> 0001_initial, initial auth schema
+[exit 0]
+
+## B. Completely fresh PostgreSQL database (lifelink_fresh, created empty seconds earlier)
+
+$ python -m scripts.migration_doctor
+migration state : EMPTY
+database        : postgresql+psycopg://lifelink:***@localhost:5432/lifelink_fresh
+db revision(s)  : -
+repository head : e1f2a3b4c5d6
+pending         : 31
+tables          : 0 (LifeLink schema: no)
+explanation     : Fresh database.
+  alembic upgrade head
+[exit 0]
+
+$ alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+[exit 0]
+
+$ alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_initial, initial auth schema
+INFO  [alembic.runtime.migration] Running upgrade 0001_initial -> 0002_phase2, phase 2 domain: profiles, family links, blood requests, emergencies, notifications, donations
+INFO  [alembic.runtime.migration] Running upgrade 0002_phase2 -> 0003_phase3, phase 3: hospital profile/inventory/responses, donor + request geo
+INFO  [alembic.runtime.migration] Running upgrade 0003_phase3 -> 0004_phase5, phase 5: emergency lifecycle states + responder table
+INFO  [alembic.runtime.migration] Running upgrade 0004_phase5 -> 0005_phase6, phase 6: donation certificates
+INFO  [alembic.runtime.migration] Running upgrade 0005_phase6 -> c6cfa33e7862, phase7 admin verification prefs appointments
+INFO  [alembic.runtime.migration] Running upgrade c6cfa33e7862 -> 4a9d4f2ed50b, phase8 graph engine schema transport routes pathway log facility type
+INFO  [alembic.runtime.migration] Running upgrade 4a9d4f2ed50b -> d1e2f3a4b5c6, phase9: family link REJECTED/EXPIRED statuses + expires_at
+INFO  [alembic.runtime.migration] Running upgrade d1e2f3a4b5c6 -> e2f3a4b5c6d7, phase4: donor portal - NOT_NOW response, availability_state, alert prefs
+INFO  [alembic.runtime.migration] Running upgrade e2f3a4b5c6d7 -> f3a4b5c6d7e8, SMS provider integration: sms_notifications audit table
+INFO  [alembic.runtime.migration] Running upgrade f3a4b5c6d7e8 -> a1b2c3d4e5f6, Phase 5 hospital portal: inventory reservations/audit log + hospital
+request ALLOCATED/FULFILLED handling states.
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, phase10: blood request lifecycle -- cancelled_at / expired_at timestamps
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> ca362e8cb9cc, phase11: independent per-role self-registration counters
+INFO  [alembic.runtime.migration] Running upgrade ca362e8cb9cc -> d4e5f6a7b8c9, phase12: emergency/SOS engine -- deadline, quantity, idempotency,
+target facility, and versioned resource pathways
+INFO  [alembic.runtime.migration] Running upgrade d4e5f6a7b8c9 -> f4a5b6c7d8e9, phase13: family link reason + responded_at
+INFO  [alembic.runtime.migration] Running upgrade f4a5b6c7d8e9 -> a3b4c5d6e7f8, phase19: blood request idempotency key + payload hash
+INFO  [alembic.runtime.migration] Running upgrade a3b4c5d6e7f8 -> c3d4e5f6a7b8, phase24: notifications composite indexes for list/unread queries
+INFO  [alembic.runtime.migration] Running upgrade c3d4e5f6a7b8 -> b8c9d0e1f2a3, phase26: donation idempotency key + payload hash
+INFO  [alembic.runtime.migration] Running upgrade b8c9d0e1f2a3 -> d5e6f7a8b9c0, phase31: emergency deadline_exceeded_at (deadline gets a real consequence)
+INFO  [alembic.runtime.migration] Running upgrade d5e6f7a8b9c0 -> e6f7a8b9c0d1, phase31: at most one PENDING verification request per (user, kind)
+INFO  [alembic.runtime.migration] Running upgrade e6f7a8b9c0d1 -> f7a8b9c0d1e2, phase31: certificate revocation (revoked_at/by/reason)
+INFO  [alembic.runtime.migration] Running upgrade f7a8b9c0d1e2 -> a9b0c1d2e3f4, phase 34: real per-unit blood_units table + state machine, backfilled
+from existing hospital_inventory aggregate counts
+INFO  [alembic.runtime.migration] Running upgrade a9b0c1d2e3f4 -> b1c2d3e4f5a6, phase 35: blood component column, unit identity code, and donation
+traceability link on blood_units
+INFO  [alembic.runtime.migration] Running upgrade b1c2d3e4f5a6 -> c2d3e4f5a6b7, phase D: shipment / chain-of-custody lifecycle
+INFO  [alembic.runtime.migration] Running upgrade c2d3e4f5a6b7 -> d3e4f5a6b7c8, phase E: domain integrity -- fulfilment quantities, donation verification,
+verification-document versioning, audit hash chain, shipment reconciliation,
+expiry rule provenance.
+INFO  [alembic.runtime.migration] Running upgrade d3e4f5a6b7c8 -> e4f5a6b7c8d9, phase F: real-time event outbox (realtime_events)
+INFO  [alembic.runtime.migration] Running upgrade e4f5a6b7c8d9 -> f5a6b7c8d9e0, Phase K: realtime publisher indexes (pending-publish read, retention delete).
+INFO  [alembic.runtime.migration] Running upgrade f5a6b7c8d9e0 -> a6b7c8d9e0f1, Hardening: every stored verification document carries a scan_status.
+INFO  [alembic.runtime.migration] Running upgrade a6b7c8d9e0f1 -> c9d0e1f2a3b4, Hardening: append-only guard triggers on audit_logs.
+INFO  [alembic.runtime.migration] Running upgrade c9d0e1f2a3b4 -> d0e1f2a3b4c5, Hardening: index blood_requests.created_at.
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+[exit 0]
+
+$ alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+e1f2a3b4c5d6 (head)
+[exit 0]
+
+$ alembic check
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+No new upgrade operations detected.
+[exit 0]
+
+$ python -m scripts.migration_doctor
+migration state : AT_HEAD
+database        : postgresql+psycopg://lifelink:***@localhost:5432/lifelink_fresh
+db revision(s)  : ['e1f2a3b4c5d6']
+repository head : e1f2a3b4c5d6
+pending         : 0
+tables          : 39 (LifeLink schema: yes)
+schema vs models: {"matches_current_models": true, "tables_missing": [], "tables_extra": [], "column_differences": {}}
+explanation     : Database is at the repository head.
+[exit 0]
+
+## C. Existing development database (lifelink: seeded, used by the dev server and E2E runs)
+
+$ python -m scripts.migration_doctor
+migration state : AT_HEAD
+database        : postgresql+psycopg://lifelink:***@localhost:5432/lifelink
+db revision(s)  : ['e1f2a3b4c5d6']
+repository head : e1f2a3b4c5d6
+pending         : 0
+tables          : 39 (LifeLink schema: yes)
+schema vs models: {"matches_current_models": true, "tables_missing": [], "tables_extra": [], "column_differences": {}}
+explanation     : Database is at the repository head.
+[exit 0]
+
+$ alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+e1f2a3b4c5d6 (head)
+[exit 0]
+
+$ alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+[exit 0]
+
+$ alembic check
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+No new upgrade operations detected.
+[exit 0]
+
+## D. Existing database two revisions behind head, holding data (lifelink_stale)
+
+$ alembic upgrade c9d0e1f2a3b4
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_initial, initial auth schema
+INFO  [alembic.runtime.migration] Running upgrade 0001_initial -> 0002_phase2, phase 2 domain: profiles, family links, blood requests, emergencies, notifications, donations
+INFO  [alembic.runtime.migration] Running upgrade 0002_phase2 -> 0003_phase3, phase 3: hospital profile/inventory/responses, donor + request geo
+INFO  [alembic.runtime.migration] Running upgrade 0003_phase3 -> 0004_phase5, phase 5: emergency lifecycle states + responder table
+INFO  [alembic.runtime.migration] Running upgrade 0004_phase5 -> 0005_phase6, phase 6: donation certificates
+INFO  [alembic.runtime.migration] Running upgrade 0005_phase6 -> c6cfa33e7862, phase7 admin verification prefs appointments
+INFO  [alembic.runtime.migration] Running upgrade c6cfa33e7862 -> 4a9d4f2ed50b, phase8 graph engine schema transport routes pathway log facility type
+INFO  [alembic.runtime.migration] Running upgrade 4a9d4f2ed50b -> d1e2f3a4b5c6, phase9: family link REJECTED/EXPIRED statuses + expires_at
+INFO  [alembic.runtime.migration] Running upgrade d1e2f3a4b5c6 -> e2f3a4b5c6d7, phase4: donor portal - NOT_NOW response, availability_state, alert prefs
+INFO  [alembic.runtime.migration] Running upgrade e2f3a4b5c6d7 -> f3a4b5c6d7e8, SMS provider integration: sms_notifications audit table
+INFO  [alembic.runtime.migration] Running upgrade f3a4b5c6d7e8 -> a1b2c3d4e5f6, Phase 5 hospital portal: inventory reservations/audit log + hospital
+request ALLOCATED/FULFILLED handling states.
+INFO  [alembic.runtime.migration] Running upgrade a1b2c3d4e5f6 -> b7c8d9e0f1a2, phase10: blood request lifecycle -- cancelled_at / expired_at timestamps
+INFO  [alembic.runtime.migration] Running upgrade b7c8d9e0f1a2 -> ca362e8cb9cc, phase11: independent per-role self-registration counters
+INFO  [alembic.runtime.migration] Running upgrade ca362e8cb9cc -> d4e5f6a7b8c9, phase12: emergency/SOS engine -- deadline, quantity, idempotency,
+target facility, and versioned resource pathways
+INFO  [alembic.runtime.migration] Running upgrade d4e5f6a7b8c9 -> f4a5b6c7d8e9, phase13: family link reason + responded_at
+INFO  [alembic.runtime.migration] Running upgrade f4a5b6c7d8e9 -> a3b4c5d6e7f8, phase19: blood request idempotency key + payload hash
+INFO  [alembic.runtime.migration] Running upgrade a3b4c5d6e7f8 -> c3d4e5f6a7b8, phase24: notifications composite indexes for list/unread queries
+INFO  [alembic.runtime.migration] Running upgrade c3d4e5f6a7b8 -> b8c9d0e1f2a3, phase26: donation idempotency key + payload hash
+INFO  [alembic.runtime.migration] Running upgrade b8c9d0e1f2a3 -> d5e6f7a8b9c0, phase31: emergency deadline_exceeded_at (deadline gets a real consequence)
+INFO  [alembic.runtime.migration] Running upgrade d5e6f7a8b9c0 -> e6f7a8b9c0d1, phase31: at most one PENDING verification request per (user, kind)
+INFO  [alembic.runtime.migration] Running upgrade e6f7a8b9c0d1 -> f7a8b9c0d1e2, phase31: certificate revocation (revoked_at/by/reason)
+INFO  [alembic.runtime.migration] Running upgrade f7a8b9c0d1e2 -> a9b0c1d2e3f4, phase 34: real per-unit blood_units table + state machine, backfilled
+from existing hospital_inventory aggregate counts
+INFO  [alembic.runtime.migration] Running upgrade a9b0c1d2e3f4 -> b1c2d3e4f5a6, phase 35: blood component column, unit identity code, and donation
+traceability link on blood_units
+INFO  [alembic.runtime.migration] Running upgrade b1c2d3e4f5a6 -> c2d3e4f5a6b7, phase D: shipment / chain-of-custody lifecycle
+INFO  [alembic.runtime.migration] Running upgrade c2d3e4f5a6b7 -> d3e4f5a6b7c8, phase E: domain integrity -- fulfilment quantities, donation verification,
+verification-document versioning, audit hash chain, shipment reconciliation,
+expiry rule provenance.
+INFO  [alembic.runtime.migration] Running upgrade d3e4f5a6b7c8 -> e4f5a6b7c8d9, phase F: real-time event outbox (realtime_events)
+INFO  [alembic.runtime.migration] Running upgrade e4f5a6b7c8d9 -> f5a6b7c8d9e0, Phase K: realtime publisher indexes (pending-publish read, retention delete).
+INFO  [alembic.runtime.migration] Running upgrade f5a6b7c8d9e0 -> a6b7c8d9e0f1, Hardening: every stored verification document carries a scan_status.
+INFO  [alembic.runtime.migration] Running upgrade a6b7c8d9e0f1 -> c9d0e1f2a3b4, Hardening: append-only guard triggers on audit_logs.
+[exit 0]
+marker rows before: 1
+
+$ python -m scripts.migration_doctor
+migration state : BEHIND
+database        : postgresql+psycopg://lifelink:***@localhost:5432/lifelink_stale
+db revision(s)  : ['c9d0e1f2a3b4']
+repository head : e1f2a3b4c5d6
+pending         : 2
+tables          : 33 (LifeLink schema: yes)
+schema vs models: {"matches_current_models": false, "tables_missing": ["demand_forecast_runs", "emergency_overrides", "emergency_pathway_legs", "emergency_pathway_steps", "pathway_reservations", "shipment_temperature_readings"], "tables_extra": [], "column_differences": {"emergency_pathways": {"db_only": [], "models_only": ["arrival_at", "assumptions", "backup_rank", "component", "deadline_at", "eta_minutes", "explanation", "feasibility", "invalidated_at", "invalidated_reason", "plan_round", "promoted_at", "recipient_blood_type", "slack_minutes", "strategy", "units_planned", "units_requested", "urgency"]}, "blood_units": {"db_only": [], "models_only": ["status_reason", "thaw_expires_at", "thaw_rule_ref", "thawed_at"]}, "emergencies": {"db_only": [], "models_only": ["city", "component", "deadline_escalated_at", "deadline_warning_sent_at", "geocode_detail", "geocode_source", "latitude", "longitude"]}, "shipment_items": {"db_only": [], "models_only": ["outcome", "outcome_at", "outcome_by_user_id", "outcome_reason", "resulting_unit_id"]}, "shipments": {"db_only": [], "models_only": ["cold_chain_evaluated_at", "cold_chain_status", "temp_max_c", "temp_min_c"]}}}
+explanation     : Known revision 'c9d0e1f2a3b4'; 2 migration(s) pending.
+  (production: take a backup first) alembic upgrade head
+[exit 0]
+
+$ alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade c9d0e1f2a3b4 -> d0e1f2a3b4c5, Hardening: index blood_requests.created_at.
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+[exit 0]
+
+$ alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+e1f2a3b4c5d6 (head)
+[exit 0]
+marker rows after: 1
+
+## E. Reproduce the reported failure: the same database stamped 0007_phase7b
+
+$ alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ERROR [alembic.util.messaging] Can't locate revision identified by '0007_phase7b'
+FAILED: Can't locate revision identified by '0007_phase7b'
+[exit 255]
+
+$ alembic current
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+ERROR [alembic.util.messaging] Can't locate revision identified by '0007_phase7b'
+FAILED: Can't locate revision identified by '0007_phase7b'
+[exit 255]
+
+$ python -m scripts.migration_doctor
+migration state : UNKNOWN_REVISION
+database        : postgresql+psycopg://lifelink:***@localhost:5432/lifelink_stale
+db revision(s)  : ['0007_phase7b']
+repository head : e1f2a3b4c5d6
+tables          : 39 (LifeLink schema: yes)
+schema vs models: {"matches_current_models": true, "tables_missing": [], "tables_extra": [], "column_differences": {}}
+explanation     : The database is stamped '0007_phase7b', which does not exist in this repository's alembic/versions (31 revisions, head 'e1f2a3b4c5d6'). `alembic upgrade head` cannot work out which migrations to apply and fails with "Can't locate revision identified by '0007_phase7b'". In development this almost always means the PostgreSQL volume was created by a different checkout or project.
+  1. Do NOT delete the volume yet. Back it up: docker compose exec db pg_dump -U lifelink -Fc lifelink > lifelink-before-recovery.dump
+  2. The live schema matches the CURRENT models exactly (tables and columns), so the data can be kept: `alembic stamp head` records the correct revision without changing any table. Then run `alembic upgrade head` (a no-op) and `alembic check`.
+  3. DESTRUCTIVE development reset (only if the data is disposable, after step 1): docker compose down && docker volume rm <the stale volume> && docker compose up -d. This permanently deletes every row in that volume.
+[exit 2]
+
+## F. Non-destructive recovery (the doctor verified the schema equals the current models)
+# Real use: back up first -- pg_dump -Fc -U lifelink lifelink > before-recovery.dump
+
+$ alembic stamp --purge head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running stamp_revision  -> e1f2a3b4c5d6
+[exit 0]
+
+$ alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+[exit 0]
+
+$ alembic check
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+No new upgrade operations detected.
+[exit 0]
+
+$ python -m scripts.migration_doctor
+migration state : AT_HEAD
+database        : postgresql+psycopg://lifelink:***@localhost:5432/lifelink_stale
+db revision(s)  : ['e1f2a3b4c5d6']
+repository head : e1f2a3b4c5d6
+pending         : 0
+tables          : 39 (LifeLink schema: yes)
+schema vs models: {"matches_current_models": true, "tables_missing": [], "tables_extra": [], "column_differences": {}}
+explanation     : Database is at the repository head.
+[exit 0]
+marker rows after recovery: 1
+
+## G. Application startup AFTER migrations (on the fresh database of section B)
+$ curl http://127.0.0.1:8111/health/live
+{"status":"alive"}
+$ curl http://127.0.0.1:8111/health/ready
+{"status":"ready","required":{"db":true,"redis":true},"optional":{"neo4j":{"configured":false},"storage":{"backend":"local"},"email":{"authenticated":false,"provider":"mailpit"}},"dependency_states":{"db":"AVAILABLE","redis":"AVAILABLE","neo4j":"NOT_CONFIGURED","storage":"AVAILABLE","email":"NOT_CONFIGURED"}}

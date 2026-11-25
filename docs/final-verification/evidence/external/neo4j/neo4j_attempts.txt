@@ -1,0 +1,26 @@
+# Neo4j real-server attempts -- 2026-10-13T08:09:24Z
+$ docker pull neo4j:5.24   (image pinned in docker-compose.yml, profile 'graph')
+Error response from daemon: failed to resolve reference "docker.io/library/neo4j:5.24": failed to do request: Head "https://registry-1.docker.io/v2/library/neo4j/manifests/5.24": Forbidden
+$ docker pull public.ecr.aws/docker/library/neo4j:5.24
+Error response from daemon: failed to resolve reference "public.ecr.aws/docker/library/neo4j:5.24": failed to do request: Head "https://public.ecr.aws/v2/docker/library/neo4j/manifests/5.24": Forbidden
+$ docker pull ghcr.io/neo4j/neo4j:5.24
+Error response from daemon: failed to resolve reference "ghcr.io/neo4j/neo4j:5.24": failed to do request: Head "https://ghcr.io/v2/neo4j/neo4j/manifests/5.24": Forbidden
+$ docker pull quay.io/neo4j/neo4j:5.24
+Error response from daemon: failed to resolve reference "quay.io/neo4j/neo4j:5.24": failed to do request: Head "https://quay.io/v2/neo4j/neo4j/manifests/5.24": Forbidden
+
+# server distributions
+https://dist.neo4j.org/neo4j-community-5.24.0-unix.tar.gz                                            HTTP 000
+https://neo4j.com/artifact.php?name=neo4j-community-5.24.0-unix.tar.gz                               HTTP 000
+https://debian.neo4j.com/neotechnology.gpg.key                                                       HTTP 000
+https://repo1.maven.org/maven2/org/neo4j/assembly/neo4j-community/5.24.0/                            HTTP 000
+https://maven-central.storage-download.googleapis.com/maven2/org/neo4j/assembly/neo4j-community/5.24.0/ HTTP 000
+https://github.com/neo4j/neo4j/releases/download/5.24.0/neo4j-community-5.24.0-unix.tar.gz           HTTP 404
+
+# building from source
+$ git ls-remote https://github.com/neo4j/neo4j.git (source is reachable)
+d8920e290bf19445c0b41a1ee2658f31793198e6	refs/tags/5.24.0
+but a build needs Apache Maven + every dependency from Maven Central (repo1.maven.org / repo.maven.apache.org / mirrors): all HTTP 000 above -> a server cannot be built.
+
+# package registries reachable from here carry no Neo4j server (PyPI: neo4j-server, neo4j-community, neo4j-embedded, neo4j-standalone -> 404; npm search 'neo4j server' -> drivers/libraries only)
+
+=> Neo4j = BLOCKED -- REAL SERVER UNAVAILABLE (no channel that delivers a Neo4j server is allowed by this environment's egress policy).

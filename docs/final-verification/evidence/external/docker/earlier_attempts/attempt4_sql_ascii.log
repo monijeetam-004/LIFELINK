@@ -1,0 +1,77 @@
+
+=== [2026-10-13T08:26:26Z] 0. fresh source copy (no .env, .venv, node_modules, dist, caches, .git)
+
+=== [2026-10-13T08:26:26Z] 1. existing volumes before clean-up (destroying only if they belong to this throwaway project)
+9b3fb93f70db5fcf41e00ee44cab8a4b01503ec155665e2a9a017f02a51fb178
+lifelink_clamavdb
+lifelink_miniodata
+lifelink_pgdata
+(end of list)
+
+=== [2026-10-13T08:26:26Z] 2. docker compose down -v (project 'lifelink'; no pre-existing volumes, so nothing of value is deleted)
+ Volume lifelink_clamavdb Removed 
+ Volume lifelink_pgdata Removed 
+ Volume lifelink_miniodata Removed 
+
+=== [2026-10-13T08:26:26Z] 3. .env from .env.example; only SECRET_KEY generated
+ENVIRONMENT=development
+SECRET_KEY=***generated***
+DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink
+TEST_DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_test
+REDIS_URL=redis://localhost:6379/0
+RQ_SYNC=false
+SESSION_COOKIE_NAME=lifelink_session
+SESSION_COOKIE_SECURE=false          # set true in production (HTTPS)
+SESSION_COOKIE_SAMESITE=lax
+SESSION_COOKIE_DOMAIN=
+SESSION_TTL_SECONDS=1209600          # 14 days
+CORS_ORIGINS=http://localhost:5173
+FRONTEND_BASE_URL=http://localhost:5173
+COMPOSE_PROFILES=mailpit
+MAIL_PORT=1025
+MAIL_STARTTLS=false
+MAIL_USE_SSL=false
+MAIL_FROM=no-reply@lifelink.local
+MAIL_USERNAME=
+MAIL_PASSWORD=
+
+=== [2026-10-13T08:26:26Z] 4. compose config
+mailpit
+minio
+redis
+clamav
+createbuckets
+db
+api
+frontend
+worker
+deadline-monitor
+
+=== [2026-10-13T08:26:27Z] 5. build images
+#28 naming to docker.io/library/lifelink-frontend:latest done
+#27 naming to docker.io/library/lifelink-worker:latest done
+#29 naming to docker.io/library/lifelink-deadline-monitor:latest done
+#30 naming to docker.io/library/lifelink-api:latest done
+ Image lifelink-frontend Built 
+ Image lifelink-api Built 
+ Image lifelink-deadline-monitor Built 
+ Image lifelink-worker Built 
+
+=== [2026-10-13T08:26:27Z] 6. up -d (health-gated start order from docker-compose.yml)
+ Container lifelink-redis-1 Waiting 
+ Container lifelink-api-1 Waiting 
+ Container lifelink-mailpit-1 Waiting 
+ Container lifelink-api-1 Waiting 
+ Container lifelink-db-1 Waiting 
+ Container lifelink-redis-1 Waiting 
+ Container lifelink-db-1 Healthy 
+ Container lifelink-redis-1 Healthy 
+ Container lifelink-mailpit-1 Healthy 
+ Container lifelink-db-1 Healthy 
+ Container lifelink-redis-1 Healthy 
+ Container lifelink-api-1 Error dependency api failed to start
+ Container lifelink-api-1 Error dependency api failed to start
+ Container lifelink-api-1 Error dependency api failed to start
+dependency failed to start: container lifelink-api-1 exited (6)
+
+=== [2026-10-13T08:26:38Z] 7. wait for health

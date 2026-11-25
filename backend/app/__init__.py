@@ -1,0 +1,1 @@
+"""LifeLink backend application package."""

@@ -1,0 +1,9 @@
+ Image postgres:16 Interrupted 
+Error response from daemon: failed to resolve reference "docker.io/axllent/mailpit:v1.21.8": failed to do request: Head "https://registry-1.docker.io/v2/axllent/mailpit/manifests/v1.21.8": Forbidden
+Error response from daemon: No such image: minio/mc:RELEASE.2025-04-16T18-13-26Z
+Error response from daemon: No such image: postgres:16
+Error response from daemon: No such image: redis:7
+Error response from daemon: No such image: clamav/clamav:1.4
+Error response from daemon: failed to resolve reference "docker.io/library/postgres:16": failed to do request: Head "https://registry-1.docker.io/v2/library/postgres/manifests/16": Forbidden
+Error response from daemon: failed to resolve reference "docker.io/library/redis:7": failed to do request: Head "https://registry-1.docker.io/v2/library/redis/manifests/7": Forbidden
+Error response from daemon: failed to resolve reference "docker.io/library/neo4j:5.24": failed to do request: Head "https://registry-1.docker.io/v2/library/neo4j/manifests/5.24": Forbidden

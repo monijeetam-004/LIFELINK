@@ -1,0 +1,94 @@
+=== 2026-10-13T06:16:23Z fresh lifelink_e2e
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+Seeded 5 E2E users.
+Demo accounts (password: 'LifeLink-Demo-2026!'): {'patient': 'demo.patient@lifelink-demo.example.com', 'family': 'demo.f
+Graph resync: ok=False detail=Neo4j is not configured
+✓ built in 10.20s
+=== 2026-10-13T06:20:10Z playwright
+  ✓   60 [chromium] › e2e/phase22_responsive_mobile_nav.spec.ts:87:3 › Phase 22 E2E: responsive mobile navigation + dialog accessibility › (C) Family: a mobile viewport gets a working hamburger menu instead of no navigation at all (2.4s)
+  ✓   61 [chromium] › e2e/phase22_responsive_mobile_nav.spec.ts:104:3 › Phase 22 E2E: responsive mobile navigation + dialog accessibility › (D) the shared Modal has real dialog semantics, moves focus in, and Escape closes it (2.8s)
+  ✓   62 [chromium] › e2e/phase23_security_hardening.spec.ts:49:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (A) the session cookie is HttpOnly -- inaccessible to page JavaScript (2.2s)
+  ✓   63 [chromium] › e2e/phase23_security_hardening.spec.ts:61:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (B) an unauthenticated visit to a protected dashboard redirects to /login, never flashing protected content (739ms)
+  ✓   64 [chromium] › e2e/phase23_security_hardening.spec.ts:70:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (C) a role mismatch shows Access Denied client-side, and the underlying admin API genuinely 403s (not just hidden UI) (2.3s)
+  ✓   65 [chromium] › e2e/phase23_security_hardening.spec.ts:83:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (D) a patient's browser session cannot view another patient's blood request (IDOR denied with a clean 404) (5.5s)
+  ✓   66 [chromium] › e2e/phase23_security_hardening.spec.ts:122:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (E) certificate download requires real ownership or a valid signed token, not merely being logged in (2.6s)
+  ✓   67 [chromium] › e2e/phase23_security_hardening.spec.ts:155:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (F) a state-changing request through the real session is rejected when it carries a forged cross-site Origin, and accepted with the real one (3.2s)
+  ✓   68 [chromium] › e2e/phase23_security_hardening.spec.ts:173:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (G) signing out through the real account menu immediately invalidates the session (2.7s)
+  ✓   69 [chromium] › e2e/phase23_security_hardening.spec.ts:187:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (H) changing the password through the real session invalidates a session cookie captured beforehand (2.8s)
+  ✓   70 [chromium] › e2e/phase23_security_hardening.spec.ts:260:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (I) rapid real emergency-creation requests through the browser session eventually trip the Phase 23 rate limit (8.5s)
+  ✓   71 [chromium] › e2e/phase23_security_hardening.spec.ts:280:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (J) mass assignment through the real session cannot flip a donor's identity_verified flag or role (1.9s)
+  ✓   72 [chromium] › e2e/phase23_security_hardening.spec.ts:295:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (K) a logged-out browser cannot fetch certificate details at all (752ms)
+  ✓   73 [chromium] › e2e/phase23_security_hardening.spec.ts:306:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (L) a donor's real browser session cannot log a donation against a request it never accepted (Phase 23 fix) (2.8s)
+  ✓   74 [chromium] › e2e/phase25_error_pages_and_500.spec.ts:21:3 › Phase 25 E2E: catch-all 404 and real-500 error UX › navigating to an unknown URL renders the real 404 page, not a blank screen or crash (2.6s)
+  ✓   75 [chromium] › e2e/phase25_error_pages_and_500.spec.ts:35:3 › Phase 25 E2E: catch-all 404 and real-500 error UX › an unauthenticated visit to an unknown URL also renders 404, not a login loop or crash (885ms)
+  ✓   76 [chromium] › e2e/phase25_error_pages_and_500.spec.ts:42:3 › Phase 25 E2E: catch-all 404 and real-500 error UX › a genuine HTTP 500 response body (not a network abort) shows an honest error, distinct from the offline case (10.4s)
+  ✓   77 [chromium] › e2e/phase26_accessibility.spec.ts:90:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › donor Ready Console (fixed select-name) (3.8s)
+  ✓   78 [chromium] › e2e/phase26_accessibility.spec.ts:98:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › admin Donors and User Management (fixed select-name) (5.5s)
+  ✓   79 [chromium] › e2e/phase26_accessibility.spec.ts:110:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › donor dashboard (fixed image-alt) (3.7s)
+  ✓   80 [chromium] › e2e/phase26_accessibility.spec.ts:118:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › shared Notifications/Help/Legal pages (fixed link-name, link-in-text-block) (4.9s)
+  ✓   81 [chromium] › e2e/phase26_accessibility.spec.ts:128:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › family Linked Patients (fixed link-name) (3.2s)
+  ✓   82 [chromium] › e2e/phase26_accessibility.spec.ts:136:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › admin Analytics (fixed link-in-text-block) (3.7s)
+  ✓   83 [chromium] › e2e/phase26_accessibility.spec.ts:144:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › hospital dashboard (fixed scrollable-region-focusable) (4.8s)
+  ✓   84 [chromium] › e2e/phase26_donation_idempotency.spec.ts:24:3 › Phase 26 E2E: donation-logging idempotency through the real UI › rapid double-click on Log donation creates exactly one donation, not two (3.6s)
+  ✘   85 [chromium] › e2e/phase26_donation_idempotency.spec.ts:84:3 › Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation (4.5s)
+  ✓   86 [chromium] › e2e/phase26_donation_idempotency.spec.ts:137:3 › Phase 26 E2E: donation-logging idempotency through the real UI › a genuine server error while logging a donation shows an honest error, not a false success (3.8s)
+  ✓   87 [chromium] › e2e/phase26_responsive_overflow.spec.ts:37:3 › Phase 26 E2E: no page-level horizontal overflow › admin transport-routes table (the reproduced bug) does not scroll the page at 375/390/414px (4.8s)
+  ✓   88 [chromium] › e2e/phase26_responsive_overflow.spec.ts:50:3 › Phase 26 E2E: no page-level horizontal overflow › donor milestones/history and patient history tables do not scroll the page at 320/1440px (6.2s)
+  ✓   89 [chromium] › e2e/phase27_accessibility.spec.ts:92:3 › Phase 27 accessibility regression › Leaflet donor-map markers on /patient/find-donor have no aria-command-name violations (5.3s)
+  ✓   90 [chromium] › e2e/phase27_accessibility.spec.ts:106:3 › Phase 27 accessibility regression › Hospital donor-directory map has no aria-command-name violations (5.7s)
+  ✓   91 [chromium] › e2e/phase27_accessibility.spec.ts:120:3 › Phase 27 accessibility regression › previously-flagged donor/patient/verification/simulation routes are clean (decorative watermark excepted) (15.8s)
+  ✓   92 [chromium] › e2e/phase27_accessibility.spec.ts:141:3 › Phase 27 accessibility regression › the one remaining color-contrast node is the disclosed decorative watermark, not a regression elsewhere (4.2s)
+  ✓   93 [chromium] › e2e/phase31_1_domain_signals.spec.ts:27:3 › Phase 31.1 E2E: certificate revocation › admin can revoke a certificate through the real UI, and public verification reflects it honestly (5.3s)
+  ✓   94 [chromium] › e2e/phase31_1_domain_signals.spec.ts:101:3 › Phase 31.1 E2E: emergency deadline-exceeded banner › a real past-deadline emergency shows the deadline banner alongside (not instead of) its real status (3.9s)
+  ✓   95 [chromium] › e2e/phase31_1_domain_signals.spec.ts:165:3 › Phase 31.1 E2E: accessibility of the new certificate/emergency UI › public verify page (valid certificate) has no new axe violations (2.0s)
+  ✓   96 [chromium] › e2e/phase31_1_domain_signals.spec.ts:185:3 › Phase 31.1 E2E: accessibility of the new certificate/emergency UI › donor milestones page (with a revoked certificate present) has no new axe violations (4.8s)
+  ✓   97 [chromium] › e2e/phase31_1_domain_signals.spec.ts:219:3 › Phase 31.1 E2E: accessibility of the new certificate/emergency UI › admin certificate registry, with the revoke dialog open, has no new axe violations (3.8s)
+  ✓   98 [chromium] › e2e/phase31_1_domain_signals.spec.ts:242:3 › Phase 31.1 E2E: responsive -- new Status/Action columns don't cause page overflow › admin certificate registry (new Status + Action columns) at every required breakpoint (8.4s)
+  ✓   99 [chromium] › e2e/qa_evidence.spec.ts:56:1 › QA auth: register, blocked until verified, verify by email link, sign in (8.0s)
+  ✓  100 [chromium] › e2e/qa_evidence.spec.ts:158:1 › QA donor: log a donation, hospital verifies, certificate issued and downloadable (9.9s)
+  ✓  101 [chromium] › e2e/qa_evidence.spec.ts:239:1 › QA documents: clean upload is scanned and reviewable; infected, wrong-type and oversized are refused (9.8s)
+  ✓  102 [chromium] › e2e/qa_evidence.spec.ts:308:1 › QA hospital: inventory by component, add/reserve/release through the UI (6.3s)
+  ✓  103 [chromium] › e2e/qa_evidence.spec.ts:362:1 › QA requests: patient request, partial then full fulfilment, live updates (10.9s)
+  ✓  104 [chromium] › e2e/qa_evidence.spec.ts:437:1 › QA shipments: create, dispatch, delay, arrive, receive; failure needs reconciliation (7.6s)
+  ✓  105 [chromium] › e2e/qa_evidence.spec.ts:513:1 › QA admin: overview, users, facilities, shipments, analytics, audit chain (10.3s)
+  ✓  106 [chromium] › e2e/qa_evidence.spec.ts:542:1 › QA realtime: losing the API shows reconnecting, recovery is live again (2.6s)
+  ✓  107 [chromium] › e2e/qa_evidence.spec.ts:564:1 › QA security: wrong role, anonymous and expired sessions (3.6s)
+
+
+  1) [chromium] › e2e/phase26_donation_idempotency.spec.ts:84:3 › Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m1[39m
+    Received: [31m4[39m
+
+      131 |     );
+      132 |     const after = await donationRowCount(page);
+    > 133 |     expect(after).toBe(before + 1);
+          |                   ^
+      134 |     await logout(page);
+      135 |   });
+      136 |
+        at /home/claude/lifelink/LIFELINK/frontend/e2e/phase26_donation_idempotency.spec.ts:133:19
+
+    Error Context: test-results/phase26_donation_idempoten-9084a--not-duplicate-the-donation-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/phase26_donation_idempoten-9084a--not-duplicate-the-donation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/phase26_donation_idempoten-9084a--not-duplicate-the-donation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/phase26_donation_idempotency.spec.ts:84:3 › Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation 
+  1 skipped
+  105 passed (9.4m)
+=== 2026-10-13T06:29:36Z invariants after E2E
+[OK ] #42 thaw clocks only on plasma, and never before the thaw
+[OK ] #43 a decided shipment item records when, and a LOST unit has no destination unit
+[OK ] #44 invalidated / superseded pathways record when and why
+[OK ] #45 quarantined, discarded and expired units hold no reservation
+[OK ] audit chain: checked=326 unsealed=0 head=326
+=== done 2026-10-13T06:29:37Z

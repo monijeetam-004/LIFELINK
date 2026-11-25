@@ -1,0 +1,61 @@
+sessions: {'ADMIN': 1, 'DONOR': 40, 'HOSPITAL': 40, 'PATIENT': 40}
+SSE streams open: 200/200 in 13.7s; server Redis pub/sub connections: 2; server RSS 470 MB
+| C | requests | throughput (req/s) | p50 ms | p95 ms | p99 ms | non-2xx | server CPU % (of 1 core) | server RSS MB |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 536 | 26.8 | 22.1 | 116.9 | 245.2 | 0  | 86 | 471 |
+| 8 | 504 | 24.7 | 259.5 | 740.9 | 1189.5 | 0  | 99 | 476 |
+| 32 | 844 | 40.6 | 746.6 | 1542.2 | 2205.6 | 0  | 137 | 489 |
+| 64 | 897 | 42.1 | 1248.8 | 3061.3 | 4279.9 | 0  | 141 | 500 |
+
+per endpoint at C=1: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 23 | 74.5 | 95.1 | 116.8
+  GET /donors/me/requests | 95 | 72.7 | 241.2 | 315.1
+  GET /admin/analytics/overview | 29 | 40.3 | 60.2 | 81.7
+  GET /emergencies/active | 18 | 33.8 | 44.8 | 56.3
+  GET /map/data | 24 | 27.3 | 50.3 | 196.4
+  GET /blood-requests | 65 | 23.4 | 34.2 | 173.2
+  GET /hospitals/me/requests | 64 | 22.8 | 43.1 | 159.4
+  GET /admin/blood-requests | 28 | 11.9 | 16.2 | 36.5
+  GET /notifications | 55 | 11.1 | 19.0 | 26.9
+  GET /notifications/unread-count | 114 | 9.3 | 16.4 | 92.7
+  POST /notifications/read-all | 21 | 8.7 | 11.9 | 13.3
+
+per endpoint at C=8: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 24 | 1026.9 | 1230.4 | 1490.7
+  GET /donors/me/requests | 85 | 493.4 | 730.8 | 860.8
+  GET /hospitals/me/requests | 49 | 333.9 | 641.0 | 741.6
+  GET /admin/analytics/overview | 31 | 285.3 | 585.5 | 653.0
+  GET /blood-requests | 61 | 279.1 | 481.2 | 532.1
+  GET /map/data | 28 | 269.2 | 524.1 | 679.7
+  GET /emergencies/active | 28 | 257.3 | 540.5 | 620.3
+  POST /notifications/read-all | 27 | 217.7 | 427.5 | 473.1
+  GET /notifications | 50 | 146.7 | 389.7 | 442.0
+  GET /notifications/unread-count | 89 | 139.6 | 385.0 | 624.7
+  GET /admin/blood-requests | 32 | 136.3 | 381.7 | 503.8
+
+per endpoint at C=32: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 40 | 1858.2 | 2850.8 | 3226.4
+  GET /donors/me/requests | 133 | 997.1 | 1686.6 | 2182.4
+  GET /admin/analytics/overview | 43 | 854.5 | 1297.4 | 1578.0
+  GET /hospitals/me/requests | 90 | 857.8 | 1251.7 | 1722.8
+  GET /map/data | 44 | 793.9 | 1119.5 | 1299.5
+  GET /emergencies/active | 44 | 773.1 | 1134.2 | 1394.4
+  GET /blood-requests | 82 | 710.7 | 1052.7 | 1214.1
+  GET /admin/blood-requests | 51 | 635.0 | 982.9 | 1118.6
+  POST /notifications/read-all | 44 | 599.7 | 1116.8 | 1277.7
+  GET /notifications | 97 | 529.8 | 1020.5 | 1179.1
+  GET /notifications/unread-count | 176 | 520.9 | 1056.1 | 1254.4
+
+per endpoint at C=64: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 40 | 2839.8 | 4631.8 | 7152.0
+  GET /donors/me/requests | 163 | 1604.9 | 3097.6 | 4789.6
+  GET /hospitals/me/requests | 97 | 1334.1 | 2730.5 | 3736.0
+  GET /admin/analytics/overview | 45 | 1325.1 | 2119.7 | 4278.3
+  GET /emergencies/active | 41 | 1256.6 | 2217.6 | 3507.1
+  POST /notifications/read-all | 42 | 1267.4 | 2492.2 | 3065.4
+  GET /map/data | 49 | 1230.9 | 2735.4 | 4494.3
+  GET /admin/blood-requests | 60 | 1234.2 | 2560.3 | 3472.1
+  GET /blood-requests | 82 | 1178.3 | 2557.8 | 4494.8
+  GET /notifications/unread-count | 187 | 1024.8 | 2602.8 | 4376.5
+  GET /notifications | 91 | 1001.1 | 2315.0 | 2832.0
+after run: server Redis pub/sub connections: 2

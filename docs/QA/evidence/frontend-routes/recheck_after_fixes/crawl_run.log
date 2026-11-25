@@ -1,0 +1,13 @@
+/mathematical-model public 375: overflow=0 errors=0 failed=0
+/mathematical-model public 768: overflow=0 errors=0 failed=0
+/mathematical-model public 1280: overflow=0 errors=0 failed=0 axe=0
+/graph-engine public 375: overflow=0 errors=0 failed=0
+/graph-engine public 768: overflow=0 errors=0 failed=0
+/graph-engine public 1280: overflow=0 errors=0 failed=0 axe=0
+/simulation public 375: overflow=0 errors=0 failed=0
+/simulation public 768: overflow=0 errors=0 failed=0
+/simulation public 1280: overflow=0 errors=0 failed=0 axe=0
+/research-mode public 375: overflow=0 errors=0 failed=0
+/research-mode public 768: overflow=0 errors=0 failed=0
+/research-mode public 1280: overflow=0 errors=0 failed=0 axe=0
+done: 12 page visits, 0 authorization checks

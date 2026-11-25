@@ -1,0 +1,8 @@
+# API route coverage from the final backend run (QA_ROUTE_LOG), 2026-10-07: 1270 tests, 0 failed
+operations in OpenAPI: 141
+exercised: 141
+with a 2xx response: 140
+with a 4xx (negative) response: 136
+not exercised: none
+exercised but never 2xx: [('POST', '/admin/graph/resync')]
+note: POST /admin/graph/resync returns an honest 503 without Neo4j; its success path is BLOCKED here (no Neo4j).

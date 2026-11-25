@@ -1,0 +1,654 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 14%]
+........................................................................ [ 19%]
+....F................................F..FFF............................. [ 24%]
+.................................................................s...... [ 29%]
+........................................................................ [ 34%]
+........................................................................ [ 39%]
+........................................................................ [ 44%]
+........................................................................ [ 49%]
+..................................FF.................................... [ 54%]
+........................................................................ [ 59%]
+........................................................................ [ 64%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 79%]
+........................................................................ [ 84%]
+..............................................F.....F................... [ 89%]
+..............................................................F......... [ 94%]
+..............................................................F......... [ 99%]
+...........                                                              [100%]
+=================================== FAILURES ===================================
+___________ test_create_appointment_rejects_date_before_eligibility ____________
+
+    def test_create_appointment_rejects_date_before_eligibility() -> None:
+        donor, _ = _donor()
+        recent = date.today() - timedelta(days=10)  # 56-day interval not yet elapsed
+        donor.put("/donors/me", json={"last_donation_date": recent.isoformat()})
+    
+        too_soon = TOMORROW  # in the future, but before eligible_on (today + 46 days)
+        r = donor.post(
+            "/donors/me/appointments",
+            json={"hospital_name": "Walk-in Clinic", "preferred_date": too_soon},
+        )
+        assert r.status_code == 400, r.text
+        assert "eligib" in r.json()["detail"].lower()
+    
+        ok_date = (recent + timedelta(days=56)).isoformat()
+        r = donor.post(
+            "/donors/me/appointments",
+            json={"hospital_name": "Walk-in Clinic", "preferred_date": ok_date},
+        )
+>       assert r.status_code == 201, r.text
+E       AssertionError: {"detail":"You are not eligible to donate until 2027-02-18 based on your last donation date"}
+E       assert 400 == 201
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+
+tests/test_donor_appointments.py:122: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:02:02,483 INFO     [-] lifelink.access: POST /auth/login -> 200 (151.8ms)
+2026-10-31 11:02:02,485 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:02:02,504 INFO     [-] lifelink.access: PUT /donors/me -> 200 (17.0ms)
+2026-10-31 11:02:02,507 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:02:02,518 INFO     [-] lifelink.access: POST /donors/me/appointments -> 400 (9.0ms)
+2026-10-31 11:02:02,520 INFO     [-] httpx: HTTP Request: POST http://testserver/donors/me/appointments "HTTP/1.1 400 Bad Request"
+2026-10-31 11:02:02,531 INFO     [-] lifelink.access: POST /donors/me/appointments -> 400 (8.7ms)
+2026-10-31 11:02:02,532 INFO     [-] httpx: HTTP Request: POST http://testserver/donors/me/appointments "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (151.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (17.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /donors/me/appointments -> 400 (9.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/donors/me/appointments "HTTP/1.1 400 Bad Request"
+INFO     lifelink.access:request_metrics.py:98 POST /donors/me/appointments -> 400 (8.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/donors/me/appointments "HTTP/1.1 400 Bad Request"
+___________________ test_emergency_lifecycle_and_acknowledge ___________________
+
+    def test_emergency_lifecycle_and_acknowledge() -> None:
+        patient, _ = auth_client("PATIENT")
+        donor, _ = auth_client("DONOR")
+        donor.put("/donors/me", json={"blood_type": "O_NEG", "city": "Metro"})
+    
+        r = patient.post(
+            "/emergencies",
+            json={"blood_type": "A_POS", "location_text": "Metro ER", "note": "car accident"},
+        )
+        assert r.status_code == 201, r.text
+        eid = r.json()["id"]
+        assert r.json()["status"] == "ACTIVE"
+    
+        # matching available donor was notified
+>       assert any(n["type"] == "emergency.new" for n in donor.get("/notifications").json())
+E       assert False
+E        +  where False = any(<generator object test_emergency_lifecycle_and_acknowledge.<locals>.<genexpr> at 0x7f46a73f9490>)
+
+tests/test_emergencies_and_notifications.py:20: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:03:12,679 INFO     [-] lifelink.access: POST /auth/login -> 200 (168.1ms)
+2026-10-31 11:03:12,681 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:12,975 INFO     [-] lifelink.access: POST /auth/login -> 200 (141.1ms)
+2026-10-31 11:03:12,978 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:12,993 INFO     [-] lifelink.access: PUT /donors/me -> 200 (13.5ms)
+2026-10-31 11:03:12,996 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:03:13,033 INFO     [-] lifelink.access: POST /emergencies -> 201 (35.2ms)
+2026-10-31 11:03:13,035 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+2026-10-31 11:03:13,049 INFO     [-] lifelink.access: GET /notifications -> 200 (8.6ms)
+2026-10-31 11:03:13,052 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (168.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (141.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (13.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 201 (35.2ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (8.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+___________________ test_notifications_read_and_unread_count ___________________
+
+    def test_notifications_read_and_unread_count() -> None:
+        patient, pat_email = auth_client("PATIENT")
+        donor, _ = auth_client("DONOR")
+        donor.put("/donors/me", json={"blood_type": "O_NEG"})
+        patient.post("/blood-requests", json={"blood_type": "A_POS"})
+    
+>       assert donor.get("/notifications/unread-count").json()["unread"] == 1
+E       assert 0 == 1
+
+tests/test_emergencies_and_notifications.py:57: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:03:17,239 INFO     [-] lifelink.access: POST /auth/login -> 200 (155.6ms)
+2026-10-31 11:03:17,241 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:17,538 INFO     [-] lifelink.access: POST /auth/login -> 200 (155.2ms)
+2026-10-31 11:03:17,541 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:17,555 INFO     [-] lifelink.access: PUT /donors/me -> 200 (13.3ms)
+2026-10-31 11:03:17,558 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:03:17,587 INFO     [-] lifelink.access: POST /blood-requests -> 201 (26.8ms)
+2026-10-31 11:03:17,591 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+2026-10-31 11:03:17,602 INFO     [-] lifelink.access: GET /notifications/unread-count -> 200 (8.0ms)
+2026-10-31 11:03:17,604 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications/unread-count "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (155.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (155.2ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (13.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (26.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications/unread-count -> 200 (8.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications/unread-count "HTTP/1.1 200 OK"
+_________________ test_cannot_read_someone_elses_notification __________________
+
+    def test_cannot_read_someone_elses_notification() -> None:
+        a, _ = auth_client("PATIENT")
+        donor, _ = auth_client("DONOR")
+        donor.put("/donors/me", json={"blood_type": "O_NEG"})
+        a.post("/blood-requests", json={"blood_type": "A_POS"})
+>       nid = donor.get("/notifications").json()[0]["id"]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/test_emergencies_and_notifications.py:76: IndexError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:03:18,880 INFO     [-] lifelink.access: POST /auth/login -> 200 (163.3ms)
+2026-10-31 11:03:18,883 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:19,184 INFO     [-] lifelink.access: POST /auth/login -> 200 (155.6ms)
+2026-10-31 11:03:19,186 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:19,206 INFO     [-] lifelink.access: PUT /donors/me -> 200 (17.9ms)
+2026-10-31 11:03:19,210 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:03:19,245 INFO     [-] lifelink.access: POST /blood-requests -> 201 (32.9ms)
+2026-10-31 11:03:19,249 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+2026-10-31 11:03:19,257 INFO     [-] lifelink.access: GET /notifications -> 200 (6.5ms)
+2026-10-31 11:03:19,260 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (163.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (155.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (17.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (32.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (6.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+_____________________ test_full_sos_lifecycle_to_resolved ______________________
+
+    def test_full_sos_lifecycle_to_resolved() -> None:
+        patient, _ = auth_client("PATIENT")
+        donor, _ = _ready_donor("O_NEG")
+    
+        r = patient.post("/emergencies", json={"blood_type": "A_POS", "location_text": "Metro ER"})
+        assert r.status_code == 201
+        eid = r.json()["id"]
+        assert r.json()["status"] == "ACTIVE"
+>       assert any(n["type"] == "emergency.new" for n in donor.get("/notifications").json())
+E       assert False
+E        +  where False = any(<generator object test_full_sos_lifecycle_to_resolved.<locals>.<genexpr> at 0x7f46a7252f60>)
+
+tests/test_emergency_network.py:49: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:03:20,377 INFO     [-] lifelink.access: POST /auth/login -> 200 (153.7ms)
+2026-10-31 11:03:20,379 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:20,685 INFO     [-] lifelink.access: POST /auth/login -> 200 (156.3ms)
+2026-10-31 11:03:20,688 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:03:20,707 INFO     [-] lifelink.access: PUT /donors/me -> 200 (16.6ms)
+2026-10-31 11:03:20,710 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:03:20,758 INFO     [-] lifelink.access: POST /emergencies -> 201 (46.3ms)
+2026-10-31 11:03:20,763 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+2026-10-31 11:03:20,773 INFO     [-] lifelink.access: GET /notifications -> 200 (7.6ms)
+2026-10-31 11:03:20,776 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (153.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (156.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (16.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 201 (46.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (7.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+_______ test_emergency_idempotency_replay_does_not_double_notify_donors ________
+
+    def test_emergency_idempotency_replay_does_not_double_notify_donors() -> None:
+        donor, _ = auth_client("DONOR")
+        donor.put("/donors/me", json={"blood_type": "O_NEG"})
+        patient, _ = auth_client("PATIENT")
+    
+        key = f"sos-{uuid.uuid4().hex}"
+        first = patient.post("/emergencies", json={"blood_type": "O_NEG", "idempotency_key": key})
+        assert first.status_code == 201, first.text
+    
+        # A genuine client/network retry: same actor, same key, sent again.
+        replay = patient.post("/emergencies", json={"blood_type": "O_NEG", "idempotency_key": key})
+        assert replay.status_code == 200, replay.text
+        assert replay.json()["id"] == first.json()["id"]
+    
+        matching = [n for n in donor.get("/notifications").json() if n["type"] == "emergency.new"]
+>       assert len(matching) == 1, "replay must not re-run the donor fan-out"
+E       AssertionError: replay must not re-run the donor fan-out
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/test_phase18_notifications.py:168: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:14:35,245 INFO     [-] lifelink.access: POST /auth/login -> 200 (149.5ms)
+2026-10-31 11:14:35,248 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:14:35,265 INFO     [-] lifelink.access: PUT /donors/me -> 200 (14.7ms)
+2026-10-31 11:14:35,267 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:14:35,617 INFO     [-] lifelink.access: POST /auth/login -> 200 (182.1ms)
+2026-10-31 11:14:35,619 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:14:35,670 INFO     [-] lifelink.access: POST /emergencies -> 201 (47.8ms)
+2026-10-31 11:14:35,675 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+2026-10-31 11:14:35,688 INFO     [-] lifelink.access: POST /emergencies -> 200 (10.3ms)
+2026-10-31 11:14:35,691 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 200 OK"
+2026-10-31 11:14:35,700 INFO     [-] lifelink.access: GET /notifications -> 200 (6.9ms)
+2026-10-31 11:14:35,703 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (149.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (14.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (182.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 201 (47.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 200 (10.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (6.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+__________ test_different_idempotency_keys_do_each_notify_donors_once __________
+
+    def test_different_idempotency_keys_do_each_notify_donors_once() -> None:
+        """The flip side of the above: this isn't a case of emergencies
+        silently deduping by blood type or recipient -- two genuinely distinct
+        SOS attempts (different keys) each get their own, real notification."""
+        donor, _ = auth_client("DONOR")
+        donor.put("/donors/me", json={"blood_type": "O_NEG"})
+        patient, _ = auth_client("PATIENT")
+    
+        patient.post("/emergencies", json={"blood_type": "O_NEG", "idempotency_key": "key-a"})
+        patient.post("/emergencies", json={"blood_type": "O_NEG", "idempotency_key": "key-b"})
+    
+        matching = [n for n in donor.get("/notifications").json() if n["type"] == "emergency.new"]
+>       assert len(matching) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests/test_phase18_notifications.py:183: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:14:36,929 INFO     [-] lifelink.access: POST /auth/login -> 200 (167.5ms)
+2026-10-31 11:14:36,931 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:14:36,949 INFO     [-] lifelink.access: PUT /donors/me -> 200 (15.6ms)
+2026-10-31 11:14:36,951 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:14:37,233 INFO     [-] lifelink.access: POST /auth/login -> 200 (143.0ms)
+2026-10-31 11:14:37,235 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:14:37,275 INFO     [-] lifelink.access: POST /emergencies -> 201 (38.7ms)
+2026-10-31 11:14:37,279 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+2026-10-31 11:14:37,317 INFO     [-] lifelink.access: POST /emergencies -> 201 (36.1ms)
+2026-10-31 11:14:37,322 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+2026-10-31 11:14:37,334 INFO     [-] lifelink.access: GET /notifications -> 200 (8.5ms)
+2026-10-31 11:14:37,336 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (167.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (15.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (143.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 201 (38.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 201 (36.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (8.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+_____________ test_replay_is_cursor_bounded_and_audience_filtered ______________
+
+    def test_replay_is_cursor_bounded_and_audience_filtered() -> None:
+        a, aemail = auth_client("PATIENT")
+        b, bemail = auth_client("PATIENT")
+        ra1 = _request(a)
+        _request(b)
+        ra2 = _request(a)
+        db = SessionLocal()
+        try:
+            head = realtime_service.head_seq(db)
+            rows = realtime_service.replay(db, _uid(aemail), "PATIENT", 0, head, 100)
+            ids = [str(r.resource_id) for r in rows if r.resource_type == "blood_request"]
+>           assert ids == [ra1, ra2]
+E           AssertionError: assert ['0f82d2bf-fa...0421e9438777'] == ['0f82d2bf-fa...223a658f1d68']
+E             
+E             Right contains one more item: 'da31ad0f-c451-49da-86b1-223a658f1d68'
+E             Use -v to get more diff
+
+tests/test_phase_f_realtime.py:325: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:28:05,222 INFO     [-] lifelink.access: POST /auth/login -> 200 (156.0ms)
+2026-10-31 11:28:05,225 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:05,526 INFO     [-] lifelink.access: POST /auth/login -> 200 (147.7ms)
+2026-10-31 11:28:05,529 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:05,562 INFO     [-] lifelink.access: POST /blood-requests -> 201 (30.9ms)
+2026-10-31 11:28:05,566 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+2026-10-31 11:28:05,601 INFO     [-] lifelink.access: POST /blood-requests -> 201 (32.3ms)
+2026-10-31 11:28:05,605 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+2026-10-31 11:28:05,641 INFO     [-] lifelink.access: POST /blood-requests -> 201 (33.3ms)
+2026-10-31 11:28:05,646 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (156.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (147.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (30.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (32.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (33.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+________________ test_publication_cost_is_independent_of_fanout ________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f46a5078150>
+
+    def test_publication_cost_is_independent_of_fanout(monkeypatch) -> None:
+        """Notifying 15 donors must not cost more SQL statements than notifying
+        3 (Phase 27's bounded fan-out property, preserved with real-time events:
+        the publisher batches audience lookups and seq assignment). Runs the
+        publisher inline so its statements are counted with the request's."""
+        monkeypatch.setattr(settings, "realtime_publish_mode", "inline")
+        from tests.test_phase27_notification_scaling import count_queries
+    
+        def run(n: int) -> int:
+            for _ in range(n):
+                d, _ = auth_client("DONOR")
+                # Audit D4 (2026-10-31): alerts apply the distance policy; same city.
+                d.put("/donors/me", json={"blood_type": "O_NEG", "is_available": True,
+                                          "city": "Metro"})
+            patient, _ = auth_client("PATIENT")
+            with count_queries() as stmts:
+                r = patient.post("/blood-requests", json={"blood_type": "O_NEG", "units_needed": 1,
+                                                          "city": "Metro"})
+                assert r.status_code == 201
+            notified = len(_rows("notification"))
+            return len(stmts), notified
+    
+        small, n_small = run(3)
+        db = SessionLocal()
+        try:
+            from sqlalchemy import text as _t
+    
+            db.execute(_t("TRUNCATE realtime_events, notifications CASCADE"))
+            db.commit()
+>       finally:
+E       assert 0 > 0
+
+tests/test_phase_f_realtime.py:391: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:28:11,340 INFO     [-] lifelink.access: POST /auth/login -> 200 (139.4ms)
+2026-10-31 11:28:11,343 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:11,358 INFO     [-] lifelink.access: PUT /donors/me -> 200 (13.4ms)
+2026-10-31 11:28:11,360 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:11,654 INFO     [-] lifelink.access: POST /auth/login -> 200 (155.0ms)
+2026-10-31 11:28:11,656 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:11,681 INFO     [-] lifelink.access: PUT /donors/me -> 200 (15.9ms)
+2026-10-31 11:28:11,683 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:11,978 INFO     [-] lifelink.access: POST /auth/login -> 200 (150.9ms)
+2026-10-31 11:28:11,980 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:11,999 INFO     [-] lifelink.access: PUT /donors/me -> 200 (16.7ms)
+2026-10-31 11:28:12,001 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:12,283 INFO     [-] lifelink.access: POST /auth/login -> 200 (131.9ms)
+2026-10-31 11:28:12,285 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:12,328 INFO     [-] lifelink.access: POST /blood-requests -> 201 (41.7ms)
+2026-10-31 11:28:12,331 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+2026-10-31 11:28:12,647 INFO     [-] lifelink.access: POST /auth/login -> 200 (144.0ms)
+2026-10-31 11:28:12,649 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:12,669 INFO     [-] lifelink.access: PUT /donors/me -> 200 (15.0ms)
+2026-10-31 11:28:12,672 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:12,973 INFO     [-] lifelink.access: POST /auth/login -> 200 (159.7ms)
+2026-10-31 11:28:12,976 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:12,995 INFO     [-] lifelink.access: PUT /donors/me -> 200 (17.0ms)
+2026-10-31 11:28:12,998 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:13,297 INFO     [-] lifelink.access: POST /auth/login -> 200 (148.3ms)
+2026-10-31 11:28:13,299 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:13,314 INFO     [-] lifelink.access: PUT /donors/me -> 200 (13.0ms)
+2026-10-31 11:28:13,316 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:13,609 INFO     [-] lifelink.access: POST /auth/login -> 200 (148.3ms)
+2026-10-31 11:28:13,612 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:13,629 INFO     [-] lifelink.access: PUT /donors/me -> 200 (15.2ms)
+2026-10-31 11:28:13,632 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:13,951 INFO     [-] lifelink.access: POST /auth/login -> 200 (158.1ms)
+2026-10-31 11:28:13,954 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:13,972 INFO     [-] lifelink.access: PUT /donors/me -> 200 (16.3ms)
+2026-10-31 11:28:13,975 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:14,255 INFO     [-] lifelink.access: POST /auth/login -> 200 (137.8ms)
+2026-10-31 11:28:14,257 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:14,274 INFO     [-] lifelink.access: PUT /donors/me -> 200 (14.5ms)
+2026-10-31 11:28:14,277 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:14,593 INFO     [-] lifelink.access: POST /auth/login -> 200 (159.0ms)
+2026-10-31 11:28:14,596 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:14,613 INFO     [-] lifelink.access: PUT /donors/me -> 200 (15.2ms)
+2026-10-31 11:28:14,616 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:14,929 INFO     [-] lifelink.access: POST /auth/login -> 200 (149.8ms)
+2026-10-31 11:28:14,932 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:14,951 INFO     [-] lifelink.access: PUT /donors/me -> 200 (17.4ms)
+2026-10-31 11:28:14,954 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:15,242 INFO     [-] lifelink.access: POST /auth/login -> 200 (145.5ms)
+2026-10-31 11:28:15,245 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:15,259 INFO     [-] lifelink.access: PUT /donors/me -> 200 (12.4ms)
+2026-10-31 11:28:15,262 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:15,545 INFO     [-] lifelink.access: POST /auth/login -> 200 (149.3ms)
+2026-10-31 11:28:15,548 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:15,568 INFO     [-] lifelink.access: PUT /donors/me -> 200 (18.0ms)
+2026-10-31 11:28:15,571 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:15,861 INFO     [-] lifelink.access: POST /auth/login -> 200 (139.1ms)
+2026-10-31 11:28:15,863 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:15,879 INFO     [-] lifelink.access: PUT /donors/me -> 200 (14.5ms)
+2026-10-31 11:28:15,882 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:16,188 INFO     [-] lifelink.access: POST /auth/login -> 200 (157.1ms)
+2026-10-31 11:28:16,191 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:16,210 INFO     [-] lifelink.access: PUT /donors/me -> 200 (17.0ms)
+2026-10-31 11:28:16,213 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:16,509 INFO     [-] lifelink.access: POST /auth/login -> 200 (151.6ms)
+2026-10-31 11:28:16,512 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:16,525 INFO     [-] lifelink.access: PUT /donors/me -> 200 (12.0ms)
+2026-10-31 11:28:16,528 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:16,810 INFO     [-] lifelink.access: POST /auth/login -> 200 (147.5ms)
+2026-10-31 11:28:16,813 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:16,827 INFO     [-] lifelink.access: PUT /donors/me -> 200 (12.3ms)
+2026-10-31 11:28:16,830 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:17,131 INFO     [-] lifelink.access: POST /auth/login -> 200 (149.6ms)
+2026-10-31 11:28:17,134 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:17,150 INFO     [-] lifelink.access: PUT /donors/me -> 200 (13.8ms)
+2026-10-31 11:28:17,153 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:28:17,427 INFO     [-] lifelink.access: POST /auth/login -> 200 (137.4ms)
+2026-10-31 11:28:17,429 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:28:17,470 INFO     [-] lifelink.access: POST /blood-requests -> 201 (39.3ms)
+2026-10-31 11:28:17,473 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (139.4ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (13.4ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (155.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (15.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (150.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (16.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (131.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (41.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (144.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (15.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (159.7ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (17.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (148.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (13.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (148.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (15.2ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (158.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (16.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (137.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (14.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (159.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (15.2ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (149.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (17.4ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (145.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (12.4ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (149.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (18.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (139.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (14.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (157.1ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (17.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (151.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (12.0ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (147.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (12.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (149.6ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (13.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (137.4ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (39.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+___________ test_double_click_mark_read_is_idempotent_and_never_500 ____________
+
+    def test_double_click_mark_read_is_idempotent_and_never_500() -> None:
+        donor, _ = auth_client("DONOR")
+        patient, _ = auth_client("PATIENT")
+        donor.put("/donors/me", json={"blood_type": "O_NEG", "is_available": True})
+        patient.post("/blood-requests", json={"blood_type": "O_NEG", "units_needed": 1})
+        notes = donor.get("/notifications").json()
+>       assert notes, "a matching donor is notified of the request"
+E       AssertionError: a matching donor is notified of the request
+E       assert []
+
+tests/test_qa_concurrency.py:38: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:31:14,328 INFO     [-] lifelink.access: POST /auth/login -> 200 (136.9ms)
+2026-10-31 11:31:14,331 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:31:14,623 INFO     [-] lifelink.access: POST /auth/login -> 200 (147.3ms)
+2026-10-31 11:31:14,626 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:31:14,640 INFO     [-] lifelink.access: PUT /donors/me -> 200 (12.9ms)
+2026-10-31 11:31:14,643 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:31:14,672 INFO     [-] lifelink.access: POST /blood-requests -> 201 (27.5ms)
+2026-10-31 11:31:14,677 INFO     [-] httpx: HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+2026-10-31 11:31:14,686 INFO     [-] lifelink.access: GET /notifications -> 200 (6.8ms)
+2026-10-31 11:31:14,688 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (136.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (147.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (12.9ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /blood-requests -> 201 (27.5ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/blood-requests "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (6.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+_______________ test_emergency_creation_works_with_sms_disabled ________________
+
+    def test_emergency_creation_works_with_sms_disabled() -> None:
+        """End-to-end, through the real API: SMS is disabled (default test
+        config) and emergency creation, donor alerting, and in-app
+        notifications all still work exactly as they did before SMS existed
+        in this codebase."""
+        assert settings.msg91_enabled is False
+        patient, _ = auth_client("PATIENT")
+        donor, _ = auth_client("DONOR")
+        # Audit D4 (2026-10-31): an SOS needs a location in scope to alert anyone.
+        donor.put("/donors/me", json={"blood_type": "O_NEG", "city": "Metro"})
+    
+        r = patient.post("/emergencies", json={"blood_type": "O_NEG", "location_text": "Metro ER",
+                                               "city": "Metro"})
+>       assert r.status_code == 201
+E       assert False
+E        +  where False = any(<generator object test_emergency_creation_works_with_sms_disabled.<locals>.<genexpr> at 0x7f469e6bd700>)
+
+tests/test_sms.py:477: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-10-31 11:33:47,632 INFO     [-] lifelink.access: POST /auth/login -> 200 (151.3ms)
+2026-10-31 11:33:47,635 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:33:47,923 INFO     [-] lifelink.access: POST /auth/login -> 200 (138.3ms)
+2026-10-31 11:33:47,926 INFO     [-] httpx: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+2026-10-31 11:33:47,942 INFO     [-] lifelink.access: PUT /donors/me -> 200 (13.8ms)
+2026-10-31 11:33:47,944 INFO     [-] httpx: HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+2026-10-31 11:33:47,981 INFO     [-] lifelink.access: POST /emergencies -> 201 (35.3ms)
+2026-10-31 11:33:47,985 INFO     [-] httpx: HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+2026-10-31 11:33:47,998 INFO     [-] lifelink.access: GET /notifications -> 200 (10.4ms)
+2026-10-31 11:33:48,000 INFO     [-] httpx: HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (151.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /auth/login -> 200 (138.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 PUT /donors/me -> 200 (13.8ms)
+INFO     httpx:_client.py:1025 HTTP Request: PUT http://testserver/donors/me "HTTP/1.1 200 OK"
+INFO     lifelink.access:request_metrics.py:98 POST /emergencies -> 201 (35.3ms)
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/emergencies "HTTP/1.1 201 Created"
+INFO     lifelink.access:request_metrics.py:98 GET /notifications -> 200 (10.4ms)
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/notifications "HTTP/1.1 200 OK"
+=============================== warnings summary ===============================
+.venv/lib/python3.11/site-packages/fastapi/testclient.py:1
+  /home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv/lib/python3.11/site-packages/starlette/testclient.py:53
+  /home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_audit_d4_distance_policy.py::test_ranking_override_is_admin_only_needs_a_reason_and_is_audited
+  /home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py:1100: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    result = context.run(func, *args)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_donor_appointments.py::test_create_appointment_rejects_date_before_eligibility
+FAILED tests/test_emergencies_and_notifications.py::test_emergency_lifecycle_and_acknowledge
+FAILED tests/test_emergencies_and_notifications.py::test_notifications_read_and_unread_count
+FAILED tests/test_emergencies_and_notifications.py::test_cannot_read_someone_elses_notification
+FAILED tests/test_emergency_network.py::test_full_sos_lifecycle_to_resolved
+FAILED tests/test_phase18_notifications.py::test_emergency_idempotency_replay_does_not_double_notify_donors
+FAILED tests/test_phase18_notifications.py::test_different_idempotency_keys_do_each_notify_donors_once
+FAILED tests/test_phase_f_realtime.py::test_replay_is_cursor_bounded_and_audience_filtered
+FAILED tests/test_phase_f_realtime.py::test_publication_cost_is_independent_of_fanout
+FAILED tests/test_qa_concurrency.py::test_double_click_mark_read_is_idempotent_and_never_500
+FAILED tests/test_sms.py::test_emergency_creation_works_with_sms_disabled - a...
+SKIPPED [1] tests/test_gap_neo4j.py:184: NEO4J_TEST_URI not set: no Neo4j server available (registries and dist.neo4j.org blocked in the verification sandbox)
+11 failed, 1439 passed, 1 skipped, 3 warnings in 2502.76s (0:41:42)

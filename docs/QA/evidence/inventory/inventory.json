@@ -1,0 +1,4315 @@
+{
+ "api_operations": [
+  {
+   "method": "GET",
+   "path": "/admin/analytics/overview",
+   "module": "admin",
+   "handler": "analytics_overview",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/audit-log",
+   "module": "admin",
+   "handler": "list_audit_log",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/audit-log/checkpoint",
+   "module": "admin",
+   "handler": "write_audit_checkpoint",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/audit-log/head",
+   "module": "admin",
+   "handler": "audit_chain_head",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/audit-log/verify",
+   "module": "admin",
+   "handler": "verify_audit_chain",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/blood-requests",
+   "module": "admin",
+   "handler": "list_blood_requests",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/blood-requests/{request_id}/transition",
+   "module": "admin",
+   "handler": "admin_transition_blood_request",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/certificates",
+   "module": "admin",
+   "handler": "list_certificates",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/certificates/{certificate_id}/revoke",
+   "module": "admin",
+   "handler": "revoke_certificate",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/donors",
+   "module": "admin",
+   "handler": "list_donors",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/emergencies",
+   "module": "admin",
+   "handler": "list_emergencies",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/facilities",
+   "module": "admin",
+   "handler": "list_facilities",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/facilities/{facility_id}",
+   "module": "admin",
+   "handler": "get_facility",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/facilities/{facility_id}/revoke-verification",
+   "module": "admin",
+   "handler": "revoke_facility_verification",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/graph/pathway-log",
+   "module": "admin",
+   "handler": "list_pathway_log",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/graph/resync",
+   "module": "admin",
+   "handler": "resync_graph",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/system/health",
+   "module": "admin",
+   "handler": "system_health",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/system/metrics",
+   "module": "admin",
+   "handler": "system_metrics",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/transport-routes",
+   "module": "admin",
+   "handler": "list_transport_routes",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/transport-routes",
+   "module": "admin",
+   "handler": "create_transport_route",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/admin/transport-routes/{route_id}/disrupt",
+   "module": "admin",
+   "handler": "disrupt_transport_route",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/admin/transport-routes/{route_id}/recover",
+   "module": "admin",
+   "handler": "recover_transport_route",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/users",
+   "module": "admin",
+   "handler": "list_users",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/users/stats",
+   "module": "admin",
+   "handler": "user_stats",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/users/{user_id}/reactivate",
+   "module": "admin",
+   "handler": "reactivate_user",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "PATCH",
+   "path": "/admin/users/{user_id}/role",
+   "module": "admin",
+   "handler": "change_user_role",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/admin/users/{user_id}/suspend",
+   "module": "admin",
+   "handler": "suspend_user",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/change-password",
+   "module": "auth",
+   "handler": "change_password",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/forgot-password",
+   "module": "auth",
+   "handler": "forgot_password",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/login",
+   "module": "auth",
+   "handler": "login",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/logout",
+   "module": "auth",
+   "handler": "logout",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/auth/me",
+   "module": "auth",
+   "handler": "me",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/register",
+   "module": "auth",
+   "handler": "register",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/reset-password",
+   "module": "auth",
+   "handler": "reset_password",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/auth/session",
+   "module": "auth",
+   "handler": "session_state",
+   "auth": "optional",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/verify-email",
+   "module": "auth",
+   "handler": "verify_email",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/auth/verify-email/resend",
+   "module": "auth",
+   "handler": "resend_verification",
+   "auth": "none",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/blood-requests",
+   "module": "blood_requests",
+   "handler": "list_my_requests",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/blood-requests",
+   "module": "blood_requests",
+   "handler": "create_request",
+   "auth": "session",
+   "roles": [
+    "FAMILY",
+    "HOSPITAL",
+    "PATIENT"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/blood-requests/{request_id}",
+   "module": "blood_requests",
+   "handler": "get_request",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/blood-requests/{request_id}/cancel",
+   "module": "blood_requests",
+   "handler": "cancel_request",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/blood-requests/{request_id}/fulfill",
+   "module": "blood_requests",
+   "handler": "fulfill_request",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/blood-requests/{request_id}/respond",
+   "module": "blood_requests",
+   "handler": "respond_to_request",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/certificates",
+   "module": "certificates",
+   "handler": "list_my_certificates",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/certificates",
+   "module": "certificates",
+   "handler": "issue_certificate",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/certificates/verify/{code}",
+   "module": "certificates",
+   "handler": "verify_certificate",
+   "auth": "none",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/certificates/{certificate_id}",
+   "module": "certificates",
+   "handler": "get_certificate",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/certificates/{certificate_id}/download",
+   "module": "certificates",
+   "handler": "download_certificate",
+   "auth": "optional",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/donations",
+   "module": "donation_review",
+   "handler": "list_donations_for_review",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/donations/{donation_id}",
+   "module": "donation_review",
+   "handler": "get_donation_for_review",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/donations/{donation_id}/reject",
+   "module": "donation_review",
+   "handler": "reject_donation",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/donations/{donation_id}/verify",
+   "module": "donation_review",
+   "handler": "verify_donation",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/donors/me",
+   "module": "donors",
+   "handler": "get_my_donor_profile",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "PUT",
+   "path": "/donors/me",
+   "module": "donors",
+   "handler": "update_my_donor_profile",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/donors/me/appointments",
+   "module": "donors",
+   "handler": "my_appointments",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/donors/me/appointments",
+   "module": "donors",
+   "handler": "request_appointment",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/donors/me/appointments/{appointment_id}/cancel",
+   "module": "donors",
+   "handler": "cancel_appointment",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "PUT",
+   "path": "/donors/me/availability",
+   "module": "donors",
+   "handler": "update_availability",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/donors/me/donations",
+   "module": "donors",
+   "handler": "my_donations",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/donors/me/donations",
+   "module": "donors",
+   "handler": "log_donation",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/donors/me/requests",
+   "module": "donors",
+   "handler": "open_requests_for_me",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/donors/me/responses",
+   "module": "donors",
+   "handler": "my_match_history",
+   "auth": "session",
+   "roles": [
+    "DONOR"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies",
+   "module": "emergencies",
+   "handler": "list_my_emergencies",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies",
+   "module": "emergencies",
+   "handler": "create_emergency",
+   "auth": "session",
+   "roles": [
+    "FAMILY",
+    "HOSPITAL",
+    "PATIENT"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies/active",
+   "module": "emergencies",
+   "handler": "list_active_for_responder",
+   "auth": "session",
+   "roles": [
+    "DONOR",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies/{emergency_id}",
+   "module": "emergencies",
+   "handler": "get_emergency",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/acknowledge",
+   "module": "emergencies",
+   "handler": "acknowledge_emergency",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "DONOR",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/assistance-found",
+   "module": "emergencies",
+   "handler": "assistance_found",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/cancel",
+   "module": "emergencies",
+   "handler": "cancel_emergency",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies/{emergency_id}/match-candidates",
+   "module": "emergencies",
+   "handler": "emergency_match_candidates",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies/{emergency_id}/match-strategies",
+   "module": "emergencies",
+   "handler": "emergency_match_strategies",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/overrides",
+   "module": "emergencies",
+   "handler": "create_emergency_override",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/overrides/{override_id}/revoke",
+   "module": "emergencies",
+   "handler": "revoke_emergency_override",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/pathway",
+   "module": "emergencies",
+   "handler": "select_emergency_pathway",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/pathway/release",
+   "module": "emergencies",
+   "handler": "release_emergency_pathway",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/pathway/reserve",
+   "module": "emergencies",
+   "handler": "reserve_emergency_pathway",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies/{emergency_id}/pathways",
+   "module": "emergencies",
+   "handler": "list_emergency_pathways",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/resolve",
+   "module": "emergencies",
+   "handler": "resolve_emergency",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/emergencies/{emergency_id}/resource-pathways",
+   "module": "emergencies",
+   "handler": "emergency_resource_pathways",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/emergencies/{emergency_id}/respond",
+   "module": "emergencies",
+   "handler": "respond_to_emergency",
+   "auth": "session",
+   "roles": [
+    "DONOR",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/events/stream",
+   "module": "events",
+   "handler": "stream",
+   "auth": "none",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/family/links",
+   "module": "family",
+   "handler": "list_links",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/family/links",
+   "module": "family",
+   "handler": "request_link",
+   "auth": "session",
+   "roles": [
+    "FAMILY"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/family/links/{link_id}/accept",
+   "module": "family",
+   "handler": "accept_link",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/family/links/{link_id}/reject",
+   "module": "family",
+   "handler": "reject_link",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/family/links/{link_id}/revoke",
+   "module": "family",
+   "handler": "revoke_link",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/forecasts",
+   "module": "forecasts",
+   "handler": "list_forecasts",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/forecasts",
+   "module": "forecasts",
+   "handler": "create_forecast",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/forecasts/{run_id}",
+   "module": "forecasts",
+   "handler": "get_forecast",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/health",
+   "module": "health",
+   "handler": "health",
+   "auth": "none",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/health/live",
+   "module": "health",
+   "handler": "liveness",
+   "auth": "none",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/health/ready",
+   "module": "health",
+   "handler": "readiness",
+   "auth": "none",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/directory",
+   "module": "hospitals",
+   "handler": "hospital_directory",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me",
+   "module": "hospitals",
+   "handler": "get_my_hospital",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "PUT",
+   "path": "/hospitals/me",
+   "module": "hospitals",
+   "handler": "update_my_hospital",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/activity",
+   "module": "hospitals",
+   "handler": "recent_activity",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/emergencies",
+   "module": "hospitals",
+   "handler": "incoming_emergencies",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/inventory",
+   "module": "hospitals",
+   "handler": "get_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "PUT",
+   "path": "/hospitals/me/inventory",
+   "module": "hospitals",
+   "handler": "put_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/inventory/add",
+   "module": "hospitals",
+   "handler": "add_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/inventory/allocate",
+   "module": "hospitals",
+   "handler": "allocate_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/inventory/components",
+   "module": "hospitals",
+   "handler": "get_component_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/inventory/expire",
+   "module": "hospitals",
+   "handler": "expire_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/inventory/log",
+   "module": "hospitals",
+   "handler": "inventory_log",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/inventory/reconcile",
+   "module": "hospitals",
+   "handler": "reconcile_inventory_one",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/inventory/release",
+   "module": "hospitals",
+   "handler": "release_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/inventory/reserve",
+   "module": "hospitals",
+   "handler": "reserve_inventory",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/requests",
+   "module": "hospitals",
+   "handler": "incoming_requests",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/requests/{request_id}/allocate",
+   "module": "hospitals",
+   "handler": "allocate_to_request",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/requests/{request_id}/events",
+   "module": "hospitals",
+   "handler": "request_events",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/requests/{request_id}/fulfill",
+   "module": "hospitals",
+   "handler": "fulfill_from_hospital",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/requests/{request_id}/respond",
+   "module": "hospitals",
+   "handler": "respond_to_incoming",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/resource-pathways",
+   "module": "hospitals",
+   "handler": "my_resource_pathways",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/routes",
+   "module": "hospitals",
+   "handler": "my_transport_routes",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/hospitals/me/units",
+   "module": "hospitals",
+   "handler": "list_my_units",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/units/{unit_id}/discard",
+   "module": "hospitals",
+   "handler": "discard_unit",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/units/{unit_id}/quarantine",
+   "module": "hospitals",
+   "handler": "quarantine_unit",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/units/{unit_id}/release-quarantine",
+   "module": "hospitals",
+   "handler": "release_quarantine",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/hospitals/me/units/{unit_id}/thaw",
+   "module": "hospitals",
+   "handler": "thaw_unit",
+   "auth": "session",
+   "roles": [
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/",
+   "module": "main",
+   "handler": "root",
+   "auth": "none",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/blood-requests/{request_id}/match-candidates",
+   "module": "matching",
+   "handler": "match_candidates",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/blood-requests/{request_id}/match-strategies",
+   "module": "matching",
+   "handler": "blood_request_match_strategies",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/map/data",
+   "module": "matching",
+   "handler": "map_data",
+   "auth": "session",
+   "roles": [
+    "FAMILY",
+    "HOSPITAL",
+    "PATIENT"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/matching/blood-compatibility",
+   "module": "matching",
+   "handler": "blood_compatibility",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/notifications",
+   "module": "notifications",
+   "handler": "list_notifications",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/notifications/preferences",
+   "module": "notifications",
+   "handler": "get_preferences",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "PUT",
+   "path": "/notifications/preferences",
+   "module": "notifications",
+   "handler": "update_preferences",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/notifications/read-all",
+   "module": "notifications",
+   "handler": "mark_all_read",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/notifications/unread-count",
+   "module": "notifications",
+   "handler": "unread_count",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/notifications/{notification_id}/read",
+   "module": "notifications",
+   "handler": "mark_read",
+   "auth": "session",
+   "roles": [],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/pathways/config",
+   "module": "pathways",
+   "handler": "pathway_config",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/pathways/simulate",
+   "module": "pathways",
+   "handler": "simulate_pathway",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/patients/managed",
+   "module": "patients",
+   "handler": "list_managed_patients",
+   "auth": "session",
+   "roles": [
+    "FAMILY"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/patients/me",
+   "module": "patients",
+   "handler": "get_my_patient_profile",
+   "auth": "session",
+   "roles": [
+    "FAMILY",
+    "PATIENT"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "PUT",
+   "path": "/patients/me",
+   "module": "patients",
+   "handler": "update_my_patient_profile",
+   "auth": "session",
+   "roles": [
+    "FAMILY",
+    "PATIENT"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/shipments",
+   "module": "shipments",
+   "handler": "list_shipments",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/shipments",
+   "module": "shipments",
+   "handler": "create_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/shipments/by-code/{shipment_code}",
+   "module": "shipments",
+   "handler": "get_shipment_by_code",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/shipments/units/{unit_code}",
+   "module": "shipments",
+   "handler": "trace_unit",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/shipments/{shipment_id}",
+   "module": "shipments",
+   "handler": "get_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/arrive",
+   "module": "shipments",
+   "handler": "mark_arrived",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/cancel",
+   "module": "shipments",
+   "handler": "cancel_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/delay",
+   "module": "shipments",
+   "handler": "report_delay",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/dispatch",
+   "module": "shipments",
+   "handler": "dispatch_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/fail",
+   "module": "shipments",
+   "handler": "fail_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/in-transit",
+   "module": "shipments",
+   "handler": "mark_in_transit",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/receive",
+   "module": "shipments",
+   "handler": "receive_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/reconcile",
+   "module": "shipments",
+   "handler": "reconcile_shipment",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/shipments/{shipment_id}/telemetry",
+   "module": "shipments",
+   "handler": "get_telemetry",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/telemetry",
+   "module": "shipments",
+   "handler": "add_telemetry",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/shipments/{shipment_id}/telemetry/simulate",
+   "module": "shipments",
+   "handler": "simulate_telemetry",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/shipments/{shipment_id}/timeline",
+   "module": "shipments",
+   "handler": "get_shipment_timeline",
+   "auth": "session",
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/verifications",
+   "module": "verifications",
+   "handler": "admin_list_verifications",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "GET",
+   "path": "/admin/verifications/{request_id}",
+   "module": "verifications",
+   "handler": "admin_get_verification",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/verifications/{request_id}/approve",
+   "module": "verifications",
+   "handler": "admin_approve_verification",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/admin/verifications/{request_id}/documents/{index}",
+   "module": "verifications",
+   "handler": "admin_get_verification_document",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": false
+  },
+  {
+   "method": "POST",
+   "path": "/admin/verifications/{request_id}/documents/{index}/rescan",
+   "module": "verifications",
+   "handler": "admin_rescan_verification_document",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/admin/verifications/{request_id}/reject",
+   "module": "verifications",
+   "handler": "admin_reject_verification",
+   "auth": "session",
+   "roles": [
+    "ADMIN"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "POST",
+   "path": "/verifications",
+   "module": "verifications",
+   "handler": "submit_verification",
+   "auth": "session",
+   "roles": [
+    "DONOR",
+    "HOSPITAL"
+   ],
+   "origin_check": true
+  },
+  {
+   "method": "GET",
+   "path": "/verifications/me",
+   "module": "verifications",
+   "handler": "list_my_verifications",
+   "auth": "session",
+   "roles": [],
+   "origin_check": false
+  }
+ ],
+ "frontend_routes": [
+  {
+   "path": "/",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "document_storage_security.spec.ts",
+    "phase23_security_hardening.spec.ts",
+    "phase26_accessibility.spec.ts",
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/login",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "clean_start.spec.ts",
+    "container_frontend.spec.ts",
+    "gap_live_pages.spec.ts",
+    "phase23_security_hardening.spec.ts",
+    "phase_j_journeys.spec.ts",
+    "qa_evidence.spec.ts",
+    "qa_failover_ui.spec.ts"
+   ]
+  },
+  {
+   "path": "/register",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/verify-email",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/verify/:code",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/forgot-password",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/reset-password",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/dev-index",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/403",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/session-expired",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/500",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/offline",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/recommendation",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts"
+   ]
+  },
+  {
+   "path": "/decision-transparency",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts",
+    "phase27_accessibility.spec.ts",
+    "qa_failover_ui.spec.ts"
+   ]
+  },
+  {
+   "path": "/mathematical-model",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts",
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/graph-engine",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "container_frontend.spec.ts",
+    "gap_live_pages.spec.ts"
+   ]
+  },
+  {
+   "path": "/simulation",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts",
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/research-mode",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts"
+   ]
+  },
+  {
+   "path": "/help",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "phase26_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/legal",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "phase26_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/legal/:section",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/patient",
+   "guarded": true,
+   "roles": [
+    "PATIENT"
+   ],
+   "e2e_specs": [
+    "phase21_error_loading_empty_offline.spec.ts",
+    "phase23_security_hardening.spec.ts",
+    "phase26_responsive_overflow.spec.ts",
+    "phase27_accessibility.spec.ts",
+    "phase31_1_domain_signals.spec.ts",
+    "phase_f_realtime.spec.ts",
+    "phase_j_journeys.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/patient/find-donor",
+   "guarded": true,
+   "roles": [
+    "PATIENT"
+   ],
+   "e2e_specs": [
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/patient/sos-tracking",
+   "guarded": true,
+   "roles": [
+    "PATIENT"
+   ],
+   "e2e_specs": [
+    "phase27_accessibility.spec.ts",
+    "phase31_1_domain_signals.spec.ts"
+   ]
+  },
+  {
+   "path": "/patient/new-request",
+   "guarded": true,
+   "roles": [
+    "PATIENT"
+   ],
+   "e2e_specs": [
+    "phase21_error_loading_empty_offline.spec.ts",
+    "phase27_accessibility.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/patient/history",
+   "guarded": true,
+   "roles": [
+    "PATIENT"
+   ],
+   "e2e_specs": [
+    "phase26_responsive_overflow.spec.ts",
+    "phase_f_realtime.spec.ts",
+    "phase_j_journeys.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/family",
+   "guarded": true,
+   "roles": [
+    "FAMILY"
+   ],
+   "e2e_specs": [
+    "family_link_notifications.spec.ts",
+    "phase26_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/family/patients",
+   "guarded": true,
+   "roles": [
+    "FAMILY"
+   ],
+   "e2e_specs": [
+    "family_link_notifications.spec.ts",
+    "phase26_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/family/patients/:patientId",
+   "guarded": true,
+   "roles": [
+    "FAMILY"
+   ],
+   "e2e_specs": []
+  },
+  {
+   "path": "/donor",
+   "guarded": true,
+   "roles": [
+    "DONOR"
+   ],
+   "e2e_specs": [
+    "document_storage_security.spec.ts",
+    "phase26_accessibility.spec.ts",
+    "phase26_donation_idempotency.spec.ts",
+    "phase26_responsive_overflow.spec.ts",
+    "phase27_accessibility.spec.ts",
+    "phase31_1_domain_signals.spec.ts",
+    "phase_e_domain_integrity.spec.ts",
+    "phase_j_journeys.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/donor/mobile",
+   "guarded": true,
+   "roles": [
+    "DONOR"
+   ],
+   "e2e_specs": [
+    "phase_j_journeys.spec.ts"
+   ]
+  },
+  {
+   "path": "/donor/eligibility",
+   "guarded": true,
+   "roles": [
+    "DONOR"
+   ],
+   "e2e_specs": [
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/donor/ready-console",
+   "guarded": true,
+   "roles": [
+    "DONOR"
+   ],
+   "e2e_specs": [
+    "phase26_accessibility.spec.ts",
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/donor/milestones",
+   "guarded": true,
+   "roles": [
+    "DONOR"
+   ],
+   "e2e_specs": [
+    "phase26_donation_idempotency.spec.ts",
+    "phase26_responsive_overflow.spec.ts",
+    "phase31_1_domain_signals.spec.ts",
+    "phase_e_domain_integrity.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/donor/identity-verification",
+   "guarded": true,
+   "roles": [
+    "DONOR"
+   ],
+   "e2e_specs": [
+    "document_storage_security.spec.ts",
+    "phase27_accessibility.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "clean_start.spec.ts",
+    "container_frontend.spec.ts",
+    "document_storage_security.spec.ts",
+    "gap_live_pages.spec.ts",
+    "phase26_accessibility.spec.ts",
+    "phase27_accessibility.spec.ts",
+    "phase_e_domain_integrity.spec.ts",
+    "phase_g_integration.spec.ts",
+    "phase_j_journeys.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital/inventory",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "phase_g_integration.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital/donors",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": []
+  },
+  {
+   "path": "/hospital/requests/:requestId",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": []
+  },
+  {
+   "path": "/hospital/analytics-mobile",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": []
+  },
+  {
+   "path": "/hospital/units",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "clean_start.spec.ts",
+    "container_frontend.spec.ts",
+    "gap_live_pages.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital/resource-pathways",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital/shipments",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts",
+    "phase_e_domain_integrity.spec.ts",
+    "phase_j_journeys.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital/verification",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "document_storage_security.spec.ts",
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/hospital/donation-reviews",
+   "guarded": true,
+   "roles": [
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "phase_e_domain_integrity.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "admin_notification_surface.spec.ts",
+    "document_storage_security.spec.ts",
+    "gap_live_pages.spec.ts",
+    "phase23_security_hardening.spec.ts",
+    "phase26_accessibility.spec.ts",
+    "phase26_responsive_overflow.spec.ts",
+    "phase31_1_domain_signals.spec.ts",
+    "phase_e_domain_integrity.spec.ts",
+    "phase_g_integration.spec.ts",
+    "qa_evidence.spec.ts",
+    "qa_failover_ui.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/verifications",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "admin_notification_surface.spec.ts",
+    "document_storage_security.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/users",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "admin_notification_surface.spec.ts",
+    "phase23_security_hardening.spec.ts",
+    "phase26_accessibility.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/analytics",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "phase26_accessibility.spec.ts",
+    "phase31_1_domain_signals.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/transport-routes",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts",
+    "phase26_responsive_overflow.spec.ts",
+    "qa_failover_ui.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/shipments",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/facilities",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "admin_notification_surface.spec.ts",
+    "gap_live_pages.spec.ts",
+    "phase_g_integration.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/donors",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "phase26_accessibility.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/audit-feed",
+   "guarded": true,
+   "roles": [
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "phase_e_domain_integrity.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "/admin/verification",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/analytics",
+   "guarded": true,
+   "roles": [
+    "ADMIN",
+    "HOSPITAL"
+   ],
+   "e2e_specs": [
+    "gap_live_pages.spec.ts"
+   ]
+  },
+  {
+   "path": "/certificate",
+   "guarded": true,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/certificate/:id",
+   "guarded": true,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/matching/strategy-lab",
+   "guarded": true,
+   "roles": [
+    "PATIENT",
+    "FAMILY",
+    "HOSPITAL",
+    "ADMIN"
+   ],
+   "e2e_specs": [
+    "phase27_accessibility.spec.ts"
+   ]
+  },
+  {
+   "path": "/profile",
+   "guarded": true,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/settings",
+   "guarded": true,
+   "roles": [],
+   "e2e_specs": []
+  },
+  {
+   "path": "/notifications",
+   "guarded": true,
+   "roles": [],
+   "e2e_specs": [
+    "admin_verification_notifications.spec.ts",
+    "blood_request_notifications.spec.ts",
+    "offline_network_failure.spec.ts",
+    "phase21_error_loading_empty_offline.spec.ts",
+    "phase26_accessibility.spec.ts",
+    "qa_evidence.spec.ts"
+   ]
+  },
+  {
+   "path": "*",
+   "guarded": false,
+   "roles": [],
+   "e2e_specs": [
+    "phase21_error_loading_empty_offline.spec.ts",
+    "phase25_error_pages_and_500.spec.ts"
+   ]
+  }
+ ],
+ "tables": [
+  {
+   "table": "audit_logs",
+   "columns": 14,
+   "foreign_keys": [
+    "actor_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "None"
+   ],
+   "indexes": 4
+  },
+  {
+   "table": "blood_request_events",
+   "columns": 6,
+   "foreign_keys": [
+    "actor_user_id->users",
+    "request_id->blood_requests"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "blood_requests",
+   "columns": 21,
+   "foreign_keys": [
+    "patient_user_id->users",
+    "requester_user_id->users"
+   ],
+   "checks": [
+    "ck_blood_request_fulfilled_non_negative",
+    "ck_blood_request_fulfilled_not_over"
+   ],
+   "uniques": [
+    "uq_blood_request_idempotency_key"
+   ],
+   "indexes": 6
+  },
+  {
+   "table": "blood_units",
+   "columns": 24,
+   "foreign_keys": [
+    "donation_id->donations",
+    "hospital_id->hospital_profiles",
+    "last_log_id->hospital_inventory_logs",
+    "reserved_for_emergency_id->emergencies",
+    "reserved_for_request_id->blood_requests",
+    "reserved_for_shipment_id->shipments",
+    "source_shipment_id->shipments",
+    "source_unit_id->blood_units"
+   ],
+   "checks": [],
+   "uniques": [
+    "None"
+   ],
+   "indexes": 11
+  },
+  {
+   "table": "certificates",
+   "columns": 11,
+   "foreign_keys": [
+    "donation_id->donations",
+    "donor_user_id->users",
+    "revoked_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "None"
+   ],
+   "indexes": 3
+  },
+  {
+   "table": "demand_forecast_runs",
+   "columns": 10,
+   "foreign_keys": [
+    "facility_id->hospital_profiles",
+    "requested_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "donations",
+   "columns": 16,
+   "foreign_keys": [
+    "blood_request_id->blood_requests",
+    "donor_user_id->users",
+    "hospital_id->hospital_profiles",
+    "verified_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_donation_idempotency_key"
+   ],
+   "indexes": 4
+  },
+  {
+   "table": "donor_appointments",
+   "columns": 9,
+   "foreign_keys": [
+    "donor_user_id->users",
+    "hospital_id->hospital_profiles"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 3
+  },
+  {
+   "table": "donor_profiles",
+   "columns": 19,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 3
+  },
+  {
+   "table": "donor_responses",
+   "columns": 7,
+   "foreign_keys": [
+    "donor_user_id->users",
+    "request_id->blood_requests"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_donor_response_pair"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "email_verification_tokens",
+   "columns": 6,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "emergencies",
+   "columns": 24,
+   "foreign_keys": [
+    "created_by_user_id->users",
+    "patient_user_id->users",
+    "target_facility_id->hospital_profiles"
+   ],
+   "checks": [
+    "ck_emergency_coords_pair",
+    "ck_emergency_latitude_range",
+    "ck_emergency_longitude_range"
+   ],
+   "uniques": [
+    "uq_emergency_idempotency_key"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "emergency_events",
+   "columns": 6,
+   "foreign_keys": [
+    "actor_user_id->users",
+    "emergency_id->emergencies"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "emergency_overrides",
+   "columns": 8,
+   "foreign_keys": [
+    "created_by_user_id->users",
+    "emergency_id->emergencies",
+    "revoked_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 1
+  },
+  {
+   "table": "emergency_pathway_legs",
+   "columns": 14,
+   "foreign_keys": [
+    "destination_facility_id->hospital_profiles",
+    "pathway_id->emergency_pathways",
+    "source_facility_id->hospital_profiles"
+   ],
+   "checks": [
+    "ck_pathway_leg_units_positive"
+   ],
+   "uniques": [
+    "uq_pathway_leg_index"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "emergency_pathway_steps",
+   "columns": 10,
+   "foreign_keys": [
+    "from_facility_id->hospital_profiles",
+    "leg_id->emergency_pathway_legs",
+    "pathway_id->emergency_pathways",
+    "route_id->transport_routes",
+    "to_facility_id->hospital_profiles"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_pathway_step_index"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "emergency_pathways",
+   "columns": 34,
+   "foreign_keys": [
+    "emergency_id->emergencies",
+    "origin_facility_id->hospital_profiles",
+    "selected_facility_id->hospital_profiles"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 3
+  },
+  {
+   "table": "emergency_responses",
+   "columns": 8,
+   "foreign_keys": [
+    "emergency_id->emergencies",
+    "responder_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_emergency_response_pair"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "family_links",
+   "columns": 11,
+   "foreign_keys": [
+    "family_user_id->users",
+    "patient_user_id->users",
+    "requested_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_family_link_pair"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "graph_pathway_logs",
+   "columns": 12,
+   "foreign_keys": [
+    "emergency_id->emergencies",
+    "origin_facility_id->hospital_profiles",
+    "requested_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 4
+  },
+  {
+   "table": "hospital_inventory",
+   "columns": 8,
+   "foreign_keys": [
+    "hospital_id->hospital_profiles"
+   ],
+   "checks": [
+    "ck_hospital_inventory_reserved_le_units",
+    "ck_hospital_inventory_reserved_non_negative",
+    "ck_hospital_inventory_units_non_negative"
+   ],
+   "uniques": [
+    "uq_hospital_inventory_type_component"
+   ],
+   "indexes": 1
+  },
+  {
+   "table": "hospital_inventory_logs",
+   "columns": 16,
+   "foreign_keys": [
+    "actor_user_id->users",
+    "emergency_id->emergencies",
+    "hospital_id->hospital_profiles",
+    "request_id->blood_requests",
+    "shipment_id->shipments"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 4
+  },
+  {
+   "table": "hospital_profiles",
+   "columns": 13,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "hospital_request_responses",
+   "columns": 8,
+   "foreign_keys": [
+    "hospital_id->hospital_profiles",
+    "request_id->blood_requests"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_hospital_request_response"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "notification_preferences",
+   "columns": 10,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 1
+  },
+  {
+   "table": "notifications",
+   "columns": 8,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 4
+  },
+  {
+   "table": "password_reset_otps",
+   "columns": 7,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 1
+  },
+  {
+   "table": "pathway_reservations",
+   "columns": 13,
+   "foreign_keys": [
+    "created_by_user_id->users",
+    "emergency_id->emergencies",
+    "facility_id->hospital_profiles",
+    "leg_id->emergency_pathway_legs",
+    "pathway_id->emergency_pathways"
+   ],
+   "checks": [
+    "ck_pathway_reservation_units_positive"
+   ],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "patient_profiles",
+   "columns": 12,
+   "foreign_keys": [
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "realtime_events",
+   "columns": 9,
+   "foreign_keys": [],
+   "checks": [],
+   "uniques": [
+    "None"
+   ],
+   "indexes": 4
+  },
+  {
+   "table": "registration_counters",
+   "columns": 2,
+   "foreign_keys": [],
+   "checks": [],
+   "uniques": [],
+   "indexes": 0
+  },
+  {
+   "table": "shipment_events",
+   "columns": 6,
+   "foreign_keys": [
+    "actor_user_id->users",
+    "shipment_id->shipments"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 2
+  },
+  {
+   "table": "shipment_items",
+   "columns": 10,
+   "foreign_keys": [
+    "blood_unit_id->blood_units",
+    "outcome_by_user_id->users",
+    "resulting_unit_id->blood_units",
+    "shipment_id->shipments"
+   ],
+   "checks": [],
+   "uniques": [],
+   "indexes": 3
+  },
+  {
+   "table": "shipment_temperature_readings",
+   "columns": 9,
+   "foreign_keys": [
+    "shipment_id->shipments",
+    "submitted_by_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_temperature_reading"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "shipments",
+   "columns": 32,
+   "foreign_keys": [
+    "created_by_user_id->users",
+    "destination_facility_id->hospital_profiles",
+    "origin_facility_id->hospital_profiles",
+    "reconciled_by_user_id->users",
+    "redirected_to_facility_id->hospital_profiles",
+    "transport_route_id->transport_routes"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_shipment_idempotency_key",
+    "uq_shipments_shipment_code"
+   ],
+   "indexes": 7
+  },
+  {
+   "table": "sms_notifications",
+   "columns": 19,
+   "foreign_keys": [
+    "notification_id->notifications",
+    "recipient_user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_sms_notification_per_notification"
+   ],
+   "indexes": 2
+  },
+  {
+   "table": "transport_routes",
+   "columns": 10,
+   "foreign_keys": [
+    "destination_facility_id->hospital_profiles",
+    "origin_facility_id->hospital_profiles"
+   ],
+   "checks": [
+    "ck_transport_route_distinct"
+   ],
+   "uniques": [
+    "uq_transport_route_pair"
+   ],
+   "indexes": 3
+  },
+  {
+   "table": "users",
+   "columns": 13,
+   "foreign_keys": [],
+   "checks": [],
+   "uniques": [],
+   "indexes": 1
+  },
+  {
+   "table": "verification_requests",
+   "columns": 12,
+   "foreign_keys": [
+    "reviewer_user_id->users",
+    "supersedes_request_id->verification_requests",
+    "user_id->users"
+   ],
+   "checks": [],
+   "uniques": [
+    "uq_verification_version"
+   ],
+   "indexes": 4
+  }
+ ],
+ "workers": [
+  {
+   "module": "app.workers.__init__",
+   "functions": []
+  },
+  {
+   "module": "app.workers.deadline_monitor",
+   "functions": [
+    "_responders",
+    "run_once",
+    "_beat",
+    "_handle_stop",
+    "main"
+   ]
+  },
+  {
+   "module": "app.workers.queue",
+   "functions": [
+    "_queue_status",
+    "email_queue_health"
+   ]
+  },
+  {
+   "module": "app.workers.tasks",
+   "functions": [
+    "send_email",
+    "_send",
+    "rescan_documents",
+    "retry_sms"
+   ]
+  },
+  {
+   "module": "app.workers.worker",
+   "functions": [
+    "main"
+   ]
+  }
+ ],
+ "route_log": {
+  "DELETE /admin/verifications/{request_id}": {
+   "calls": 1,
+   "statuses": {
+    "405": 1
+   }
+  },
+  "DELETE /certificates/{certificate_id}": {
+   "calls": 1,
+   "statuses": {
+    "405": 1
+   }
+  },
+  "GET /": {
+   "calls": 1,
+   "statuses": {
+    "200": 1
+   }
+  },
+  "GET /_test/admin-area": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 1
+   }
+  },
+  "GET /_test/any-authed": {
+   "calls": 2,
+   "statuses": {
+    "200": 1,
+    "401": 1
+   }
+  },
+  "GET /admin/analytics/overview": {
+   "calls": 35,
+   "statuses": {
+    "200": 5,
+    "401": 4,
+    "403": 24,
+    "422": 2
+   }
+  },
+  "GET /admin/audit-log": {
+   "calls": 66,
+   "statuses": {
+    "200": 29,
+    "400": 1,
+    "401": 4,
+    "403": 32
+   }
+  },
+  "GET /admin/audit-log/head": {
+   "calls": 25,
+   "statuses": {
+    "200": 1,
+    "401": 4,
+    "403": 20
+   }
+  },
+  "GET /admin/blood-requests": {
+   "calls": 45,
+   "statuses": {
+    "200": 15,
+    "401": 4,
+    "403": 21,
+    "422": 5
+   }
+  },
+  "GET /admin/certificates": {
+   "calls": 35,
+   "statuses": {
+    "200": 10,
+    "401": 5,
+    "403": 20
+   }
+  },
+  "GET /admin/donors": {
+   "calls": 34,
+   "statuses": {
+    "200": 10,
+    "401": 4,
+    "403": 20
+   }
+  },
+  "GET /admin/emergencies": {
+   "calls": 29,
+   "statuses": {
+    "200": 3,
+    "401": 4,
+    "403": 21,
+    "422": 1
+   }
+  },
+  "GET /admin/facilities": {
+   "calls": 37,
+   "statuses": {
+    "200": 12,
+    "401": 4,
+    "403": 20,
+    "422": 1
+   }
+  },
+  "GET /admin/facilities/{facility_id}": {
+   "calls": 40,
+   "statuses": {
+    "200": 15,
+    "401": 4,
+    "403": 20,
+    "404": 1
+   }
+  },
+  "GET /admin/graph/pathway-log": {
+   "calls": 25,
+   "statuses": {
+    "200": 1,
+    "401": 4,
+    "403": 20
+   }
+  },
+  "GET /admin/system/health": {
+   "calls": 31,
+   "statuses": {
+    "200": 7,
+    "401": 4,
+    "403": 20
+   }
+  },
+  "GET /admin/system/metrics": {
+   "calls": 24,
+   "statuses": {
+    "200": 2,
+    "401": 5,
+    "403": 17
+   }
+  },
+  "GET /admin/transport-routes": {
+   "calls": 27,
+   "statuses": {
+    "200": 2,
+    "401": 4,
+    "403": 21
+   }
+  },
+  "GET /admin/users": {
+   "calls": 62,
+   "statuses": {
+    "200": 25,
+    "401": 4,
+    "403": 28,
+    "422": 5
+   }
+  },
+  "GET /admin/users/stats": {
+   "calls": 26,
+   "statuses": {
+    "200": 2,
+    "401": 4,
+    "403": 20
+   }
+  },
+  "GET /admin/verifications": {
+   "calls": 21,
+   "statuses": {
+    "200": 6,
+    "401": 2,
+    "403": 13
+   }
+  },
+  "GET /admin/verifications/{request_id}": {
+   "calls": 24,
+   "statuses": {
+    "200": 5,
+    "401": 2,
+    "403": 10,
+    "404": 3,
+    "422": 4
+   }
+  },
+  "GET /admin/verifications/{request_id}/documents/{index}": {
+   "calls": 41,
+   "statuses": {
+    "200": 11,
+    "401": 1,
+    "403": 14,
+    "404": 6,
+    "409": 6,
+    "422": 1,
+    "503": 2
+   }
+  },
+  "GET /auth/me": {
+   "calls": 86,
+   "statuses": {
+    "200": 61,
+    "401": 25
+   }
+  },
+  "GET /auth/session": {
+   "calls": 3,
+   "statuses": {
+    "200": 3
+   }
+  },
+  "GET /blood-requests": {
+   "calls": 9,
+   "statuses": {
+    "200": 8,
+    "401": 1
+   }
+  },
+  "GET /blood-requests/{request_id}": {
+   "calls": 60,
+   "statuses": {
+    "200": 44,
+    "401": 2,
+    "404": 12,
+    "422": 2
+   }
+  },
+  "GET /blood-requests/{request_id}/match-candidates": {
+   "calls": 8,
+   "statuses": {
+    "200": 5,
+    "401": 1,
+    "404": 2
+   }
+  },
+  "GET /blood-requests/{request_id}/match-strategies": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "404": 1
+   }
+  },
+  "GET /certificates": {
+   "calls": 15,
+   "statuses": {
+    "200": 4,
+    "401": 3,
+    "403": 8
+   }
+  },
+  "GET /certificates/verify/{code}": {
+   "calls": 9,
+   "statuses": {
+    "200": 5,
+    "404": 4
+   }
+  },
+  "GET /certificates/{certificate_id}": {
+   "calls": 21,
+   "statuses": {
+    "200": 5,
+    "401": 3,
+    "404": 12,
+    "422": 1
+   }
+  },
+  "GET /certificates/{certificate_id}/download": {
+   "calls": 36,
+   "statuses": {
+    "200": 9,
+    "401": 24,
+    "404": 1,
+    "422": 1,
+    "503": 1
+   }
+  },
+  "GET /donations": {
+   "calls": 9,
+   "statuses": {
+    "200": 4,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /donations/{donation_id}": {
+   "calls": 11,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 8
+   }
+  },
+  "GET /donors/me": {
+   "calls": 22,
+   "statuses": {
+    "200": 13,
+    "401": 2,
+    "403": 7
+   }
+  },
+  "GET /donors/me/appointments": {
+   "calls": 9,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "GET /donors/me/donations": {
+   "calls": 10,
+   "statuses": {
+    "200": 5,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /donors/me/requests": {
+   "calls": 10,
+   "statuses": {
+    "200": 5,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /donors/me/responses": {
+   "calls": 16,
+   "statuses": {
+    "200": 9,
+    "401": 2,
+    "403": 5
+   }
+  },
+  "GET /emergencies": {
+   "calls": 3,
+   "statuses": {
+    "200": 2,
+    "401": 1
+   }
+  },
+  "GET /emergencies/active": {
+   "calls": 9,
+   "statuses": {
+    "200": 3,
+    "401": 2,
+    "403": 4
+   }
+  },
+  "GET /emergencies/{emergency_id}": {
+   "calls": 50,
+   "statuses": {
+    "200": 36,
+    "401": 1,
+    "404": 13
+   }
+  },
+  "GET /emergencies/{emergency_id}/match-candidates": {
+   "calls": 10,
+   "statuses": {
+    "200": 8,
+    "401": 1,
+    "404": 1
+   }
+  },
+  "GET /emergencies/{emergency_id}/match-strategies": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "404": 1
+   }
+  },
+  "GET /emergencies/{emergency_id}/pathways": {
+   "calls": 3,
+   "statuses": {
+    "200": 2,
+    "401": 1
+   }
+  },
+  "GET /emergencies/{emergency_id}/resource-pathways": {
+   "calls": 16,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 4,
+    "404": 3,
+    "422": 5
+   }
+  },
+  "GET /events/stream": {
+   "calls": 18,
+   "statuses": {
+    "200": 16,
+    "401": 2
+   }
+  },
+  "GET /family/links": {
+   "calls": 12,
+   "statuses": {
+    "200": 10,
+    "401": 2
+   }
+  },
+  "GET /forecasts": {
+   "calls": 5,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 3
+   }
+  },
+  "GET /forecasts/{run_id}": {
+   "calls": 7,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 3,
+    "404": 1
+   }
+  },
+  "GET /health": {
+   "calls": 8,
+   "statuses": {
+    "200": 8
+   }
+  },
+  "GET /health/live": {
+   "calls": 5,
+   "statuses": {
+    "200": 5
+   }
+  },
+  "GET /health/ready": {
+   "calls": 5,
+   "statuses": {
+    "200": 4,
+    "503": 1
+   }
+  },
+  "GET /hospitals/directory": {
+   "calls": 15,
+   "statuses": {
+    "200": 13,
+    "401": 2
+   }
+  },
+  "GET /hospitals/me": {
+   "calls": 127,
+   "statuses": {
+    "200": 120,
+    "401": 1,
+    "403": 6
+   }
+  },
+  "GET /hospitals/me/activity": {
+   "calls": 6,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /hospitals/me/emergencies": {
+   "calls": 6,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /hospitals/me/inventory": {
+   "calls": 58,
+   "statuses": {
+    "200": 53,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /hospitals/me/inventory/components": {
+   "calls": 15,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 8
+   }
+  },
+  "GET /hospitals/me/inventory/log": {
+   "calls": 7,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /hospitals/me/requests": {
+   "calls": 11,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /hospitals/me/requests/{request_id}/events": {
+   "calls": 9,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 4,
+    "404": 3
+   }
+  },
+  "GET /hospitals/me/resource-pathways": {
+   "calls": 20,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 8,
+    "422": 5
+   }
+  },
+  "GET /hospitals/me/routes": {
+   "calls": 7,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /hospitals/me/units": {
+   "calls": 9,
+   "statuses": {
+    "200": 4,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /map/data": {
+   "calls": 8,
+   "statuses": {
+    "200": 4,
+    "401": 1,
+    "403": 3
+   }
+  },
+  "GET /matching/blood-compatibility": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 2
+   }
+  },
+  "GET /notifications": {
+   "calls": 122,
+   "statuses": {
+    "200": 117,
+    "401": 1,
+    "403": 2,
+    "422": 2
+   }
+  },
+  "GET /notifications/preferences": {
+   "calls": 7,
+   "statuses": {
+    "200": 5,
+    "401": 2
+   }
+  },
+  "GET /notifications/unread-count": {
+   "calls": 6,
+   "statuses": {
+    "200": 5,
+    "401": 1
+   }
+  },
+  "GET /pathways/config": {
+   "calls": 2,
+   "statuses": {
+    "200": 1,
+    "401": 1
+   }
+  },
+  "GET /patients/managed": {
+   "calls": 18,
+   "statuses": {
+    "200": 12,
+    "401": 2,
+    "403": 4
+   }
+  },
+  "GET /patients/me": {
+   "calls": 15,
+   "statuses": {
+    "200": 3,
+    "401": 4,
+    "403": 4,
+    "503": 4
+   }
+  },
+  "GET /shipments": {
+   "calls": 9,
+   "statuses": {
+    "200": 5,
+    "401": 1,
+    "403": 3
+   }
+  },
+  "GET /shipments/by-code/{shipment_code}": {
+   "calls": 9,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "GET /shipments/units/{unit_code}": {
+   "calls": 12,
+   "statuses": {
+    "200": 5,
+    "401": 1,
+    "403": 6
+   }
+  },
+  "GET /shipments/{shipment_id}": {
+   "calls": 12,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "GET /shipments/{shipment_id}/telemetry": {
+   "calls": 7,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "GET /shipments/{shipment_id}/timeline": {
+   "calls": 10,
+   "statuses": {
+    "200": 4,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "GET /verifications/me": {
+   "calls": 15,
+   "statuses": {
+    "200": 13,
+    "401": 2
+   }
+  },
+  "GET <unmatched>": {
+   "calls": 4,
+   "statuses": {
+    "307": 1,
+    "404": 3
+   }
+  },
+  "OPTIONS <unmatched>": {
+   "calls": 4,
+   "statuses": {
+    "200": 2,
+    "400": 2
+   }
+  },
+  "PATCH /admin/users/{user_id}/role": {
+   "calls": 31,
+   "statuses": {
+    "200": 2,
+    "400": 1,
+    "401": 4,
+    "403": 24
+   }
+  },
+  "POST /admin/audit-log/checkpoint": {
+   "calls": 29,
+   "statuses": {
+    "200": 1,
+    "401": 4,
+    "403": 23,
+    "409": 1
+   }
+  },
+  "POST /admin/audit-log/verify": {
+   "calls": 46,
+   "statuses": {
+    "200": 11,
+    "401": 4,
+    "403": 28,
+    "409": 1,
+    "422": 2
+   }
+  },
+  "POST /admin/blood-requests/{request_id}/transition": {
+   "calls": 31,
+   "statuses": {
+    "200": 3,
+    "400": 2,
+    "401": 4,
+    "403": 21,
+    "409": 1
+   }
+  },
+  "POST /admin/certificates/{certificate_id}/revoke": {
+   "calls": 29,
+   "statuses": {
+    "200": 2,
+    "401": 4,
+    "403": 21,
+    "404": 1,
+    "422": 1
+   }
+  },
+  "POST /admin/facilities/{facility_id}/revoke-verification": {
+   "calls": 26,
+   "statuses": {
+    "200": 1,
+    "401": 4,
+    "403": 20,
+    "409": 1
+   }
+  },
+  "POST /admin/graph/resync": {
+   "calls": 32,
+   "statuses": {
+    "401": 4,
+    "403": 24,
+    "503": 4
+   }
+  },
+  "POST /admin/transport-routes": {
+   "calls": 50,
+   "statuses": {
+    "201": 18,
+    "400": 2,
+    "401": 4,
+    "403": 24,
+    "409": 2
+   }
+  },
+  "POST /admin/transport-routes/{route_id}/disrupt": {
+   "calls": 34,
+   "statuses": {
+    "200": 8,
+    "401": 4,
+    "403": 20,
+    "409": 2
+   }
+  },
+  "POST /admin/transport-routes/{route_id}/recover": {
+   "calls": 27,
+   "statuses": {
+    "200": 2,
+    "401": 4,
+    "403": 20,
+    "409": 1
+   }
+  },
+  "POST /admin/users/{user_id}/reactivate": {
+   "calls": 32,
+   "statuses": {
+    "200": 4,
+    "401": 4,
+    "403": 24
+   }
+  },
+  "POST /admin/users/{user_id}/suspend": {
+   "calls": 40,
+   "statuses": {
+    "200": 9,
+    "400": 1,
+    "401": 4,
+    "403": 24,
+    "422": 2
+   }
+  },
+  "POST /admin/verifications/{request_id}/approve": {
+   "calls": 27,
+   "statuses": {
+    "200": 10,
+    "401": 2,
+    "403": 9,
+    "409": 6
+   }
+  },
+  "POST /admin/verifications/{request_id}/documents/{index}/rescan": {
+   "calls": 10,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 6
+   }
+  },
+  "POST /admin/verifications/{request_id}/reject": {
+   "calls": 26,
+   "statuses": {
+    "200": 11,
+    "401": 2,
+    "403": 8,
+    "409": 3,
+    "422": 2
+   }
+  },
+  "POST /auth/change-password": {
+   "calls": 14,
+   "statuses": {
+    "200": 4,
+    "401": 8,
+    "403": 1,
+    "429": 1
+   }
+  },
+  "POST /auth/forgot-password": {
+   "calls": 14,
+   "statuses": {
+    "202": 13,
+    "403": 1
+   }
+  },
+  "POST /auth/login": {
+   "calls": 1809,
+   "statuses": {
+    "200": 1786,
+    "401": 15,
+    "403": 2,
+    "429": 6
+   }
+  },
+  "POST /auth/logout": {
+   "calls": 41,
+   "statuses": {
+    "204": 39,
+    "403": 2
+   }
+  },
+  "POST /auth/register": {
+   "calls": 89,
+   "statuses": {
+    "201": 61,
+    "403": 1,
+    "409": 15,
+    "422": 8,
+    "429": 3,
+    "503": 1
+   }
+  },
+  "POST /auth/reset-password": {
+   "calls": 35,
+   "statuses": {
+    "200": 4,
+    "400": 13,
+    "403": 1,
+    "429": 17
+   }
+  },
+  "POST /auth/verify-email": {
+   "calls": 30,
+   "statuses": {
+    "200": 17,
+    "400": 11,
+    "403": 1,
+    "422": 1
+   }
+  },
+  "POST /auth/verify-email/resend": {
+   "calls": 6,
+   "statuses": {
+    "202": 5,
+    "403": 1
+   }
+  },
+  "POST /blood-requests": {
+   "calls": 303,
+   "statuses": {
+    "200": 9,
+    "201": 273,
+    "401": 2,
+    "403": 10,
+    "404": 1,
+    "409": 3,
+    "422": 3,
+    "429": 2
+   }
+  },
+  "POST /blood-requests/{request_id}/cancel": {
+   "calls": 27,
+   "statuses": {
+    "200": 13,
+    "401": 1,
+    "403": 1,
+    "404": 5,
+    "409": 6,
+    "422": 1
+   }
+  },
+  "POST /blood-requests/{request_id}/fulfill": {
+   "calls": 15,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 1,
+    "404": 4,
+    "409": 3
+   }
+  },
+  "POST /blood-requests/{request_id}/respond": {
+   "calls": 68,
+   "statuses": {
+    "200": 48,
+    "400": 4,
+    "401": 1,
+    "403": 8,
+    "404": 1,
+    "409": 6
+   }
+  },
+  "POST /certificates": {
+   "calls": 76,
+   "statuses": {
+    "201": 56,
+    "401": 2,
+    "403": 9,
+    "404": 3,
+    "409": 5,
+    "503": 1
+   }
+  },
+  "POST /donations/{donation_id}/reject": {
+   "calls": 17,
+   "statuses": {
+    "200": 8,
+    "401": 1,
+    "403": 7,
+    "409": 1
+   }
+  },
+  "POST /donations/{donation_id}/verify": {
+   "calls": 75,
+   "statuses": {
+    "200": 62,
+    "401": 1,
+    "403": 9,
+    "404": 1,
+    "409": 2
+   }
+  },
+  "POST /donors/me/appointments": {
+   "calls": 31,
+   "statuses": {
+    "201": 20,
+    "400": 3,
+    "401": 1,
+    "403": 6,
+    "404": 1
+   }
+  },
+  "POST /donors/me/appointments/{appointment_id}/cancel": {
+   "calls": 14,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 5,
+    "404": 4,
+    "409": 1
+   }
+  },
+  "POST /donors/me/donations": {
+   "calls": 151,
+   "statuses": {
+    "200": 37,
+    "201": 96,
+    "400": 2,
+    "401": 2,
+    "403": 9,
+    "404": 1,
+    "409": 1,
+    "422": 3
+   }
+  },
+  "POST /emergencies": {
+   "calls": 190,
+   "statuses": {
+    "200": 21,
+    "201": 152,
+    "400": 3,
+    "401": 1,
+    "403": 7,
+    "422": 4,
+    "429": 2
+   }
+  },
+  "POST /emergencies/{emergency_id}/acknowledge": {
+   "calls": 17,
+   "statuses": {
+    "200": 11,
+    "401": 1,
+    "403": 3,
+    "409": 2
+   }
+  },
+  "POST /emergencies/{emergency_id}/assistance-found": {
+   "calls": 8,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 1,
+    "404": 3
+   }
+  },
+  "POST /emergencies/{emergency_id}/cancel": {
+   "calls": 17,
+   "statuses": {
+    "200": 7,
+    "401": 1,
+    "403": 1,
+    "404": 7,
+    "409": 1
+   }
+  },
+  "POST /emergencies/{emergency_id}/overrides": {
+   "calls": 8,
+   "statuses": {
+    "201": 1,
+    "401": 1,
+    "403": 6
+   }
+  },
+  "POST /emergencies/{emergency_id}/overrides/{override_id}/revoke": {
+   "calls": 7,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "POST /emergencies/{emergency_id}/pathway": {
+   "calls": 19,
+   "statuses": {
+    "200": 14,
+    "401": 1,
+    "403": 3,
+    "404": 1
+   }
+  },
+  "POST /emergencies/{emergency_id}/pathway/release": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 1
+   }
+  },
+  "POST /emergencies/{emergency_id}/pathway/reserve": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 1
+   }
+  },
+  "POST /emergencies/{emergency_id}/resolve": {
+   "calls": 18,
+   "statuses": {
+    "200": 8,
+    "401": 1,
+    "403": 1,
+    "404": 4,
+    "409": 4
+   }
+  },
+  "POST /emergencies/{emergency_id}/respond": {
+   "calls": 42,
+   "statuses": {
+    "200": 29,
+    "400": 3,
+    "401": 1,
+    "403": 5,
+    "404": 1,
+    "409": 3
+   }
+  },
+  "POST /family/links": {
+   "calls": 77,
+   "statuses": {
+    "201": 61,
+    "401": 1,
+    "403": 7,
+    "404": 4,
+    "409": 4
+   }
+  },
+  "POST /family/links/{link_id}/accept": {
+   "calls": 41,
+   "statuses": {
+    "200": 26,
+    "401": 1,
+    "403": 8,
+    "404": 1,
+    "409": 5
+   }
+  },
+  "POST /family/links/{link_id}/reject": {
+   "calls": 19,
+   "statuses": {
+    "200": 8,
+    "401": 1,
+    "403": 7,
+    "404": 1,
+    "409": 2
+   }
+  },
+  "POST /family/links/{link_id}/revoke": {
+   "calls": 19,
+   "statuses": {
+    "200": 9,
+    "401": 1,
+    "403": 6,
+    "404": 1,
+    "409": 2
+   }
+  },
+  "POST /forecasts": {
+   "calls": 11,
+   "statuses": {
+    "201": 4,
+    "401": 1,
+    "403": 6
+   }
+  },
+  "POST /hospitals/me/inventory/add": {
+   "calls": 177,
+   "statuses": {
+    "200": 165,
+    "401": 1,
+    "403": 5,
+    "409": 4,
+    "422": 2
+   }
+  },
+  "POST /hospitals/me/inventory/allocate": {
+   "calls": 27,
+   "statuses": {
+    "200": 16,
+    "401": 1,
+    "403": 5,
+    "409": 5
+   }
+  },
+  "POST /hospitals/me/inventory/expire": {
+   "calls": 10,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 5,
+    "409": 2
+   }
+  },
+  "POST /hospitals/me/inventory/reconcile": {
+   "calls": 8,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 5,
+    "409": 1
+   }
+  },
+  "POST /hospitals/me/inventory/release": {
+   "calls": 10,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 5,
+    "409": 1
+   }
+  },
+  "POST /hospitals/me/inventory/reserve": {
+   "calls": 38,
+   "statuses": {
+    "200": 28,
+    "401": 1,
+    "403": 5,
+    "409": 4
+   }
+  },
+  "POST /hospitals/me/requests/{request_id}/allocate": {
+   "calls": 52,
+   "statuses": {
+    "200": 31,
+    "400": 1,
+    "401": 1,
+    "403": 5,
+    "404": 2,
+    "409": 11,
+    "422": 1
+   }
+  },
+  "POST /hospitals/me/requests/{request_id}/fulfill": {
+   "calls": 17,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 5,
+    "404": 1,
+    "409": 4
+   }
+  },
+  "POST /hospitals/me/requests/{request_id}/respond": {
+   "calls": 14,
+   "statuses": {
+    "200": 4,
+    "401": 1,
+    "403": 5,
+    "404": 1,
+    "422": 3
+   }
+  },
+  "POST /hospitals/me/units/{unit_id}/discard": {
+   "calls": 8,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 5,
+    "409": 1
+   }
+  },
+  "POST /hospitals/me/units/{unit_id}/quarantine": {
+   "calls": 8,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 5,
+    "404": 1
+   }
+  },
+  "POST /hospitals/me/units/{unit_id}/release-quarantine": {
+   "calls": 7,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "POST /hospitals/me/units/{unit_id}/thaw": {
+   "calls": 9,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 5,
+    "409": 2
+   }
+  },
+  "POST /notifications/read-all": {
+   "calls": 3,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 1
+   }
+  },
+  "POST /notifications/{notification_id}/read": {
+   "calls": 16,
+   "statuses": {
+    "200": 11,
+    "401": 1,
+    "403": 1,
+    "404": 3
+   }
+  },
+  "POST /pathways/simulate": {
+   "calls": 9,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 5,
+    "404": 1
+   }
+  },
+  "POST /shipments": {
+   "calls": 90,
+   "statuses": {
+    "200": 1,
+    "201": 76,
+    "400": 2,
+    "401": 1,
+    "403": 5,
+    "409": 5
+   }
+  },
+  "POST /shipments/{shipment_id}/arrive": {
+   "calls": 20,
+   "statuses": {
+    "200": 15,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "POST /shipments/{shipment_id}/cancel": {
+   "calls": 13,
+   "statuses": {
+    "200": 4,
+    "401": 1,
+    "403": 5,
+    "409": 3
+   }
+  },
+  "POST /shipments/{shipment_id}/delay": {
+   "calls": 11,
+   "statuses": {
+    "200": 3,
+    "401": 1,
+    "403": 5,
+    "409": 2
+   }
+  },
+  "POST /shipments/{shipment_id}/dispatch": {
+   "calls": 61,
+   "statuses": {
+    "200": 49,
+    "401": 1,
+    "403": 7,
+    "409": 4
+   }
+  },
+  "POST /shipments/{shipment_id}/fail": {
+   "calls": 29,
+   "statuses": {
+    "200": 21,
+    "401": 1,
+    "403": 5,
+    "409": 2
+   }
+  },
+  "POST /shipments/{shipment_id}/in-transit": {
+   "calls": 20,
+   "statuses": {
+    "200": 15,
+    "401": 1,
+    "403": 4
+   }
+  },
+  "POST /shipments/{shipment_id}/receive": {
+   "calls": 27,
+   "statuses": {
+    "200": 12,
+    "401": 1,
+    "403": 6,
+    "409": 8
+   }
+  },
+  "POST /shipments/{shipment_id}/reconcile": {
+   "calls": 32,
+   "statuses": {
+    "200": 11,
+    "401": 1,
+    "403": 8,
+    "409": 3,
+    "422": 9
+   }
+  },
+  "POST /shipments/{shipment_id}/telemetry": {
+   "calls": 19,
+   "statuses": {
+    "200": 12,
+    "401": 1,
+    "403": 4,
+    "422": 2
+   }
+  },
+  "POST /shipments/{shipment_id}/telemetry/simulate": {
+   "calls": 8,
+   "statuses": {
+    "200": 1,
+    "401": 1,
+    "403": 6
+   }
+  },
+  "POST /verifications": {
+   "calls": 131,
+   "statuses": {
+    "201": 90,
+    "401": 3,
+    "403": 8,
+    "409": 8,
+    "422": 19,
+    "429": 1,
+    "503": 2
+   }
+  },
+  "POST <unmatched>": {
+   "calls": 1,
+   "statuses": {
+    "404": 1
+   }
+  },
+  "PUT /donors/me": {
+   "calls": 227,
+   "statuses": {
+    "200": 221,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "PUT /donors/me/availability": {
+   "calls": 12,
+   "statuses": {
+    "200": 6,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "PUT /hospitals/me": {
+   "calls": 426,
+   "statuses": {
+    "200": 420,
+    "401": 1,
+    "403": 5
+   }
+  },
+  "PUT /hospitals/me/inventory": {
+   "calls": 16,
+   "statuses": {
+    "200": 9,
+    "401": 1,
+    "403": 5,
+    "422": 1
+   }
+  },
+  "PUT /notifications/preferences": {
+   "calls": 14,
+   "statuses": {
+    "200": 8,
+    "401": 2,
+    "403": 1,
+    "422": 3
+   }
+  },
+  "PUT /patients/me": {
+   "calls": 8,
+   "statuses": {
+    "200": 2,
+    "401": 1,
+    "403": 4,
+    "422": 1
+   }
+  }
+ }
+}

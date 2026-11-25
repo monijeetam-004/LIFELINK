@@ -1,0 +1,48 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 14%]
+........................................................................ [ 19%]
+........................................................................ [ 24%]
+ssss....................................................sss........s.... [ 29%]
+........................................................................ [ 34%]
+.................................ss..................................... [ 38%]
+........................................................................ [ 43%]
+........................................................................ [ 48%]
+........................................................................ [ 53%]
+........................................................................ [ 58%]
+........................................................................ [ 63%]
+........................................................................ [ 68%]
+........................................................................ [ 72%]
+........................................................................ [ 77%]
+........................................................................ [ 82%]
+........................................................................ [ 87%]
+........................................................................ [ 92%]
+........................................................................ [ 97%]
+..........................................                               [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.11/site-packages/fastapi/testclient.py:1
+  /home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv/lib/python3.11/site-packages/starlette/testclient.py:53
+  /home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_audit_d4_distance_policy.py::test_ranking_override_is_admin_only_needs_a_reason_and_is_audited
+  /home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/anyio/_backends/_asyncio.py:1100: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    result = context.run(func, *args)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_gap_clamav_real.py:50: no clamd reachable at 127.0.0.1:3310 (CI sets CLAMD_TEST_REQUIRED)
+SKIPPED [1] tests/test_gap_clamav_real.py:60: clamav-testfiles not installed
+SKIPPED [1] tests/test_gap_clamav_real.py:69: no clamd reachable at 127.0.0.1:3310 (CI sets CLAMD_TEST_REQUIRED)
+SKIPPED [1] tests/test_gap_clamav_real.py:79: no clamd reachable at 127.0.0.1:3310 (CI sets CLAMD_TEST_REQUIRED)
+SKIPPED [1] tests/test_gap_infrastructure.py:48: S3_TEST_ENDPOINT not set (no MinIO/S3 server available)
+SKIPPED [1] tests/test_gap_infrastructure.py:66: S3_TEST_ENDPOINT not set (no MinIO/S3 server available)
+SKIPPED [1] tests/test_gap_infrastructure.py:77: SMTP_TEST_HOST not set (no Mailpit/SMTP catcher)
+SKIPPED [1] tests/test_gap_neo4j.py:184: NEO4J_TEST_URI not set: no Neo4j server available (registries and dist.neo4j.org blocked in the verification sandbox)
+SKIPPED [1] tests/test_hardening_malware_scanning.py:162: no clamd reachable at 127.0.0.1:3310 (CI sets CLAMD_TEST_REQUIRED)
+SKIPPED [1] tests/test_hardening_malware_scanning.py:170: no clamd reachable at 127.0.0.1:3310 (CI sets CLAMD_TEST_REQUIRED)
+1472 passed, 10 skipped, 3 warnings in 1859.38s (0:30:59)
+exit=0

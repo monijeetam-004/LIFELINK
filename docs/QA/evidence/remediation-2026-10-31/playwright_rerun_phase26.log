@@ -1,0 +1,21 @@
+start 2026-10-31T13:19:11Z commit 014cfca + uncommitted UI/spec changes
+bash: line 1: re-run: command not found
+=== 2026-10-31T13:19:11Z fresh lifelink_e2e
+hand-off, failover recovery state, donor location/availability timestamps.
+Seeded 5 E2E users.
+Demo accounts (password: <documented demo password>): {'patient': 'demo.patient@lifelink-demo.example.com', 'family': 'd
+Graph resync: ok=False detail=Neo4j is not configured
+✓ built in 7.35s
+=== 2026-10-31T13:22:10Z playwright
+
+Running 3 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/phase26_donation_idempotency.spec.ts:40:3 › Phase 26 E2E: donation-logging idempotency through the real UI › rapid double-click on Log donation creates exactly one donation, not two (3.4s)
+  ✓  2 [chromium] › e2e/phase26_donation_idempotency.spec.ts:95:3 › Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation (3.7s)
+  ✓  3 [chromium] › e2e/phase26_donation_idempotency.spec.ts:148:3 › Phase 26 E2E: donation-logging idempotency through the real UI › a genuine server error while logging a donation shows an honest error, not a false success (2.7s)
+
+  3 passed (11.0s)
+=== 2026-10-31T13:22:23Z playwright exit 0
+invariants exit 0
+harness exit 0
+end 2026-10-31T13:22:23Z

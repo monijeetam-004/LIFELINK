@@ -1,0 +1,7 @@
+
+> lifelink-frontend@0.1.0 audit:gate
+> node scripts/audit-gate.mjs
+
+allowlisted (dev-only) high braces: braces vulnerable to stack-exhaustion denial of service through deeply nested patterns -- Build-time only: braces expands the glob patterns in our own tailwind.config.js `content` list, never user input, and is absent from the shipped bundle (npm audit --omit=dev = 0). No patched braces release exists (latest 3.0.3 is in range); the only fix npm offers is the Tailwind 3 -> 4 rewrite of the CSS toolchain, tracked as a limitation in docs/LIFELINK_PHASE_H_SECURITY_REPORT.md.
+npm audit gate passed: 0 runtime advisories; 2 advisories in the full tree, 1 high/critical exempted by audit-allowlist.json (dev-only).
+exit=0

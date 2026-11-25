@@ -1,0 +1,2 @@
+open 200/200 in 14.0s pubsub=2
+idle server CPU with 200 streams: 23% rss=455MB

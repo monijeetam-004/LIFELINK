@@ -1,0 +1,11 @@
+# 2026-11-03T06:12:08Z HEAD 2cfe39a + uncommitted; server: scripts/run_production.sh WEB_CONCURRENCY=2 on lifelink_demo (about 1,466 users, synthetic); generator on the same 2-vCPU machine
+sessions: {'ADMIN': 1, 'DONOR': 40, 'HOSPITAL': 40, 'PATIENT': 1}
+SSE streams open: 50/50 in 2.6s; server Redis pub/sub connections: 2; server RSS 507 MB
+| C | requests | throughput (req/s) | p50 ms | p95 ms | p99 ms | non-2xx | server CPU % (of 1 core) | server RSS MB |
+|---|---|---|---|---|---|---|---|---|
+/home/claude/lifelink/LIFELINK/backend/scripts/loadtest_hardening.py:147: DeprecationWarning: Setting per-request cookies=<...> is being deprecated, because the expected behaviour on cookie persistence is ambiguous. Set cookies directly on the client instance instead.
+  r = await client.request(method, path,
+| 1 | 2294 | 114.7 | 6.5 | 23.4 | 36.2 | 0  | 89 | 515 |
+| 8 | 3628 | 180.8 | 36.2 | 130.0 | 197.2 | 0  | 148 | 536 |
+| 32 | 3733 | 185.7 | 173.4 | 429.0 | 592.2 | 0  | 152 | 548 |
+after run: server Redis pub/sub connections: 2

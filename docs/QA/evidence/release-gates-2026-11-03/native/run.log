@@ -1,0 +1,27 @@
+=== 2026-11-03T05:24:08Z fresh database lifelink_ext
+migration state : EMPTY
+was ranked.
+migration state : AT_HEAD
+=== 2026-11-03T05:24:11Z start API :8300 + worker
+{"status":"ready","audit_checkpoints":{"enabled":false,"required":false,"warning":"Audit checkpoints are DISABLED: a database owner who recomputes the whole hash chain, or truncates its newest rows, would not be detected. Set AUDIT_CHECKPOINT_KEY and AUDIT_CHECKPOINT_PATH."},"required":{"db":true,"redis":true},"optional":{"neo4j":{"configured":false},"storage":{"backend":"s3"},"email":{"authenticated":false,"provider":"mailpit"}},"dependency_states":{"db":"AVAILABLE","redis":"AVAILABLE","neo4j":"NOT_CONFIGURED","storage":"CONFIGURED_NOT_PROBED","email":"NOT_CONFIGURED"}}
+=== 2026-11-03T05:24:15Z seed
+Demo accounts (password: <documented demo password>): {'patient': 'demo.patient@lifelink-demo.example.com', 'family': 'd
+Graph resync: ok=False detail=Neo4j is not configured
+=== 2026-11-03T05:26:25Z frontend build against :8300
+✓ built in 8.05s
+=== 2026-11-03T05:26:34Z functional checks
+[PASS   ] api_ready: HTTP 200 status=ready
+[PASS   ] database: PostgreSQL 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu
+[PASS   ] alembic_head: state=AT_HEAD db=['a7b8c9d0e1f2'] repo_head=a7b8c9d0e1f2 schema_matches_models=True
+[PASS   ] redis: PING=True redis_version=7.0.15
+[BLOCKED] neo4j: NEO4J_URI not configured: no Neo4j server obtainable in this environment; the planner runs on the relational engine (RELATIONAL_ROUTES). External validation required.
+[PASS   ] object_storage: bucket 'lifelink-dev' exists; 1024 B written, read back identical=True, deleted=True; server='MinIO'
+[PASS   ] clamav: PING=PONG; ClamAV 1.5.4; clean payload -> CLEAN; EICAR -> INFECTED (LifeLink.Test.EICAR.UNOFFICIAL)
+[PASS   ] worker_and_mail: 1 RQ worker(s); verification e-mail for clean-start-dc072d30@example.com delivered by the worker in 2.2 s (subject 'Verify your LifeLink email'); token from that e-mail verified the account: True
+[PASS   ] document_upload: clean PDF -> 201, stored in object storage=True, scan=['CLEAN']; EICAR PDF (sent first) -> 422 File failed a security scan and cannot be accepted; verification requests on the account: 1
+[PASS   ] seed_data: 1066 users; {'users_by_role': [['PATIENT', '1'], ['FAMILY', '1'], ['DONOR', '1002'], ['HOSPITAL', '61'], ['ADMIN', '1']], 'facilities': [['BLOOD_BANK', '20', '15'], ['HOSPITAL', '41', '26']], 'transport_routes': [['OPERATIONAL', '78'], ['DISRUPTED', '7']], 'blood_units_by_state': [['AVAILABLE', '9675']], 'donations': [['614']]}
+[PASS   ] frontend: GET http://127.0.0.1:4400 -> 200; SPA root present=True; bundle points at http://127.0.0.1:8300: True (browser login check: frontend/e2e/clean_start.spec.ts)
+[PASS   ] critical_workflow: receiving hospital holds 20 O_NEG; request 23 units | admin added routes to Mumbai Blood Bank & Transfusion Centre (4.9 km), Pune Community Hospital (150.8 km) | patient SOS 061dc4d3-5a3d-4b65-9fa5-9b720e404557 (geocode_source=USER_INPUT) | plan: VIABLE, 23/23 units, 1 legs, ETA 38 min, 1 backup(s), engine RELATIONAL_ROUTES | reserved 23 units | route ee041adb-f7da-4d0f-86b3-afe95cdf5e78 disrupted -> BACKUP_PROMOTED, reachable=True | delivery now from Pune Blood Bank & Transfusion Centre over 2 route(s) | shipment SHP-AFC6FB19CE: 23 units, cold chain WITHIN_RANGE, received; O_NEG stock 20 -> 43 | resolved; 8 timeline events; audit chain ok=True
+
+VERDICT: PASS WITH EXTERNAL VALIDATION REQUIRED
+=== 2026-11-03T05:26:41Z done

@@ -1,0 +1,14 @@
+
+Running 9 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/qa_evidence.spec.ts:60:1 › QA auth: register, blocked until verified, verify by email link, sign in (10.3s)
+  ✓  2 [chromium] › e2e/qa_evidence.spec.ts:190:1 › QA donor: log a donation, hospital verifies, certificate issued and downloadable (12.4s)
+  ✓  3 [chromium] › e2e/qa_evidence.spec.ts:271:1 › QA documents: clean upload is scanned and reviewable; infected, wrong-type and oversized are refused (11.6s)
+  ✓  4 [chromium] › e2e/qa_evidence.spec.ts:340:1 › QA hospital: inventory by component, add/reserve/release through the UI (7.4s)
+  ✓  5 [chromium] › e2e/qa_evidence.spec.ts:394:1 › QA requests: patient request, partial then full fulfilment, live updates (12.7s)
+  ✓  6 [chromium] › e2e/qa_evidence.spec.ts:469:1 › QA shipments: create, dispatch, delay, arrive, receive; failure needs reconciliation (8.8s)
+  ✓  7 [chromium] › e2e/qa_evidence.spec.ts:545:1 › QA admin: overview, users, facilities, shipments, analytics, audit chain (13.1s)
+  ✓  8 [chromium] › e2e/qa_evidence.spec.ts:574:1 › QA realtime: losing the API shows reconnecting, recovery is live again (2.7s)
+  ✓  9 [chromium] › e2e/qa_evidence.spec.ts:596:1 › QA security: wrong role, anonymous and expired sessions (4.0s)
+
+  9 passed (1.4m)

@@ -1,0 +1,9 @@
+start 2026-10-20T14:23:01Z
+      Tests  172 passed (172)
+   Start at  14:23:02
+   Duration  42.47s (environment 48%, tests 27%, import 11%, setup 8%, transform 6%)
+
+Environment  jsdom was created 22 times · 18.54s total, 48% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

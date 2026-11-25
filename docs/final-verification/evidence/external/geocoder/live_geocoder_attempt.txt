@@ -1,0 +1,11 @@
+# Live geocoder attempt -- 2026-10-13T08:08:50.870193+00:00
+GEOCODER_URL = https://nominatim.openstreetmap.org/search | timeout = 3.0 s | User-Agent = LifeLink/1.0 (emergency geocoding)
+- valid street address (not a seeded city): NO LOCATION (nothing invented)  [450 ms]
+- invalid / nonsense address: NO LOCATION (nothing invented)  [320 ms]
+- address naming a seeded city (gazetteer fallback): ('GAZETTEER', 19.09, 72.8567, 'city-level estimate: centroid of 4 registered facilities in Mumbai')  [3 ms]
+- explicit coordinates: ('USER_INPUT', 19.07, 72.88, 'coordinates supplied by the requester')  [0 ms]
+- out-of-range coordinates: rejected: latitude/longitude must both be given and within range
+
+# raw request the service makes (same client settings), to show why no match came back:
+ProxyError 403 Forbidden
+=> the public geocoder is unreachable from this environment (egress policy); the service returned no location instead of inventing one, and the gazetteer/coordinate paths kept working.

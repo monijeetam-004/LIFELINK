@@ -1,0 +1,10 @@
+SERVICE            IMAGE                                         STATUS                   PORTS
+api                lifelink-api                                  Up 5 minutes (healthy)   0.0.0.0:8000->8000/tcp
+clamav             ll-local/clamav:1.4                           Up 5 minutes (healthy)   3310/tcp
+db                 ll-local/postgres:16                          Up 5 minutes (healthy)   0.0.0.0:15432->5432/tcp
+deadline-monitor   lifelink-deadline-monitor                     Up 5 minutes (healthy)   8000/tcp
+frontend           lifelink-frontend                             Up 5 minutes             0.0.0.0:5173->8080/tcp
+mailpit            ll-local/mailpit:v1.21.8                      Up 5 minutes (healthy)   0.0.0.0:11025->1025/tcp, 0.0.0.0:18025->8025/tcp
+minio              ll-local/minio:RELEASE.2025-04-22T22-12-26Z   Up 5 minutes (healthy)   0.0.0.0:19000->9000/tcp, 0.0.0.0:19001->9001/tcp
+redis              ll-local/redis:7                              Up 5 minutes (healthy)   0.0.0.0:16379->6379/tcp
+worker             lifelink-worker                               Up 5 minutes (healthy)   8000/tcp

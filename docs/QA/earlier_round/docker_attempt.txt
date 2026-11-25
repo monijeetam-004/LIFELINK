@@ -1,0 +1,16 @@
+# 2026-10-06T15:33:53Z docker daemon started in sandbox; registry pulls attempted
+client 29.4.3 server 29.4.3
+$ docker pull postgres:16-alpine
+Error response from daemon: failed to resolve reference "docker.io/library/postgres:16-alpine": failed to do request: Head "https://registry-1.docker.io/v2/library/postgres/manifests/16-alpine": Forbidden
+$ docker pull redis:7-alpine
+Error response from daemon: failed to resolve reference "docker.io/library/redis:7-alpine": failed to do request: Head "https://registry-1.docker.io/v2/library/redis/manifests/7-alpine": Forbidden
+$ docker pull clamav/clamav:1.4
+Error response from daemon: failed to resolve reference "docker.io/clamav/clamav:1.4": failed to do request: Head "https://registry-1.docker.io/v2/clamav/clamav/manifests/1.4": Forbidden
+$ docker pull minio/minio
+Error response from daemon: failed to resolve reference "docker.io/minio/minio:latest": failed to do request: Head "https://registry-1.docker.io/v2/minio/minio/manifests/latest": Forbidden
+$ docker pull axllent/mailpit
+Error response from daemon: failed to resolve reference "docker.io/axllent/mailpit:latest": failed to do request: Head "https://registry-1.docker.io/v2/axllent/mailpit/manifests/latest": Forbidden
+$ docker pull python:3.12-slim
+Error response from daemon: failed to resolve reference "docker.io/library/python:3.12-slim": failed to do request: Head "https://registry-1.docker.io/v2/library/python/manifests/3.12-slim": Forbidden
+$ docker compose config -q
+valid

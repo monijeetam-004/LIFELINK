@@ -1,0 +1,434 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Phase 26: a real, reproduced defect -- a wide `<table>` nested inside a
+   correctly-configured `overflow-x-auto` (itself inside an `overflow-hidden`
+   card) still let the *page's own* `document.documentElement` scroll
+   horizontally on narrow viewports (confirmed on /admin/transport-routes at
+   375/390/414px: every ancestor's own getBoundingClientRect() was already
+   clipped to the viewport, yet `window.scrollX` could still be moved to 49px
+   -- a real, if subtle, browser layout quirk where a wide table's intrinsic
+   width can still inflate the root scrollable area even though nothing is
+   visibly overflowing). This is the standard, minimal, non-redesigning fix:
+   the root document never needs to scroll horizontally in this app (every
+   page's own width is already 100% via Tailwind's layout classes), so this
+   is a safety net, not a workaround for any one page -- it does not disable
+   or interfere with any element's own intentional `overflow-x: auto` (a
+   table scrolling within its own container, e.g. the one that surfaced
+   this, is still fully scrollable exactly as designed). See
+   LIFELINK_PHASE_26_DONATION_FRONTEND_AUDIT.md. */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Shared across the Stitch-exported screens — kept verbatim so every page
+   that relied on these utility classes keeps behaving identically. */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  display: inline-block;
+  line-height: 1;
+  /* Material Symbols is self-hosted (npm "material-symbols", imported in
+     main.tsx). While the woff2 is still loading the browser could render
+     the literal icon name ("help_outline", ...) as text; each glyph fills a
+     1em square, so clipping to exactly that has no visible effect once the
+     font loads but keeps a multi-word fallback from blowing out a header. */
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.shadow-soft {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+html,
+body {
+  background: #f7f9fb;
+}
+
+/* ---- Page-specific rules merged in from individual Stitch screens ---- */
+
+/* admin_verification_portal */
+.verification-card-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.verification-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* decision_transparency_why_not_others */
+.math-overlay {
+  font-family: "Courier New", Courier, monospace;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.confidence-gradient {
+  background: linear-gradient(90deg, #2e7d32 96%, #e2e8f0 96%);
+}
+.ribbon-step::after {
+  content: "→";
+  margin: 0 12px;
+  color: #94a3b8;
+}
+.ribbon-step:last-child::after {
+  content: "";
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+/* digital_donation_certificate */
+.guilloche-pattern {
+  background-image: radial-gradient(circle at 2px 2px, #e4beb9 1px, transparent 0);
+  background-size: 16px 16px;
+  opacity: 0.15;
+}
+.certificate-frame {
+  border: 4pt solid #005db7;
+  position: relative;
+}
+.certificate-frame::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1pt solid #005db7;
+  pointer-events: none;
+}
+.seal-emboss {
+  box-shadow:
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #ffd700 0%, #fdb931 50%, #e2a300 100%);
+}
+.watermark-bg {
+  background-repeat: repeat;
+  background-size: 120px;
+  opacity: 0.03;
+  transform: rotate(-45deg) scale(2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+}
+@media print {
+  .no-print {
+    display: none;
+  }
+  .cert-canvas {
+    box-shadow: none;
+    border: none;
+    width: 210mm;
+    height: 297mm;
+  }
+}
+
+/* donor_dashboard_mobile / donor_experience_dashboard */
+.progress-ring__circle,
+.progress-ring-circle {
+  transition: stroke-dashoffset 1s ease-in-out;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.urgency-pulse {
+  animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.1);
+}
+
+/* emergency_simulation_mode */
+.simulation-node {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.active-step {
+  box-shadow: 0 0 15px rgba(183, 19, 26, 0.3);
+  border-color: #b7131a !important;
+  background-color: #fff1f0 !important;
+}
+@keyframes pulse-red {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.pulse-active {
+  animation: pulse-red 2s infinite;
+}
+.log-entry {
+  border-left: 2px solid #e2e8f0;
+  animation: slideIn 0.3s ease-out forwards;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* global_analytics_command_center */
+.zebra-row:nth-child(even) {
+  background-color: #f9fafb;
+}
+.medical-grid {
+  background-image: radial-gradient(#e0e4e8 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.pulse-animation {
+  animation: pulse-red 2s infinite ease-in-out;
+}
+
+/* graph_decision_engine */
+@keyframes pulse-path {
+  0% {
+    stroke-dashoffset: 100;
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0.5;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+}
+.path-active {
+  stroke-dasharray: 10;
+  animation: pulse-path 2s linear infinite;
+}
+.node-glow {
+  filter: drop-shadow(0 0 8px rgba(183, 19, 26, 0.4));
+}
+
+/* hospital_dashboard */
+.sidebar-active {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.kanban-column::-webkit-scrollbar {
+  width: 4px;
+}
+.kanban-column::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+/* lifelink_intelligent_blood_donor_selection (donor recommendation results) */
+.text-gradient-red {
+  background: linear-gradient(135deg, #b7131a 0%, #db322f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* mathematical_decision_engine */
+.apple-gradient {
+  background: radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.set-ring {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.blur-card {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* research_mode_educational_overlays */
+.glass-overlay {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(115, 118, 136, 0.2);
+}
+.research-grid {
+  background-image: radial-gradient(circle, #c3c5d9 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.professor-badge {
+  animation: pulse-subtle 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+/* Phase 27: reusable version of the same 1<->0.8 opacity keyframe above
+   (previously wired only to .professor-badge) for other pulsing icons that
+   need a higher opacity floor than .animate-pulse-soft's 1<->0.7 to stay
+   above 4.5:1 WCAG AA text contrast throughout their whole cycle -- see
+   ReadyConsole.tsx's `text-error` emergency icon, where measurement showed
+   the `error` token (#ba1a1a) needs at least a 0.8 floor (~4.53:1) where
+   `pulse-soft`'s 0.7 floor (~3.76:1 for this specific color) still failed. */
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.filled-icon {
+  font-variation-settings: "FILL" 1;
+}
+
+/* custom scrollbar (admin_verification_portal / mathematical_decision_engine) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Phase 22: honor the OS-level "reduce motion" preference across every
+   animation/transition in the app -- the many hand-authored keyframes above
+   (pulse-soft, float-slow, pulse-ring, shimmer, pulse-red, pulse-path,
+   float, pulse-subtle) plus Tailwind's animate-pulse/animate-ping/
+   animate-spin/animate-bounce utilities used throughout the page components
+   had no reduced-motion accommodation at all. This only takes effect for
+   users who have actually turned on "reduce motion" in their OS -- it does
+   not change how the app looks or moves for anyone else, so it carries none
+   of the redesign risk the rest of this phase avoids. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Phase 27: axe-core's link-in-text-block flagged the OpenStreetMap/Leaflet
+   attribution control's own "Leaflet" credit link (rendered by the Leaflet
+   library itself, not app markup -- app.control(...).addTo(map) internals,
+   not a component this app authors) because it's distinguished from the
+   surrounding attribution text by color alone. Rather than either leaving
+   it unfixed or stripping a third-party library's required attribution
+   link outright, this is a small, scoped CSS override on the library's own
+   output -- the same "restyle a widget's DOM through our own stylesheet"
+   approach every embedded third-party map/widget requires, not a patch to
+   Leaflet's source and not a redesign of anything app-authored. */
+.leaflet-control-attribution a {
+  text-decoration: underline;
+}
+
+/* QA fix: utilities referenced by Analytics / Simulation Mode that were
+   never defined (horizontal scrollers kept a visible scrollbar). */
+.no-scrollbar,
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

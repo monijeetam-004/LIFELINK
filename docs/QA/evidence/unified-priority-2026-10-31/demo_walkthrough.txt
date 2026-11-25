@@ -1,0 +1,148 @@
+# 2026-10-31T16:37:15Z commit ecf5c72 + uncommitted history-exclusion fix; default ranking UNIFIED_PRIORITY
+
+==============================================================================
+A  Sufficient confirmed donors (3 needed)
+==============================================================================
+  request d86df25d-e32f-4b37-b2a9-2ceec15754a2: 3 unit(s) A+ at Demopur A Demo Hospital
+  >>> browser: sign in as shortlist.hospital.a@lifelink-demo.example.com and open http://localhost:5173/hospital/requests/d86df25d-e32f-4b37-b2a9-2ceec15754a2
+  -- before contacting --
+  state=NOT_STARTED  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 3 donor(s) required; 0 awaiting an answer; 6 eligible candidate(s) found.
+  eligible=6 contacted=0 awaiting=0 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=3
+  excluded: {'beyond_distance_limit': 414, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 1}
+  escalation: 6 more eligible donor(s) can be contacted.
+  >>> next: contact the first ranked batch (same as the 'Contact next ranked donors' button)
+  -- after contacting the first ranked batch --
+  state=AWAITING  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 3 donor(s) required; 6 awaiting an answer; 6 eligible candidate(s) found.
+  eligible=6 contacted=6 awaiting=6 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=3
+  excluded: {'beyond_distance_limit': 414, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 1}
+    # 1 [SYNTHETIC] Donor A-01             AWAITING_RESPONSE           
+    # 2 [SYNTHETIC] Donor A-02             AWAITING_RESPONSE           
+    # 3 [SYNTHETIC] Donor A-03             AWAITING_RESPONSE           
+    # 4 [SYNTHETIC] Donor A-04             AWAITING_RESPONSE           
+    # 5 [SYNTHETIC] Donor A-05             AWAITING_RESPONSE           
+    # 6 [SYNTHETIC] Donor A-06             AWAITING_RESPONSE           
+  >>> next: the synthetic donors answer (DEMO_MODE simulator; simulated, not real)
+  simulator: {'accepted': 3, 'declined': 3, 'not_now': 0, 'timed_out': 0, 'no_answer_yet': 0, 'refused_by_checks': 0}
+  >>> next: the hospital confirms each accepted donor after the eligibility re-check
+  -- final --
+  state=SATISFIED  summary: 3 confirmed and 0 accepted (awaiting confirmation) of 3 donor(s) required; 0 awaiting an answer; 6 eligible candidate(s) found.
+  eligible=6 contacted=6 awaiting=0 accepted=0 confirmed=3 declined=3 timed_out=0 still_needed=0
+  excluded: {'beyond_distance_limit': 414, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 1}
+    # 1 [SYNTHETIC] Donor A-01             CONFIRMED_FOR_COORDINATION   (simulated)
+    # 2 [SYNTHETIC] Donor A-02             CONFIRMED_FOR_COORDINATION   (simulated)
+    # 3 [SYNTHETIC] Donor A-03             CONFIRMED_FOR_COORDINATION   (simulated)
+    # 4 [SYNTHETIC] Donor A-04             DECLINED                     (simulated)
+    # 5 [SYNTHETIC] Donor A-05             DECLINED                     (simulated)
+    # 6 [SYNTHETIC] Donor A-06             DECLINED                     (simulated)
+
+==============================================================================
+B  Many eligible, only two accept
+==============================================================================
+  request 7d7c144d-6e31-4f61-ab24-b61665ab087c: 3 unit(s) A+ at Demopur B Demo Hospital
+  >>> browser: sign in as shortlist.hospital.b@lifelink-demo.example.com and open http://localhost:5173/hospital/requests/7d7c144d-6e31-4f61-ab24-b61665ab087c
+  -- before contacting --
+  state=NOT_STARTED  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 3 donor(s) required; 0 awaiting an answer; 15 eligible candidate(s) found.
+  eligible=15 contacted=0 awaiting=0 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=3
+  excluded: {'beyond_distance_limit': 402, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 4}
+  escalation: 15 more eligible donor(s) can be contacted.
+  >>> next: contact the first ranked batch (same as the 'Contact next ranked donors' button)
+  -- after contacting the first ranked batch --
+  state=AWAITING  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 3 donor(s) required; 6 awaiting an answer; 15 eligible candidate(s) found.
+  eligible=15 contacted=6 awaiting=6 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=3
+  excluded: {'beyond_distance_limit': 402, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 4}
+    # 1 [SYNTHETIC] Donor B-03             AWAITING_RESPONSE           
+    # 2 [SYNTHETIC] Donor B-04             AWAITING_RESPONSE           
+    # 3 [SYNTHETIC] Donor B-05             AWAITING_RESPONSE           
+    # 4 [SYNTHETIC] Donor B-06             AWAITING_RESPONSE           
+    # 5 [SYNTHETIC] Donor B-07             AWAITING_RESPONSE           
+    # 6 [SYNTHETIC] Donor B-08             AWAITING_RESPONSE           
+  >>> next: the synthetic donors answer (DEMO_MODE simulator; simulated, not real)
+  simulator: {'accepted': 0, 'declined': 6, 'not_now': 0, 'timed_out': 0, 'no_answer_yet': 0, 'refused_by_checks': 0}
+  simulator: {'accepted': 2, 'declined': 1, 'not_now': 0, 'timed_out': 3, 'no_answer_yet': 0, 'refused_by_checks': 0}
+  simulator: {'accepted': 0, 'declined': 0, 'not_now': 0, 'timed_out': 2, 'no_answer_yet': 0, 'refused_by_checks': 0}
+  simulator: {'accepted': 0, 'declined': 0, 'not_now': 0, 'timed_out': 1, 'no_answer_yet': 0, 'refused_by_checks': 0}
+  >>> next: the hospital confirms each accepted donor after the eligibility re-check
+  -- final --
+  state=PARTIAL  summary: 2 confirmed and 0 accepted (awaiting confirmation) of 3 donor(s) required; 0 awaiting an answer; 15 eligible candidate(s) found. The request is still 1 donor(s) short.
+  eligible=15 contacted=15 awaiting=0 accepted=0 confirmed=2 declined=7 timed_out=6 still_needed=1
+  excluded: {'beyond_distance_limit': 402, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 4}
+  escalation: 6 contacted donor(s) did not answer in time.
+  escalation: Every eligible donor has been contacted; escalate to blood banks.
+    # 1 [SYNTHETIC] Donor B-03             DECLINED                     (simulated)
+    # 2 [SYNTHETIC] Donor B-04             DECLINED                     (simulated)
+    # 3 [SYNTHETIC] Donor B-05             DECLINED                     (simulated)
+    # 4 [SYNTHETIC] Donor B-06             DECLINED                     (simulated)
+    # 5 [SYNTHETIC] Donor B-07             DECLINED                     (simulated)
+    # 6 [SYNTHETIC] Donor B-08             DECLINED                     (simulated)
+    # 7 [SYNTHETIC] Donor B-09             DECLINED                     (simulated)
+    # 8 [SYNTHETIC] Donor B-01             CONFIRMED_FOR_COORDINATION   (simulated)
+    # 9 [SYNTHETIC] Donor B-02             CONFIRMED_FOR_COORDINATION   (simulated)
+    #10 [SYNTHETIC] Donor B-10             TIMED_OUT                    (simulated)
+    #11 [SYNTHETIC] Donor B-11             TIMED_OUT                    (simulated)
+    #12 [SYNTHETIC] Donor B-12             TIMED_OUT                    (simulated)
+    #13 [SYNTHETIC] Donor B-13             TIMED_OUT                    (simulated)
+    #14 [SYNTHETIC] Donor B-14             TIMED_OUT                    (simulated)
+    #15 [SYNTHETIC] Donor B-15             TIMED_OUT                    (simulated)
+
+==============================================================================
+C  No eligible donors
+==============================================================================
+  request d8b0b95c-14bc-4151-ba0a-14de52d0cf2a: 1 unit(s) A+ at Demopur C Demo Hospital
+  >>> browser: sign in as shortlist.hospital.c@lifelink-demo.example.com and open http://localhost:5173/hospital/requests/d8b0b95c-14bc-4151-ba0a-14de52d0cf2a
+  -- before contacting --
+  state=NO_ELIGIBLE  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 1 donor(s) required; 0 awaiting an answer; 0 eligible candidate(s) found.
+  eligible=0 contacted=0 awaiting=0 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=1
+  excluded: {'beyond_distance_limit': 415, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 6}
+  escalation: No eligible donor was found within the distance limit. Escalate to blood banks (emergency pathway / hospital alerts) or ask an administrator for an audited distance override.
+
+==============================================================================
+D  The top-ranked donor does not answer
+==============================================================================
+  request 047d7179-aebe-41ac-9cb4-a7a7bca9214f: 1 unit(s) A+ at Demopur D Demo Hospital
+  >>> browser: sign in as shortlist.hospital.d@lifelink-demo.example.com and open http://localhost:5173/hospital/requests/047d7179-aebe-41ac-9cb4-a7a7bca9214f
+  -- before contacting --
+  state=NOT_STARTED  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 1 donor(s) required; 0 awaiting an answer; 2 eligible candidate(s) found.
+  eligible=2 contacted=0 awaiting=0 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=1
+  excluded: {'beyond_distance_limit': 413, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 6}
+  escalation: 2 more eligible donor(s) can be contacted.
+  >>> next: contact the first ranked batch (same as the 'Contact next ranked donors' button)
+  -- after contacting the first ranked batch --
+  state=AWAITING  summary: 0 confirmed and 0 accepted (awaiting confirmation) of 1 donor(s) required; 2 awaiting an answer; 2 eligible candidate(s) found.
+  eligible=2 contacted=2 awaiting=2 accepted=0 confirmed=0 declined=0 timed_out=0 still_needed=1
+  excluded: {'beyond_distance_limit': 413, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 6}
+    # 1 [SYNTHETIC] Donor D-01             AWAITING_RESPONSE           
+    # 2 [SYNTHETIC] Donor D-02             AWAITING_RESPONSE           
+  >>> next: the synthetic donors answer (DEMO_MODE simulator; simulated, not real)
+  simulator: {'accepted': 1, 'declined': 0, 'not_now': 0, 'timed_out': 1, 'no_answer_yet': 0, 'refused_by_checks': 0}
+  >>> next: the hospital confirms each accepted donor after the eligibility re-check
+  -- final --
+  state=SATISFIED  summary: 1 confirmed and 0 accepted (awaiting confirmation) of 1 donor(s) required; 0 awaiting an answer; 2 eligible candidate(s) found.
+  eligible=2 contacted=2 awaiting=0 accepted=0 confirmed=1 declined=0 timed_out=1 still_needed=0
+  excluded: {'beyond_distance_limit': 413, 'unavailable': 162, 'location_unknown': 181, 'donation_interval_not_elapsed': 144, 'committed_elsewhere': 6}
+  escalation: 1 contacted donor(s) did not answer in time.
+    # 1 [SYNTHETIC] Donor D-01             TIMED_OUT                    (simulated)
+    # 2 [SYNTHETIC] Donor D-02             CONFIRMED_FOR_COORDINATION   (simulated)
+
+==============================================================================
+E  Distance limit: the 80 km donor is neither shortlisted nor alerted
+==============================================================================
+  excluded beyond the limit: 414
+  notifications the 80 km donor received for this request: 0 (expected 0)
+
+==============================================================================
+F  Route failure on a reserved plan  +  G  plan -> shipment hand-off
+==============================================================================
+  destination LifeLink Demo Hospital holds 20 O- unit(s); emergency needs 22
+  route to Mumbai Community Hospital: 201
+  route to Mumbai Blood Bank & Transfusion Centre: 201
+  >>> browser: sign in as demo.hospital@lifelink-demo.example.com, open http://localhost:5173/decision-transparency and pick emergency a4c0f513 ([DEMO] failover + hand-off)
+  plan v1: VIABLE, ETA 38 min, 0 backup(s)
+  reserved 22 unit(s); reservation_status=RESERVED
+  >>> next: an administrator disrupts a route on the reserved plan
+  route ee632c1e disrupted -> REPLANNED; now v2 reservation_status=RESERVED reserved=22
+  >>> next: hand the reserved plan to shipments (same as the 'Hand off to shipment' button)
+  hand-off -> reservation_status=HANDED_OFF; shipments: SHP-61A5D7C7E9 (22 units, CREATED)
+  repeated hand-off is idempotent: same shipments = True
+
+Done in 10.2 s. Synthetic answers demonstrate the workflow, not real donor availability.
+GET .../shortlist latency over 8 calls: median 127 ms, max 316 ms (end to end through HTTP on this machine; not a benchmark)

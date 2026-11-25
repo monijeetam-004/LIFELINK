@@ -1,0 +1,22 @@
+=== 2026-10-31T11:40:14Z migrate
+hand-off, failover recovery state, donor location/availability timestamps.
+=== 2026-10-31T11:40:16Z seed_demo_data
+/home/claude/lifelink/LIFELINK/backend/.venv/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.te
+  from starlette.testclient import TestClient as TestClient  # noqa
+Demo activity: {'blood_request': '1a122365-6171-4df8-a3e8-b8c39b9d71c2', 'emergency': 'b5e37ae3-3a25-44f1-b6b1-2c14f786e6ea'}
+Graph resync: ok=False detail=Neo4j is not configured
+=== 2026-10-31T11:43:18Z seed_shortlist_demo
+Seeding shortlist demo (seed=20261031, policy=IN_DCR_2020, DB=localhost:5432/lifelink_demo)
+Scenario clusters: {'A': 11, 'B': 20, 'C': 7, 'D': 2} (= 40 donors)
+Population: {'donors': 360, 'stale_location': 112, 'no_location': 127, 'in_interval': 72, 'unavailable': 43, 'verified': 174, 'history_requests': 60, 'history_responses': 429}
+Synthetic shortlist donors in database: 400
+Demo hospitals: shortlist.hospital.[a-d]@lifelink-demo.example.com / password 'LifeLink-Demo-2026!'
+=== 2026-10-31T11:44:31Z seed_shortlist_demo again (idempotency)
+Scenario clusters: {'A': 11, 'B': 20, 'C': 7, 'D': 2} (= 40 donors)
+Population: {'donors': 360, 'stale_location': 112, 'no_location': 127, 'in_interval': 72, 'unavailable': 43, 'verified': 174, 'history_requests': 0, 'history_responses': 0}
+Synthetic shortlist donors in database: 400
+Demo hospitals: shortlist.hospital.[a-d]@lifelink-demo.example.com / password 'LifeLink-Demo-2026!'
+=== invariants
+[OK ] #46 a handed-off pathway reservation is closed and its shipment serves that emergency
+[OK ] #47 a plan marked RECOVERY_REQUIRED holds no active reservation
+[OK ] audit chain: checked=13 unsealed=0 head=13

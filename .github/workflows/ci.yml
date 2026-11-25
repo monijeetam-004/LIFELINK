@@ -1,0 +1,780 @@
+name: CI
+
+# Phase 29 -- LifeLink's first CI pipeline. No CI/CD configuration of any
+# kind existed anywhere in this repository before this phase (confirmed by
+# inspection: no .github/, no .gitlab-ci.yml, and no git remote at all --
+# this repository had no .git directory until this phase either). GitHub
+# Actions was chosen as the platform because it is the only CI platform
+# this sandbox's own git tooling is pre-configured for (global git config
+# rewrites git@github.com: -> https://github.com/, sets up git-lfs filters
+# and SSH commit signing against GitHub specifically) -- NOT because an
+# actual GitHub remote exists for this project yet. A real `origin` remote
+# pointing at an actual GitHub repository must be added before any of this
+# can actually run; see docs/LIFELINK_PHASE_29_CI_CD_STAGING_REPORT.md for
+# the exact remaining steps.
+#
+# Every job below fails the pipeline on a real failure -- no `|| true`, no
+# `continue-on-error`, nothing informational-only. A red job here means a
+# red pipeline.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+env:
+  PYTHON_VERSION: "3.12" # matches backend/Dockerfile's python:3.12-slim
+  NODE_VERSION: "22"
+
+jobs:
+  # ------------------------------------------------------------------ #
+  # Secret scanning -- runs first and fast; a leaked credential is worth
+  # knowing about before spending CI minutes on anything else.
+  # ------------------------------------------------------------------ #
+  secret-scan:
+    name: Secret scan (detect-secrets)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install detect-secrets
+        run: pip install detect-secrets==1.5.0
+      - name: Scan against the committed baseline
+        # .secrets.baseline (Phase 29) captures every current finding, each
+        # individually verified as a false positive (dev-only credentials,
+        # Alembic revision-ID hex strings, one incidental keyword match --
+        # see that commit's message for the full list). This step fails
+        # ONLY on a finding not already in the baseline, i.e. something
+        # genuinely new. It never prints a secret value itself -- only
+        # file/line locations, matching detect-secrets' own default output.
+        run: |
+          # detect-secrets 1.5 writes an updated baseline back to the file given with
+          # --baseline (nothing on stdout), so scan a copy and compare it below.
+          cp .secrets.baseline /tmp/scan_result.json
+          detect-secrets scan --baseline /tmp/scan_result.json --all-files $(git ls-files | grep -vx '.secrets.baseline')
+          python3 -c "
+          import json, sys
+          with open('.secrets.baseline') as f:
+              baseline = json.load(f)
+          with open('/tmp/scan_result.json') as f:
+              current = json.load(f)
+          new_findings = False
+          for file, results in current['results'].items():
+              baseline_lines = {r['line_number'] for r in baseline['results'].get(file, [])}
+              for r in results:
+                  if r['line_number'] not in baseline_lines:
+                      print(f'NEW potential credential found in {file} (line redacted from this log)')
+                      new_findings = True
+          if new_findings:
+              sys.exit(1)
+          print('No new secrets found beyond the committed baseline.')
+          "
+
+  # ------------------------------------------------------------------ #
+  # Backend: dependency install, syntax/import validation, full pytest
+  # suite, security-relevant tests, production-config tests (as a named,
+  # separately-visible step -- Section 6 of the Phase 29 spec -- reusing
+  # the existing tests/test_phase28_production_config.py and
+  # tests/test_phase28_seed_guards.py rather than reinventing them).
+  # ------------------------------------------------------------------ #
+  backend:
+    name: Backend tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lifelink
+          POSTGRES_PASSWORD: lifelink
+          POSTGRES_DB: lifelink_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U lifelink"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      # Hardening: a real ClamAV daemon for tests/test_hardening_malware_scanning.py
+      # (CLAMD_TEST_REQUIRED makes those tests fail rather than skip without it).
+      clamav:
+        image: clamav/clamav:stable
+        ports: ["3310:3310"]
+        options: >-
+          --health-cmd "clamdcheck.sh"
+          --health-interval 15s
+          --health-timeout 10s
+          --health-retries 40
+          --health-start-period 60s
+    env:
+      CLAMD_TEST_HOST: 127.0.0.1
+      CLAMD_TEST_PORT: "3310"
+      CLAMD_TEST_REQUIRED: "true"
+      ENVIRONMENT: test
+      SECRET_KEY: ci-test-secret-key-not-for-production-use
+      TEST_DATABASE_URL: postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_test
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_test
+      REDIS_URL: redis://localhost:6379/15
+      RQ_SYNC: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.lock
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          pip install --require-hashes --no-deps -r requirements-dev.lock
+
+      - name: Python syntax / import validation
+        working-directory: backend
+        # Real compile-time syntax check across the whole package -- catches
+        # a broken file before spending time on the full test run. This is
+        # deliberately NOT a lint gate (see the note in the Phase 29 report
+        # about why ruff/mypy are not new hard CI gates this phase).
+        run: python -m compileall -q app tests scripts
+
+      - name: Wait for PostgreSQL and Redis
+        run: |
+          for i in $(seq 1 30); do pg_isready -h localhost -p 5432 -U lifelink && break; sleep 1; done
+          for i in $(seq 1 30); do redis-cli -h localhost ping | grep -q PONG && break; sleep 1; done
+
+      - name: Run full backend test suite
+        working-directory: backend
+        run: python -m pytest -v
+
+      - name: Run production-configuration test suite (named for visibility)
+        working-directory: backend
+        # These already ran as part of the full suite above; re-run just
+        # this subset by itself so a production-config regression shows up
+        # as its own clearly-labeled failing CI step, not buried in "807
+        # passed, 1 failed" from the full run.
+        run: python -m pytest -v tests/test_phase28_production_config.py tests/test_phase28_seed_guards.py
+
+  # ------------------------------------------------------------------ #
+  # Migration validation -- its own job, own fresh database, per Section 5.
+  # ------------------------------------------------------------------ #
+  migrations:
+    name: Migration validation
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lifelink
+          POSTGRES_PASSWORD: lifelink
+          POSTGRES_DB: lifelink_migrate
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U lifelink"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_migrate
+      ENVIRONMENT: development
+      SECRET_KEY: ci-migration-secret-key-not-for-production-use
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.lock
+      - name: Install dependencies
+        working-directory: backend
+        run: pip install --require-hashes --no-deps -r requirements-dev.lock
+      - name: Wait for PostgreSQL
+        run: for i in $(seq 1 30); do pg_isready -h localhost -p 5432 -U lifelink && break; sleep 1; done
+
+      - name: Fresh database -> upgrade head
+        working-directory: backend
+        run: alembic upgrade head
+
+      - name: App can import and build its schema against the migrated DB
+        working-directory: backend
+        run: |
+          python3 -c "
+          from sqlalchemy import create_engine, inspect
+          from app.core.config import settings
+          engine = create_engine(settings.database_url)
+          insp = inspect(engine)
+          tables = insp.get_table_names()
+          assert 'users' in tables, f'expected users table, got: {tables}'
+          print(f'{len(tables)} tables present after migration, including users.')
+          "
+
+      - name: Downgrade / upgrade round-trip (3 revisions)
+        working-directory: backend
+        # Per Section 5: "where safe and supported" -- this project's own
+        # migrations have no documented downgrade-unsupported revisions
+        # (Phase 28's own migration smoke test performed the same
+        # downgrade(-3)/upgrade(head) round-trip against real dev data), so
+        # this is a real, supported check, not a blind assumption.
+        run: |
+          alembic downgrade -3
+          alembic upgrade head
+
+      - name: Detect duplicate/missing revision heads
+        working-directory: backend
+        # `alembic heads` prints every head; a healthy single-branch
+        # migration chain has exactly one. More than one means a branching
+        # migration history (two revisions claiming the same down_revision,
+        # or a forgotten merge) -- catches "the kind of missing-revision
+        # problem encountered earlier in the project" per the Phase 29 spec.
+        run: |
+          heads=$(alembic heads | wc -l)
+          echo "alembic heads: $heads"
+          if [ "$heads" -ne 1 ]; then
+            echo "::error::Expected exactly 1 migration head, found $heads -- a branching/duplicate revision exists."
+            exit 1
+          fi
+          alembic history --verbose > /dev/null # fails loudly on a broken chain
+
+  # ------------------------------------------------------------------ #
+  # Frontend: install, TypeScript, ESLint, production build.
+  # ------------------------------------------------------------------ #
+  frontend:
+    name: Frontend checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install dependencies (deterministic)
+        working-directory: frontend
+        run: npm ci
+      - name: TypeScript
+        working-directory: frontend
+        run: npm run typecheck
+      - name: ESLint
+        working-directory: frontend
+        run: npm run lint
+      # Phase I: the component/integration tests (Vitest) existed but were
+      # never run in CI (Phase A matrix finding).
+      - name: Component tests (Vitest)
+        working-directory: frontend
+        run: npm run test
+      - name: Production build
+        working-directory: frontend
+        run: npm run build
+      - name: Upload production build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend/dist
+          retention-days: 7
+
+  # ------------------------------------------------------------------ #
+  # Dependency security audit -- pip-audit (Python) + npm audit (Node).
+  # Python is a hard gate (0 known vulnerabilities is the current, real
+  # baseline). npm (Phase H): scripts/audit-gate.mjs -- runtime (shipped)
+  # dependencies must have ZERO advisories of any severity; the full tree
+  # (dev tooling) must have no high/critical advisory except a dated,
+  # justified entry in frontend/audit-allowlist.json (dev-only, expiring).
+  # The react-router advisories the old comment deferred were closed in
+  # Phase H by the v7 upgrade (docs/LIFELINK_PHASE_H_SECURITY_REPORT.md).
+  # ------------------------------------------------------------------ #
+  dependency-audit:
+    name: Dependency security audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Lockfiles match the declared requirements (backend)
+        # requirements*.txt declare ranges; requirements*.lock pin exact,
+        # hashed versions that CI and the Docker image install. A lock that
+        # no longer satisfies the .txt ranges fails here.
+        run: |
+          pip install uv==0.12.23
+          cd backend
+          for f in requirements requirements-dev; do
+            uv pip compile $f.txt --python-version 3.12 --python-platform x86_64-unknown-linux-gnu \
+              --generate-hashes --constraint $f.lock -o /tmp/$f.check --quiet
+            diff <(grep -E '^[a-z0-9].*==' $f.lock | sort) <(grep -E '^[a-z0-9].*==' /tmp/$f.check | sort)
+          done
+      - name: pip-audit (backend)
+        run: |
+          pip install pip-audit==2.10.1
+          pip-audit -r backend/requirements.lock --require-hashes --disable-pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: npm audit gate (frontend; runtime = zero advisories)
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run audit:gate
+
+  # ------------------------------------------------------------------ #
+  # Docker build + container smoke test. Builds this repo's own
+  # production Dockerfile, starts the container against real Postgres/
+  # Redis services, and verifies the exact HEALTHCHECK command succeeds
+  # against a running container -- not just that `docker build` exits 0.
+  # ------------------------------------------------------------------ #
+  docker:
+    name: Docker build + smoke test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lifelink
+          POSTGRES_PASSWORD: lifelink
+          POSTGRES_DB: lifelink
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U lifelink"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        working-directory: backend
+        run: docker build -t lifelink-backend:${{ github.sha }} .
+      - name: Apply migrations against the service database
+        working-directory: backend
+        run: |
+          docker run --rm --network host \
+            -e DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink \
+            lifelink-backend:${{ github.sha }} alembic upgrade head
+      - name: Start container
+        run: |
+          docker run -d --name lifelink-smoke --network host \
+            -e ENVIRONMENT=production \
+            -e DOCUMENT_SCANNER=clamd \
+            -e SECRET_KEY="$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')" \
+            -e DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink \
+            -e REDIS_URL=redis://localhost:6379/0 \
+            -e SESSION_COOKIE_SECURE=true \
+            -e CORS_ORIGINS=https://ci-smoke-test.invalid \
+            -e FRONTEND_BASE_URL=https://ci-smoke-test.invalid \
+            lifelink-backend:${{ github.sha }}
+      - name: Wait for and verify the container's own HEALTHCHECK
+        run: |
+          for i in $(seq 1 30); do
+            if docker inspect --format='{{.State.Health.Status}}' lifelink-smoke 2>/dev/null | grep -q healthy; then
+              echo "Container reported healthy."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::Container never reported healthy within 60s."
+          docker logs lifelink-smoke
+          exit 1
+      - name: Verify readiness endpoint over the network
+        run: curl -sf http://localhost:8000/health/ready
+      - name: Container shuts down cleanly on SIGTERM
+        run: |
+          docker stop --time 10 lifelink-smoke
+          status=$(docker inspect --format='{{.State.ExitCode}}' lifelink-smoke)
+          echo "Exit code after SIGTERM: $status"
+          docker logs lifelink-smoke
+          docker rm lifelink-smoke
+
+  # ------------------------------------------------------------------ #
+  # End-to-end (Playwright), against real backend + real built frontend.
+  # Depends on backend + frontend jobs passing first -- no point spending
+  # ~5 minutes on a full browser suite if the units underneath are broken.
+  # ------------------------------------------------------------------ #
+  e2e:
+    name: End-to-end (Playwright)
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lifelink
+          POSTGRES_PASSWORD: lifelink
+          POSTGRES_DB: lifelink_e2e
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U lifelink"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      # Hardening: verification documents are only downloadable after a
+      # real malware scan (docs/LIFELINK_MALWARE_SCANNING.md).
+      clamav:
+        image: clamav/clamav:stable
+        ports: ["3310:3310"]
+        options: >-
+          --health-cmd "clamdcheck.sh"
+          --health-interval 15s
+          --health-timeout 10s
+          --health-retries 40
+          --health-start-period 60s
+    env:
+      ENVIRONMENT: development
+      SECRET_KEY: ci-e2e-secret-key-not-for-production-use
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_e2e
+      REDIS_URL: redis://localhost:6379/0
+      RQ_SYNC: "true" # matches Phase 18's own documented local E2E recipe
+      DOCUMENT_SCANNER: clamd
+      CLAMD_HOST: 127.0.0.1
+      CLAMD_PORT: "3310"
+      # Both ports are required: the e2e/*.spec.ts files' own
+      # APIRequestContext calls hardcode `Origin: http://localhost:5173`
+      # (this app's CORS_ORIGINS *default*, from .env.example) to simulate
+      # a legitimate frontend origin for direct API calls, while the real
+      # browser-driven requests Playwright drives through the actual page
+      # carry the actual serving origin (vite preview's :4173). Confirmed
+      # by reproducing this locally: with only :4173 allowed, every
+      # APIRequestContext-based test in admin_notification_surface.spec.ts
+      # and phase23_security_hardening.spec.ts failed its first API call
+      # with a 403 "Origin not allowed" (app/api/deps.py:verify_origin);
+      # both origins together, all pass.
+      CORS_ORIGINS: "http://localhost:5173,http://localhost:4173"
+      # Every browser and API context in the suite signs in from 127.0.0.1,
+      # so the production per-IP login limit (10 per 5 min) is exhausted
+      # after a few specs and later specs fail with 429 (reproduced
+      # 2026-10-12: 45 of 106 tests). Relaxed for the E2E jobs ONLY -- the
+      # same documented reason as RL_LOGIN_IP in backend/tests/conftest.py;
+      # the limit is verified at its production values by
+      # backend/tests/test_gap_rate_limit.py. The per-ACCOUNT limit is untouched.
+      RL_LOGIN_IP: "[1000,300]"
+      FRONTEND_BASE_URL: http://localhost:4173
+      VITE_API_URL: http://localhost:8000
+      # Explicitly empty: no MinIO service runs in this job (see Section 12
+      # -- staging doesn't get real user data either, and CI has no object
+      # store at all), so this forces the local-disk storage fallback
+      # (app/core/storage.py) rather than accidentally trying to reach a
+      # real S3/MinIO endpoint from a stale environment value. A real
+      # checkout has no backend/.env at all (gitignored, never committed)
+      # so this matches that -- set explicitly here only so the job's
+      # behavior doesn't depend on an absence, which is harder to audit.
+      S3_ENDPOINT_URL: ""
+      S3_ACCESS_KEY: ""
+      S3_SECRET_KEY: ""
+      # Also explicitly empty for the same reason -- no Neo4j service runs
+      # in this job, so this keeps graph_enabled() honestly False (fast,
+      # no connection-timeout delay/log noise) instead of attempting and
+      # failing against a stale value, exactly like the storage settings
+      # above.
+      NEO4J_URI: ""
+      NEO4J_USERNAME: ""
+      NEO4J_PASSWORD: ""
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.lock
+      - name: Install backend dependencies
+        working-directory: backend
+        run: pip install --require-hashes --no-deps -r requirements-dev.lock
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Install Playwright browser (chromium only, with OS deps)
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Wait for PostgreSQL and Redis
+        run: |
+          for i in $(seq 1 30); do pg_isready -h localhost -p 5432 -U lifelink && break; sleep 1; done
+          for i in $(seq 1 30); do redis-cli -h localhost ping | grep -q PONG && break; sleep 1; done
+
+      - name: Apply migrations
+        working-directory: backend
+        run: alembic upgrade head
+
+      - name: Seed E2E fixture users
+        working-directory: backend
+        run: python -m scripts.e2e_seed
+
+      - name: Seed demo data (transport routes, facilities, inventory)
+        working-directory: backend
+        # Several existing spec files were written against a database that
+        # already has realistic seeded data -- most notably
+        # phase26_responsive_overflow.spec.ts, which explicitly asserts
+        # against the admin transport-routes table's real ~85 rows (see
+        # that spec file's own docstring). Confirmed by reproducing
+        # locally: without this step, that test times out waiting for a
+        # table row that never appears, on an otherwise-empty fresh
+        # database. Idempotent (safe to re-run); this project's own
+        # Phase 28 seed guard already refuses to run against
+        # ENVIRONMENT=production, so this step cannot accidentally target
+        # anything but this job's own disposable CI database.
+        run: python -m scripts.seed_demo_data
+
+      - name: Start backend (background)
+        working-directory: backend
+        run: |
+          nohup python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 \
+            > /tmp/backend.log 2>&1 &
+          echo "started"
+
+      - name: Build and start frontend production preview (background)
+        working-directory: frontend
+        run: |
+          npm run build
+          nohup npx vite preview --port 4173 --strictPort > /tmp/frontend.log 2>&1 &
+          echo "started"
+
+      - name: Wait for backend readiness and frontend availability
+        # Real readiness polling, not an arbitrary sleep -- Section 9's
+        # explicit instruction. /health/ready requires DB+Redis both up,
+        # so this also transitively confirms migrations + seeding landed.
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:8000/health/ready > /dev/null; then
+              echo "Backend ready."
+              break
+            fi
+            sleep 1
+            if [ "$i" -eq 60 ]; then
+              echo "::error::Backend never became ready."
+              cat /tmp/backend.log
+              exit 1
+            fi
+          done
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:4173/ > /dev/null; then
+              echo "Frontend serving."
+              break
+            fi
+            sleep 1
+            if [ "$i" -eq 60 ]; then
+              echo "::error::Frontend never became available."
+              cat /tmp/frontend.log
+              exit 1
+            fi
+          done
+
+      - name: Run Playwright suite
+        working-directory: frontend
+        run: npx playwright test
+
+      # Phase I: after the whole browser suite has driven real workflows
+      # against this database, the domain invariants and the audit hash
+      # chain must still hold (scripts/check_invariants.py exits non-zero
+      # on any violation).
+      - name: Domain invariants + audit chain after the E2E run
+        working-directory: backend
+        run: python -m scripts.check_invariants
+
+      - name: Upload Playwright report and traces on failure
+        # Section 10: preserve useful evidence, never upload secrets/.env/
+        # session cookies/DB dumps -- this uploads only Playwright's own
+        # report/trace/screenshot/video artifacts plus backend/frontend
+        # stdout logs (no credentials are ever logged by this app -- see
+        # Phase 28's structured-logging secret-leak sweep).
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/
+            /tmp/backend.log
+            /tmp/frontend.log
+          retention-days: 14
+
+  # ------------------------------------------------------------------ #
+  # Phase I: object storage through REAL MinIO. The main e2e job uses the
+  # local-disk storage fallback; the Phase 34 "10 Playwright failures"
+  # were exactly the specs that store objects (verification documents,
+  # certificate PDFs) failing when an S3 endpoint was configured but
+  # nothing was serving it. This job starts MinIO, waits for its own
+  # health endpoint, lets the API create the bucket at startup, and runs
+  # those specs with S3 storage. (Verified in the development sandbox
+  # against an S3-API stand-in, since MinIO images are not pullable there
+  # -- see docs/LIFELINK_PHASE_I_INFRASTRUCTURE_REPORT.md.)
+  # ------------------------------------------------------------------ #
+  e2e-object-storage:
+    name: E2E (object storage on MinIO)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lifelink
+          POSTGRES_PASSWORD: lifelink
+          POSTGRES_DB: lifelink_e2e
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U lifelink"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+      # Hardening: verification documents are only downloadable after a
+      # real malware scan (docs/LIFELINK_MALWARE_SCANNING.md).
+      clamav:
+        image: clamav/clamav:stable
+        ports: ["3310:3310"]
+        options: >-
+          --health-cmd "clamdcheck.sh"
+          --health-interval 15s
+          --health-timeout 10s
+          --health-retries 40
+          --health-start-period 60s
+    env:
+      ENVIRONMENT: development
+      SECRET_KEY: ci-e2e-secret-key-not-for-production-use
+      DATABASE_URL: postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_e2e
+      REDIS_URL: redis://localhost:6379/0
+      RQ_SYNC: "true"
+      DOCUMENT_SCANNER: clamd
+      CLAMD_HOST: 127.0.0.1
+      CLAMD_PORT: "3310"
+      CORS_ORIGINS: "http://localhost:5173,http://localhost:4173"
+      # Every browser and API context in the suite signs in from 127.0.0.1,
+      # so the production per-IP login limit (10 per 5 min) is exhausted
+      # after a few specs and later specs fail with 429 (reproduced
+      # 2026-10-12: 45 of 106 tests). Relaxed for the E2E jobs ONLY -- the
+      # same documented reason as RL_LOGIN_IP in backend/tests/conftest.py;
+      # the limit is verified at its production values by
+      # backend/tests/test_gap_rate_limit.py. The per-ACCOUNT limit is untouched.
+      RL_LOGIN_IP: "[1000,300]"
+      FRONTEND_BASE_URL: http://localhost:4173
+      VITE_API_URL: http://localhost:8000
+      S3_ENDPOINT_URL: http://localhost:9000
+      S3_ACCESS_KEY: lifelink
+      S3_SECRET_KEY: lifelink-ci-secret
+      S3_BUCKET: lifelink-e2e
+      NEO4J_URI: ""
+      NEO4J_USERNAME: ""
+      NEO4J_PASSWORD: ""
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start MinIO and wait for its health endpoint
+        run: |
+          docker run -d --name minio -p 9000:9000 \
+            -e MINIO_ROOT_USER=lifelink -e MINIO_ROOT_PASSWORD=lifelink-ci-secret \
+            minio/minio:latest server /data
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:9000/minio/health/live > /dev/null && echo "MinIO live." && break
+            sleep 1
+            if [ "$i" -eq 60 ]; then docker logs minio; exit 1; fi
+          done
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.lock
+      - name: Install backend dependencies
+        working-directory: backend
+        run: pip install --require-hashes --no-deps -r requirements-dev.lock
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+      - name: Install Playwright browser (chromium only, with OS deps)
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+      - name: Migrate and seed
+        working-directory: backend
+        run: |
+          alembic upgrade head
+          python -m scripts.e2e_seed
+          python -m scripts.seed_demo_data
+      - name: Start backend and frontend
+        run: |
+          (cd backend && nohup python3 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > /tmp/backend.log 2>&1 &)
+          (cd frontend && npm run build && nohup npx vite preview --port 4173 --strictPort > /tmp/frontend.log 2>&1 &)
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:8000/health/ready > /dev/null && curl -sf http://localhost:4173/ > /dev/null && break
+            sleep 1
+            if [ "$i" -eq 60 ]; then cat /tmp/backend.log /tmp/frontend.log; exit 1; fi
+          done
+          curl -sf http://localhost:8000/health/ready | grep -q '"backend":"s3"'
+      - name: Storage-dependent Playwright specs on MinIO
+        working-directory: frontend
+        run: >
+          npx playwright test
+          e2e/document_storage_security.spec.ts
+          e2e/admin_notification_surface.spec.ts
+          e2e/admin_verification_notifications.spec.ts
+          e2e/phase23_security_hardening.spec.ts
+          e2e/phase31_1_domain_signals.spec.ts
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-object-storage-logs
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/
+            /tmp/backend.log
+            /tmp/frontend.log
+          retention-days: 14
+
+  # ------------------------------------------------------------------ #
+  # Single required status check for branch protection -- see Section 19.
+  # ------------------------------------------------------------------ #
+  ci-summary:
+    name: CI summary (required check)
+    runs-on: ubuntu-latest
+    needs: [secret-scan, backend, migrations, frontend, dependency-audit, docker, e2e, e2e-object-storage]
+    if: always()
+    steps:
+      - name: Fail if any dependency failed
+        run: |
+          if [ "${{ contains(needs.*.result, 'failure') }}" = "true" ]; then
+            echo "::error::One or more required CI jobs failed."
+            exit 1
+          fi
+          echo "All required CI jobs passed."

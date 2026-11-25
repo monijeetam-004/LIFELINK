@@ -1,0 +1,67 @@
+
+=== [2026-10-13T08:10:46Z] 0. fresh source copy (no .env, .venv, node_modules, dist, caches, .git)
+
+=== [2026-10-13T08:10:52Z] 1. existing volumes before clean-up (destroying only if they belong to this throwaway project)
+(end of list)
+
+=== [2026-10-13T08:10:52Z] 2. docker compose down -v (project 'lifelink'; no pre-existing volumes, so nothing of value is deleted)
+
+=== [2026-10-13T08:10:52Z] 3. .env from .env.example; only SECRET_KEY generated
+ENVIRONMENT=development
+SECRET_KEY=***generated***
+DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink
+TEST_DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_test
+REDIS_URL=redis://localhost:6379/0
+RQ_SYNC=false
+SESSION_COOKIE_NAME=lifelink_session
+SESSION_COOKIE_SECURE=false          # set true in production (HTTPS)
+SESSION_COOKIE_SAMESITE=lax
+SESSION_COOKIE_DOMAIN=
+SESSION_TTL_SECONDS=1209600          # 14 days
+CORS_ORIGINS=http://localhost:5173
+FRONTEND_BASE_URL=http://localhost:5173
+COMPOSE_PROFILES=mailpit
+MAIL_PORT=1025
+MAIL_STARTTLS=false
+MAIL_USE_SSL=false
+MAIL_FROM=no-reply@lifelink.local
+MAIL_USERNAME=
+MAIL_PASSWORD=
+
+=== [2026-10-13T08:10:52Z] 4. compose config
+minio
+createbuckets
+db
+redis
+clamav
+mailpit
+api
+deadline-monitor
+frontend
+worker
+
+=== [2026-10-13T08:10:52Z] 5. build images
+#18 72.15 npm error Exit handler never called!
+#18 72.15 npm error This is an error with npm itself. Please report this error at:
+#18 72.15 npm error   <https://github.com/npm/cli/issues>
+#18 72.15 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-10-13T08_10_54_080Z-debug-0.log
+#27 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 127
+
+=== [2026-10-13T08:12:06Z] 6. up -d (health-gated start order from docker-compose.yml)
+
+  14 |     ARG VITE_API_URL=http://localhost:8000
+
+  15 |     ENV VITE_API_URL=${VITE_API_URL}
+
+  16 | >>> RUN npm run build
+
+  17 |     
+
+  18 |     FROM ${NGINX_IMAGE}
+
+--------------------
+
+target frontend: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 127
+
+
+=== [2026-10-13T08:12:07Z] 7. wait for health

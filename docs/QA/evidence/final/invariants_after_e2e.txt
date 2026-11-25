@@ -1,0 +1,20 @@
+[OK ] #28 fulfilled_units within [0, units_needed]
+[OK ] #29 status bucket agrees with quantity (open requests)
+[OK ] #30 per-hospital allocations never exceed the request total
+[OK ] #31 a VERIFIED/REJECTED donation names who decided and when
+[OK ] #32 nobody reviewed their own donation
+[OK ] #33 verification versions are contiguous per (user, kind)
+[OK ] #34 reconciliation_status is set iff the shipment FAILED
+[OK ] #35 a returned unit points at a unit its failed shipment actually carried
+[OK ] #36 returned units only exist for RETURNED_TO_ORIGIN reconciliations, at the origin
+[OK ] #37 audit chain sequence has no gaps or duplicates
+[OK ] #38 a unit with an expiry clock records which rule started it (post-Phase-E units)
+[OK ] #39 aggregate stock equals per-unit truth (units = AVAILABLE+RESERVED, reserved = RESERVED)
+[OK ] #40 at most one ACTIVE pathway per emergency
+[OK ] #41 active pathway reservations are backed by RESERVED units of that emergency
+[OK ] #42 thaw clocks only on plasma, and never before the thaw
+[OK ] #43 a decided shipment item records when, and a LOST unit has no destination unit
+[OK ] #44 invalidated / superseded pathways record when and why
+[OK ] #45 quarantined, discarded and expired units hold no reservation
+[OK ] audit chain: checked=340 unsealed=0 head=340
+exit=0

@@ -1,0 +1,51 @@
+# Egress probe 2026-10-13T08:00:52Z (HTTP status; 000 = connection refused by egress policy)
+https://registry-1.docker.io/v2/                                                                               000
+https://public.ecr.aws/v2/                                                                                     000
+https://quay.io/v2/                                                                                            000
+https://ghcr.io/v2/                                                                                            000
+https://mirror.gcr.io/v2/                                                                                      000
+https://gcr.io/v2/                                                                                             000
+https://registry.k8s.io/v2/                                                                                    000
+https://dist.neo4j.org/                                                                                        000
+https://neo4j.com/                                                                                             000
+https://repo1.maven.org/maven2/                                                                                000
+https://repo.maven.apache.org/maven2/                                                                          000
+https://maven-central.storage-download.googleapis.com/maven2/                                                  000
+https://maven.aliyun.com/repository/central/                                                                   000
+https://dl.min.io/                                                                                             000
+https://proxy.golang.org/                                                                                      000
+https://github.com/axllent/mailpit/releases/download/v1.21.8/mailpit-linux-amd64.tar.gz                        206
+https://github.com/minio/minio/releases/download/RELEASE.2025-04-22T22-12-26Z/minio_20250422221226.0.0_amd64.deb 206
+https://github.com/neo4j/neo4j/releases/download/5.24.0/neo4j-community-5.24.0-unix.tar.gz                     404
+https://pypi.org/simple/                                                                                       206
+https://registry.npmjs.org/                                                                                    200
+http://archive.ubuntu.com/ubuntu/                                                                              206
+https://smtp.gmail.com                                                                                         000
+https://api.msg91.com/                                                                                         000
+https://control.msg91.com/                                                                                     000
+https://nominatim.openstreetmap.org/status                                                                     000
+https://photon.komoot.io/                                                                                      000
+https://geocode.maps.co/                                                                                       000
+https://api.opencagedata.com/                                                                                  000
+
+# proxy-side record of rejected CONNECTs
+2026-10-13T08:00:53.558Z public.ecr.aws:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:53.824Z quay.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:54.343Z ghcr.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:54.614Z mirror.gcr.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:54.918Z gcr.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:55.198Z registry.k8s.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:55.505Z dist.neo4j.org:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:55.706Z neo4j.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:56.052Z repo1.maven.org:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:56.363Z repo.maven.apache.org:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:56.636Z maven-central.storage-download.googleapis.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:56.896Z maven.aliyun.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:57.181Z dl.min.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:58.816Z smtp.gmail.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:59.086Z api.msg91.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:59.195Z control.msg91.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:59.404Z nominatim.openstreetmap.org:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:59.631Z photon.komoot.io:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:00:59.930Z geocode.maps.co:443 gateway answered 403 to CONNECT (policy denial or upstream failure)
+2026-10-13T08:01:00.528Z api.opencagedata.com:443 gateway answered 403 to CONNECT (policy denial or upstream failure)

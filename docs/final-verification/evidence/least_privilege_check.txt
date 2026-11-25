@@ -1,0 +1,45 @@
+# Least-privilege role check -- 2026-10-12T19:12:03Z
+# Fresh database lifelink_lp, migrated by the table owner (lifelink).
+# The app-role password was generated at run time and is masked below; it was never written to the repository.
+## 1. alembic upgrade head (as owner)
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+## 2. drop the role left by an earlier run, then create it with scripts/least_privilege_role.sql
+CREATE ROLE
+DO
+GRANT
+GRANT
+GRANT
+REVOKE
+ALTER DEFAULT PRIVILEGES
+ALTER DEFAULT PRIVILEGES
+## 3. as lifelink_app: normal application operations (must SUCCEED)
+ audit_rows_visible 
+--------------------
+                  0
+(1 row)
+
+ users_visible 
+---------------
+             0
+(1 row)
+
+## 4. as lifelink_app: attacks on the audit trail (must FAIL)
+> ALTER TABLE audit_logs DISABLE TRIGGER USER
+ERROR:  must be owner of table audit_logs
+> DELETE FROM audit_logs
+ERROR:  permission denied for table audit_logs
+> TRUNCATE audit_logs
+ERROR:  permission denied for table audit_logs
+> DROP TABLE audit_logs
+ERROR:  must be owner of table audit_logs
+> ALTER TABLE audit_logs OWNER TO lifelink_app
+ERROR:  must be owner of table audit_logs
+## 5. guard state as seen afterwards
+audit_logs_append_only|O
+audit_logs_no_truncate|O
+## 6. the application's own audit writer + chain verification, connected as lifelink_app (password rotated for this step, masked)
+current_user: lifelink_app
+guard: {'audit_logs_append_only': 'ENABLED', 'audit_logs_no_truncate': 'ENABLED'}
+sealed now: 0
+chain verify ok: True | rows checked: 3
+## role password cleared after the check (ALTER ROLE ... PASSWORD NULL)

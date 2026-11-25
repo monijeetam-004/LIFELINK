@@ -1,0 +1,34 @@
+# Phase 28: without this file, `COPY . .` in the Dockerfile bakes
+# whatever happens to be sitting in the build context into the image layer
+# -- including a real local .env (if one exists on the machine running
+# `docker build`) and the database dump files scripts/db_backup.sh writes
+# to backups/ (see backend/.gitignore's own Phase 28 addition for the same
+# reason). Both would ship real secrets/user data inside the image, which
+# is very different from a stray dev file: an image can be pushed to a
+# registry, pulled elsewhere, and inspected layer-by-layer long after the
+# container that built it is gone.
+.env
+.env.*
+!.env.example
+backups/
+*.dump
+
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+
+.git/
+.gitignore
+
+# Local dev-only storage fallback (app.core.storage's STORAGE_LOCAL_DIR
+# default) -- never something a built image should carry.
+storage/
+
+*.md

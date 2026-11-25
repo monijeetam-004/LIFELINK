@@ -1,0 +1,50 @@
+{
+ "machine": {
+  "cpus": 2,
+  "python": "3.11.17"
+ },
+ "warmup": 5,
+ "reps": 50,
+ "modes": {
+  "UNIFIED_PRIORITY": {
+   "eligible": 13,
+   "p50": 85.8,
+   "p95": 169.9,
+   "p99": 202.7,
+   "max": 202.7,
+   "failures": 0
+  },
+  "NEAREST": {
+   "eligible": 13,
+   "p50": 88.6,
+   "p95": 165.5,
+   "p99": 194.6,
+   "max": 194.6,
+   "failures": 0
+  },
+  "TIME_AWARE": {
+   "eligible": 13,
+   "p50": 83.0,
+   "p95": 161.3,
+   "p99": 168.2,
+   "max": 168.2,
+   "failures": 0
+  },
+  "TIME_RESILIENCE": {
+   "eligible": 13,
+   "p50": 82.9,
+   "p95": 160.6,
+   "p99": 182.1,
+   "max": 182.1,
+   "failures": 0
+  },
+  "EVENT_DRIVEN": {
+   "eligible": 13,
+   "p50": 84.2,
+   "p95": 162.7,
+   "p99": 163.8,
+   "max": 163.8,
+   "failures": 0
+  }
+ }
+}

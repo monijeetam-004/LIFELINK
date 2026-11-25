@@ -1,0 +1,416 @@
+# 2026-11-03T05:22:16Z commit 2cfe39a + uncommitted gate changes; demo DB lifelink_demo (seed 1337 + 20261031, after the 2026-10-31 walkthroughs)
+{
+ "generated_at": "2026-11-03T05:22:17.788167+00:00",
+ "dataset": "SYNTHETIC (seed 1337 network + seed 20261031 shortlist donors)",
+ "eligibility_policy": "IN_DCR_2020",
+ "scoring_model": "UNIFIED_PRIORITY/1.0.0#4162e0b53417",
+ "units_per_request": 2,
+ "requests": 80,
+ "eligible_candidates_per_request": {
+  "median": 29.5,
+  "min": 12,
+  "max": 55
+ },
+ "eligibility_violations": {
+  "UNIFIED_PRIORITY": 0,
+  "NEAREST": 0,
+  "TIME_AWARE": 0,
+  "TIME_RESILIENCE": 0,
+  "EVENT_DRIVEN": 0
+ },
+ "unified_evidence_coverage": {
+  "candidates": 2447,
+  "median": 0.4,
+  "below_min_coverage_unscored": 0
+ },
+ "sensitivity_history_weights_zero_same_first_batch": {
+  "same_top_k": 52,
+  "requests": 80
+ },
+ "evaluate_ms_median": {
+  "UNIFIED_PRIORITY": 106.3,
+  "NEAREST": 121.8,
+  "TIME_AWARE": 114.9,
+  "TIME_RESILIENCE": 119.5,
+  "EVENT_DRIVEN": 117.7
+ },
+ "persona_outcomes": {
+  "UNIFIED_PRIORITY": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 4.0,
+   "mean_contacts_when_met": 7.06,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.195
+  },
+  "NEAREST": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 14.38,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.117
+  },
+  "TIME_AWARE": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 14,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.119
+  },
+  "TIME_RESILIENCE": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.4,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.123
+  },
+  "EVENT_DRIVEN": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 14,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.119
+  }
+ },
+ "independent_outcomes": {
+  "UNIFIED_PRIORITY": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "NEAREST": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "TIME_AWARE": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "TIME_RESILIENCE": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "EVENT_DRIVEN": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  }
+ },
+ "latent_outcomes_pooled": {
+  "UNIFIED_PRIORITY": {
+   "requests": 400,
+   "demand_met": 384,
+   "unmet_escalations": 16,
+   "median_contacts_when_met": 8.0,
+   "mean_contacts_when_met": 8.75,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.215
+  },
+  "NEAREST": {
+   "requests": 400,
+   "demand_met": 384,
+   "unmet_escalations": 16,
+   "median_contacts_when_met": 10.0,
+   "mean_contacts_when_met": 10.14,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.188
+  },
+  "TIME_AWARE": {
+   "requests": 400,
+   "demand_met": 384,
+   "unmet_escalations": 16,
+   "median_contacts_when_met": 10.0,
+   "mean_contacts_when_met": 10.1,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.188
+  },
+  "TIME_RESILIENCE": {
+   "requests": 400,
+   "demand_met": 384,
+   "unmet_escalations": 16,
+   "median_contacts_when_met": 8.0,
+   "mean_contacts_when_met": 9.96,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.191
+  },
+  "EVENT_DRIVEN": {
+   "requests": 400,
+   "demand_met": 384,
+   "unmet_escalations": 16,
+   "median_contacts_when_met": 10.0,
+   "mean_contacts_when_met": 10.1,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.188
+  }
+ },
+ "latent_outcomes_by_seed": {
+  "1": {
+   "UNIFIED_PRIORITY": {
+    "requests": 80,
+    "demand_met": 76,
+    "unmet_escalations": 4,
+    "median_contacts_when_met": 8.0,
+    "mean_contacts_when_met": 8.58,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.218
+   },
+   "NEAREST": {
+    "requests": 80,
+    "demand_met": 76,
+    "unmet_escalations": 4,
+    "median_contacts_when_met": 10.0,
+    "mean_contacts_when_met": 10.24,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.185
+   },
+   "TIME_AWARE": {
+    "requests": 80,
+    "demand_met": 76,
+    "unmet_escalations": 4,
+    "median_contacts_when_met": 10.0,
+    "mean_contacts_when_met": 10.21,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.186
+   },
+   "TIME_RESILIENCE": {
+    "requests": 80,
+    "demand_met": 76,
+    "unmet_escalations": 4,
+    "median_contacts_when_met": 8.0,
+    "mean_contacts_when_met": 9.89,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.191
+   },
+   "EVENT_DRIVEN": {
+    "requests": 80,
+    "demand_met": 76,
+    "unmet_escalations": 4,
+    "median_contacts_when_met": 10.0,
+    "mean_contacts_when_met": 10.21,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.186
+   }
+  },
+  "2": {
+   "UNIFIED_PRIORITY": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 8.66,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.223
+   },
+   "NEAREST": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.49,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.204
+   },
+   "TIME_AWARE": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.49,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.204
+   },
+   "TIME_RESILIENCE": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.24,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.209
+   },
+   "EVENT_DRIVEN": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.49,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.204
+   }
+  },
+  "3": {
+   "UNIFIED_PRIORITY": {
+    "requests": 80,
+    "demand_met": 73,
+    "unmet_escalations": 7,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.15,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.192
+   },
+   "NEAREST": {
+    "requests": 80,
+    "demand_met": 73,
+    "unmet_escalations": 7,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 11.14,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.162
+   },
+   "TIME_AWARE": {
+    "requests": 80,
+    "demand_met": 73,
+    "unmet_escalations": 7,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 11.04,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.163
+   },
+   "TIME_RESILIENCE": {
+    "requests": 80,
+    "demand_met": 73,
+    "unmet_escalations": 7,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 11.4,
+    "median_rounds_to_first_acceptance": 2.0,
+    "precision_among_contacted": 0.158
+   },
+   "EVENT_DRIVEN": {
+    "requests": 80,
+    "demand_met": 73,
+    "unmet_escalations": 7,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 11.04,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.163
+   }
+  },
+  "4": {
+   "UNIFIED_PRIORITY": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.32,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.213
+   },
+   "NEAREST": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 9.96,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.199
+   },
+   "TIME_AWARE": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 9.9,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.2
+   },
+   "TIME_RESILIENCE": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 10.08,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.197
+   },
+   "EVENT_DRIVEN": {
+    "requests": 80,
+    "demand_met": 79,
+    "unmet_escalations": 1,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 9.9,
+    "median_rounds_to_first_acceptance": 1.0,
+    "precision_among_contacted": 0.2
+   }
+  },
+  "5": {
+   "UNIFIED_PRIORITY": {
+    "requests": 80,
+    "demand_met": 77,
+    "unmet_escalations": 3,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 8.05,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.235
+   },
+   "NEAREST": {
+    "requests": 80,
+    "demand_met": 77,
+    "unmet_escalations": 3,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 9.95,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.193
+   },
+   "TIME_AWARE": {
+    "requests": 80,
+    "demand_met": 77,
+    "unmet_escalations": 3,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 9.92,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.193
+   },
+   "TIME_RESILIENCE": {
+    "requests": 80,
+    "demand_met": 77,
+    "unmet_escalations": 3,
+    "median_contacts_when_met": 8,
+    "mean_contacts_when_met": 9.27,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.206
+   },
+   "EVENT_DRIVEN": {
+    "requests": 80,
+    "demand_met": 77,
+    "unmet_escalations": 3,
+    "median_contacts_when_met": 10,
+    "mean_contacts_when_met": 9.92,
+    "median_rounds_to_first_acceptance": 1,
+    "precision_among_contacted": 0.193
+   }
+  }
+ },
+ "caveat": "Synthetic. Persona outcomes and the seeded response history come from the same personas, so history-based ranking is favoured by construction (leakage). The latent model draws history and outcome independently from one latent trait per donor; it tests the assumption that past answering predicts future answering, it does not show that real donors behave that way. Not evidence of real-world performance."
+}

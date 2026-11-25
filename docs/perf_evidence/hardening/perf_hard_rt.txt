@@ -1,0 +1,14 @@
+# Volume
+blood_requests: 10021
+audit_logs: 30184
+realtime_events: 260601
+notifications: 259362
+blood_units: 126795
+users: 1565
+
+## realtime [inline]: POST /blood-requests, request-thread latency (n=15)
+median=605.1ms p90=647.5ms max=770.3ms events/request median=466
+
+## realtime [background]: POST /blood-requests, request-thread latency (n=15)
+median=551.9ms p90=606.1ms max=689.8ms events/request median=466
+  background: wait for publisher after response, median 43.4ms max 153.4ms

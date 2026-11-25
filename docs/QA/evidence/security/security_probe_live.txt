@@ -1,0 +1,30 @@
+# QA security probe -- 2026-10-20T13:25:53+00:00 -- http://127.0.0.1:8500
+[PASS] session cookie is HttpOnly and SameSite (Secure is off only in development): lifelink_session=<redacted>; HttpOnly; Max-Age=120960…; Path=/; SameSite=lax
+[PASS] API sends nosniff, frame and referrer headers: {"x-content-type-options": "nosniff", "x-frame-options": "DENY", "referrer-policy": "strict-origin-when-cross-origin", "content-security-policy": null}
+[PASS] frontend (vite preview) headers recorded: {"content-security-policy": null, "x-frame-options": null}
+[PASS] CORS preflight from a foreign origin is not granted: {"status": 400, "acao": null}
+[PASS] state change with a foreign Origin is refused (403): 403
+[PASS] state change with no Origin header is refused (403): 403
+[PASS] donor cannot read /admin/users: 403
+[PASS] donor cannot read /admin/verifications: 403
+[PASS] donor cannot read /admin/transport-routes: 403
+[PASS] donor cannot run the audit-chain verification: 403
+[PASS] donor cannot create transport routes: 403
+[PASS] a donor cannot cancel another user's blood request: 404
+[PASS] unknown emergency id is 404, not 500: 404
+[PASS] certificate of nobody / not mine is 403/404: 404
+[PASS] query string "' OR 1=1 --" handled without error or leak: 200
+[PASS] query string '<script>alert(1)</script>' handled without error or leak: 200
+[PASS] query string '../../etc/passwd' handled without error or leak: 200
+[PASS] malformed JSON is 422 with no stack trace: 422
+[PASS] non-UUID path parameter is 422, not 500: 422
+[PASS] path traversal in a document index is rejected (422/404): 404
+[PASS] a captured session cookie is useless after logout: 401
+[PASS] anonymous /notifications is 401: 401
+[PASS] anonymous /admin/users is 401: 401
+[PASS] anonymous /hospitals/me/units is 401: 401
+[PASS] anonymous /events/stream is 401: 401
+[PASS] not-found error body has no internals: 404
+[PASS] forged X-Forwarded-For does not reset the per-IP login limit (429 reached): [401, 401, 401, 429, 429, 429, 429, 429, 429, 429, 429, 429, 429, 429]
+
+SUMMARY: 27/27 checks passed

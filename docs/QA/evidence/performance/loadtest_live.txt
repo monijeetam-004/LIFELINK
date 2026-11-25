@@ -1,0 +1,49 @@
+sessions: {'ADMIN': 2, 'DONOR': 40, 'HOSPITAL': 40, 'PATIENT': 2}
+SSE streams open: 100/100 in 6.0s; server Redis pub/sub connections: 2; server RSS 345 MB
+| C | requests | throughput (req/s) | p50 ms | p95 ms | p99 ms | non-2xx | server CPU % (of 1 core) | server RSS MB |
+|---|---|---|---|---|---|---|---|---|
+/home/claude/lifelink/LIFELINK/backend/scripts/loadtest_hardening.py:147: DeprecationWarning: Setting per-request cookies=<...> is being deprecated, because the expected behaviour on cookie persistence is ambiguous. Set cookies directly on the client instance instead.
+  r = await client.request(method, path,
+| 1 | 970 | 64.7 | 11.9 | 40.9 | 58.7 | 0  | 74 | 348 |
+| 8 | 1093 | 72.5 | 93.5 | 226.5 | 365.5 | 0  | 91 | 357 |
+| 32 | 1042 | 67.6 | 415.8 | 898.1 | 1082.1 | 0  | 93 | 368 |
+
+per endpoint at C=1: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 44 | 52.8 | 63.6 | 65.7
+  GET /map/data | 54 | 24.2 | 139.4 | 165.4
+  GET /admin/analytics/overview | 51 | 16.8 | 29.2 | 54.7
+  GET /donors/me/requests | 164 | 15.1 | 22.5 | 32.4
+  GET /emergencies/active | 40 | 14.2 | 22.2 | 24.2
+  GET /hospitals/me/requests | 110 | 14.0 | 20.2 | 31.2
+  POST /notifications/read-all | 43 | 10.5 | 16.1 | 21.9
+  GET /blood-requests | 102 | 10.6 | 13.4 | 17.3
+  GET /admin/blood-requests | 54 | 10.3 | 14.2 | 18.3
+  GET /notifications | 94 | 9.6 | 14.3 | 21.6
+  GET /notifications/unread-count | 214 | 9.4 | 13.3 | 21.4
+
+per endpoint at C=8: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 48 | 287.7 | 434.8 | 458.0
+  GET /map/data | 64 | 117.7 | 219.1 | 243.8
+  GET /admin/analytics/overview | 66 | 113.9 | 190.8 | 288.1
+  GET /donors/me/requests | 181 | 111.4 | 203.1 | 293.3
+  GET /hospitals/me/requests | 114 | 110.3 | 202.0 | 253.0
+  GET /emergencies/active | 53 | 97.1 | 195.3 | 237.8
+  GET /admin/blood-requests | 60 | 84.2 | 114.5 | 175.7
+  POST /notifications/read-all | 53 | 78.5 | 125.7 | 257.6
+  GET /blood-requests | 116 | 77.6 | 182.4 | 209.9
+  GET /notifications | 94 | 74.2 | 126.7 | 222.9
+  GET /notifications/unread-count | 244 | 72.5 | 183.2 | 236.0
+
+per endpoint at C=32: path | n | p50 | p95 | max
+  GET /hospitals/me/inventory/components | 54 | 850.3 | 1134.0 | 2061.3
+  GET /admin/analytics/overview | 55 | 511.9 | 867.8 | 945.3
+  GET /donors/me/requests | 165 | 459.6 | 927.5 | 1222.9
+  GET /hospitals/me/requests | 101 | 449.0 | 789.6 | 1097.9
+  GET /map/data | 52 | 440.3 | 739.8 | 837.1
+  GET /emergencies/active | 52 | 411.9 | 826.2 | 1064.1
+  POST /notifications/read-all | 59 | 403.5 | 703.2 | 855.0
+  GET /admin/blood-requests | 72 | 395.4 | 849.6 | 980.6
+  GET /blood-requests | 102 | 366.4 | 757.2 | 1445.4
+  GET /notifications/unread-count | 214 | 349.6 | 647.9 | 1054.2
+  GET /notifications | 116 | 335.8 | 655.8 | 871.1
+after run: server Redis pub/sub connections: 2

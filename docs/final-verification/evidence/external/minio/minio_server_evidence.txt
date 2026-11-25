@@ -1,0 +1,28 @@
+# Real MinIO (official RELEASE.2025-04-22T22-12-26Z .deb, sha256 d8898351831761e083e7ba6b74ea7ec478b9a6680794fe92e5e838145341c9c5 = official .sha256sum) -- 2026-10-13T08:07:58Z
+# root credentials generated at start, kept in a 0600 file outside the repo, never printed
+$ minio --version
+minio version RELEASE.2025-04-22T22-12-26Z (commit-id=0d7408fc9969caf07de6a8c3a84f9fbb10a6739e)
+$ curl /minio/health/live  /minio/health/ready
+200
+200
+$ mc admin info ll
+●  127.0.0.1:9000
+   Uptime: 5 minutes 
+   Version: 2025-04-22T22:12:26Z
+   Network: 1/1 OK 
+   Drives: 1/1 OK 
+   Pool: 1
+
+┌──────┬───────────────────────┬─────────────────────┬──────────────┐
+$ mc ls ll   (buckets)
+[2026-10-13 08:03:22 UTC]     0B lifelink-dev/
+[2026-10-13 08:02:52 UTC]     0B lifelink-it-52d6cab4/
+[2026-10-13 08:02:52 UTC]     0B lifelink-it-9effa2b1/
+$ mc anonymous get ll/lifelink-dev   (bucket must be private)
+Access permission for `ll/lifelink-dev` is `private`
+$ mc ls --recursive ll/lifelink-dev   (objects written by the LifeLink document workflow)
+[2026-10-13 08:06:56 UTC]   142B STANDARD verifications/<uuid>/<uuid>/dbd2fed6c7de42668167effeb53d8628_id.pdf
+$ anonymous GET of a stored document (must be denied)
+HTTP 403
+$ wrong credentials (must be refused)
+mcli: <ERROR> Unable to list folder. The Access Key Id you provided does not exist in our records.

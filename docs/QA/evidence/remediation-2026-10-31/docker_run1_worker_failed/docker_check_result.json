@@ -1,0 +1,182 @@
+{
+ "started": "2026-10-31T13:28:35.087642+00:00",
+ "finished": "2026-10-31T13:28:38.852402+00:00",
+ "verdict": "FAIL",
+ "checks": [
+  {
+   "check": "api_ready",
+   "status": "PASS",
+   "detail": "HTTP 200 status=ready",
+   "at": "2026-10-31T13:28:35.146429+00:00",
+   "response": {
+    "status": "ready",
+    "audit_checkpoints": {
+     "enabled": true,
+     "required": true,
+     "key_id": "k1",
+     "checkpoints": 0,
+     "log_verifies": true,
+     "latest_seq": null,
+     "warning": null
+    },
+    "required": {
+     "db": true,
+     "redis": true
+    },
+    "optional": {
+     "neo4j": {
+      "configured": false
+     },
+     "storage": {
+      "backend": "s3"
+     },
+     "email": {
+      "authenticated": false,
+      "provider": "mailpit"
+     }
+    },
+    "dependency_states": {
+     "db": "AVAILABLE",
+     "redis": "AVAILABLE",
+     "neo4j": "NOT_CONFIGURED",
+     "storage": "CONFIGURED_NOT_PROBED",
+     "email": "NOT_CONFIGURED"
+    }
+   }
+  },
+  {
+   "check": "database",
+   "status": "PASS",
+   "detail": "PostgreSQL 16.2 (Ubuntu 16.2-1ubuntu4) on x86_64-pc-linux-gnu",
+   "at": "2026-10-31T13:28:35.580196+00:00"
+  },
+  {
+   "check": "alembic_head",
+   "status": "PASS",
+   "detail": "state=AT_HEAD db=['f9a0b1c2d3e4'] repo_head=f9a0b1c2d3e4 schema_matches_models=True",
+   "at": "2026-10-31T13:28:35.991625+00:00",
+   "revision": [
+    "f9a0b1c2d3e4"
+   ]
+  },
+  {
+   "check": "redis",
+   "status": "PASS",
+   "detail": "PING=True redis_version=7.0.15",
+   "at": "2026-10-31T13:28:36.082823+00:00"
+  },
+  {
+   "check": "neo4j",
+   "status": "BLOCKED",
+   "detail": "NEO4J_URI not configured: no Neo4j server obtainable in this environment; the planner runs on the relational engine (RELATIONAL_ROUTES). External validation required.",
+   "at": "2026-10-31T13:28:36.205475+00:00",
+   "health": {
+    "configured": false,
+    "connected": false,
+    "status": "disabled"
+   }
+  },
+  {
+   "check": "object_storage",
+   "status": "PASS",
+   "detail": "bucket 'lifelink-dev' exists; 1024 B written, read back identical=True, deleted=True; server='MinIO'",
+   "at": "2026-10-31T13:28:36.372024+00:00",
+   "endpoint": "http://minio:9000"
+  },
+  {
+   "check": "clamav",
+   "status": "PASS",
+   "detail": "PING=PONG; ClamAV 1.0.5; clean payload -> CLEAN; EICAR -> INFECTED (LifeLink.Test.EICAR.UNOFFICIAL)",
+   "at": "2026-10-31T13:28:36.389764+00:00"
+  },
+  {
+   "check": "worker_and_mail",
+   "status": "FAIL",
+   "detail": "no RQ worker registered in Redis",
+   "at": "2026-10-31T13:28:36.487307+00:00"
+  },
+  {
+   "check": "document_upload",
+   "status": "FAIL",
+   "detail": "no verified donor (worker_and_mail failed)",
+   "at": "2026-10-31T13:28:36.487354+00:00"
+  },
+  {
+   "check": "seed_data",
+   "status": "PASS",
+   "detail": "1065 users; {'users_by_role': [['PATIENT', '1'], ['FAMILY', '1'], ['DONOR', '1001'], ['HOSPITAL', '61'], ['ADMIN', '1']], 'facilities': [['HOSPITAL', '41', '26'], ['BLOOD_BANK', '20', '15']], 'transport_routes': [['OPERATIONAL', '78'], ['DISRUPTED', '7']], 'blood_units_by_state': [['AVAILABLE', '9675']], 'donations': [['614']]}",
+   "at": "2026-10-31T13:28:36.497920+00:00",
+   "counts": {
+    "users_by_role": [
+     [
+      "PATIENT",
+      "1"
+     ],
+     [
+      "FAMILY",
+      "1"
+     ],
+     [
+      "DONOR",
+      "1001"
+     ],
+     [
+      "HOSPITAL",
+      "61"
+     ],
+     [
+      "ADMIN",
+      "1"
+     ]
+    ],
+    "facilities": [
+     [
+      "HOSPITAL",
+      "41",
+      "26"
+     ],
+     [
+      "BLOOD_BANK",
+      "20",
+      "15"
+     ]
+    ],
+    "transport_routes": [
+     [
+      "OPERATIONAL",
+      "78"
+     ],
+     [
+      "DISRUPTED",
+      "7"
+     ]
+    ],
+    "blood_units_by_state": [
+     [
+      "AVAILABLE",
+      "9675"
+     ]
+    ],
+    "donations": [
+     [
+      "614"
+     ]
+    ]
+   }
+  },
+  {
+   "check": "frontend",
+   "status": "PASS",
+   "detail": "GET http://frontend:8080 -> 200; SPA root present=True; bundle points at http://localhost:8000: True (browser login check: frontend/e2e/clean_start.spec.ts)",
+   "at": "2026-10-31T13:28:36.539984+00:00"
+  },
+  {
+   "check": "critical_workflow",
+   "status": "PASS",
+   "detail": "receiving hospital holds 20 O_NEG; request 23 units | admin added routes to Mumbai Blood Bank & Transfusion Centre (4.9 km), Pune Community Hospital (150.8 km) | patient SOS 32dc387d-f662-40ec-9e07-6565ee80bb5f (geocode_source=USER_INPUT) | plan: VIABLE, 23/23 units, 1 legs, ETA 38 min, 1 backup(s), engine RELATIONAL_ROUTES | reserved 23 units | route 27dd82b5-05ad-45a3-802f-4fe93741249c disrupted -> BACKUP_PROMOTED, reachable=True | delivery now from Pune Blood Bank & Transfusion Centre over 2 route(s) | shipment SHP-AACA1FD143: 23 units, cold chain WITHIN_RANGE, received; O_NEG stock 20 -> 43 | resolved; 8 timeline events; audit chain ok=True",
+   "at": "2026-10-31T13:28:38.852266+00:00",
+   "emergency_id": "32dc387d-f662-40ec-9e07-6565ee80bb5f",
+   "shipment_id": "c8a2ad6e-2245-4aab-9985-11b0757584d8"
+  }
+ ]
+}

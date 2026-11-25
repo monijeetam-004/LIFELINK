@@ -1,0 +1,132 @@
+# 2026-10-31T16:36:05Z commit ecf5c72 + uncommitted history-exclusion fix; demo DB
+{
+ "generated_at": "2026-10-31T16:36:06.539243+00:00",
+ "dataset": "SYNTHETIC (seed 1337 network + seed 20261031 shortlist donors)",
+ "eligibility_policy": "IN_DCR_2020",
+ "scoring_model": "UNIFIED_PRIORITY/1.0.0#4162e0b53417",
+ "units_per_request": 2,
+ "requests": 80,
+ "eligible_candidates_per_request": {
+  "median": 29.5,
+  "min": 12,
+  "max": 55
+ },
+ "eligibility_violations": {
+  "UNIFIED_PRIORITY": 0,
+  "NEAREST": 0,
+  "TIME_AWARE": 0,
+  "TIME_RESILIENCE": 0,
+  "EVENT_DRIVEN": 0
+ },
+ "unified_evidence_coverage": {
+  "candidates": 2435,
+  "median": 0.4,
+  "below_min_coverage_unscored": 0
+ },
+ "sensitivity_history_weights_zero_same_first_batch": {
+  "same_top_k": 48,
+  "requests": 80
+ },
+ "evaluate_ms_median": {
+  "UNIFIED_PRIORITY": 116.1,
+  "NEAREST": 123.3,
+  "TIME_AWARE": 118.5,
+  "TIME_RESILIENCE": 115.8,
+  "EVENT_DRIVEN": 126.0
+ },
+ "persona_outcomes": {
+  "UNIFIED_PRIORITY": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 4.0,
+   "mean_contacts_when_met": 7.09,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.195
+  },
+  "NEAREST": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 14.29,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.117
+  },
+  "TIME_AWARE": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.91,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.12
+  },
+  "TIME_RESILIENCE": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.29,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.124
+  },
+  "EVENT_DRIVEN": {
+   "requests": 80,
+   "demand_met": 68,
+   "unmet_escalations": 12,
+   "median_contacts_when_met": 12.0,
+   "mean_contacts_when_met": 13.91,
+   "median_rounds_to_first_acceptance": 2.0,
+   "precision_among_contacted": 0.12
+  }
+ },
+ "independent_outcomes": {
+  "UNIFIED_PRIORITY": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "NEAREST": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "TIME_AWARE": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "TIME_RESILIENCE": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  },
+  "EVENT_DRIVEN": {
+   "requests": 80,
+   "demand_met": 80,
+   "unmet_escalations": 0,
+   "median_contacts_when_met": 6.0,
+   "mean_contacts_when_met": 6.85,
+   "median_rounds_to_first_acceptance": 1.0,
+   "precision_among_contacted": 0.292
+  }
+ },
+ "caveat": "Synthetic. Persona outcomes and the seeded response history come from the same personas, so history-based ranking is favoured by construction. Not evidence of real-world performance."
+}

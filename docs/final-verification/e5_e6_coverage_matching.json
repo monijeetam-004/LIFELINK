@@ -1,0 +1,176 @@
+{
+ "data": "SYNTHETIC demo seed (seed 1337)",
+ "generated_at": "2026-10-12T23:05:28.989286+00:00",
+ "E5_coverage_real_planner": {
+  "hospitals": 25,
+  "routes_total": 85,
+  "routes_operational_seeded": 78,
+  "request": "CRITICAL, 2 units WHOLE_BLOOD, destination stock withheld",
+  "levels": [
+   {
+    "disrupted_pct": 0,
+    "trials": 1,
+    "requests": 200,
+    "viable_pct": 100.0,
+    "viable_pct_min_trial": 100.0,
+    "viable_pct_max_trial": 100.0,
+    "viable_on_recorded_routes_only_pct": 100.0,
+    "partial_pct": 0.0,
+    "impossible_pct": 0.0,
+    "legs_on_recorded_routes_pct": 100.0,
+    "eta_median_min": 40.0,
+    "plan_ms_median": 17.3
+   },
+   {
+    "disrupted_pct": 10,
+    "trials": 30,
+    "requests": 6000,
+    "viable_pct": 100.0,
+    "viable_pct_min_trial": 100.0,
+    "viable_pct_max_trial": 100.0,
+    "viable_on_recorded_routes_only_pct": 98.0,
+    "partial_pct": 0.0,
+    "impossible_pct": 0.0,
+    "legs_on_recorded_routes_pct": 98.0,
+    "eta_median_min": 40.0,
+    "plan_ms_median": 16.2
+   },
+   {
+    "disrupted_pct": 20,
+    "trials": 30,
+    "requests": 6000,
+    "viable_pct": 100.0,
+    "viable_pct_min_trial": 100.0,
+    "viable_pct_max_trial": 100.0,
+    "viable_on_recorded_routes_only_pct": 93.5,
+    "partial_pct": 0.0,
+    "impossible_pct": 0.0,
+    "legs_on_recorded_routes_pct": 93.5,
+    "eta_median_min": 40.0,
+    "plan_ms_median": 15.3
+   },
+   {
+    "disrupted_pct": 30,
+    "trials": 30,
+    "requests": 6000,
+    "viable_pct": 100.0,
+    "viable_pct_min_trial": 100.0,
+    "viable_pct_max_trial": 100.0,
+    "viable_on_recorded_routes_only_pct": 90.7,
+    "partial_pct": 0.0,
+    "impossible_pct": 0.0,
+    "legs_on_recorded_routes_pct": 90.7,
+    "eta_median_min": 40.0,
+    "plan_ms_median": 14.6
+   },
+   {
+    "disrupted_pct": 40,
+    "trials": 30,
+    "requests": 6000,
+    "viable_pct": 100.0,
+    "viable_pct_min_trial": 100.0,
+    "viable_pct_max_trial": 100.0,
+    "viable_on_recorded_routes_only_pct": 84.8,
+    "partial_pct": 0.0,
+    "impossible_pct": 0.0,
+    "legs_on_recorded_routes_pct": 84.8,
+    "eta_median_min": 41.0,
+    "plan_ms_median": 13.6
+   },
+   {
+    "disrupted_pct": 50,
+    "trials": 30,
+    "requests": 6000,
+    "viable_pct": 100.0,
+    "viable_pct_min_trial": 100.0,
+    "viable_pct_max_trial": 100.0,
+    "viable_on_recorded_routes_only_pct": 74.1,
+    "partial_pct": 0.0,
+    "impossible_pct": 0.0,
+    "legs_on_recorded_routes_pct": 74.1,
+    "eta_median_min": 45.0,
+    "plan_ms_median": 12.8
+   }
+  ]
+ },
+ "E6_matching_distance_limit": {
+  "scenarios": 160,
+  "cities": 20,
+  "candidates_median": 222.5,
+  "excluded_by_limit_median": 145.0,
+  "rows": [
+   {
+    "strategy": "NEAREST",
+    "distance_limit_km": null,
+    "top10_eligible_pct": 89.8,
+    "top10_verified_pct": 50.2,
+    "top10_known_distance_pct": 100.0,
+    "top10_median_km": 16.3,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "NEAREST",
+    "distance_limit_km": 50.0,
+    "top10_eligible_pct": 94.1,
+    "top10_verified_pct": 44.9,
+    "top10_known_distance_pct": 66.6,
+    "top10_median_km": 11.1,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "TIME_AWARE",
+    "distance_limit_km": null,
+    "top10_eligible_pct": 100.0,
+    "top10_verified_pct": 48.9,
+    "top10_known_distance_pct": 100.0,
+    "top10_median_km": 17.2,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "TIME_AWARE",
+    "distance_limit_km": 50.0,
+    "top10_eligible_pct": 100.0,
+    "top10_verified_pct": 43.9,
+    "top10_known_distance_pct": 63.8,
+    "top10_median_km": 11.3,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "TIME_RESILIENCE",
+    "distance_limit_km": null,
+    "top10_eligible_pct": 100.0,
+    "top10_verified_pct": 100.0,
+    "top10_known_distance_pct": 100.0,
+    "top10_median_km": 271.6,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "TIME_RESILIENCE",
+    "distance_limit_km": 50.0,
+    "top10_eligible_pct": 100.0,
+    "top10_verified_pct": 94.7,
+    "top10_known_distance_pct": 46.9,
+    "top10_median_km": 13.3,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "EVENT_DRIVEN",
+    "distance_limit_km": null,
+    "top10_eligible_pct": 89.8,
+    "top10_verified_pct": 50.3,
+    "top10_known_distance_pct": 100.0,
+    "top10_median_km": 16.3,
+    "top10_slots_filled_mean": 10
+   },
+   {
+    "strategy": "EVENT_DRIVEN",
+    "distance_limit_km": 50.0,
+    "top10_eligible_pct": 94.1,
+    "top10_verified_pct": 44.7,
+    "top10_known_distance_pct": 66.6,
+    "top10_median_km": 11.1,
+    "top10_slots_filled_mean": 10
+   }
+  ]
+ }
+}

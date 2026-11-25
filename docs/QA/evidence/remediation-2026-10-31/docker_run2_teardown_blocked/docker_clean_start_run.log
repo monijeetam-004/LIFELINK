@@ -1,0 +1,118 @@
+start 2026-10-31T13:35:56Z commit 57bac84 + uncommitted: compose worker gets no checkpoint key
+
+=== [2026-10-31T13:35:56Z] 0. fresh source copy (no .env, .venv, node_modules, dist, caches, .git)
+
+=== [2026-10-31T13:35:56Z] 1. existing volumes before clean-up (destroying only if they belong to this throwaway project)
+9b3fb93f70db5fcf41e00ee44cab8a4b01503ec155665e2a9a017f02a51fb178
+lifelink_auditcheckpoints
+lifelink_clamavdb
+lifelink_miniodata
+lifelink_pgdata
+(end of list)
+
+=== [2026-10-31T13:35:56Z] 2. docker compose down -v (project 'lifelink'; no pre-existing volumes, so nothing of value is deleted)
+error while interpolating services.api.environment.AUDIT_CHECKPOINT_KEY: required variable AUDIT_CHECKPOINT_KEY is missing a value: set AUDIT_CHECKPOINT_KEY (>=32 chars; see docs/AUDIT_CHECKPOINTS.md)
+error while interpolating services.deadline-monitor.environment.AUDIT_CHECKPOINT_KEY: required variable AUDIT_CHECKPOINT_KEY is missing a value: set AUDIT_CHECKPOINT_KEY (>=32 chars; see docs/AUDIT_CHECKPOINTS.md)
+lifelink-worker-1
+lifelink-deadline-monitor-1
+lifelink-frontend-1
+lifelink-api-1
+lifelink-createbuckets-1
+lifelink-clamav-1
+lifelink-db-1
+lifelink-mailpit-1
+lifelink-minio-1
+lifelink-redis-1
+(containers left in project lifelink: none above = clean)
+lifelink_auditcheckpoints
+lifelink_clamavdb
+lifelink_miniodata
+lifelink_pgdata
+(volumes left in project lifelink: none above = clean)
+
+=== [2026-10-31T13:35:56Z] 3. .env from .env.example; only SECRET_KEY and AUDIT_CHECKPOINT_KEY generated
+ENVIRONMENT=development
+SECRET_KEY=***generated***
+DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink
+TEST_DATABASE_URL=postgresql+psycopg://lifelink:lifelink@localhost:5432/lifelink_test
+REDIS_URL=redis://localhost:6379/0
+RQ_SYNC=false
+SESSION_COOKIE_NAME=lifelink_session
+SESSION_COOKIE_SECURE=false          # set true in production (HTTPS)
+SESSION_COOKIE_SAMESITE=lax
+SESSION_COOKIE_DOMAIN=
+SESSION_TTL_SECONDS=1209600          # 14 days
+CORS_ORIGINS=http://localhost:5173
+FRONTEND_BASE_URL=http://localhost:5173
+COMPOSE_PROFILES=mailpit
+MAIL_PORT=1025
+MAIL_STARTTLS=false
+MAIL_USE_SSL=false
+MAIL_FROM=no-reply@lifelink.local
+MAIL_USERNAME=
+MAIL_PASSWORD=
+EMAIL_VERIFICATION_TTL_SECONDS=86400
+PASSWORD_RESET_OTP_TTL_SECONDS=600
+PASSWORD_RESET_MAX_ATTEMPTS=5
+MAX_ACCOUNTS=100
+S3_ENDPOINT_URL=http://localhost:9000
+S3_REGION=us-east-1
+S3_ACCESS_KEY=lifelink
+S3_SECRET_KEY=lifelink-secret
+S3_BUCKET=lifelink-dev
+S3_PRESIGN_EXPIRY_SECONDS=900
+DOCUMENT_SCANNER=none
+CLAMD_HOST=localhost
+CLAMD_PORT=3310
+CLAMD_TIMEOUT_SECONDS=15
+DOCUMENT_RESCAN_DELAY_SECONDS=300
+AUDIT_CHECKPOINT_REQUIRED=false
+AUDIT_CHECKPOINT_INTERVAL_MINUTES=15
+AUDIT_CHECKPOINT_KEY=***generated***
+AUDIT_CHECKPOINT_KEY_ID=k1
+AUDIT_CHECKPOINT_RETIRED_KEYS=
+
+=== [2026-10-31T13:35:57Z] 4. compose config
+db
+mailpit
+minio
+redis
+clamav
+createbuckets
+api
+deadline-monitor
+frontend
+worker
+
+=== [2026-10-31T13:35:57Z] 5. build images
+#25 naming to docker.io/library/lifelink-frontend:latest done
+#29 naming to docker.io/library/lifelink-worker:latest done
+#30 naming to docker.io/library/lifelink-api:latest done
+#31 naming to docker.io/library/lifelink-deadline-monitor:latest done
+ Image lifelink-worker Built 
+ Image lifelink-deadline-monitor Built 
+ Image lifelink-frontend Built 
+ Image lifelink-api Built 
+
+=== [2026-10-31T13:35:58Z] 6. up -d (health-gated start order from docker-compose.yml)
+ Container lifelink-redis-1 Waiting 
+ Container lifelink-api-1 Waiting 
+ Container lifelink-redis-1 Waiting 
+ Container lifelink-mailpit-1 Waiting 
+ Container lifelink-api-1 Waiting 
+ Container lifelink-db-1 Waiting 
+ Container lifelink-mailpit-1 Healthy 
+ Container lifelink-redis-1 Healthy 
+ Container lifelink-db-1 Healthy 
+ Container lifelink-db-1 Healthy 
+ Container lifelink-redis-1 Healthy 
+ Container lifelink-api-1 Error dependency api failed to start
+ Container lifelink-api-1 Error dependency api failed to start
+ Container lifelink-api-1 Error dependency api failed to start
+dependency failed to start: container lifelink-api-1 is unhealthy
+
+=== [2026-10-31T13:38:57Z] 7. wait for health
+docs/final-verification/external_validation/scripts/docker_clean_start.sh: line 39: syntax error near unexpected token `&'
+docs/final-verification/external_validation/scripts/docker_clean_start.sh: line 39: `&1 | tail -15'
+harness exit 2
+end 2026-10-31T13:45:12Z

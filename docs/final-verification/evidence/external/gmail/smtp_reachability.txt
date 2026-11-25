@@ -1,0 +1,12 @@
+# smtp.gmail.com reachability 2026-10-13T08:01:08.742784Z
+direct tcp 587: FAILED gaierror: [Errno -2] Name or service not known
+proxy CONNECT 587: HTTP/1.1 200 Connection Established
+direct tcp 465: FAILED gaierror: [Errno -2] Name or service not known
+proxy CONNECT 465: HTTP/1.1 200 Connection Established
+env MAIL_HOST: not set
+env MAIL_USERNAME: not set
+env MAIL_PASSWORD: not set
+env GMAIL_SMTP_USER: not set
+env GMAIL_SMTP_APP_PASSWORD: not set
+after CONNECT 587: no SMTP greeting (TimeoutError: timed out)
+after CONNECT 465: no SMTP greeting (TimeoutError: timed out)

@@ -1,0 +1,5 @@
+postgres:  accepting connections
+redis: PONG
+clamd: PONG
+minio: 200
+mailpit: 200

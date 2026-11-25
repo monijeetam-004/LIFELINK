@@ -1,0 +1,10 @@
+# Gmail live-delivery attempt -- 2026-10-06T19:35:41Z
+# No Gmail credentials exist in this environment; a placeholder App Password is used only to reach the network step.
+$ MAIL_HOST=smtp.gmail.com MAIL_PORT=587 MAIL_STARTTLS=true MAIL_USERNAME=lifelink.qa@gmail.com MAIL_PASSWORD=<placeholder> MAIL_TIMEOUT_SECONDS=15 python -m scripts.send_test_email lifelink.qa@gmail.com
+mail transport: gmail smtp.gmail.com:587 starttls auth
+FAILED: OSError: [Errno 97] Address family not supported by protocol
+exit=1
+
+$ (raw TCP) connect smtp.gmail.com:587 over IPv4
+resolved 142.250.125.108
+ERROR TimeoutError timed out

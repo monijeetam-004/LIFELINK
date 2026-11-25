@@ -1,0 +1,72 @@
+Run started:2026-10-20 12:13:46.370929+00:00
+
+Test results:
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app/core/graph.py:87:16
+86	                )
+87	                assert uri is not None and username is not None and password is not None
+88	                try:
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: app/main.py:51:4
+50	        storage.ensure_bucket()
+51	    except Exception:  # storage optional at boot; routes surface real errors
+52	        pass
+53	    # Hardening: say which mail transport this process will use (the API and
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: app/services/cold_chain_service.py:343:10
+342	    centre = ((lo if lo is not None else hi - 10) + (hi if hi is not None else lo + 10)) / 2
+343	    rng = random.Random(seed)
+344	    start = shipment.dispatched_at or utcnow() - timedelta(minutes=minutes)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app/services/sms/msg91.py:45:8
+44	        # Type checker: sms_provider_configured already guarantees these.
+45	        assert settings.msg91_auth_key and settings.msg91_sender_id
+46	        self._transport = transport
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b108_hardcoded_tmp_directory.html
+   Location: app/workers/deadline_monitor.py:206:20
+205	HEARTBEAT_ENV = "DEADLINE_MONITOR_HEARTBEAT"
+206	DEFAULT_HEARTBEAT = "/tmp/lifelink-deadline-monitor.heartbeat"  # noqa: S108 - container-local
+207	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 23322
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 4
+		Medium: 1
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 1
+		High: 4
+Files skipped (0):

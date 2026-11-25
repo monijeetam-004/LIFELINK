@@ -1,0 +1,11 @@
+{
+  "_comment": "Phase H. Dev-only advisories with NO patched release in the installed major line. Read by scripts/audit-gate.mjs; an entry past review_by fails CI. Runtime (shipped) dependencies can never be allowlisted -- the gate fails on any runtime advisory first.",
+  "advisories": [
+    {
+      "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+      "package": "braces (via tailwindcss 3 -> chokidar / micromatch / fast-glob)",
+      "reason": "Build-time only: braces expands the glob patterns in our own tailwind.config.js `content` list, never user input, and is absent from the shipped bundle (npm audit --omit=dev = 0). No patched braces release exists (latest 3.0.3 is in range); the only fix npm offers is the Tailwind 3 -> 4 rewrite of the CSS toolchain, tracked as a limitation in docs/LIFELINK_PHASE_H_SECURITY_REPORT.md.",
+      "review_by": "2027-01-31"
+    }
+  ]
+}

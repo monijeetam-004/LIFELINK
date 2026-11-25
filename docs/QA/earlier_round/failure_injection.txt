@@ -1,0 +1,38 @@
+# QA failure injection against the live full local stack (API RQ_SYNC=false + real RQ worker + MailDev + moto S3 + clamd)
+# Complete run 2026-10-07 ~08:08 UTC, after all fixes. Recorded verbatim (terminal evidence).
+# QA failure injection -- 2026-10-07T08:06:57Z
+
+## Redis unavailable (service redis-server stop)
+[PASS] readiness reports Redis down: 503 {"status":"not_ready","required":{"db":true,"redis":false},"optional":{"neo4j":{"configured":false},"storage":{"backend":"s3"},"email":{"authenticated":false,"p
+[PASS] login is an honest 503, not 500: 503 {"detail":"A required service is temporarily unavailable. Please try again shortly.","code":"DEPENDENCY_UNAVAILABLE"}
+[PASS] authenticated read is 503 (sessions live in Redis): 503 {"detail":"A required service is temporarily unavailable. Please try again shortly.","code":"DEPENDENCY_UNAVAILABLE"}
+[PASS] recovers after Redis returns: readiness 200 again
+[PASS] login works after recovery: GET /auth/me 200
+
+## PostgreSQL unavailable (service postgresql stop)
+[PASS] readiness reports DB down: 503 {"status":"not_ready","required":{"db":false,"redis":true},"optional":{"neo4j":{"configured":false},"storage":{"backend":"s3"},"email":{"authenticated":false,"p
+[PASS] read is an honest 503 without internals: 503 {"detail":"The database is temporarily unavailable. Please try again shortly.","code":"DATABASE_UNAVAILABLE"}
+[PASS] recovers after DB returns: readiness 200 again
+[PASS] read works after recovery (pool re-established): 200
+
+## Object storage unavailable (moto S3 server stopped)
+[PASS] upload with storage down is a clean 503, nothing half-written: 503 {"detail":"Document storage is temporarily unavailable. Please try again."}
+[PASS] no verification row left behind: []
+[PASS] upload succeeds after storage returns: 201
+[PASS] admin download of the clean document: 200
+[PASS] owner (non-admin) cannot download via admin route: 403
+[PASS] missing document index is 404: 404
+
+## Malware scanner unavailable (clamd stopped)
+[PASS] scanner down: accepted into quarantine as SCAN_FAILED (never clean): 201 {"id":"0e66c33f-d925-4e64-80e2-2f8b6b51ac61","user_id":"e97e6f2d-bd66-4508-adc4-8d1cdf4733f1","kind":"DONOR_IDENTITY","status":"PENDING","documents":[{"filename":"id.pdf","content_type":"application/p
+[PASS] quarantined document is not downloadable: 409 {"detail":"This document has not passed malware scanning (status: SCAN_FAILED)"}
+[PASS] request with an unscanned document cannot be approved: 409
+[PASS] rescan after clamd returns releases it as CLEAN: 200 {"id":"0e66c33f-d925-4e64-80e2-2f8b6b51ac61","user_id":"e97e6f2d-bd66-4508-adc4-8d1cdf4733f1","kind":"DONOR_IDENTITY","status":"PENDING","documents":[{"filename
+
+## Email worker unavailable, then SMTP unavailable
+[PASS] worker down: registration still 201, email waits in the queue: register 201, rq:queue:emails length=1
+[PASS] worker restarted: queued email delivered: MailDev messages 6 -> 7
+[PASS] SMTP down: registration 201; job fails loudly into the failed registry: register 201; rq:failed:emails=1
+[PASS] SMTP back: resend delivers a fresh link: resend 202; MailDev messages=1
+
+SUMMARY: 23/23 checks passed

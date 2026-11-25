@@ -1,0 +1,11 @@
+2026-10-13 08:03:20,670 INFO     [-] lifelink.email: mail transport: mailpit 127.0.0.1:1025 plain no-auth
+2026-10-13 08:03:20,679 INFO     [-] rq.worker: *** Listening on emails, sms...
+2026-10-13 08:03:20,681 INFO     [-] rq.scheduler: Acquired scheduler lock for emails
+2026-10-13 08:03:20,686 INFO     [-] rq.scheduler: Scheduler for emails, sms started with PID 1302
+2026-10-13 08:03:20,688 INFO     [-] rq.worker: Worker 12b237e8792e425c898d7ec56942c810: cleaning registries for queue: emails
+2026-10-13 08:06:25,390 INFO     [7e1cb776-8a8f-4795-b80a-23c046987fc0] lifelink.email: email job 498c3878-4b4d-4b26-b71b-ba398bf57462 sent for f***@lifelink-demo.example.com
+2026-10-13 08:06:25,392 INFO     [-] rq.worker: Successfully completed job 498c3878-4b4d-4b26-b71b-ba398bf57462 in 0:00:00.834370s on worker 12b237e8792e425c898d7ec56942c810
+2026-10-13 08:06:25,392 INFO     [-] rq.worker: Worker 12b237e8792e425c898d7ec56942c810: job 498c3878-4b4d-4b26-b71b-ba398bf57462 result is kept for 3600 seconds
+2026-10-13 08:06:26,405 INFO     [7e1cb776-8a8f-4795-b80a-23c046987fc0] lifelink.email: email job 62b52b07-3388-430d-a120-ee2a87e74564 sent for f***@lifelink-demo.example.com
+/srv/realsvc/native_run/worker.log:2026-10-13 08:06:53,838 INFO     [ab08f950-5cf2-4b63-85c0-581df47670b0] lifelink.email: email job 9cc46cb6-747b-4c47-9ef7-7e3cca83e12d sent for c***@example.com
+/srv/realsvc/native_run/api.log:2026-10-13 08:06:53,318 INFO     [ab08f950-5cf2-4b63-85c0-581df47670b0] lifelink.email: email job 9cc46cb6-747b-4c47-9ef7-7e3cca83e12d enqueued for c***@example.com

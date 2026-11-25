@@ -1,0 +1,46 @@
+# Phase 29: root-level .gitignore. backend/.gitignore and frontend/.gitignore
+# already cover their own subtrees (git honors nested .gitignore files); this
+# covers root-level clutter and anything cross-cutting.
+
+# Historical per-phase delivery zips and a one-off screenshot -- build
+# artifacts from earlier phases' delivery process, not source.
+*.zip
+*.png
+
+# Local Redis dump (RQ/session/rate-limit state) -- never real user data by
+# design (sessions/rate-limits are ephemeral), but never something to commit.
+dump.rdb
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+
+# Env / secrets -- never committed, anywhere in the tree.
+.env
+.env.*
+!.env.example
+!frontend/.env.example
+!backend/.env.example
+
+# Backups (see backend/.gitignore's own Phase 28 entry -- duplicated here
+# in case a backup script is ever run from the repo root).
+backups/
+*.dump
+
+# OS / editor noise
+.DS_Store
+*.swp
+
+# QA round (2026-10-20): the audit's screenshot evidence IS meant to be
+# versioned (docs/QA/SCREENSHOT_INDEX.md links to it).
+!docs/QA/evidence/**/*.png

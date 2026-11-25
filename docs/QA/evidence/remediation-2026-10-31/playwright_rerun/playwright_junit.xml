@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="11.016564">
+<testsuite name="phase26_donation_idempotency.spec.ts" timestamp="2026-10-31T13:22:12.034Z" hostname="chromium" tests="3" failures="0" skipped="0" time="9.802" errors="0">
+<testcase name="Phase 26 E2E: donation-logging idempotency through the real UI › rapid double-click on Log donation creates exactly one donation, not two" classname="phase26_donation_idempotency.spec.ts" time="3.362">
+</testcase>
+<testcase name="Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation" classname="phase26_donation_idempotency.spec.ts" time="3.716">
+</testcase>
+<testcase name="Phase 26 E2E: donation-logging idempotency through the real UI › a genuine server error while logging a donation shows an honest error, not a false success" classname="phase26_donation_idempotency.spec.ts" time="2.724">
+</testcase>
+</testsuite>
+</testsuites>

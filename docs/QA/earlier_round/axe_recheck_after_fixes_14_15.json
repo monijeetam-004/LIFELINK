@@ -1,0 +1,37 @@
+[
+ {
+  "route": "/analytics",
+  "role": "hospital",
+  "url": "http://localhost:4173/analytics",
+  "violations": [],
+  "screenshot": "axe_recheck__analytics.png"
+ },
+ {
+  "route": "/hospital",
+  "role": "hospital",
+  "url": "http://localhost:4173/hospital",
+  "violations": [],
+  "screenshot": "axe_recheck__hospital.png"
+ },
+ {
+  "route": "/certificate/8b48bfa1-664a-41df-8734-8334ca43efd1",
+  "role": "donor",
+  "url": "http://localhost:4173/certificate/8b48bfa1-664a-41df-8734-8334ca43efd1",
+  "violations": [],
+  "screenshot": "axe_recheck__certificate_8b48bfa1_664a_41df_8734_8334ca43efd1.png"
+ },
+ {
+  "route": "/donor/identity-verification",
+  "role": "donor",
+  "url": "http://localhost:4173/donor/identity-verification",
+  "violations": [],
+  "screenshot": "axe_recheck__donor_identity_verification.png"
+ },
+ {
+  "route": "/hospital/verification",
+  "role": "hospital",
+  "url": "http://localhost:4173/hospital/verification",
+  "violations": [],
+  "screenshot": "axe_recheck__hospital_verification.png"
+ }
+]

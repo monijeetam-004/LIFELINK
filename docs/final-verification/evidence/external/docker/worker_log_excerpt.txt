@@ -1,0 +1,7 @@
+worker-1  | 2026-10-13 08:41:52,681 INFO     [-] lifelink.email: mail transport: mailpit mailpit:1025 plain no-auth
+worker-1  | 2026-10-13 08:41:52,699 INFO     [-] rq.worker: *** Listening on emails, sms...
+worker-1  | 2026-10-13 08:44:56,512 INFO     [5129b851-d449-4aec-944e-f25cc9b0d577] lifelink.email: email job f61ccd73-c5f8-4a4c-950f-a77cb91ff9c4 sent for c***@example.com
+deadline-monitor-1  | 2026-10-13 08:41:53,382 INFO     [-] lifelink.deadline_monitor: deadline monitor started (interval=60s, warning=30min)
+deadline-monitor-1  | 2026-10-13 08:41:53,449 INFO     [-] lifelink.deadline_monitor: pass: warned=0 exceeded=0 escalated=0 swept=0
+deadline-monitor-1  | 2026-10-13 08:42:53,480 INFO     [-] lifelink.deadline_monitor: pass: warned=0 exceeded=0 escalated=0 swept=0
+deadline-monitor-1  | 2026-10-13 08:43:53,528 INFO     [-] lifelink.deadline_monitor: pass: warned=0 exceeded=0 escalated=0 swept=0

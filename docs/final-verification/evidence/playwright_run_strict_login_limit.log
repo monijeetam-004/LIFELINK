@@ -1,0 +1,94 @@
+=== 2026-10-13T05:49:44Z fresh lifelink_e2e
+INFO  [alembic.runtime.migration] Running upgrade d0e1f2a3b4c5 -> e1f2a3b4c5d6, Gap elimination: pathway engine, cold chain, reconciliation, thaw, forecasting.
+Seeded 5 E2E users.
+Demo accounts (password: 'LifeLink-Demo-2026!'): {'patient': 'demo.patient@lifelink-demo.example.com', 'family': 'demo.f
+Graph resync: ok=False detail=Neo4j is not configured
+✓ built in 12.00s
+=== 2026-10-13T05:53:51Z playwright
+        npx playwright show-trace test-results/phase31_1_domain_signals-P-64e05-n-has-no-new-axe-violations-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  43) [chromium] › e2e/qa_evidence.spec.ts:308:1 › QA hospital: inventory by component, add/reserve/release through the UI 
+
+    TimeoutError: page.waitForURL: Timeout 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation until "load"
+    ============================================================
+
+       at helpers.ts:62
+
+      60 |   await page.getByPlaceholder("Password").fill(E2E_PASSWORD);
+      61 |   await page.locator("form").getByRole("button", { name: "Sign in" }).click();
+    > 62 |   await page.waitForURL(/\/(patient|family|donor|hospital|admin)$/, { timeout: 15_000 });
+         |              ^
+      63 | }
+      64 |
+      65 | export const notificationBell = (page: Page) => page.getByRole("button", { name: "Notifications" }).first();
+        at loginAsUi (/home/claude/lifelink/LIFELINK/frontend/e2e/helpers.ts:62:14)
+        at /home/claude/lifelink/LIFELINK/frontend/e2e/qa_evidence.spec.ts:309:3
+
+    Error Context: test-results/qa_evidence-QA-hospital-in-5bf78-erve-release-through-the-UI-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/qa_evidence-QA-hospital-in-5bf78-erve-release-through-the-UI-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/qa_evidence-QA-hospital-in-5bf78-erve-release-through-the-UI-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  43 failed
+    [chromium] › e2e/blood_request_notifications.spec.ts:10:3 › Phase 18 E2E: blood request -> donor notification, real end to end › a patient's O- request notifies the O- donor, who reads it via the bell and the full center 
+    [chromium] › e2e/document_storage_security.spec.ts:79:3 › Phase 20 E2E: secure document upload / download › (A) donor uploads a verification document through the real UI and it moves to awaiting review 
+    [chromium] › e2e/emergency_notifications.spec.ts:10:3 › Phase 18 E2E: emergency SOS broadcast reaches a compatible donor › patient broadcasts a real Emergency SOS; the donor sees it as an emergency notification 
+    [chromium] › e2e/family_link_notifications.spec.ts:6:3 › Phase 18 E2E: family link request/accept notifies both sides › family requests a link; patient accepts it through the real UI; family is notified 
+    [chromium] › e2e/login.spec.ts:8:5 › Phase 18 E2E: login + notification surface renders for every role › hospital can sign in through the real UI and sees the notifications bell 
+    [chromium] › e2e/login.spec.ts:8:5 › Phase 18 E2E: login + notification surface renders for every role › family can sign in through the real UI and sees the notifications bell 
+    [chromium] › e2e/login.spec.ts:16:3 › Phase 18 E2E: login + notification surface renders for every role › admin has no shared NotificationsBell in the header -- it uses its own inline 'Your Notifications' panel 
+    [chromium] › e2e/offline_network_failure.spec.ts:23:3 › Phase 19 E2E: offline / network-failure UX › the patient's request list shows an honest error when it fails to load, and recovers once the network returns 
+    [chromium] › e2e/phase_e_domain_integrity.spec.ts:29:1 › donation verification gates the certificate end to end 
+    [chromium] › e2e/phase_f_realtime.spec.ts:36:1 › patient sees a hospital allocation live, without reloading 
+    [chromium] › e2e/phase_g_integration.spec.ts:49:1 › hospital adds plasma via the console; admin sees the component 
+    [chromium] › e2e/phase_j_journeys.spec.ts:71:1 › partial then full fulfilment is visible to the patient live 
+    [chromium] › e2e/phase21_error_loading_empty_offline.spec.ts:41:3 › Phase 21 E2E: error / loading / empty / offline UX › (A) resubmitting the guided New Blood Request flow after a lost first attempt does not duplicate the request 
+    [chromium] › e2e/phase21_error_loading_empty_offline.spec.ts:124:3 › Phase 21 E2E: error / loading / empty / offline UX › (C) a failed 'mark notification read' shows a real error instead of silently doing nothing 
+    [chromium] › e2e/phase22_responsive_mobile_nav.spec.ts:31:3 › Phase 22 E2E: responsive mobile navigation + dialog accessibility › (A) Admin: a mobile viewport gets a working hamburger menu instead of no navigation at all 
+    [chromium] › e2e/phase22_responsive_mobile_nav.spec.ts:64:3 › Phase 22 E2E: responsive mobile navigation + dialog accessibility › (B) Patient: a mobile viewport gets a working hamburger menu instead of no navigation at all 
+    [chromium] › e2e/phase22_responsive_mobile_nav.spec.ts:87:3 › Phase 22 E2E: responsive mobile navigation + dialog accessibility › (C) Family: a mobile viewport gets a working hamburger menu instead of no navigation at all 
+    [chromium] › e2e/phase22_responsive_mobile_nav.spec.ts:104:3 › Phase 22 E2E: responsive mobile navigation + dialog accessibility › (D) the shared Modal has real dialog semantics, moves focus in, and Escape closes it 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:49:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (A) the session cookie is HttpOnly -- inaccessible to page JavaScript 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:70:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (C) a role mismatch shows Access Denied client-side, and the underlying admin API genuinely 403s (not just hidden UI) 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:83:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (D) a patient's browser session cannot view another patient's blood request (IDOR denied with a clean 404) 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:122:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (E) certificate download requires real ownership or a valid signed token, not merely being logged in 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:155:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (F) a state-changing request through the real session is rejected when it carries a forged cross-site Origin, and accepted with the real one 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:173:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (G) signing out through the real account menu immediately invalidates the session 
+    [chromium] › e2e/phase23_security_hardening.spec.ts:187:3 › Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (H) changing the password through the real session invalidates a session cookie captured beforehand 
+    [chromium] › e2e/phase26_accessibility.spec.ts:128:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › family Linked Patients (fixed link-name) 
+    [chromium] › e2e/phase26_accessibility.spec.ts:136:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › admin Analytics (fixed link-in-text-block) 
+    [chromium] › e2e/phase26_accessibility.spec.ts:144:3 › Phase 26 E2E: no new accessibility regressions on previously-broken routes › hospital dashboard (fixed scrollable-region-focusable) 
+    [chromium] › e2e/phase26_donation_idempotency.spec.ts:24:3 › Phase 26 E2E: donation-logging idempotency through the real UI › rapid double-click on Log donation creates exactly one donation, not two 
+    [chromium] › e2e/phase26_donation_idempotency.spec.ts:84:3 › Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation 
+    [chromium] › e2e/phase26_donation_idempotency.spec.ts:137:3 › Phase 26 E2E: donation-logging idempotency through the real UI › a genuine server error while logging a donation shows an honest error, not a false success 
+    [chromium] › e2e/phase26_responsive_overflow.spec.ts:37:3 › Phase 26 E2E: no page-level horizontal overflow › admin transport-routes table (the reproduced bug) does not scroll the page at 375/390/414px 
+    [chromium] › e2e/phase26_responsive_overflow.spec.ts:50:3 › Phase 26 E2E: no page-level horizontal overflow › donor milestones/history and patient history tables do not scroll the page at 320/1440px 
+    [chromium] › e2e/phase27_accessibility.spec.ts:92:3 › Phase 27 accessibility regression › Leaflet donor-map markers on /patient/find-donor have no aria-command-name violations 
+    [chromium] › e2e/phase27_accessibility.spec.ts:106:3 › Phase 27 accessibility regression › Hospital donor-directory map has no aria-command-name violations 
+    [chromium] › e2e/phase27_accessibility.spec.ts:120:3 › Phase 27 accessibility regression › previously-flagged donor/patient/verification/simulation routes are clean (decorative watermark excepted) 
+    [chromium] › e2e/phase27_accessibility.spec.ts:141:3 › Phase 27 accessibility regression › the one remaining color-contrast node is the disclosed decorative watermark, not a regression elsewhere 
+    [chromium] › e2e/phase31_1_domain_signals.spec.ts:27:3 › Phase 31.1 E2E: certificate revocation › admin can revoke a certificate through the real UI, and public verification reflects it honestly 
+    [chromium] › e2e/phase31_1_domain_signals.spec.ts:101:3 › Phase 31.1 E2E: emergency deadline-exceeded banner › a real past-deadline emergency shows the deadline banner alongside (not instead of) its real status 
+    [chromium] › e2e/phase31_1_domain_signals.spec.ts:165:3 › Phase 31.1 E2E: accessibility of the new certificate/emergency UI › public verify page (valid certificate) has no new axe violations 
+    [chromium] › e2e/phase31_1_domain_signals.spec.ts:185:3 › Phase 31.1 E2E: accessibility of the new certificate/emergency UI › donor milestones page (with a revoked certificate present) has no new axe violations 
+    [chromium] › e2e/phase31_1_domain_signals.spec.ts:219:3 › Phase 31.1 E2E: accessibility of the new certificate/emergency UI › admin certificate registry, with the revoke dialog open, has no new axe violations 
+    [chromium] › e2e/qa_evidence.spec.ts:308:1 › QA hospital: inventory by component, add/reserve/release through the UI 
+  1 skipped
+  26 did not run
+  37 passed (13.4m)
+=== 2026-10-13T06:07:17Z invariants after E2E
+[OK ] #42 thaw clocks only on plasma, and never before the thaw
+[OK ] #43 a decided shipment item records when, and a LOST unit has no destination unit
+[OK ] #44 invalidated / superseded pathways record when and why
+[OK ] #45 quarantined, discarded and expired units hold no reservation
+[OK ] audit chain: checked=112 unsealed=0 head=112
+=== done 2026-10-13T06:07:19Z

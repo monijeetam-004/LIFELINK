@@ -1,0 +1,398 @@
+diff --git a/backend/app/api/routes/shortlists.py b/backend/app/api/routes/shortlists.py
+index eb8bc25..5bc5c13 100644
+--- a/backend/app/api/routes/shortlists.py
++++ b/backend/app/api/routes/shortlists.py
+@@ -118,12 +118,44 @@ def _priority_out(p: unified_priority.PriorityScore, full: bool) -> PriorityOut:
+         missing_data_baseline=p.missing_baseline,
+         availability_status=p.availability_status.value,
+         factors=[PriorityFactorOut(
+-            name=f.name, label=f.label, weight=f.weight, value=f.value,
+-            contribution=f.contribution, status=f.status,
++            name=f.name, label=f.label, weight=f.weight if full else None,
++            value=f.value if full else None,
++            contribution=f.contribution if full else None, status=f.status,
+             detail=f.detail if full else f.summary) for f in p.factors],
+     )
+ 
+ 
++def _coarse_describe(a) -> str:
++    if a.distance_km is None:
++        return a.describe()
++    return f"about {_distance_out(a.distance_km, False):g} km away" + (
++        " (location may be out of date)" if a.location_stale else "")
++
++
++def _distance_out(km: float | None, full: bool) -> float | None:
++    """Release gate C (2026-11-03): never a full-precision distance. 0.1 km
++    for facility and admin users, whole kilometres (at least 1) for everyone
++    else, so that distances from several requests cannot pin down a donor."""
++    if km is None:
++        return None
++    return round(km, 1) if full else float(max(1, round(km)))
++
++
++_GENERIC_REASONS = {
++    "already received the open alert", "no answer before the response timeout",
++    "answered the open alert (not shortlisted)",
++}
++
++
++def _reason_out(reason: str | None, full: bool) -> str | None:
++    """Re-check failures can describe a donor's own situation (another
++    commitment, a recent donation); patients and family see only that the
++    re-check did not pass."""
++    if reason is None or full or reason in _GENERIC_REASONS or reason.startswith("simulated:"):
++        return reason
++    return "the eligibility re-check did not pass"
++
++
+ def build_out(db: Session, subject: svc.Subject, *, manager: bool, user: User | None = None,
+               strategy: unified_priority.RankingStrategy | None = None) -> ShortlistOut:
+     strategy = strategy or svc.last_strategy(db, subject)
+@@ -210,14 +242,15 @@ def build_out(db: Session, subject: svc.Subject, *, manager: bool, user: User |
+             ShortlistCandidateOut(
+                 donor_ref=cand.ref, donor_name=cand.name if manager else None,
+                 blood_type=cand.blood_type, rank=cand.rank, score=cand.score,
+-                components=cand.components, priority=_priority_out(cand.priority, full),
++                components=cand.components if full else {},
++                priority=_priority_out(cand.priority, full),
+                 next_action=unified_priority.next_action(cand.priority.availability_status,
+                                                          contacted=False),
+                 distance_basis=cand.distance.basis.value,
+-                distance_km=cand.distance.distance_km,
++                distance_km=_distance_out(cand.distance.distance_km, full),
+                 travel_minutes_estimate=cand.travel_minutes,
+                 location_stale=cand.distance.location_stale,
+-                explanation=(cand.reasons if full else [cand.distance.describe()]),
++                explanation=(cand.reasons if full else [_coarse_describe(cand.distance)]),
+                 synthetic=cand.synthetic,
+             ) for cand in preview
+         ],
+@@ -230,7 +263,7 @@ def build_out(db: Session, subject: svc.Subject, *, manager: bool, user: User |
+                 contacted_at=ct.contacted_at, timeout_at=ct.timeout_at,
+                 responded_at=ct.responded_at,
+                 eligibility_rechecked_at=ct.eligibility_rechecked_at,
+-                confirmed_at=ct.confirmed_at, status_reason=ct.status_reason,
++                confirmed_at=ct.confirmed_at, status_reason=_reason_out(ct.status_reason, full),
+                 notification_state=(None if ct.notification_id is None else
+                                     ("READ" if read.get(ct.notification_id) else "SENT_UNREAD")),
+                 sms_status=(sms[ct.notification_id].value if ct.notification_id in sms else None),
+diff --git a/backend/app/schemas/shortlist.py b/backend/app/schemas/shortlist.py
+index c089a8b..a5afd8f 100644
+--- a/backend/app/schemas/shortlist.py
++++ b/backend/app/schemas/shortlist.py
+@@ -16,9 +16,12 @@ class PriorityFactorOut(BaseModel):
+ 
+     name: str
+     label: str
+-    weight: float
++    # Release gate C (2026-11-03): weight, value and contribution are null in
++    # SUMMARY explanations (patients, family) -- the weights are restricted
++    # configuration and the values are other donors' history.
++    weight: float | None
+     value: float | None
+-    contribution: float
++    contribution: float | None
+     status: str  # OBSERVED | COARSE | MISSING
+     detail: str  # full text for facility/admin managers; a minimal summary otherwise
+ 
+diff --git a/backend/scripts/evaluate_ranking_strategies.py b/backend/scripts/evaluate_ranking_strategies.py
+index 5b7c8a7..ee0f0af 100644
+--- a/backend/scripts/evaluate_ranking_strategies.py
++++ b/backend/scripts/evaluate_ranking_strategies.py
+@@ -26,6 +26,17 @@ Two outcome models, both synthetic -- neither is real donor behaviour:
+   sound comparison should show no meaningful difference between modes here;
+   a large difference would point at a bug, not at a better model.
+ 
++* ``latent`` (added 2026-11-03, release gate F; the primary model) -- removes
++  the leakage. Each donor gets a latent answer propensity and a latent
++  accept-when-answering propensity from its own seeded stream (independent
++  of the seeded personas). From those, a fresh response HISTORY is sampled
++  on one stream (30 % of donors have none) and the FUTURE answers on
++  another, so history and outcome are separate draws from the same trait --
++  the usual assumption behind any history-based ranking, and the one this
++  model tests. The unified score is recomputed from the sampled history (the
++  four strategies do not read history); each request's outcome for a donor
++  is the same whichever mode contacts them. Repeated over several seeds.
++
+ Also reported: eligibility violations in the returned rankings (every
+ returned donor is re-checked against the interval and the distance policy),
+ evidence coverage of the unified score, and its sensitivity when the
+@@ -111,6 +122,60 @@ def simulate(order, emails, needed, model, rng_seed, p_accept):
+             "met": accepted >= needed, "accepted": min(accepted, needed)}
+ 
+ 
++def _seeded(*parts) -> random.Random:
++    return random.Random(zlib.crc32("|".join(str(p) for p in parts).encode()))
++
++
++def latent_traits(seed, donor_id):
++    r = _seeded(seed, "latent", donor_id)
++    return r.betavariate(2, 2), r.betavariate(2, 3)  # P(answer), P(accept | answer)
++
++
++def latent_history(seed, donor_id, traits):
++    r = _seeded(seed, "history", donor_id)
++    if r.random() < 0.3:
++        return 0, 0, 0
++    invited = r.randint(1, 8)
++    answered = sum(r.random() < traits[0] for _ in range(invited))
++    accepted = sum(r.random() < traits[1] for _ in range(answered))
++    return invited, answered, accepted
++
++
++def latent_order(cands, seed, subject, now, cfg):
++    """Unified order with the history replaced by a sample from the latent
++    traits (everything else -- distance, availability, verification -- as
++    stored)."""
++    rescored = []
++    for c in cands:
++        inv, ans, acc = latent_history(seed, c.donor_user_id, latent_traits(seed, c.donor_user_id))
++        x = replace(c.inputs, invited=inv, answered=ans, accepted=acc)
++        rescored.append(replace(c, inputs=x, priority=unified_priority.compute(x, cfg, now=now)))
++    return svc.order_candidates(rescored, RS.UNIFIED_PRIORITY, subject.urgency, now)
++
++
++def simulate_latent(order, needed, seed, request_key):
++    """Same contact rounds as `simulate`; a donor accepts with
++    P(answer) x P(accept | answer), drawn once per (request, donor)."""
++    batch_cap = settings.shortlist_max_batch
++    mult = settings.shortlist_contact_multiplier
++    accepted = contacted = rnd = i = 0
++    first_round = None
++    while accepted < needed and i < len(order):
++        rnd += 1
++        size = min(batch_cap, (needed - accepted) * mult)
++        batch = order[i:i + size]
++        i += len(batch)
++        contacted += len(batch)
++        for c in batch:
++            pa, pc = latent_traits(seed, c.donor_user_id)
++            if _seeded(seed, "outcome", request_key, c.donor_user_id).random() < pa * pc:
++                accepted += 1
++                if first_round is None:
++                    first_round = rnd
++    return {"contacts": contacted, "rounds_to_first": first_round,
++            "met": accepted >= needed, "accepted": min(accepted, needed)}
++
++
+ def violations(db, subject, cands) -> int:
+     bad = 0
+     ids = [c.donor_user_id for c in cands]
+@@ -156,6 +221,7 @@ def main(argv=None) -> int:
+     ap.add_argument("--units", type=int, default=2)
+     ap.add_argument("--p-accept", type=float, default=0.35)
+     ap.add_argument("--seed", type=int, default=20261031)
++    ap.add_argument("--latent-seeds", type=int, default=5)
+     a = ap.parse_args(argv)
+     if settings.is_production:
+         print("refusing to run against ENVIRONMENT=production", file=sys.stderr)
+@@ -215,6 +281,12 @@ def main(argv=None) -> int:
+                         sensitivity["same_top_k"] += int(
+                             set(top) == {c.donor_user_id for c in rescored[:k]})
+                     order = ev.candidates
++                    for ls in range(1, a.latent_seeds + 1):
++                        lorder = (latent_order(order, ls, subject, now, base_cfg)
++                                  if mode is RS.UNIFIED_PRIORITY else order)
++                        r = simulate_latent(lorder, a.units, ls, key)
++                        rows.append({"request": key, "mode": mode.value, "model": "latent",
++                                     "latent_seed": ls, "eligible": len(order), **r})
+                     for model in ("persona", "independent"):
+                         r = simulate(order, emails, a.units, model,
+                                      zlib.crc32(f"{a.seed}|{key}|{model}".encode()), a.p_accept)
+@@ -240,9 +312,16 @@ def main(argv=None) -> int:
+         "evaluate_ms_median": {m: round(statistics.median(v), 1) for m, v in timings.items() if v},
+         "persona_outcomes": summarise([r for r in rows if r["model"] == "persona"]),
+         "independent_outcomes": summarise([r for r in rows if r["model"] == "independent"]),
++        "latent_outcomes_pooled": summarise([r for r in rows if r["model"] == "latent"]),
++        "latent_outcomes_by_seed": {
++            ls: summarise([r for r in rows if r["model"] == "latent" and r["latent_seed"] == ls])
++            for ls in range(1, a.latent_seeds + 1)},
+         "caveat": "Synthetic. Persona outcomes and the seeded response history come from the "
+-                  "same personas, so history-based ranking is favoured by construction. Not "
+-                  "evidence of real-world performance.",
++                  "same personas, so history-based ranking is favoured by construction (leakage). "
++                  "The latent model draws history and outcome independently from one latent trait "
++                  "per donor; it tests the assumption that past answering predicts future "
++                  "answering, it does not show that real donors behave that way. Not evidence of "
++                  "real-world performance.",
+         "rows": rows,
+     }
+     with open(a.out, "w") as fh:
+diff --git a/backend/tests/test_unified_priority.py b/backend/tests/test_unified_priority.py
+index 7a559ba..ba07864 100644
+--- a/backend/tests/test_unified_priority.py
++++ b/backend/tests/test_unified_priority.py
+@@ -399,3 +399,109 @@ def test_answering_this_request_is_not_counted_again_as_history():
+     assert p_after.availability_status is up.AvailabilityStatus.ACCEPTED_THIS_REQUEST
+     assert _f(p_after, "response").value == _f(p_before, "response").value
+     assert _f(p_after, "acceptance").value == _f(p_before, "acceptance").value
++
++
++def test_summary_viewers_get_no_weights_history_values_precise_distance_or_reasons():
++    """Release gate C (2026-11-03): enforced server-side. A patient (or
++    family member) managing a request sees the score, evidence level and
++    plain-language factor summaries -- but no weights (restricted
++    configuration), no factor values (other donors' history), no full-
++    precision distance and no donor-specific re-check reason. A hospital or
++    admin user sees the detail, with distances to 0.1 km."""
++    patient, _ = auth_client("PATIENT")
++    d, _ = _donor(3.456)
++    _donor(7.891)
++    rid = patient.post("/blood-requests", json={
++        "blood_type": "O_NEG", "units_needed": 1, "city": "Metro",
++        "latitude": 12.0, "longitude": 77.0}).json()["id"]
++    s = patient.get(f"/blood-requests/{rid}/shortlist").json()
++    assert s["explanation_level"] == "SUMMARY" and s["next_to_contact"]
++    for cand in s["next_to_contact"]:
++        assert cand["components"] == {}
++        for f in cand["priority"]["factors"]:
++            assert f["weight"] is None and f["value"] is None and f["contribution"] is None
++        if cand["distance_km"] is not None:
++            assert cand["distance_km"] == float(int(cand["distance_km"]))  # whole km
++        assert not any(ch.isdigit() for e in cand["explanation"][1:] for ch in e)
++    # a failed re-check: the patient sees only that it did not pass
++    _contact(patient, rid)
++    assert d.post(f"/blood-requests/{rid}/respond", json={"action": "ACCEPTED"}).status_code == 200
++    d.put("/donors/me", json={"last_donation_date": date.today().isoformat()})
++    acc = next(c for c in _sl(patient, rid)["contacts"] if c["status"] == "ACCEPTED")
++    s = patient.post(f"/blood-requests/{rid}/shortlist/contacts/{acc['id']}/confirm").json()
++    row = next(c for c in s["contacts"] if c["id"] == acc["id"])
++    assert row["status"] == "ELIGIBILITY_RECHECK_REQUIRED"
++    assert row["status_reason"] == "the eligibility re-check did not pass"
++    admin, _ = auth_client("ADMIN")
++    s = admin.get(f"/blood-requests/{rid}/shortlist").json()
++    assert s["explanation_level"] == "FULL"
++    row = next(c for c in s["contacts"] if c["id"] == acc["id"])
++    assert "interval" in row["status_reason"]
++    for cand in s["next_to_contact"]:
++        assert set(cand["components"]) == set(up.FACTORS)
++        assert all(f["weight"] is not None for f in cand["priority"]["factors"])
++        if cand["distance_km"] is not None:
++            assert cand["distance_km"] == round(cand["distance_km"], 1)
++
++
++def test_score_range_coverage_and_reconciliation_hold_for_random_inputs():
++    """Release gate E: on 3,000 seeded random inputs (including empty
++    histories, missing distances, stale or absent locations) the score stays
++    in 0..100, coverage in 0..1, the explanation lines add up to the score,
++    and "unscored" happens exactly below the minimum coverage."""
++    rng = random.Random(20261103)
++    for _ in range(3000):
++        invited = rng.choice([0, 0, 1, 2, 5, 40])
++        answered = rng.randint(0, invited)
++        x = _x(
++            has_accepted_this_subject=rng.random() < 0.1,
++            availability_confirmed_at=rng.choice([None, NOW - timedelta(days=rng.randint(0, 400))]),
++            invited=invited, answered=answered, accepted=rng.randint(0, answered),
++            last_response_at=rng.choice([None, NOW - timedelta(days=rng.randint(0, 900))]),
++            last_donation_recorded_at=rng.choice([None, NOW - timedelta(days=rng.randint(0, 900))]),
++            distance_basis=rng.choice(["MEASURED", "SAME_CITY", "UNKNOWN"]),
++            distance_km=rng.choice([None, rng.uniform(0, 50)]),
++            location_age_days=rng.choice([None, rng.randint(0, 800)]),
++            identity_verified=rng.random() < 0.5, verified_donations=rng.randint(0, 6))
++        p = up.compute(x, CFG, now=NOW)
++        assert 0.0 <= p.score <= 100.0
++        assert 0.0 <= p.coverage <= 1.0
++        lines = sum(f.contribution for f in p.factors) + p.missing_baseline
++        assert abs(lines - p.score) <= 0.05
++        assert p.score_available == (p.coverage >= CFG.min_coverage)
++        for f in p.factors:
++            assert (f.value is None) == (f.status == "MISSING")
++            assert f.value is None or 0.0 <= f.value <= 1.0
++        if x.availability_confirmed_at is None and not x.has_accepted_this_subject:
++            assert p.availability_status is up.AvailabilityStatus.UNCONFIRMED
++
++
++def test_ranking_is_read_only_and_never_changes_any_state():
++    """Release gate E: computing and ordering the shortlist (every mode)
++    writes nothing -- no contact, notification, response or status change."""
++    from sqlalchemy import func as sa_func
++
++    from app.models.blood_request import BloodRequest, DonorResponse
++    from app.models.notification import Notification
++
++    h = _hospital()
++    for km in (1, 2, 3):
++        _donor(km)
++    rid = _request(h, units=2)
++
++    def snapshot(db):
++        return (db.scalar(select(sa_func.count()).select_from(DonorContactAttempt)),
++                db.scalar(select(sa_func.count()).select_from(Notification)),
++                db.scalar(select(sa_func.count()).select_from(DonorResponse)),
++                db.get(BloodRequest, __import__("uuid").UUID(rid)).status)
++
++    with SessionLocal() as db:
++        before = snapshot(db)
++        sub = svc.load_subject(db, ShortlistSubject.BLOOD_REQUEST, __import__("uuid").UUID(rid))
++        for mode in up.RankingStrategy:
++            ev = svc.evaluate(db, sub, strategy=mode)
++            assert len(ev.candidates) == 3
++        assert not db.new and not db.dirty and not db.deleted
++        db.rollback()
++    with SessionLocal() as db:
++        assert snapshot(db) == before
+diff --git a/frontend/src/components/DonorShortlistPanel.test.tsx b/frontend/src/components/DonorShortlistPanel.test.tsx
+index 372d463..69b989c 100644
+--- a/frontend/src/components/DonorShortlistPanel.test.tsx
++++ b/frontend/src/components/DonorShortlistPanel.test.tsx
+@@ -180,4 +180,25 @@ describe("DonorShortlistPanel", () => {
+     expect(screen.queryByText("Contact next ranked donors")).toBeNull();
+     expect(screen.getByText(/Donor abcd1234/)).toBeInTheDocument();
+   });
++
++  it("renders a SUMMARY explanation without weights or points (release gate C)", async () => {
++    const base = candidate();
++    const c = candidate({
++      components: {},
++      priority: {
++        ...base.priority,
++        factors: base.priority.factors.map((f) => ({
++          ...f, weight: null, value: null, contribution: null,
++          detail: "how far the donor is",
++        })),
++      },
++    });
++    api.getShortlist.mockResolvedValue(shortlist({ explanation_level: "SUMMARY", next_to_contact: [c] }));
++    renderWithProviders(<DonorShortlistPanel kind="BLOOD_REQUEST" subjectId="r1" canManage />);
++    fireEvent.click(await screen.findByText("Why this rank"));
++    const table = await screen.findByTestId("priority-breakdown");
++    expect(table).not.toHaveTextContent("+16.0");
++    expect(table).toHaveTextContent("—");
++    expect(table).toHaveTextContent("62.0");
++  });
+ });
+diff --git a/frontend/src/components/DonorShortlistPanel.tsx b/frontend/src/components/DonorShortlistPanel.tsx
+index 49d2c87..5d5e877 100644
+--- a/frontend/src/components/DonorShortlistPanel.tsx
++++ b/frontend/src/components/DonorShortlistPanel.tsx
+@@ -80,7 +80,9 @@ function PriorityBreakdown({ c }: { c: ShortlistCandidate }) {
+               <td className="text-on-surface-variant">
+                 {f.status === "MISSING" ? "no data" : f.detail}
+               </td>
+-              <td className="text-right">{f.status === "MISSING" ? "0" : `+${f.contribution.toFixed(1)}`}</td>
++              <td className="text-right">
++                {f.contribution == null ? "—" : f.status === "MISSING" ? "0" : `+${f.contribution.toFixed(1)}`}
++              </td>
+             </tr>
+           ))}
+           {p.missing_data_baseline > 0 && (
+diff --git a/frontend/src/lib/gapApi.ts b/frontend/src/lib/gapApi.ts
+index 6868c5c..ef7cbde 100644
+--- a/frontend/src/lib/gapApi.ts
++++ b/frontend/src/lib/gapApi.ts
+@@ -344,9 +344,11 @@ export type RankingStrategy = (typeof RANKING_STRATEGIES)[number];
+ export interface PriorityFactor {
+   name: string;
+   label: string;
+-  weight: number;
++  /** null in SUMMARY explanations (patients, family): weights are restricted
++   * configuration and factor values are other donors' history. */
++  weight: number | null;
+   value: number | null;
+-  contribution: number;
++  contribution: number | null;
+   status: "OBSERVED" | "COARSE" | "MISSING";
+   detail: string;
+ }

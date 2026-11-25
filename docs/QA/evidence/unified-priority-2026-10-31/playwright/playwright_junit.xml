@@ -1,0 +1,330 @@
+<testsuites id="" name="" tests="114" failures="0" skipped="7" errors="0" time="484.940975">
+<testsuite name="admin_notification_surface.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="0" time="4.556" errors="0">
+<testcase name="Phase 19 E2E: shared admin notification surface › a new verification submission is visible from the bell on non-Overview admin pages, and its link opens the verification queue" classname="admin_notification_surface.spec.ts" time="4.556">
+</testcase>
+</testsuite>
+<testsuite name="admin_verification_notifications.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.182" errors="0">
+<testcase name="Phase 18 E2E: new verification submission notifies the admin console › submitting a verification (real API) surfaces a real notification in the admin&apos;s bell and center" classname="admin_verification_notifications.spec.ts" time="3.182">
+</testcase>
+</testsuite>
+<testsuite name="blood_request_idempotency.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="2" failures="0" skipped="0" time="5.189" errors="0">
+<testcase name="Phase 19 E2E: blood-request idempotency through the real UI › rapid double-click on Submit creates exactly one request, not two" classname="blood_request_idempotency.spec.ts" time="2.51">
+</testcase>
+<testcase name="Phase 19 E2E: blood-request idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the request" classname="blood_request_idempotency.spec.ts" time="2.679">
+</testcase>
+</testsuite>
+<testsuite name="blood_request_notifications.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="0" time="5.774" errors="0">
+<testcase name="Phase 18 E2E: blood request -&gt; donor notification, real end to end › a patient&apos;s O- request notifies the O- donor, who reads it via the bell and the full center" classname="blood_request_notifications.spec.ts" time="5.774">
+</testcase>
+</testsuite>
+<testsuite name="clean_start.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="1" time="0" errors="0">
+<testcase name="fresh SPA signs in against the fresh API and loads live hospital data" classname="clean_start.spec.ts" time="0">
+<properties>
+<property name="skip" value="CLEAN_FRONTEND_URL not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="container_frontend.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="1" time="0" errors="0">
+<testcase name="containerised SPA: assets, deep links, sign-in and the live planner" classname="container_frontend.spec.ts" time="0">
+<properties>
+<property name="skip" value="CONTAINER_FRONTEND_URL not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="document_storage_security.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="6" failures="0" skipped="0" time="16.047" errors="0">
+<testcase name="Phase 20 E2E: secure document upload / download › (A) donor uploads a verification document through the real UI and it moves to awaiting review" classname="document_storage_security.spec.ts" time="3.251">
+</testcase>
+<testcase name="Phase 20 E2E: secure document upload / download › (B) hospital uploads a facility verification document through the real UI and it moves to awaiting review" classname="document_storage_security.spec.ts" time="3.077">
+</testcase>
+<testcase name="Phase 20 E2E: secure document upload / download › (C) an authorized admin can download the submitted document, privately (never cached)" classname="document_storage_security.spec.ts" time="2.724">
+</testcase>
+<testcase name="Phase 20 E2E: secure document upload / download › (D) a logged-in non-admin cannot fetch another user&apos;s verification document (IDOR denied, not a fake 200)" classname="document_storage_security.spec.ts" time="2.013">
+</testcase>
+<testcase name="Phase 20 E2E: secure document upload / download › (E) a verification upload failure shows an honest error and keeps the picked files, and a retry after recovery succeeds" classname="document_storage_security.spec.ts" time="3.34">
+</testcase>
+<testcase name="Phase 20 E2E: secure document upload / download › (F) a nonexistent document index returns a clean not-found from the API, never a broken/blank viewer" classname="document_storage_security.spec.ts" time="1.642">
+</testcase>
+</testsuite>
+<testsuite name="emergency_notifications.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="0" time="4.817" errors="0">
+<testcase name="Phase 18 E2E: emergency SOS broadcast reaches a compatible donor › patient broadcasts a real Emergency SOS; the donor sees it as an emergency notification" classname="emergency_notifications.spec.ts" time="4.817">
+</testcase>
+</testsuite>
+<testsuite name="family_link_notifications.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.058" errors="0">
+<testcase name="Phase 18 E2E: family link request/accept notifies both sides › family requests a link; patient accepts it through the real UI; family is notified" classname="family_link_notifications.spec.ts" time="7.058">
+</testcase>
+</testsuite>
+<testsuite name="gap_live_pages.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="9" failures="0" skipped="0" time="67.058" errors="0">
+<testcase name="graph decision engine runs the live planner" classname="gap_live_pages.spec.ts" time="7.342">
+</testcase>
+<testcase name="simulation compares before / after a simulated route failure" classname="gap_live_pages.spec.ts" time="11.258">
+</testcase>
+<testcase name="research mode compares the three strategies" classname="gap_live_pages.spec.ts" time="4.476">
+</testcase>
+<testcase name="mathematical model shows the configured parameters" classname="gap_live_pages.spec.ts" time="4.044">
+</testcase>
+<testcase name="decision transparency plans and explains a real emergency" classname="gap_live_pages.spec.ts" time="8.337">
+</testcase>
+<testcase name="analytics runs a labelled forecast" classname="gap_live_pages.spec.ts" time="4.059">
+</testcase>
+<testcase name="hospital unit lifecycle, resource pathways and shipments" classname="gap_live_pages.spec.ts" time="18.766">
+</testcase>
+<testcase name="admin facilities shows the revoke-verification control" classname="gap_live_pages.spec.ts" time="5.61">
+</testcase>
+<testcase name="map shows an explicit fallback when tiles cannot load" classname="gap_live_pages.spec.ts" time="3.166">
+</testcase>
+</testsuite>
+<testsuite name="hospital_workflow.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="5" failures="0" skipped="0" time="21.846" errors="0">
+<testcase name="Phase 19 E2E: hospital workflow › hospital logs in and the dashboard loads real inventory/request data" classname="hospital_workflow.spec.ts" time="1.956">
+</testcase>
+<testcase name="Phase 19 E2E: hospital workflow › inventory modal opens with real data and a saved change persists through the real backend" classname="hospital_workflow.spec.ts" time="3.356">
+</testcase>
+<testcase name="Phase 19 E2E: hospital workflow › hospital&apos;s own notification surface works (shared bell, same as every other role)" classname="hospital_workflow.spec.ts" time="2.695">
+</testcase>
+<testcase name="Phase 19 E2E: hospital workflow › a hospital cannot fetch another hospital&apos;s inventory or act on its requests (real backend 404/scoping)" classname="hospital_workflow.spec.ts" time="3.413">
+</testcase>
+<testcase name="Phase 19 E2E: hospital workflow › an inventory fetch failure shows an honest error, not a silently empty grid" classname="hospital_workflow.spec.ts" time="10.426">
+</testcase>
+</testsuite>
+<testsuite name="login.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="5" failures="0" skipped="0" time="9.888" errors="0">
+<testcase name="Phase 18 E2E: login + notification surface renders for every role › donor can sign in through the real UI and sees the notifications bell" classname="login.spec.ts" time="1.866">
+</testcase>
+<testcase name="Phase 18 E2E: login + notification surface renders for every role › patient can sign in through the real UI and sees the notifications bell" classname="login.spec.ts" time="1.981">
+</testcase>
+<testcase name="Phase 18 E2E: login + notification surface renders for every role › hospital can sign in through the real UI and sees the notifications bell" classname="login.spec.ts" time="1.881">
+</testcase>
+<testcase name="Phase 18 E2E: login + notification surface renders for every role › family can sign in through the real UI and sees the notifications bell" classname="login.spec.ts" time="2.401">
+</testcase>
+<testcase name="Phase 18 E2E: login + notification surface renders for every role › admin has no shared NotificationsBell in the header -- it uses its own inline &apos;Your Notifications&apos; panel" classname="login.spec.ts" time="1.759">
+</testcase>
+</testsuite>
+<testsuite name="offline_network_failure.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="4" failures="0" skipped="0" time="33.222" errors="0">
+<testcase name="Phase 19 E2E: offline / network-failure UX › the patient&apos;s request list shows an honest error when it fails to load, and recovers once the network returns" classname="offline_network_failure.spec.ts" time="10.169">
+</testcase>
+<testcase name="Phase 19 E2E: offline / network-failure UX › the notifications page shows an honest error when the API fails, and recovers via Retry" classname="offline_network_failure.spec.ts" time="9.933">
+</testcase>
+<testcase name="Phase 19 E2E: offline / network-failure UX › the hospital dashboard&apos;s inventory tile shows an honest error when inventory fails to load, and recovers via Retry" classname="offline_network_failure.spec.ts" time="10.049">
+</testcase>
+<testcase name="Phase 19 E2E: offline / network-failure UX › a blood-request submission failure shows an honest error, keeps the form data, and a retry after recovery succeeds" classname="offline_network_failure.spec.ts" time="3.071">
+</testcase>
+</testsuite>
+<testsuite name="phase_e_domain_integrity.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="3" failures="0" skipped="0" time="14.624" errors="0">
+<testcase name="donation verification gates the certificate end to end" classname="phase_e_domain_integrity.spec.ts" time="8.455">
+</testcase>
+<testcase name="failed shipment requires an explicit, attested reconciliation" classname="phase_e_domain_integrity.spec.ts" time="3.554">
+</testcase>
+<testcase name="admin audit-chain verification reports an honest result" classname="phase_e_domain_integrity.spec.ts" time="2.615">
+</testcase>
+</testsuite>
+<testsuite name="phase_f_realtime.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="2" failures="0" skipped="0" time="6.709" errors="0">
+<testcase name="patient sees a hospital allocation live, without reloading" classname="phase_f_realtime.spec.ts" time="3.472">
+</testcase>
+<testcase name="donor&apos;s bell updates live when a matching request is filed" classname="phase_f_realtime.spec.ts" time="3.237">
+</testcase>
+</testsuite>
+<testsuite name="phase_g_integration.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="3" failures="0" skipped="0" time="15.093" errors="0">
+<testcase name="hospital adds plasma via the console; admin sees the component" classname="phase_g_integration.spec.ts" time="5.866">
+</testcase>
+<testcase name="inventory console + dialog: no axe violations, no overflow at 3 widths" classname="phase_g_integration.spec.ts" time="5.953">
+</testcase>
+<testcase name="action dialog is keyboard-operable: focus inside, Tab trapped, Escape closes" classname="phase_g_integration.spec.ts" time="3.274">
+</testcase>
+</testsuite>
+<testsuite name="phase_j_journeys.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="9" failures="0" skipped="0" time="37.955" errors="0">
+<testcase name="partial then full fulfilment is visible to the patient live" classname="phase_j_journeys.spec.ts" time="3.993">
+</testcase>
+<testcase name="shipment happy path through the UI, two hospitals, live status" classname="phase_j_journeys.spec.ts" time="8.549">
+</testcase>
+<testcase name="donor on a phone: real dashboard, working mobile nav, no overflow, no axe violations" classname="phase_j_journeys.spec.ts" time="4.425">
+</testcase>
+<testcase name="keyboard only: sign in, open and close notifications" classname="phase_j_journeys.spec.ts" time="2.093">
+</testcase>
+<testcase name="patient dashboard: no app errors, no 5xx, no unexplained 4xx" classname="phase_j_journeys.spec.ts" time="3.86">
+</testcase>
+<testcase name="family dashboard: no app errors, no 5xx, no unexplained 4xx" classname="phase_j_journeys.spec.ts" time="3.793">
+</testcase>
+<testcase name="donor dashboard: no app errors, no 5xx, no unexplained 4xx" classname="phase_j_journeys.spec.ts" time="3.72">
+</testcase>
+<testcase name="hospital dashboard: no app errors, no 5xx, no unexplained 4xx" classname="phase_j_journeys.spec.ts" time="3.846">
+</testcase>
+<testcase name="admin dashboard: no app errors, no 5xx, no unexplained 4xx" classname="phase_j_journeys.spec.ts" time="3.676">
+</testcase>
+</testsuite>
+<testsuite name="phase21_error_loading_empty_offline.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="3" failures="0" skipped="0" time="7.41" errors="0">
+<testcase name="Phase 21 E2E: error / loading / empty / offline UX › (A) resubmitting the guided New Blood Request flow after a lost first attempt does not duplicate the request" classname="phase21_error_loading_empty_offline.spec.ts" time="3.362">
+</testcase>
+<testcase name="Phase 21 E2E: error / loading / empty / offline UX › (B) certificate verification distinguishes a genuinely-unknown code from a network failure, and Retry recovers" classname="phase21_error_loading_empty_offline.spec.ts" time="1.463">
+</testcase>
+<testcase name="Phase 21 E2E: error / loading / empty / offline UX › (C) a failed &apos;mark notification read&apos; shows a real error instead of silently doing nothing" classname="phase21_error_loading_empty_offline.spec.ts" time="2.585">
+</testcase>
+</testsuite>
+<testsuite name="phase22_responsive_mobile_nav.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="4" failures="0" skipped="0" time="9.05" errors="0">
+<testcase name="Phase 22 E2E: responsive mobile navigation + dialog accessibility › (A) Admin: a mobile viewport gets a working hamburger menu instead of no navigation at all" classname="phase22_responsive_mobile_nav.spec.ts" time="2.196">
+</testcase>
+<testcase name="Phase 22 E2E: responsive mobile navigation + dialog accessibility › (B) Patient: a mobile viewport gets a working hamburger menu instead of no navigation at all" classname="phase22_responsive_mobile_nav.spec.ts" time="2.265">
+</testcase>
+<testcase name="Phase 22 E2E: responsive mobile navigation + dialog accessibility › (C) Family: a mobile viewport gets a working hamburger menu instead of no navigation at all" classname="phase22_responsive_mobile_nav.spec.ts" time="2.528">
+</testcase>
+<testcase name="Phase 22 E2E: responsive mobile navigation + dialog accessibility › (D) the shared Modal has real dialog semantics, moves focus in, and Escape closes it" classname="phase22_responsive_mobile_nav.spec.ts" time="2.061">
+</testcase>
+</testsuite>
+<testsuite name="phase23_security_hardening.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="12" failures="0" skipped="0" time="23.597" errors="0">
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (A) the session cookie is HttpOnly -- inaccessible to page JavaScript" classname="phase23_security_hardening.spec.ts" time="1.642">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (B) an unauthenticated visit to a protected dashboard redirects to /login, never flashing protected content" classname="phase23_security_hardening.spec.ts" time="0.594">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (C) a role mismatch shows Access Denied client-side, and the underlying admin API genuinely 403s (not just hidden UI)" classname="phase23_security_hardening.spec.ts" time="1.903">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (D) a patient&apos;s browser session cannot view another patient&apos;s blood request (IDOR denied with a clean 404)" classname="phase23_security_hardening.spec.ts" time="3.16">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (E) certificate download requires real ownership or a valid signed token, not merely being logged in" classname="phase23_security_hardening.spec.ts" time="2.191">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (F) a state-changing request through the real session is rejected when it carries a forged cross-site Origin, and accepted with the real one" classname="phase23_security_hardening.spec.ts" time="1.932">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (G) signing out through the real account menu immediately invalidates the session" classname="phase23_security_hardening.spec.ts" time="2.007">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (H) changing the password through the real session invalidates a session cookie captured beforehand" classname="phase23_security_hardening.spec.ts" time="2.589">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (I) rapid real emergency-creation requests through the browser session eventually trip the Phase 23 rate limit" classname="phase23_security_hardening.spec.ts" time="3.559">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (J) mass assignment through the real session cannot flip a donor&apos;s identity_verified flag or role" classname="phase23_security_hardening.spec.ts" time="1.609">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (K) a logged-out browser cannot fetch certificate details at all" classname="phase23_security_hardening.spec.ts" time="0.516">
+</testcase>
+<testcase name="Phase 23 E2E: session, CSRF, IDOR, rate-limit, mass-assignment › (L) a donor&apos;s real browser session cannot log a donation against a request it never accepted (Phase 23 fix)" classname="phase23_security_hardening.spec.ts" time="1.895">
+</testcase>
+</testsuite>
+<testsuite name="phase25_error_pages_and_500.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="3" failures="0" skipped="0" time="13.253" errors="0">
+<testcase name="Phase 25 E2E: catch-all 404 and real-500 error UX › navigating to an unknown URL renders the real 404 page, not a blank screen or crash" classname="phase25_error_pages_and_500.spec.ts" time="2.25">
+</testcase>
+<testcase name="Phase 25 E2E: catch-all 404 and real-500 error UX › an unauthenticated visit to an unknown URL also renders 404, not a login loop or crash" classname="phase25_error_pages_and_500.spec.ts" time="0.839">
+</testcase>
+<testcase name="Phase 25 E2E: catch-all 404 and real-500 error UX › a genuine HTTP 500 response body (not a network abort) shows an honest error, distinct from the offline case" classname="phase25_error_pages_and_500.spec.ts" time="10.164">
+</testcase>
+</testsuite>
+<testsuite name="phase26_accessibility.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="7" failures="0" skipped="0" time="24.516" errors="0">
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › donor Ready Console (fixed select-name)" classname="phase26_accessibility.spec.ts" time="3.301">
+</testcase>
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › admin Donors and User Management (fixed select-name)" classname="phase26_accessibility.spec.ts" time="4.692">
+</testcase>
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › donor dashboard (fixed image-alt)" classname="phase26_accessibility.spec.ts" time="2.919">
+</testcase>
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › shared Notifications/Help/Legal pages (fixed link-name, link-in-text-block)" classname="phase26_accessibility.spec.ts" time="4.144">
+</testcase>
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › family Linked Patients (fixed link-name)" classname="phase26_accessibility.spec.ts" time="2.54">
+</testcase>
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › admin Analytics (fixed link-in-text-block)" classname="phase26_accessibility.spec.ts" time="3.191">
+</testcase>
+<testcase name="Phase 26 E2E: no new accessibility regressions on previously-broken routes › hospital dashboard (fixed scrollable-region-focusable)" classname="phase26_accessibility.spec.ts" time="3.729">
+</testcase>
+</testsuite>
+<testsuite name="phase26_donation_idempotency.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="3" failures="0" skipped="0" time="8.931" errors="0">
+<testcase name="Phase 26 E2E: donation-logging idempotency through the real UI › rapid double-click on Log donation creates exactly one donation, not two" classname="phase26_donation_idempotency.spec.ts" time="2.93">
+</testcase>
+<testcase name="Phase 26 E2E: donation-logging idempotency through the real UI › resubmitting after a failed attempt with the same form (same idempotency key) does not duplicate the donation" classname="phase26_donation_idempotency.spec.ts" time="3.333">
+</testcase>
+<testcase name="Phase 26 E2E: donation-logging idempotency through the real UI › a genuine server error while logging a donation shows an honest error, not a false success" classname="phase26_donation_idempotency.spec.ts" time="2.668">
+</testcase>
+</testsuite>
+<testsuite name="phase26_responsive_overflow.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="2" failures="0" skipped="0" time="11.056" errors="0">
+<testcase name="Phase 26 E2E: no page-level horizontal overflow › admin transport-routes table (the reproduced bug) does not scroll the page at 375/390/414px" classname="phase26_responsive_overflow.spec.ts" time="4.682">
+</testcase>
+<testcase name="Phase 26 E2E: no page-level horizontal overflow › donor milestones/history and patient history tables do not scroll the page at 320/1440px" classname="phase26_responsive_overflow.spec.ts" time="6.374">
+</testcase>
+</testsuite>
+<testsuite name="phase27_accessibility.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="4" failures="0" skipped="0" time="25.334" errors="0">
+<testcase name="Phase 27 accessibility regression › Leaflet donor-map markers on /patient/find-donor have no aria-command-name violations" classname="phase27_accessibility.spec.ts" time="4.701">
+</testcase>
+<testcase name="Phase 27 accessibility regression › Hospital donor-directory map has no aria-command-name violations" classname="phase27_accessibility.spec.ts" time="4.35">
+</testcase>
+<testcase name="Phase 27 accessibility regression › previously-flagged donor/patient/verification/simulation routes are clean (decorative watermark excepted)" classname="phase27_accessibility.spec.ts" time="12.765">
+</testcase>
+<testcase name="Phase 27 accessibility regression › the one remaining color-contrast node is the disclosed decorative watermark, not a regression elsewhere" classname="phase27_accessibility.spec.ts" time="3.518">
+</testcase>
+</testsuite>
+<testsuite name="phase31_1_domain_signals.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="6" failures="0" skipped="0" time="23.445" errors="0">
+<testcase name="Phase 31.1 E2E: certificate revocation › admin can revoke a certificate through the real UI, and public verification reflects it honestly" classname="phase31_1_domain_signals.spec.ts" time="5.163">
+</testcase>
+<testcase name="Phase 31.1 E2E: emergency deadline-exceeded banner › a real past-deadline emergency shows the deadline banner alongside (not instead of) its real status" classname="phase31_1_domain_signals.spec.ts" time="3.601">
+</testcase>
+<testcase name="Phase 31.1 E2E: accessibility of the new certificate/emergency UI › public verify page (valid certificate) has no new axe violations" classname="phase31_1_domain_signals.spec.ts" time="1.443">
+</testcase>
+<testcase name="Phase 31.1 E2E: accessibility of the new certificate/emergency UI › donor milestones page (with a revoked certificate present) has no new axe violations" classname="phase31_1_domain_signals.spec.ts" time="3.552">
+</testcase>
+<testcase name="Phase 31.1 E2E: accessibility of the new certificate/emergency UI › admin certificate registry, with the revoke dialog open, has no new axe violations" classname="phase31_1_domain_signals.spec.ts" time="2.89">
+</testcase>
+<testcase name="Phase 31.1 E2E: responsive -- new Status/Action columns don&apos;t cause page overflow › admin certificate registry (new Status + Action columns) at every required breakpoint" classname="phase31_1_domain_signals.spec.ts" time="6.796">
+</testcase>
+</testsuite>
+<testsuite name="qa_evidence.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="9" failures="0" skipped="0" time="58.714" errors="0">
+<testcase name="QA auth: register, blocked until verified, verify by email link, sign in" classname="qa_evidence.spec.ts" time="6.352">
+</testcase>
+<testcase name="QA donor: log a donation, hospital verifies, certificate issued and downloadable" classname="qa_evidence.spec.ts" time="8.948">
+</testcase>
+<testcase name="QA documents: clean upload is scanned and reviewable; infected, wrong-type and oversized are refused" classname="qa_evidence.spec.ts" time="9.177">
+</testcase>
+<testcase name="QA hospital: inventory by component, add/reserve/release through the UI" classname="qa_evidence.spec.ts" time="4.443">
+</testcase>
+<testcase name="QA requests: patient request, partial then full fulfilment, live updates" classname="qa_evidence.spec.ts" time="8.63">
+</testcase>
+<testcase name="QA shipments: create, dispatch, delay, arrive, receive; failure needs reconciliation" classname="qa_evidence.spec.ts" time="6.179">
+</testcase>
+<testcase name="QA admin: overview, users, facilities, shipments, analytics, audit chain" classname="qa_evidence.spec.ts" time="9.976">
+</testcase>
+<testcase name="QA realtime: losing the API shows reconnecting, recovery is live again" classname="qa_evidence.spec.ts" time="2.155">
+</testcase>
+<testcase name="QA security: wrong role, anonymous and expired sessions" classname="qa_evidence.spec.ts" time="2.854">
+</testcase>
+</testsuite>
+<testsuite name="qa_failover_ui.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="1" failures="0" skipped="0" time="15.473" errors="0">
+<testcase name="QA failover: admin disrupts the planned route in the UI; a new plan that avoids it takes over" classname="qa_failover_ui.spec.ts" time="15.473">
+</testcase>
+</testsuite>
+<testsuite name="remediation_shortlist_demo.spec.ts" timestamp="2026-10-31T17:27:17.009Z" hostname="chromium" tests="5" failures="0" skipped="5" time="0" errors="0">
+<testcase name="scenario A: the shortlist panel states what really happened" classname="remediation_shortlist_demo.spec.ts" time="0">
+<properties>
+<property name="skip" value="DEMO_FRONTEND_URL / DEMO_RESULTS not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="scenario B: the shortlist panel states what really happened" classname="remediation_shortlist_demo.spec.ts" time="0">
+<properties>
+<property name="skip" value="DEMO_FRONTEND_URL / DEMO_RESULTS not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="scenario C: the shortlist panel states what really happened" classname="remediation_shortlist_demo.spec.ts" time="0">
+<properties>
+<property name="skip" value="DEMO_FRONTEND_URL / DEMO_RESULTS not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="scenario D: the shortlist panel states what really happened" classname="remediation_shortlist_demo.spec.ts" time="0">
+<properties>
+<property name="skip" value="DEMO_FRONTEND_URL / DEMO_RESULTS not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="unified priority breakdown reconciles and is accessible before anyone is contacted" classname="remediation_shortlist_demo.spec.ts" time="0">
+<properties>
+<property name="skip" value="DEMO_FRONTEND_URL / DEMO_RESULTS not set">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>

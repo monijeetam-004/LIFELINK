@@ -1,0 +1,10 @@
+Alembic migrations for LifeLink.
+
+The database URL is taken from the DATABASE_URL environment variable
+(see alembic/env.py), not from alembic.ini.
+
+Common commands:
+  alembic upgrade head            # apply all migrations
+  alembic downgrade -1            # roll back one
+  alembic revision -m "message"   # new (hand-edited) migration
+  alembic revision --autogenerate -m "message"   # diff models vs db

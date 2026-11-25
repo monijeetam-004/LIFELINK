@@ -1,0 +1,93 @@
+2026-11-03 05:24:13,307 INFO     [-] uvicorn.error: Started server process [2015]
+2026-11-03 05:24:13,307 INFO     [-] uvicorn.error: Waiting for application startup.
+2026-11-03 05:24:14,498 INFO     [-] lifelink.email: mail transport: mailpit 127.0.0.1:1025 plain no-auth
+2026-11-03 05:24:14,498 INFO     [-] uvicorn.error: Application startup complete.
+2026-11-03 05:24:14,499 INFO     [-] uvicorn.error: Uvicorn running on http://127.0.0.1:8300 (Press CTRL+C to quit)
+2026-11-03 05:24:15,341 INFO     [-] lifelink.access: GET /health/ready -> 200 (22.7ms)
+2026-11-03 05:24:15,341 INFO     [-] uvicorn.access: 127.0.0.1:51796 - "GET /health/ready HTTP/1.1" 200
+2026-11-03 05:24:15,351 INFO     [-] lifelink.access: GET /health/ready -> 200 (2.6ms)
+2026-11-03 05:24:15,351 INFO     [-] uvicorn.access: 127.0.0.1:51810 - "GET /health/ready HTTP/1.1" 200
+2026-11-03 05:26:34,945 INFO     [-] lifelink.access: GET /health/ready -> 200 (3.5ms)
+2026-11-03 05:26:34,945 INFO     [-] uvicorn.access: 127.0.0.1:60488 - "GET /health/ready HTTP/1.1" 200
+2026-11-03 05:26:36,504 INFO     [33a57201-74ba-4c2a-87c6-b2115d3f5f92] lifelink.email: email job 455cba93-633b-4cd5-843b-b1718477898e enqueued for c***@example.com
+2026-11-03 05:26:36,523 INFO     [-] lifelink.access: POST /auth/register -> 201 (219.9ms)
+2026-11-03 05:26:36,523 INFO     [-] uvicorn.access: 127.0.0.1:60496 - "POST /auth/register HTTP/1.1" 201
+2026-11-03 05:26:38,734 INFO     [-] lifelink.access: POST /auth/verify-email -> 200 (18.3ms)
+2026-11-03 05:26:38,734 INFO     [-] uvicorn.access: 127.0.0.1:60496 - "POST /auth/verify-email HTTP/1.1" 200
+2026-11-03 05:26:38,920 INFO     [-] lifelink.access: POST /auth/login -> 200 (145.7ms)
+2026-11-03 05:26:38,920 INFO     [-] uvicorn.access: 127.0.0.1:32978 - "POST /auth/login HTTP/1.1" 200
+2026-11-03 05:26:39,064 INFO     [-] lifelink.access: POST /verifications -> 422 (141.2ms)
+2026-11-03 05:26:39,064 INFO     [-] uvicorn.access: 127.0.0.1:32978 - "POST /verifications HTTP/1.1" 422
+2026-11-03 05:26:39,096 INFO     [95ae55e3-08c0-413a-bb8a-f4b20ec08aa9] lifelink.email: email job 12d4fe68-49c2-4ada-bc3b-42aa0ee8f2b0 enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:39,112 INFO     [-] lifelink.access: POST /verifications -> 201 (46.3ms)
+2026-11-03 05:26:39,112 INFO     [-] uvicorn.access: 127.0.0.1:32978 - "POST /verifications HTTP/1.1" 201
+2026-11-03 05:26:39,169 INFO     [-] lifelink.access: GET /verifications/me -> 200 (6.1ms)
+2026-11-03 05:26:39,170 INFO     [-] uvicorn.access: 127.0.0.1:32978 - "GET /verifications/me HTTP/1.1" 200
+2026-11-03 05:26:39,503 INFO     [-] lifelink.access: POST /auth/login -> 200 (151.5ms)
+2026-11-03 05:26:39,503 INFO     [-] uvicorn.access: 127.0.0.1:32990 - "POST /auth/login HTTP/1.1" 200
+2026-11-03 05:26:39,668 INFO     [-] lifelink.access: POST /auth/login -> 200 (123.3ms)
+2026-11-03 05:26:39,668 INFO     [-] uvicorn.access: 127.0.0.1:33000 - "POST /auth/login HTTP/1.1" 200
+2026-11-03 05:26:39,842 INFO     [-] lifelink.access: POST /auth/login -> 200 (131.9ms)
+2026-11-03 05:26:39,842 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "POST /auth/login HTTP/1.1" 200
+2026-11-03 05:26:39,875 WARNING  [a52594a9-1e83-4d9f-8106-16a257270a1c] lifelink.graph_service: sync_route skipped (graph unavailable): Neo4j is not configured
+2026-11-03 05:26:39,876 INFO     [-] lifelink.access: POST /admin/transport-routes -> 201 (25.4ms)
+2026-11-03 05:26:39,876 INFO     [-] uvicorn.access: 127.0.0.1:32990 - "POST /admin/transport-routes HTTP/1.1" 201
+2026-11-03 05:26:39,897 WARNING  [2d4fd6f8-fbe9-42f5-a3cd-c6155bca4953] lifelink.graph_service: sync_route skipped (graph unavailable): Neo4j is not configured
+2026-11-03 05:26:39,897 INFO     [-] lifelink.access: POST /admin/transport-routes -> 201 (19.8ms)
+2026-11-03 05:26:39,898 INFO     [-] uvicorn.access: 127.0.0.1:32990 - "POST /admin/transport-routes HTTP/1.1" 201
+2026-11-03 05:26:39,931 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job 3b518266-17f6-4a9d-a9f8-1def1aac7d0a enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:39,932 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job 6345aee0-a392-4d12-bbd7-3611da71d87c enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:39,945 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job d8fe62da-cb87-4b89-8dec-dce0871cdc55 enqueued for f***@lifelink-demo.example.com
+2026-11-03 05:26:39,948 INFO     [6071552b-e0b6-4e5d-b73a-aa11d3986c45] lifelink.email: email job 292fd308-88b7-4465-bf4e-c1f6472cfa97 enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:39,971 INFO     [-] lifelink.access: POST /emergencies -> 201 (71.9ms)
+2026-11-03 05:26:39,971 INFO     [-] uvicorn.access: 127.0.0.1:33000 - "POST /emergencies HTTP/1.1" 201
+2026-11-03 05:26:40,158 INFO     [-] lifelink.access: POST /emergencies/{emergency_id}/pathway -> 200 (184.6ms)
+2026-11-03 05:26:40,158 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "POST /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557/pathway HTTP/1.1" 200
+2026-11-03 05:26:40,191 INFO     [-] lifelink.access: GET /emergencies/{emergency_id}/pathways -> 200 (31.4ms)
+2026-11-03 05:26:40,192 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "GET /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557/pathways HTTP/1.1" 200
+2026-11-03 05:26:40,264 INFO     [-] lifelink.access: POST /emergencies/{emergency_id}/pathway/reserve -> 200 (70.8ms)
+2026-11-03 05:26:40,264 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "POST /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557/pathway/reserve HTTP/1.1" 200
+2026-11-03 05:26:40,362 INFO     [926c350b-dcb1-41a5-b9d7-4ab9e9fbbee8] lifelink.email: email job f37769d4-ecbd-4bc4-8565-2e3100c61ad0 enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:40,377 WARNING  [926c350b-dcb1-41a5-b9d7-4ab9e9fbbee8] lifelink.graph_service: sync_route skipped (graph unavailable): Neo4j is not configured
+2026-11-03 05:26:40,419 INFO     [-] lifelink.access: POST /admin/transport-routes/{route_id}/disrupt -> 200 (152.4ms)
+2026-11-03 05:26:40,419 INFO     [-] uvicorn.access: 127.0.0.1:32990 - "POST /admin/transport-routes/ee041adb-f7da-4d0f-86b3-afe95cdf5e78/disrupt HTTP/1.1" 200
+2026-11-03 05:26:40,434 INFO     [-] lifelink.access: GET /emergencies/{emergency_id}/pathways -> 200 (13.7ms)
+2026-11-03 05:26:40,434 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "GET /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557/pathways HTTP/1.1" 200
+2026-11-03 05:26:40,486 INFO     [d7fa445b-6caa-4204-9e2b-e32140e30b89] lifelink.email: email job ce92d4b6-119a-4774-8642-d30a1f531c31 enqueued for f***@lifelink-demo.example.com
+2026-11-03 05:26:40,490 INFO     [d7fa445b-6caa-4204-9e2b-e32140e30b89] lifelink.email: email job 7b1910ce-a64d-4d73-8be6-933742bc2450 enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:40,523 INFO     [-] lifelink.access: POST /emergencies/{emergency_id}/pathway/handoff -> 200 (85.5ms)
+2026-11-03 05:26:40,523 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "POST /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557/pathway/handoff HTTP/1.1" 200
+2026-11-03 05:26:40,765 INFO     [-] lifelink.access: POST /auth/login -> 200 (182.5ms)
+2026-11-03 05:26:40,765 INFO     [-] uvicorn.access: 127.0.0.1:33024 - "POST /auth/login HTTP/1.1" 200
+2026-11-03 05:26:40,810 INFO     [-] lifelink.access: GET /shipments/{shipment_id} -> 200 (43.2ms)
+2026-11-03 05:26:40,810 INFO     [-] uvicorn.access: 127.0.0.1:33024 - "GET /shipments/511f71ac-117d-4331-9a40-de556defca4f HTTP/1.1" 200
+2026-11-03 05:26:40,847 WARNING  [d66f9c1a-2353-4f1f-95f1-b89f72cf1af9] lifelink.graph_service: sync_inventory skipped (graph unavailable): Neo4j is not configured
+2026-11-03 05:26:40,851 INFO     [d66f9c1a-2353-4f1f-95f1-b89f72cf1af9] lifelink.email: email job 9ec83cef-329e-4be5-916e-227ca59d8de3 enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:40,883 INFO     [-] lifelink.access: POST /shipments/{shipment_id}/dispatch -> 200 (70.5ms)
+2026-11-03 05:26:40,883 INFO     [-] uvicorn.access: 127.0.0.1:33024 - "POST /shipments/511f71ac-117d-4331-9a40-de556defca4f/dispatch HTTP/1.1" 200
+2026-11-03 05:26:40,913 INFO     [-] lifelink.access: POST /shipments/{shipment_id}/telemetry -> 200 (27.4ms)
+2026-11-03 05:26:40,913 INFO     [-] uvicorn.access: 127.0.0.1:33024 - "POST /shipments/511f71ac-117d-4331-9a40-de556defca4f/telemetry HTTP/1.1" 200
+2026-11-03 05:26:40,937 INFO     [40730ec3-4d8f-48bc-af9a-088bb8874b27] lifelink.email: email job 1df6e347-1ebf-4b4f-acdf-841f990b0879 enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:40,963 INFO     [-] lifelink.access: POST /shipments/{shipment_id}/in-transit -> 200 (46.8ms)
+2026-11-03 05:26:40,963 INFO     [-] uvicorn.access: 127.0.0.1:33024 - "POST /shipments/511f71ac-117d-4331-9a40-de556defca4f/in-transit HTTP/1.1" 200
+2026-11-03 05:26:40,982 INFO     [d0bc7701-b9dc-447b-abcf-a3bb6b856c26] lifelink.email: email job 51ae454c-688b-4509-a79b-5a12c3fd480c enqueued for d***@lifelink-demo.example.com
+2026-11-03 05:26:41,000 INFO     [-] lifelink.access: POST /shipments/{shipment_id}/arrive -> 200 (33.8ms)
+2026-11-03 05:26:41,000 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "POST /shipments/511f71ac-117d-4331-9a40-de556defca4f/arrive HTTP/1.1" 200
+2026-11-03 05:26:41,030 INFO     [-] lifelink.access: GET /hospitals/me/inventory -> 200 (28.2ms)
+2026-11-03 05:26:41,030 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "GET /hospitals/me/inventory HTTP/1.1" 200
+2026-11-03 05:26:41,061 WARNING  [5b23fb74-84a6-4d64-aa73-eddc5600b084] lifelink.graph_service: sync_inventory skipped (graph unavailable): Neo4j is not configured
+2026-11-03 05:26:41,072 INFO     [5b23fb74-84a6-4d64-aa73-eddc5600b084] lifelink.email: email job 2a673bbc-1e00-401f-8bc4-0106c373a611 enqueued for f***@lifelink-demo.example.com
+2026-11-03 05:26:41,090 INFO     [-] lifelink.access: POST /shipments/{shipment_id}/receive -> 200 (58.4ms)
+2026-11-03 05:26:41,091 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "POST /shipments/511f71ac-117d-4331-9a40-de556defca4f/receive HTTP/1.1" 200
+2026-11-03 05:26:41,120 INFO     [-] lifelink.access: GET /hospitals/me/inventory -> 200 (27.2ms)
+2026-11-03 05:26:41,120 INFO     [-] uvicorn.access: 127.0.0.1:33010 - "GET /hospitals/me/inventory HTTP/1.1" 200
+2026-11-03 05:26:41,151 INFO     [-] lifelink.access: POST /emergencies/{emergency_id}/resolve -> 200 (28.8ms)
+2026-11-03 05:26:41,151 INFO     [-] uvicorn.access: 127.0.0.1:33000 - "POST /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557/resolve HTTP/1.1" 200
+2026-11-03 05:26:41,170 INFO     [-] lifelink.access: GET /emergencies/{emergency_id} -> 200 (16.5ms)
+2026-11-03 05:26:41,170 INFO     [-] uvicorn.access: 127.0.0.1:33000 - "GET /emergencies/061dc4d3-5a3d-4b65-9fa5-9b720e404557 HTTP/1.1" 200
+2026-11-03 05:26:41,189 INFO     [-] lifelink.access: POST /admin/audit-log/verify -> 200 (17.1ms)
+2026-11-03 05:26:41,189 INFO     [-] uvicorn.access: 127.0.0.1:32990 - "POST /admin/audit-log/verify HTTP/1.1" 200
+2026-11-03 05:26:41,549 INFO     [-] uvicorn.error: Shutting down
+2026-11-03 05:26:41,649 INFO     [-] uvicorn.error: Waiting for application shutdown.
+2026-11-03 05:26:41,650 INFO     [-] uvicorn.error: Application shutdown complete.
+2026-11-03 05:26:41,650 INFO     [-] uvicorn.error: Finished server process [2015]
