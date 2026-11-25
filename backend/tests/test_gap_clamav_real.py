@@ -52,7 +52,9 @@ def test_real_clean_eicar_and_suspicious_pdf_verdicts():
     scanner = ClamdScanner(REAL_HOST, REAL_PORT, 10.0)
     assert scanner.scan(b"%PDF-1.4 ordinary document").verdict == ScanVerdict.CLEAN
     eicar = scanner.scan(EICAR)
-    assert eicar.verdict == ScanVerdict.INFECTED and "EICAR" in eicar.signature
+    # Our local database names it LifeLink.Test.EICAR; the official one,
+    # loaded alongside it in CI, names it Eicar-Test-Signature.
+    assert eicar.verdict == ScanVerdict.INFECTED and "EICAR" in eicar.signature.upper()
     js = scanner.scan(JS_PDF)
     assert js.verdict == ScanVerdict.INFECTED and "PDF.JavaScript" in js.signature
 
