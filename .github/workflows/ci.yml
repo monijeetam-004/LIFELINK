@@ -421,7 +421,8 @@ jobs:
   # ------------------------------------------------------------------ #
   e2e:
     name: End-to-end (Playwright)
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest is now 26.04, which Playwright's chromium doesn't support yet.
+    runs-on: ubuntu-24.04
     needs: [backend, frontend]
     services:
       postgres:
@@ -656,7 +657,8 @@ jobs:
   # ------------------------------------------------------------------ #
   e2e-object-storage:
     name: E2E (object storage on MinIO)
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest is now 26.04, which Playwright's chromium doesn't support yet.
+    runs-on: ubuntu-24.04
     services:
       postgres:
         image: postgres:16
